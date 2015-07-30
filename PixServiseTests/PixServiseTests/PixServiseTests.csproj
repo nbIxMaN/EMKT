@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE6BCE2F-F8E3-43FD-80D2-77CA90B602DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PixServiseTests</RootNamespace>
+    <AssemblyName>PixServiseTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Global.cs" />
+    <Compile Include="Service References\EMKServise\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PixServise\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TestAddress.cs" />
+    <Compile Include="TestAmbCase.cs" />
+    <Compile Include="TestAmbStep.cs" />
+    <Compile Include="TestAppointedMedication.cs" />
+    <Compile Include="TestAttachment.cs" />
+    <Compile Include="TestBirthplace.cs" />
+    <Compile Include="TestCaseBase.cs" />
+    <Compile Include="TestClinicMainDiagnosis.cs" />
+    <Compile Include="TestContact.cs" />
+    <Compile Include="TestContactPerson.cs" />
+    <Compile Include="TestDeathInfo.cs" />
+    <Compile Include="TestDiagnosis.cs" />
+    <Compile Include="TestDiagnosisInfo.cs" />
+    <Compile Include="TestDoctor.cs" />
+    <Compile Include="TestDocument.cs" />
+    <Compile Include="TestEmkServiceClient.cs" />
+    <Compile Include="TestGuardian.cs" />
+    <Compile Include="TestHumanName.cs" />
+    <Compile Include="TestIdentityDocument.cs" />
+    <Compile Include="TestJob.cs" />
+    <Compile Include="TestMedDocument.cs" />
+    <Compile Include="TestMedRecord.cs" />
+    <Compile Include="TestParticipant.cs" />
+    <Compile Include="TestPatient.cs" />
+    <Compile Include="TestPerson.cs" />
+    <Compile Include="TestPixServiceClient.cs" />
+    <Compile Include="TestPrivilege.cs" />
+    <Compile Include="TestReferral.cs" />
+    <Compile Include="TestService.cs" />
+    <Compile Include="TestSickList.cs" />
+    <Compile Include="TestStatCase.cs" />
+    <Compile Include="TestStatStep.cs" />
+    <Compile Include="TestStepBase.cs" />
+    <Compile Include="TestTfomsInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\EMKServise\EmkService.wsdl" />
+    <None Include="Service References\EMKServise\EMKService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\EMKService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\PixServiseTests.EMKServise.ReferralTupleDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EMKServise\PixServiseTests.EMKServise.VersionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PixServise\PixService.wsdl" />
+    <None Include="Service References\PixServise\PixService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PixServise\PixService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PixServise\PixService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PixServise\PixService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PixServise\PixService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PixServise\PixService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PixServise\PixServiseTests.PixServise.PatientDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PixServise\PixServiseTests.PixServise.VersionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EMKServise\" />
+    <WCFMetadataStorage Include="Service References\PixServise\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PixServise\PixService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PixServise\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PixServise\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PixServise\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EMKServise\EMKService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EMKServise\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EMKServise\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EMKServise\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

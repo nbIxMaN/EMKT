@@ -1,0 +1,153 @@
+﻿using PixServiseTests.EMKServise;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PixServiseTests
+{
+    class TestService : TestMedRecord
+    {
+        Service document;
+        TestParticipant doctor;
+        public TestService(Service s)
+        {
+            if (s != null)
+            {
+                document = s;
+                doctor = new TestParticipant(s.Performer);
+            }
+        }
+        static public List<TestService> BuildServiseFromDataBaseData(string IdStep)
+        {
+            List<TestService> serviseList = new List<TestService>();
+            using (SqlConnection connection = Global.GetSqlConnection())
+            {
+                string findService = "SELECT * FROM Service, Step WHERE Service.IdStep = '" + IdStep + "' AND Service.IdStep = Step.IdStep";
+                SqlCommand serviceCommand = new SqlCommand(findService, connection);
+                using (SqlDataReader serviceReader = serviceCommand.ExecuteReader())
+                {
+                    while (serviceReader.Read())
+                    {
+                        Service s = new Service();
+                        if (serviceReader["Servise.DateEnd"].ToString() != "")
+                            s.DateEnd = Convert.ToDateTime(serviceReader["Servise.DateEnd"]);
+                        else
+                            s.DateEnd = DateTime.MinValue;
+                        if (serviceReader["Servise.DateStart"].ToString() != "")
+                            s.DateStart = Convert.ToDateTime(serviceReader["Servise.DateStart"]);
+                        else
+                            s.DateStart = DateTime.MinValue;
+                        if (serviceReader["Servise.IdServiceType"].ToString() != "")
+                            s.IdServiceType = Convert.ToString(serviceReader["Servise.IdServiceType"]);
+                        if (serviceReader["Servise.ServiceName"].ToString() != "")
+                            s.ServiceName = Convert.ToString(serviceReader["Servise.ServiceName"]);
+                        if (serviceReader["Servise.IdRHealthCareUnit"].ToString() != "")
+                            s.PaymentInfo.HealthCareUnit = Convert.ToByte(serviceReader["Servise.IdRHealthCareUnit"]);
+                        else
+                            s.PaymentInfo.HealthCareUnit = 0;
+                        if (serviceReader["Servise.IdRVisitIdPaymentType"].ToString() != "")
+                            s.PaymentInfo.IdPaymentType = Convert.ToByte(serviceReader["Servise.IdRVisitIdPaymentType"]);
+                        else
+                            s.PaymentInfo.IdPaymentType = null;
+                        if (serviceReader["Servise.IdRPaymentStatus"].ToString() != "")
+                            s.PaymentInfo.PaymentState = Convert.ToByte(serviceReader["Servise.IdRPaymentStatus"]);
+                        else
+                            s.PaymentInfo.HealthCareUnit = 0;
+                        if (serviceReader["Servise.Quantity"].ToString() != "")
+                            s.PaymentInfo.Quantity = Convert.ToInt32(serviceReader["Servise.Quantity"]);
+                        else
+                            s.PaymentInfo.HealthCareUnit = 0;
+                        TestService ts = new TestService(s);
+                        if ((serviceReader["Servise.IdDoctor"].ToString() != "") && (serviceReader["Step.IdCase"].ToString() != ""))
+                            ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["Step.IdCase"].ToString(), serviceReader["Servise.IdDoctor"].ToString());
+                        serviseList.Add(ts);
+                    }
+                }
+            }
+            if (serviseList.Count != 0)
+                return serviseList;
+            else 
+                return null;
+        }
+        private void FindMismatch(TestService s)
+        {
+            if (this.document.DateEnd != s.document.DateEnd)
+                Global.errors3.Add("Несовпадение DateEnd TestService");
+            if (this.document.DateStart != s.document.DateStart)
+                Global.errors3.Add("Несовпадение DateStart TestService");
+            if (this.document.IdServiceType != s.document.IdServiceType)
+                Global.errors3.Add("Несовпадение IdServiceType TestService");
+            if (this.document.PaymentInfo.HealthCareUnit != s.document.PaymentInfo.HealthCareUnit)
+                Global.errors3.Add("Несовпадение HealthCareUnit TestService");
+            if (this.document.PaymentInfo.IdPaymentType != s.document.PaymentInfo.IdPaymentType)
+                Global.errors3.Add("Несовпадение IdPaymentType TestService");
+            if (this.document.PaymentInfo.PaymentState != s.document.PaymentInfo.PaymentState)
+                Global.errors3.Add("Несовпадение PaymentState TestService");
+            if (this.document.PaymentInfo.Quantity != s.document.PaymentInfo.Quantity)
+                Global.errors3.Add("Несовпадение Quantity TestService");
+            if (this.document.PaymentInfo.Tariff != s.document.PaymentInfo.Tariff)
+                Global.errors3.Add("Несовпадение Tariff TestService");
+            if (this.document.ServiceName != s.document.ServiceName)
+                Global.errors3.Add("Несовпадение ServiceName TestService");
+            Global.IsEqual(this.doctor, s.doctor);
+        }
+        public bool CheckTestServiceInDataBase(string caseId)
+        {
+            List<TestService> docs = BuildServiseFromDataBaseData(caseId);
+            foreach (TestService document in docs)
+            {
+                if (this != document)
+                {
+                    this.FindMismatch(document);
+                    return false;
+                }
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            TestService p = obj as TestService;
+            if ((object)p == null)
+            {
+                Global.errors3.Add("Сравение TestService с другим типом");
+                return false;
+            }
+            if (this.document == p.document)
+                return true;
+            if ((this.document == null) || (p.document == null))
+            {
+                Global.errors3.Add("Сравнение TestService = null с TestService != null");
+                return false;
+            }
+            if ((this.document.DateEnd != p.document.DateEnd) &&
+            (this.document.DateStart != p.document.DateStart) &&
+            (this.document.IdServiceType != p.document.IdServiceType) &&
+            (this.document.PaymentInfo.HealthCareUnit != p.document.PaymentInfo.HealthCareUnit) &&
+            (this.document.PaymentInfo.IdPaymentType != p.document.PaymentInfo.IdPaymentType) &&
+            (this.document.PaymentInfo.PaymentState != p.document.PaymentInfo.PaymentState) &&
+            (this.document.PaymentInfo.Quantity != p.document.PaymentInfo.Quantity) &&
+            (this.document.PaymentInfo.Tariff != p.document.PaymentInfo.Tariff) &&
+            (this.document.ServiceName != p.document.ServiceName) &&
+            Global.IsEqual(this.doctor, p.doctor))
+            {
+                return true;
+            }
+            else
+            {
+                this.FindMismatch(p);
+                return false;
+            }
+        }
+        public static bool operator ==(TestService a, TestService b)
+        {
+            return a.Equals(b);
+        }
+        public static bool operator !=(TestService a, TestService b)
+        {
+            return !(a.Equals(b));
+        }
+    }
+}

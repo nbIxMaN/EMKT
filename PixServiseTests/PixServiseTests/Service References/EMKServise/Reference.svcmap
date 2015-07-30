@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ae27d022-4a7d-492e-9c02-a2a3a4cbcd51" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.8.93:2222/iemk/EMKService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EMKService.xsd" MetadataType="Schema" ID="afd636e8-1696-4eea-b43d-7f90233413ea" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd12" />
+    <MetadataFile FileName="EmkService.wsdl" MetadataType="Wsdl" ID="57e8f70b-05ad-47a7-8bdb-3d9ac7a6530c" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?wsdl" />
+    <MetadataFile FileName="EMKService1.xsd" MetadataType="Schema" ID="07ad8cc5-88a0-4e6c-a93b-6b2af3019364" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd11" />
+    <MetadataFile FileName="EMKService2.xsd" MetadataType="Schema" ID="9bc507f1-c5b8-46e4-b980-2e3ac154717d" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd8" />
+    <MetadataFile FileName="EMKService3.xsd" MetadataType="Schema" ID="89823ea6-8690-4bf3-86a5-e321ba92f074" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd9" />
+    <MetadataFile FileName="EMKService4.xsd" MetadataType="Schema" ID="7af40363-ed94-444d-83c5-8ba77b2e6b98" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd10" />
+    <MetadataFile FileName="EMKService5.xsd" MetadataType="Schema" ID="6c090a2b-d5a9-467f-af3e-28cba15b5d59" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd4" />
+    <MetadataFile FileName="EMKService6.xsd" MetadataType="Schema" ID="5bdcc425-3d0b-4bfa-a3f7-4967cf236236" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd5" />
+    <MetadataFile FileName="EMKService7.xsd" MetadataType="Schema" ID="fc18f2e1-baa6-4ada-8497-43752870a5db" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd6" />
+    <MetadataFile FileName="EMKService8.xsd" MetadataType="Schema" ID="16c2c66a-4d24-4079-82d1-4118babe526f" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd7" />
+    <MetadataFile FileName="EMKService9.xsd" MetadataType="Schema" ID="42f91a1e-8073-4d78-b687-adb28f9677d1" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EMKService10.xsd" MetadataType="Schema" ID="9415cbce-9c5b-4ad8-a085-456af23d78e0" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EMKService11.xsd" MetadataType="Schema" ID="2036a8b5-80e5-4006-8437-fc1703a53e6b" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EMKService12.xsd" MetadataType="Schema" ID="1d457495-8719-481d-bdec-53b9851e6cfa" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd3" />
+    <MetadataFile FileName="EMKService.disco" MetadataType="Disco" ID="f43c83e6-bcc7-48d4-9c33-9b9ad8e6b398" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

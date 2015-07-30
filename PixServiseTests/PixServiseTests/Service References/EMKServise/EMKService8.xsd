@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" />
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" />
+  <xs:complexType name="MedDocument">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" base="q1:MedRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:MedDocument.DocumentAttachment" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Author" nillable="true" type="q2:MedicalStaff" />
+          <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MedDocument" nillable="true" type="tns:MedDocument" />
+  <xs:complexType name="MedDocument.DocumentAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:anyURI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MedDocument.DocumentAttachment" nillable="true" type="tns:MedDocument.DocumentAttachment" />
+  <xs:complexType name="DispensaryOne">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DispensaryBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsGuested" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasExtraResearchRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsUnderObservation" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasExpertCareRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasPrescribeCure" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasHealthResortRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasSecondStageRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HealthGroup" nillable="true" type="tns:HealthGroup" />
+          <xs:element minOccurs="0" name="Recommendations" nillable="true" type="tns:ArrayOfRecommendation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DispensaryOne" nillable="true" type="tns:DispensaryOne" />
+  <xs:complexType name="DispensaryBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DispensaryBase" nillable="true" type="tns:DispensaryBase" />
+  <xs:complexType name="Referral">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="DepartmentHead" nillable="true" type="q3:MedicalStaff" />
+          <xs:element minOccurs="0" name="IdSourceLpu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdTargetLpu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferralID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RelatedID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Referral" nillable="true" type="tns:Referral" />
+  <xs:complexType name="ReferralInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdReferralMis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdReferralType" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IssuedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HospitalizationOrder" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
+  <xs:complexType name="SickList">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SickListInfo" nillable="true" type="tns:SickListInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SickList" nillable="true" type="tns:SickList" />
+  <xs:complexType name="SickListInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateStart" type="xs:dateTime" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Caregiver" nillable="true" type="q4:Guardian" />
+      <xs:element minOccurs="0" name="DateEnd" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DisabilityDocReason" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="DisabilityDocState" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IsPatientTaker" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SickListInfo" nillable="true" type="tns:SickListInfo" />
+  <xs:complexType name="LaboratoryReport">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LaboratoryReport" nillable="true" type="tns:LaboratoryReport" />
+  <xs:complexType name="DischargeSummary">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DischargeSummary" nillable="true" type="tns:DischargeSummary" />
+  <xs:complexType name="ConsultNote">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConsultNote" nillable="true" type="tns:ConsultNote" />
+  <xs:complexType name="HealthGroup">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Doctor" nillable="true" type="q5:MedicalStaff" />
+      <xs:element minOccurs="0" name="HealthGroupInfo" nillable="true" type="tns:HealthGroupInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HealthGroup" nillable="true" type="tns:HealthGroup" />
+  <xs:complexType name="HealthGroupInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdHealthGroup" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HealthGroupInfo" nillable="true" type="tns:HealthGroupInfo" />
+  <xs:complexType name="ArrayOfRecommendation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Recommendation" nillable="true" type="tns:Recommendation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecommendation" nillable="true" type="tns:ArrayOfRecommendation" />
+  <xs:complexType name="Recommendation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Doctor" nillable="true" type="q6:MedicalStaff" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Recommendation" nillable="true" type="tns:Recommendation" />
+</xs:schema>
