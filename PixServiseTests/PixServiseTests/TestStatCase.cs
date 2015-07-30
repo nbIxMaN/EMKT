@@ -17,7 +17,6 @@ namespace PixServiseTests
         {
             get
             {
-                Service a = new Service();
                 if (records != null)
                     return records.ToArray();
                 else
@@ -70,6 +69,9 @@ namespace PixServiseTests
                         Referral r = i as Referral;
                         if (r != null)
                             records.Add(new TestReferral(r));
+                        SickList sl = i as SickList;
+                        if (sl != null)
+                            records.Add(new TestSickList(sl));
                     }
                 }
                 if ((cs.IdLpu != null) && (cs.IdPatientMis != null))
@@ -144,6 +146,9 @@ namespace PixServiseTests
                             statcase.records.AddRange(acdm);
                         List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(statcase.defaultStep.idStep);
                         if (!Global.IsEqual(trl, null))
+                            statcase.records.AddRange(trl);
+                        List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(statcase.defaultStep.idStep, patientId);
+                        if (!Global.IsEqual(tsl, null))
                             statcase.records.AddRange(trl);
                     }
                     return statcase;

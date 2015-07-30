@@ -12,12 +12,45 @@ namespace PixServiseTests
     {
         TestStepBase step;
         StepStat statStep;
+        public List<TestMedRecord> records;
+        public Array medRecords
+        {
+            get
+            {
+                if (records != null)
+                    return records.ToArray();
+                else
+                    return null;
+            }
+        }
         public TestStatStep(StepStat sa, string caseLpu)
         {
             if (sa != null)
             {
                 statStep = sa;
                 step = new TestStepBase(sa, caseLpu);
+                if (sa.MedRecords != null)
+                {
+                    records = new List<TestMedRecord>();
+                    foreach (object i in sa.MedRecords)
+                    {
+                        TfomsInfo tfi = i as TfomsInfo;
+                        if (tfi != null)
+                            records.Add(new TestTfomsInfo(tfi));
+                        DeathInfo di = i as DeathInfo;
+                        if (di != null)
+                            records.Add(new TestDeathInfo(di));
+                        AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
+                        if (acmd != null)
+                            records.Add(new TestClinicMainDiagnosis(acmd));
+                        Referral r = i as Referral;
+                        if (r != null)
+                            records.Add(new TestReferral(r));
+                        SickList sl = i as SickList;
+                        if (sl != null)
+                            records.Add(new TestSickList(sl));
+                    }
+                }
             }
         }
         static public List<TestStatStep> BuildStatStepsFromDataBase(string idCase, string caseLpu, string patientId)
@@ -67,6 +100,22 @@ namespace PixServiseTests
                                     sa.WardNumber = null;
                                 TestStatStep st = new TestStatStep(sa, caseLpu);
                                 st.step = i;
+                                st.records = new List<TestMedRecord>();
+                                List<TestTfomsInfo> forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(forms, null))
+                                    st.records.AddRange(forms);
+                                TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(tdi, null))
+                                    st.records.Add(tdi);
+                                List<TestClinicMainDiagnosis> acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(acdm, null))
+                                    st.records.AddRange(acdm);
+                                List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(i.idStep);
+                                if (!Global.IsEqual(trl, null))
+                                    st.records.AddRange(trl);
+                                List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(i.idStep, patientId);
+                                if (!Global.IsEqual(tsl, null))
+                                    st.records.AddRange(trl);
                                 statSteps.Add(st);
                             }
                         }

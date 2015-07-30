@@ -12,15 +12,48 @@ namespace PixServiseTests
     {
         TestStepBase step;
         StepAmb ambStep;
+        public List<TestMedRecord> records;
+        public Array medRecords
+        {
+            get
+            {
+                if (records != null)
+                    return records.ToArray();
+                else
+                    return null;
+            }
+        }
         public TestAmbStep(StepAmb sa, string caseLpu)
         {
             if (sa != null)
             {
                 ambStep = sa;
                 step = new TestStepBase(sa, caseLpu);
+                if (sa.MedRecords != null)
+                {
+                    records = new List<TestMedRecord>();
+                    foreach (object i in sa.MedRecords)
+                    {
+                        TfomsInfo tfi = i as TfomsInfo;
+                        if (tfi != null)
+                            records.Add(new TestTfomsInfo(tfi));
+                        DeathInfo di = i as DeathInfo;
+                        if (di != null)
+                            records.Add(new TestDeathInfo(di));
+                        AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
+                        if (acmd != null)
+                            records.Add(new TestClinicMainDiagnosis(acmd));
+                        Referral r = i as Referral;
+                        if (r != null)
+                            records.Add(new TestReferral(r));
+                        SickList sl = i as SickList;
+                        if (sl != null)
+                            records.Add(new TestSickList(sl));
+                    }
+                }
             }
         }
-        static public List<TestAmbStep> BuildAmbTestStepsFromDataBase(string idCase, string caseLpu)
+        static public List<TestAmbStep> BuildAmbTestStepsFromDataBase(string idCase, string caseLpu, string patientId)
         {
             List<TestAmbStep> ambSteps = new List<TestAmbStep>();
             if (idCase != string.Empty)
@@ -47,6 +80,22 @@ namespace PixServiseTests
                                     sa.IdVisitPurpose = 0;
                                 TestAmbStep st = new TestAmbStep(sa, caseLpu);
                                 st.step = i;
+                                st.records = new List<TestMedRecord>();
+                                List<TestTfomsInfo> forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(forms, null))
+                                    st.records.AddRange(forms);
+                                TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(tdi, null))
+                                    st.records.Add(tdi);
+                                List<TestClinicMainDiagnosis> acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(acdm, null))
+                                    st.records.AddRange(acdm);
+                                List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(i.idStep);
+                                if (!Global.IsEqual(trl, null))
+                                    st.records.AddRange(trl);
+                                List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(i.idStep, patientId);
+                                if (!Global.IsEqual(tsl, null))
+                                    st.records.AddRange(trl);
                                 ambSteps.Add(st);
                             }
                         }
@@ -67,16 +116,6 @@ namespace PixServiseTests
             Global.IsEqual(this.step, astep.step);
         }
         
-        public bool CheckAmbStepsInDataBase(string idStep, string caseLpu)
-        {
-            List<TestAmbStep> steps = TestAmbStep.BuildAmbTestStepsFromDataBase(idStep, caseLpu);
-            foreach (TestAmbStep step in steps)
-            {
-                if (this != step)
-                    return false;
-            }
-            return true;
-        }
         public override bool Equals(Object obj)
         {
             TestAmbStep p = obj as TestAmbStep;

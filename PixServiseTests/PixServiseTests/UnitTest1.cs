@@ -841,14 +841,22 @@ namespace PixServiseTests
                             }
                         }
                     },
-                    MedRecords = new MedRecord[]
-                    {
-                        new Referral
+                }
+            };
+            ca.HospResult = 1;
+            ca.IdHospChannel = 2;
+            ca.MedRecords = new MedRecord[]
+            {
+                new TfomsInfo
+                {
+                    Count = 5,
+                    IdTfomsType = 291170,
+                    Tariff = 712.11M
+                },
+                new SickList
                         {
                             CreationDate = new DateTime(2013, 04, 24),
                             Header = "Я ХЭДЭР",
-                            IdSourceLpu = "1.2.643.5.1.13.3.25.78.118",
-                            IdTargetLpu = "1.2.643.5.1.13.3.25.78.118",
                             Author = new MedicalStaff
                             {
                                 IdSpeciality = 29,
@@ -863,42 +871,13 @@ namespace PixServiseTests
                                     }
                                 }
                             },
-                            ReferralInfo = new ReferralInfo
+                            SickListInfo = new SickListInfo
                             {
-                                Reason = "Болеет",
-                                IdReferralMis = "123123321",
-                                IdReferralType = 1,
-                                IssuedDateTime = new DateTime(2013, 04, 24),
-                                MkbCode = "A00"
-                            },
-                            DepartmentHead = new MedicalStaff
-                            {
-                                IdSpeciality = 29,
-                                IdPosition = 72,
-                                Person = new PersonWithIdentity
-                                {
-                                    IdPersonMis = "123123123",
-                                    HumanName = new HumanName
-                                    {
-                                        FamilyName = "Лукин",
-                                        GivenName = "Василий"
-                                    }
-                                }
+                                Number = "123",
+                                DateStart = new DateTime(2013, 04, 24),
+                                DateEnd = new DateTime(2013, 04, 27)
                             }
                         }
-                    }
-                }
-            };
-            ca.HospResult = 1;
-            ca.IdHospChannel = 2;
-            ca.MedRecords = new MedRecord[]
-            {
-                new TfomsInfo
-                {
-                    Count = 5,
-                    IdTfomsType = 291170,
-                    Tariff = 712.11M
-                }
             };
             client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", ca);
             if (Global.errors == "")
