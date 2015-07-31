@@ -120,6 +120,114 @@ namespace PixServiseTests
             return caseAmb;
         }
 
+        public CaseStat MinCaseStatSet()
+        {
+            CaseStat caseStat = new CaseStat();
+
+            caseStat.OpenDate = CaseStatData.caseStat.OpenDate;
+            caseStat.CloseDate = CaseStatData.caseStat.CloseDate;
+            caseStat.HistoryNumber = CaseStatData.caseStat.HistoryNumber;
+            caseStat.IdCaseMis = CaseStatData.caseStat.IdCaseMis;
+            caseStat.IdPaymentType = CaseStatData.caseStat.IdPaymentType;
+            caseStat.Confidentiality = CaseStatData.caseStat.Confidentiality;
+            caseStat.DoctorConfidentiality = CaseStatData.caseStat.DoctorConfidentiality;
+            caseStat.CuratorConfidentiality = CaseStatData.caseStat.CuratorConfidentiality;
+            caseStat.IdLpu = CaseStatData.caseStat.IdLpu;
+            caseStat.IdCaseResult = CaseStatData.caseStat.IdCaseResult;
+            caseStat.Comment = CaseStatData.caseStat.Comment;
+            caseStat.IdPatientMis = CaseStatData.caseStat.IdPatientMis;
+            caseStat.IdTypeFromDiseaseStart = CaseStatData.caseStat.IdTypeFromDiseaseStart;
+            caseStat.IdRepetition = CaseStatData.caseStat.IdRepetition;
+            caseStat.HospResult = CaseStatData.caseStat.HospResult;
+            caseStat.IdHospChannel = CaseStatData.caseStat.IdHospChannel;
+
+
+            caseStat.DoctorInCharge = new MedicalStaff
+            {
+                IdSpeciality = CaseStatData.doctorInCharge.IdSpeciality,
+                IdPosition = CaseStatData.doctorInCharge.IdPosition,
+                Person = new PersonWithIdentity
+                {
+                    IdPersonMis = CaseStatData.doctorInCharge.Person.IdPersonMis,
+                    HumanName = new HumanName
+                    {
+                        FamilyName = CaseStatData.doctorInCharge.Person.HumanName.FamilyName,
+                        GivenName = CaseStatData.doctorInCharge.Person.HumanName.GivenName,
+                    }
+                }
+            };
+
+            caseStat.Author = new Participant
+            {
+                Doctor = new MedicalStaff
+                {
+                    IdSpeciality = CaseStatData.author.Doctor.IdSpeciality,
+                    IdPosition = CaseStatData.author.Doctor.IdPosition,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = CaseStatData.author.Doctor.Person.IdPersonMis,
+                        HumanName = new HumanName
+                        {
+                            FamilyName = CaseStatData.author.Doctor.Person.HumanName.FamilyName,
+                            GivenName = CaseStatData.author.Doctor.Person.HumanName.GivenName,
+                        }
+                    }
+                }
+            };
+
+            caseStat.Authenticator = new Participant
+            {
+                Doctor = new MedicalStaff
+                {
+                    IdSpeciality = CaseStatData.authenticator.Doctor.IdSpeciality,
+                    IdPosition = CaseStatData.authenticator.Doctor.IdPosition,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = CaseStatData.authenticator.Doctor.Person.IdPersonMis,
+                        HumanName = new HumanName
+                        {
+                            FamilyName = CaseStatData.authenticator.Doctor.Person.HumanName.FamilyName,
+                            GivenName = CaseStatData.authenticator.Doctor.Person.HumanName.GivenName,
+                        }
+                    }
+                }
+            };
+
+            caseStat.Steps = new StepStat[]
+            {
+               new StepStat
+               {
+                    DateStart = CaseStatData.step.DateStart,
+                    DateEnd = CaseStatData.step.DateEnd,
+                    IdStepMis = CaseStatData.step.IdStepMis,
+                    IdPaymentType = CaseStatData.step.IdPaymentType,
+                    HospitalDepartmentName = CaseStatData.step.HospitalDepartmentName,
+                    IdHospitalDepartment = CaseStatData.step.IdHospitalDepartment,
+                     BedProfile = CaseStatData.step.BedProfile,
+                      DaySpend = CaseStatData.step.DaySpend,
+
+                    Doctor = new MedicalStaff
+                    {
+                        IdSpeciality = CaseStatData.step.Doctor.IdSpeciality,
+                        IdPosition = CaseStatData.step.Doctor.IdPosition,
+                        Person = new PersonWithIdentity
+                        {
+                            IdPersonMis = CaseStatData.step.Doctor.Person.IdPersonMis,
+                            HumanName = new HumanName
+                            {
+                                FamilyName = CaseStatData.step.Doctor.Person.HumanName.FamilyName,
+                                GivenName = CaseStatData.step.Doctor.Person.HumanName.GivenName,
+                            }
+                        }
+                    }
+                },
+            };
+
+
+            return caseStat;
+        }
+
+        ///  не full !!!!
         public CaseAmb FullCaseAmbSet()
         {
             CaseAmb caseAmb = new CaseAmb();

@@ -910,16 +910,13 @@ namespace PixServiseTests
         {
             TestPixServiceClient c = new TestPixServiceClient();
 
-            PatientDto patient = new PatientDto();
-            patient.FamilyName = "Жукин";
-            patient.GivenName = "Дмитрий";
-            patient.BirthDate = new DateTime(1983, 01, 07);
-            patient.Sex = 1;
-            patient.IdPatientMIS = "12930193123";
+            PatientDto patient = (new SetData()).PatientSet();
             c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
 
             TestEmkServiceClient client = new TestEmkServiceClient();
-            client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", new CaseStat
+            CaseStat caseStat = (new SetData()).MinCaseStatSet();
+            client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                /*new CaseStat
             {
                 OpenDate = new DateTime(2013, 04, 24),
                 CloseDate = new DateTime(2013, 04, 27),
@@ -1017,7 +1014,7 @@ namespace PixServiseTests
                         }
                     }
                 }
-            });
+            });*/
 
             if (Global.errors == "")
                 Assert.Pass();
