@@ -15,9 +15,12 @@ namespace PixServiseTests
 
         public TestDoctor(MedicalStaff d)
         {
-            doctor = d;
-            if (d.Person != null)
-                person = new TestPerson(d.Person);
+            if (d != null)
+            {
+                doctor = d;
+                if (d.Person != null)
+                    person = new TestPerson(d.Person);
+            }
         }
 
         //static private string GetDoctorId(string mis)

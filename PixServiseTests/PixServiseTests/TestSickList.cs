@@ -16,10 +16,13 @@ namespace PixServiseTests
         TestGuardian guardian;
         public TestSickList(SickList r)
         {
-            sickList = r;
-            attachment = new TestAttachment(r.Attachment);
-            doctor = new TestDoctor(r.Author);
-            guardian = new TestGuardian(r.SickListInfo.Caregiver);
+            if (r != null)
+            {
+                sickList = r;
+                attachment = new TestAttachment(r.Attachment);
+                doctor = new TestDoctor(r.Author);
+                guardian = new TestGuardian(r.SickListInfo.Caregiver);
+            }
         }
         static public List<TestSickList> BuildSickListFromDataBaseData(string idStep, string patientId)
         {

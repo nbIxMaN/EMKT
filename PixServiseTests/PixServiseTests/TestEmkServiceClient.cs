@@ -14,17 +14,17 @@ namespace PixServiseTests
         {
             try
             {
-                //CaseAmb ca = c as CaseAmb;
-                //if ((object)ca != null)
-                //{
-                //    client.AddCase(guid, c);
-                //    TestAmbCase example = new TestAmbCase(guid, ca);
-                //    if (!example.CheckCaseInDataBase())
-                //    {
-                //        Global.errors1.AddRange(Global.errors2);
-                //        Global.errors1.Add("Несовпадение");
-                //    }
-                //}
+                CaseAmb ca = c as CaseAmb;
+                if ((object)ca != null)
+                {
+                    client.AddCase(guid, c);
+                    TestAmbCase example = new TestAmbCase(guid, ca);
+                    if (!example.CheckCaseInDataBase())
+                    {
+                        Global.errors1.AddRange(Global.errors2);
+                        Global.errors1.Add("Несовпадение");
+                    }
+                }
                 CaseStat cs = c as CaseStat;
                 if ((object)cs != null)
                 {
@@ -38,6 +38,10 @@ namespace PixServiseTests
             {
                 Global.errors1.Add(e.Message);
             }
+        }
+        ~TestEmkServiceClient()
+        {
+            client.Close();
         }
     }
 }

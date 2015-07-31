@@ -15,11 +15,12 @@ namespace PixServiseTests
 
         public TestGuardian(Guardian g)
         {
-            guardian = g;
-            if (g.Person != null)
-                person = new TestPerson(g.Person);
-            else
-                g.Person = null;
+            if (g != null)
+            {
+                guardian = g;
+                if (g.Person != null)
+                    person = new TestPerson(g.Person);
+            }
         }
 
         static public TestGuardian BuildTestGuardianFromDataBase(string guardianId, string patientId)

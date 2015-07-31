@@ -174,16 +174,18 @@ namespace PixServiseTests
                 Global.errors2.Add("несовпадение RW1Mark caseStat");
             if (this.caseStat.AIDSMark != cs.caseStat.AIDSMark)
                 Global.errors2.Add("несовпадение AIDSMark caseStat");
-            //if (!Global.IsEqual(this.caseBase, cs.caseBase))
-            //    Global.errors2.Add("несовпадение caseBase caseStat");
-            //if (!Global.IsEqual(this.medRecords, cs.medRecords))
-            //    Global.errors2.Add("несовпадение medRecords caseStat");
+            if (!Global.IsEqual(this.caseBase, cs.caseBase))
+                Global.errors2.Add("несовпадение caseBase caseStat");
+            if (!Global.IsEqual(this.medRecords, cs.medRecords))
+                Global.errors2.Add("несовпадение medRecords caseStat");
+            if (!Global.IsEqual(this.steps, cs.steps))
+                Global.errors2.Add("несовпадение statSteps caseStat");
         }
         public bool CheckCaseInDataBase()
         {
             string patientId = TestPerson.GetPersonId(GUID, caseStat.IdLpu, caseStat.IdPatientMis);
             TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseStat.IdLpu, caseStat.IdCaseMis, patientId);
-//            this.Equals(ac);
+            this.Equals(ac);
             return (this == ac);
         }
         public override bool Equals(Object obj)

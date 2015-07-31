@@ -233,5 +233,10 @@ namespace PixServiseTests
             if (!example.CheckPatientInDataBase())
                 Global.errors1.Add("Не совпадение значений объектов");
         }
+
+        ~TestPixServiceClient()
+        {
+            client.Close();
+        }
     }
 }
