@@ -10,6 +10,18 @@ namespace PixServiseTests
     class TestEmkServiceClient
     {
         static public EmkServiceClient client = new EmkServiceClient();
+        private void getErrors(object obj)
+        {
+            Array errors = obj as Array;
+            if (errors != null)
+            {
+                foreach (RequestFault i in errors)
+                {
+                    Global.errors1.Add(i.PropertyName + " - " + i.Message);
+                    getErrors(i.Errors);
+                }
+            }
+        }
         public void AddCase(string guid, CaseBase c)
         {
             try
@@ -34,9 +46,13 @@ namespace PixServiseTests
                         Global.errors1.AddRange(Global.errors2);
                 }
             }
-            catch (Exception e)
+            catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
             {
-                Global.errors1.Add(e.Message);
+                getErrors(e.Detail);
+            }
+            catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
+            {
+                Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
             }
         }
         ~TestEmkServiceClient()
