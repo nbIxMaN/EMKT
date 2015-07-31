@@ -34,21 +34,24 @@ namespace PixServiseTests
                     records = new List<TestMedRecord>();
                     foreach (object i in sa.MedRecords)
                     {
-                        TfomsInfo tfi = i as TfomsInfo;
-                        if (tfi != null)
-                            records.Add(new TestTfomsInfo(tfi));
-                        DeathInfo di = i as DeathInfo;
-                        if (di != null)
-                            records.Add(new TestDeathInfo(di));
-                        AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
-                        if (acmd != null)
-                            records.Add(new TestClinicMainDiagnosis(acmd));
+                        Service s = i as Service;
+                        if (s != null)
+                            records.Add(new TestService(s));
+                        AppointedMedication am = i as AppointedMedication;
+                        if (am != null)
+                            records.Add(new TestAppointedMedication(am));
+                        Diagnosis diag = i as Diagnosis;
+                        if (diag != null)
+                            records.Add(new TestDiagnosis(diag));
+                        ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
+                        if (cmd != null)
+                            records.Add(new TestClinicMainDiagnosis(cmd));
                         Referral r = i as Referral;
                         if (r != null)
                             records.Add(new TestReferral(r));
-                        SickList sl = i as SickList;
-                        if (sl != null)
-                            records.Add(new TestSickList(sl));
+                        LaboratoryReport lr = i as LaboratoryReport;
+                        if (lr != null)
+                            records.Add(new TestLaboratoryReport(lr));
                     }
                 }
             }
@@ -101,20 +104,23 @@ namespace PixServiseTests
                                 TestStatStep st = new TestStatStep(sa, caseLpu);
                                 st.step = i;
                                 st.records = new List<TestMedRecord>();
-                                List<TestTfomsInfo> forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(i.idStep);
-                                if (!Global.IsEqual(forms, null))
-                                    st.records.AddRange(forms);
-                                TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(i.idStep);
-                                if (!Global.IsEqual(tdi, null))
-                                    st.records.Add(tdi);
-                                List<TestClinicMainDiagnosis> acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(i.idStep);
+                                List<TestService> s = TestService.BuildServiseFromDataBaseData(i.idStep);
+                                if (!Global.IsEqual(s, null))
+                                    st.records.AddRange(s);
+                                List<TestAppointedMedication> am = TestAppointedMedication.BuildAppointedMedicationFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(am, null))
+                                    st.records.AddRange(am);
+                                List<TestDiagnosis> diag = TestDiagnosis.BuildDiagnosisFromDataBaseDate(i.idStep);
+                                if (!Global.IsEqual(diag, null))
+                                    st.records.AddRange(diag);
+                                TestClinicMainDiagnosis acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(i.idStep);
                                 if (!Global.IsEqual(acdm, null))
-                                    st.records.AddRange(acdm);
+                                    st.records.Add(acdm);
                                 List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(trl, null))
                                     st.records.AddRange(trl);
-                                List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(i.idStep, patientId);
-                                if (!Global.IsEqual(tsl, null))
+                                List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(i.idStep);
+                                if (!Global.IsEqual(tlr, null))
                                     st.records.AddRange(trl);
                                 statSteps.Add(st);
                             }

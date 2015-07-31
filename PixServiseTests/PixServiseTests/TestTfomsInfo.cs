@@ -16,9 +16,8 @@ namespace PixServiseTests
             if (t != null)
                 document = t;
         }
-        static public List<TestTfomsInfo> BuildTfomsInfoFromDataBaseDate(string idStep)
+        static public TestTfomsInfo BuildTfomsInfoFromDataBaseDate(string idStep)
         {
-            List<TestTfomsInfo> tfi = new List<TestTfomsInfo>();
             using (SqlConnection connection = Global.GetSqlConnection())
             {
                 string findTFI = "SELECT * FROM TfomsInfo WHERE IdStep = '" + idStep + "'";
@@ -35,14 +34,11 @@ namespace PixServiseTests
                         if (TFIReader["Tariff"].ToString() != "")
                             t.Tariff = Convert.ToDecimal(TFIReader["Tariff"]);
                         TestTfomsInfo i = new TestTfomsInfo(t);
-                        tfi.Add(i);
+                        return i;
                     }
                 }
             }
-            if (tfi.Count != 0)
-                return tfi;
-            else
-                return null;
+            return null;
         }
         private void FindMismatch(TestTfomsInfo t)
         {
@@ -53,19 +49,7 @@ namespace PixServiseTests
             if (this.document.Tariff  != t.document.Tariff)
                 Global.errors3.Add("Несовпадение Tariff TestTfomsInfo");
         }
-        public bool CheckTestTfomsInfoInDataBase(string caseId)
-        {
-            List<TestTfomsInfo> docs = BuildTfomsInfoFromDataBaseDate(caseId);
-            foreach (TestTfomsInfo document in docs)
-            {
-                if (this != document)
-                {
-                    this.FindMismatch(document);
-                    return false;
-                }
-            }
-            return true;
-        }
+
         public override bool Equals(Object obj)
         {
             TestTfomsInfo p = obj as TestTfomsInfo;

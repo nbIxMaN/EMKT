@@ -82,6 +82,7 @@
     <Compile Include="TestDiagnosis.cs" />
     <Compile Include="TestDiagnosisInfo.cs" />
     <Compile Include="TestDischargeSummary.cs" />
+    <Compile Include="TestDispensaryOne.cs" />
     <Compile Include="TestDoctor.cs" />
     <Compile Include="TestDocument.cs" />
     <Compile Include="TestEmkServiceClient.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="TestPerson.cs" />
     <Compile Include="TestPixServiceClient.cs" />
     <Compile Include="TestPrivilege.cs" />
+    <Compile Include="TestRecommendation.cs" />
     <Compile Include="TestReferral.cs" />
     <Compile Include="TestService.cs" />
     <Compile Include="TestSickList.cs" />

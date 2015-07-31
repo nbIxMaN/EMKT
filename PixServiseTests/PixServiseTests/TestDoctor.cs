@@ -69,7 +69,6 @@ namespace PixServiseTests
                                 SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection2);
                                 using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
                                 {
-                                    string InstId = "";
                                     while (IdInstitutional.Read())
                                     {
                                         ms.IdLpu = IdInstitutional["IdFedNsi"].ToString();

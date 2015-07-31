@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestLaboratoryReport
+    class TestLaboratoryReport : TestMedRecord
     {
         private const string idLaboratoryReport = "2";
         LaboratoryReport laboratoryReport;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestDischargeSummary
+    class TestDischargeSummary : TestMedRecord
     {
         private const string idEpicrisis = "1";
         DischargeSummary dischargeSummary;

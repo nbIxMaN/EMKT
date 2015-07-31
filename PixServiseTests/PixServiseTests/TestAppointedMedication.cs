@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestAppointedMedication
+    class TestAppointedMedication : TestMedRecord
     {
         AppointedMedication document;
         TestDoctor doctor;

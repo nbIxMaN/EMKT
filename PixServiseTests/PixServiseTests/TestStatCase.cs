@@ -63,6 +63,12 @@ namespace PixServiseTests
                         DeathInfo di = i as DeathInfo;
                         if (di != null)
                             records.Add(new TestDeathInfo(di));
+                        Diagnosis diag = i as Diagnosis;
+                        if (diag != null)
+                            records.Add(new TestDiagnosis(diag));
+                        ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
+                        if (cmd != null)
+                            records.Add(new TestClinicMainDiagnosis(cmd));
                         AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
                         if (acmd != null)
                             records.Add(new TestClinicMainDiagnosis(acmd));
@@ -72,6 +78,15 @@ namespace PixServiseTests
                         SickList sl = i as SickList;
                         if (sl != null)
                             records.Add(new TestSickList(sl));
+                        DischargeSummary ds = i as DischargeSummary;
+                        if (ds != null)
+                            records.Add(new TestDischargeSummary(ds));
+                        LaboratoryReport lr = i as LaboratoryReport;
+                        if (lr != null)
+                            records.Add(new TestLaboratoryReport(lr));
+                        ConsultNote cn = i as ConsultNote;
+                        if (cn != null)
+                            records.Add(new TestConsultNote(cn));
                     }
                 }
                 if ((cs.IdLpu != null) && (cs.IdPatientMis != null))
@@ -137,21 +152,33 @@ namespace PixServiseTests
                         if (!Global.IsEqual(statcase.defaultStep, null))
                         {
                             statcase.records = new List<TestMedRecord>();
-                            List<TestTfomsInfo> forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(statcase.defaultStep.idStep);
+                            TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(statcase.defaultStep.idStep);
                             if (!Global.IsEqual(forms, null))
-                                statcase.records.AddRange(forms);
+                                statcase.records.Add(forms);
                             TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(statcase.defaultStep.idStep);
                             if (!Global.IsEqual(tdi, null))
                                 statcase.records.Add(tdi);
-                            List<TestClinicMainDiagnosis> acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
+                            List<TestDiagnosis> td = TestDiagnosis.BuildDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
+                            if (!Global.IsEqual(td, null))
+                                statcase.records.AddRange(td);
+                            TestClinicMainDiagnosis acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
                             if (!Global.IsEqual(acdm, null))
-                                statcase.records.AddRange(acdm);
+                                statcase.records.Add(acdm);
                             List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(statcase.defaultStep.idStep);
                             if (!Global.IsEqual(trl, null))
                                 statcase.records.AddRange(trl);
                             List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(statcase.defaultStep.idStep, patientId);
                             if (!Global.IsEqual(tsl, null))
                                 statcase.records.AddRange(trl);
+                            TestDischargeSummary tds = TestDischargeSummary.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
+                            if (!Global.IsEqual(tds, null))
+                                statcase.records.Add(tds);
+                            List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
+                            if (!Global.IsEqual(tlr, null))
+                                statcase.records.AddRange(tlr);
+                            TestConsultNote tcn = TestConsultNote.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
+                            if (!Global.IsEqual(tcn, null))
+                                statcase.records.Add(tcn);
                         }
                     }
                     return statcase;

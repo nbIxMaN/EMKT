@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestDiagnosis
+    class TestDiagnosis : TestMedRecord
     {
         TestDiagnosisInfo info;
         Diagnosis document;
@@ -22,14 +22,14 @@ namespace PixServiseTests
                 doctor = new TestDoctor(d.Doctor);
             }
         }
-        static public List<TestDiagnosis> BuildDiagnosisFromDataBaseDate(string IdParentDiagnosis)
+        static public List<TestDiagnosis> BuildDiagnosisFromDataBaseDate(string IdStep)
         {
             List<TestDiagnosis> tdList = new List<TestDiagnosis>();
-            if (IdParentDiagnosis != "")
+            if (IdStep != "")
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findTD = "SELECT * FROM Diagnosis WHERE IdParentDiagnosis = '" + IdParentDiagnosis + "'";
+                    string findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "'";
                     SqlCommand TDcommand = new SqlCommand(findTD, connection);
                     using (SqlDataReader TDReader = TDcommand.ExecuteReader())
                     {

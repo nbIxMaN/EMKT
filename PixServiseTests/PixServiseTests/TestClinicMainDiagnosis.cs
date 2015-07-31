@@ -39,9 +39,8 @@ namespace PixServiseTests
                     doctor = new TestDoctor(d.Doctor);
             }
         }
-        static public List<TestClinicMainDiagnosis> BuildTestClinicMainDiagnosisFromDataBaseDate(string idStep)
+        static public TestClinicMainDiagnosis BuildTestClinicMainDiagnosisFromDataBaseDate(string idStep)
         {
-            List<TestClinicMainDiagnosis> tcmdList = new List<TestClinicMainDiagnosis>();
             using (SqlConnection connection = Global.GetSqlConnection())
             {
                 string findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + idStep + "'";
@@ -54,19 +53,16 @@ namespace PixServiseTests
                         {
                             ClinicMainDiagnosis d = new ClinicMainDiagnosis();
                             TestClinicMainDiagnosis td = new TestClinicMainDiagnosis(d);
-                            td._diagnosis = TestDiagnosis.BuildDiagnosisFromDataBaseDate(TDReader["IdDiagnosis"].ToString());
+                            td._diagnosis = TestDiagnosis.BuildDiagnosisFromDataBaseDate(idStep);
                             td.diagnosInfo = TestDiagnosisInfo.BuildDiagnosisFromDataBaseDate(TDReader["IdDiagnosis"].ToString());
                             if (TDReader["IdDiagnosedDoctor"].ToString() != "")
                                 td.doctor = TestDoctor.BuildTestDoctorFromDataBase(TDReader["IdDiagnosedDoctor"].ToString());
-                            tcmdList.Add(td);
+                            return td;
                         }
                     }
                 }
             }
-            if (tcmdList.Count != 0)
-                return tcmdList;
-            else
-                return null;
+            return null;
         }
         private void FindMismatch(TestClinicMainDiagnosis tcmd)
         {
