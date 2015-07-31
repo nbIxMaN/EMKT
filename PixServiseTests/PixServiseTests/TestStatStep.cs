@@ -87,7 +87,7 @@ namespace PixServiseTests
                                 else
                                     sa.HospitalDepartmentName = null;
                                 if (stepsReader["IdHospitalDepartment"].ToString() != "")
-                                    sa.IdHospitalDepartment = Convert.ToString(stepsReader["HospitalDepartment"]);
+                                    sa.IdHospitalDepartment = Convert.ToString(stepsReader["IdHospitalDepartment"]);
                                 else
                                     sa.IdHospitalDepartment = null;
                                 if (stepsReader["IdRegimenType"].ToString() != "")

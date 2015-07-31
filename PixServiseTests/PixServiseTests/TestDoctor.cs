@@ -116,14 +116,13 @@ namespace PixServiseTests
             TestDoctor p = obj as TestDoctor;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestDoctor с другим типом");
                 return false;
             }
             if (this.doctor == p.doctor)
                 return true;
             if ((this.doctor == null) || (p.doctor == null))
             {
-                Global.errors3.Add("Сравнение TestDoctor = null с TestDoctor != null");
+                return false;
             }
             bool x = (this.doctor.IdLpu == p.doctor.IdLpu);
             x = (this.doctor.IdPosition == p.doctor.IdPosition);
