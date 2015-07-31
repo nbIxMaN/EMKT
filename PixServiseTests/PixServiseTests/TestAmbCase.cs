@@ -124,22 +124,25 @@ namespace PixServiseTests
                             if (Global.IsEqual(i.doctor, null))
                                 ambcase.defaultStep = i;
                         }
-                        ambcase.records = new List<TestMedRecord>();
-                        List<TestTfomsInfo> forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(ambcase.defaultStep.idStep);
-                        if (!Global.IsEqual(forms, null))
-                            ambcase.records.AddRange(forms);
-                        TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(ambcase.defaultStep.idStep);
-                        if (!Global.IsEqual(tdi, null))
-                            ambcase.records.Add(tdi);
-                        List<TestClinicMainDiagnosis> acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(ambcase.defaultStep.idStep);
-                        if (!Global.IsEqual(acdm, null))
-                            ambcase.records.AddRange(acdm);
-                        List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(ambcase.defaultStep.idStep);
-                        if (!Global.IsEqual(trl, null))
-                            ambcase.records.AddRange(trl);
-                        List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(ambcase.defaultStep.idStep, patientId);
-                        if (!Global.IsEqual(tsl, null))
-                            ambcase.records.AddRange(trl);
+                        if (!Global.IsEqual(ambcase.defaultStep, null))
+                        {
+                            ambcase.records = new List<TestMedRecord>();
+                            List<TestTfomsInfo> forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(ambcase.defaultStep.idStep);
+                            if (!Global.IsEqual(forms, null))
+                                ambcase.records.AddRange(forms);
+                            TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(ambcase.defaultStep.idStep);
+                            if (!Global.IsEqual(tdi, null))
+                                ambcase.records.Add(tdi);
+                            List<TestClinicMainDiagnosis> acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(ambcase.defaultStep.idStep);
+                            if (!Global.IsEqual(acdm, null))
+                                ambcase.records.AddRange(acdm);
+                            List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(ambcase.defaultStep.idStep);
+                            if (!Global.IsEqual(trl, null))
+                                ambcase.records.AddRange(trl);
+                            List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(ambcase.defaultStep.idStep, patientId);
+                            if (!Global.IsEqual(tsl, null))
+                                ambcase.records.AddRange(trl);
+                        }
                     }
                     return ambcase;
                 }

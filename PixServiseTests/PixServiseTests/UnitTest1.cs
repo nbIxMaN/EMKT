@@ -627,7 +627,7 @@ namespace PixServiseTests
     public class UnitTest2
     {
         [Test]
-        public void EMKAddMinAmbCase()
+        public void AddMinAmbCase()
         {
             TestPixServiceClient c = new TestPixServiceClient();
             PatientDto patient = new PatientDto();
@@ -639,21 +639,37 @@ namespace PixServiseTests
             c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
             TestEmkServiceClient client = new TestEmkServiceClient();
             client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", new CaseAmb
+            {
+                OpenDate = new DateTime(2010, 10, 10),
+                CloseDate = new DateTime(2010, 10, 14),
+                HistoryNumber = "1000121",
+                IdCaseMis = "123412341234",
+                IdPaymentType = 1,
+                Confidentiality = 1,
+                DoctorConfidentiality = 1,
+                CuratorConfidentiality = 1,
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdCaseResult = 1,
+                Comment = "КОММЕНТ",
+                IdPatientMis = patient.IdPatientMIS,
+                IdCaseType = 2,
+                DoctorInCharge = new MedicalStaff
                 {
-                    OpenDate = new DateTime(2010, 10, 10),
-                    CloseDate = new DateTime(2010, 10, 14),
-                    HistoryNumber = "1000121",
-                    IdCaseMis = "123412341234",
-                    IdPaymentType = 1,
-                    Confidentiality = 1,
-                    DoctorConfidentiality = 1,
-                    CuratorConfidentiality = 1,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdCaseResult = 1,
-                    Comment = "КОММЕНТ",
-                    IdPatientMis = patient.IdPatientMIS,
-                    IdCaseType = 2,
-                    DoctorInCharge = new MedicalStaff
+                    IdSpeciality = 29,
+                    IdPosition = 72,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = "123123123",
+                        HumanName = new HumanName
+                        {
+                            FamilyName = "Лукин",
+                            GivenName = "Василий"
+                        }
+                    }
+                },
+                Authenticator = new Participant
+                {
+                    Doctor = new MedicalStaff
                     {
                         IdSpeciality = 29,
                         IdPosition = 72,
@@ -666,51 +682,35 @@ namespace PixServiseTests
                                 GivenName = "Василий"
                             }
                         }
-                    },
-                    Authenticator = new Participant
+                    }
+                },
+                Author = new Participant
+                {
+                    Doctor = new MedicalStaff
                     {
-                        Doctor = new MedicalStaff
+                        IdSpeciality = 29,
+                        IdPosition = 72,
+                        Person = new PersonWithIdentity
                         {
-                            IdSpeciality = 29,
-                            IdPosition = 72,
-                            Person = new PersonWithIdentity
+                            IdPersonMis = "123123123",
+                            HumanName = new HumanName
                             {
-                                IdPersonMis = "123123123",
-                                HumanName = new HumanName
-                                {
-                                    FamilyName = "Лукин",
-                                    GivenName = "Василий"
-                                }
+                                FamilyName = "Лукин",
+                                GivenName = "Василий"
                             }
                         }
-                    },
-                    Author = new Participant
-                    {
-                        Doctor = new MedicalStaff
-                        {
-                            IdSpeciality = 29,
-                            IdPosition = 72,
-                            Person = new PersonWithIdentity
-                            {
-                                IdPersonMis = "123123123",
-                                HumanName = new HumanName
-                                {
-                                    FamilyName = "Лукин",
-                                    GivenName = "Василий"
-                                }
-                            }
-                        }
-                    },
-                    Steps = new StepAmb[]
+                    }
+                },
+                Steps = new StepAmb[]
                     {
                         new StepAmb
                         {
-                            IdStepMis = "12341234",
                             DateStart = new DateTime(2010, 10, 10),
                             DateEnd = new DateTime(2010, 10, 14),
+                            IdStepMis = "12341234",
+                            IdPaymentType = 1,
                             IdVisitPlace = 1,
                             IdVisitPurpose = 1,
-                            IdPaymentType = 1,
                             Doctor = new MedicalStaff
                             {
                                 IdSpeciality = 29,
@@ -727,12 +727,12 @@ namespace PixServiseTests
                             }
                         }
                     }
-                });
-                if (Global.errors == "")
-                    Assert.Pass();
-                else
-                    Assert.Fail(Global.errors);
-            }
+            });
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
 
         [Test]
         public void EMKAddMinStatCase()
