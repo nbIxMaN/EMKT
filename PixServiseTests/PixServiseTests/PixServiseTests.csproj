@@ -35,25 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.util, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NUnit.VisualStudio.TestAdapter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4cb40d35494691ac, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -89,11 +73,13 @@
     <Compile Include="TestBirthplace.cs" />
     <Compile Include="TestCaseBase.cs" />
     <Compile Include="TestClinicMainDiagnosis.cs" />
+    <Compile Include="TestConsultNote.cs" />
     <Compile Include="TestContact.cs" />
     <Compile Include="TestContactPerson.cs" />
     <Compile Include="TestDeathInfo.cs" />
     <Compile Include="TestDiagnosis.cs" />
     <Compile Include="TestDiagnosisInfo.cs" />
+    <Compile Include="TestDischargeSummary.cs" />
     <Compile Include="TestDoctor.cs" />
     <Compile Include="TestDocument.cs" />
     <Compile Include="TestEmkServiceClient.cs" />
@@ -101,6 +87,7 @@
     <Compile Include="TestHumanName.cs" />
     <Compile Include="TestIdentityDocument.cs" />
     <Compile Include="TestJob.cs" />
+    <Compile Include="TestLaboratoryReport.cs" />
     <Compile Include="TestMedDocument.cs" />
     <Compile Include="TestMedRecord.cs" />
     <Compile Include="TestParticipant.cs" />

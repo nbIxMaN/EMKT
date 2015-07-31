@@ -121,14 +121,13 @@ namespace PixServiseTests
             TestAmbStep p = obj as TestAmbStep;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestAmbStep с другим типом");
                 return false;
             }
             if (this.ambStep == p.ambStep)
                 return true;
             if ((this.ambStep == null) || (p.ambStep == null))
             {
-                Global.errors3.Add("Сравнение TestAmbStep = null с TestAmbStep != null");
+                return false;
             }
             if ((this.ambStep.IdVisitPlace == p.ambStep.IdVisitPlace) &&
                 (this.ambStep.IdVisitPurpose == p.ambStep.IdVisitPurpose) &&

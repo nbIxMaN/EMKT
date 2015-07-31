@@ -96,7 +96,6 @@ namespace PixServiseTests
                     Global.errors3.Add("Несовпадение IdPosition TestDoctor");
                 if (this.doctor.IdSpeciality != d.doctor.IdSpeciality)
                     Global.errors3.Add("Несовпадение IdSpeciality TestDoctor");
-                this.person.FindMismatch(d.person);
             }
         }
 
@@ -124,10 +123,6 @@ namespace PixServiseTests
             {
                 return false;
             }
-            bool x = (this.doctor.IdLpu == p.doctor.IdLpu);
-            x = (this.doctor.IdPosition == p.doctor.IdPosition);
-            x = (this.doctor.IdSpeciality == p.doctor.IdSpeciality);
-            x = Global.IsEqual(person, p.person);
             if ((this.doctor.IdLpu == p.doctor.IdLpu) &&
                 (this.doctor.IdPosition == p.doctor.IdPosition) &&
                 (this.doctor.IdSpeciality == p.doctor.IdSpeciality) &&

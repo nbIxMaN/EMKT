@@ -10,6 +10,7 @@ namespace PixServiseTests
 {
     class TestSickList : TestMedRecord
     {
+        private const string idSickList = "4";
         SickList sickList;
         TestAttachment attachment;
         TestDoctor doctor;
@@ -29,7 +30,7 @@ namespace PixServiseTests
             List<TestSickList> tsl = new List<TestSickList>();
             if (idStep != "")
             {
-                List<TestAttachment> lta = TestAttachment.BuildTestAttacmentFromDataBase(idStep);
+                List<TestAttachment> lta = TestAttachment.BuildTestAttacmentFromDataBase(idStep, idSickList);
                 if (lta != null)
                     foreach (TestAttachment i in lta)
                     {

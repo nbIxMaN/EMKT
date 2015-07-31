@@ -176,12 +176,6 @@ namespace PixServiseTests
                 Global.errors2.Add("Сравнение TestAmbCase с другим типом");
                 return false;
             }
-            bool x = Global.IsEqual(this.caseBase, p.caseBase);
-            x = Global.IsEqual(this.medRecords, p.medRecords);
-            x = Global.IsEqual(this.steps, p.steps);
-            x = (this.caseAmb.IsActive == p.caseAmb.IsActive);
-            x = (this.caseAmb.IdAmbResult == p.caseAmb.IdAmbResult);
-            x = (this.caseAmb.IdCasePurpose == p.caseAmb.IdCasePurpose);
             if (Global.IsEqual(this.caseBase, p.caseBase) &&
                 Global.IsEqual(this.medRecords, p.medRecords) &&
                 Global.IsEqual(this.steps, p.steps) &&

@@ -105,14 +105,13 @@ namespace PixServiseTests
             TestStepBase p = obj as TestStepBase;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestStepBase с другим типом");
                 return false;
             }
             if (this.step == p.step)
                 return true;
             if ((this.step == null) || (p.step == null))
             {
-                Global.errors3.Add("Сравнение TestStepBase = null с TestStepBase != null");
+                return false;
             }
             if ((this.step.Comment == p.step.Comment) &&
                 (this.step.DateEnd == p.step.DateEnd) &&

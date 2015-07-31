@@ -10,6 +10,7 @@ namespace PixServiseTests
 {
     class TestReferral : TestMedRecord
     {
+        private const string idReferral = "6";
         Referral referral;
         TestAttachment attachment;
         TestDoctor doctor;
@@ -26,7 +27,7 @@ namespace PixServiseTests
             List<TestReferral> trl = new List<TestReferral>();
             if (idStep != "")
             {
-                List<TestAttachment> lta = TestAttachment.BuildTestAttacmentFromDataBase(idStep);
+                List<TestAttachment> lta = TestAttachment.BuildTestAttacmentFromDataBase(idStep, idReferral);
                 if (lta != null)
                     foreach (TestAttachment i in lta)
                     {

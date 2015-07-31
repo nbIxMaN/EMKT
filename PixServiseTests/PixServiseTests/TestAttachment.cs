@@ -23,14 +23,14 @@ namespace PixServiseTests
                 attachment = at;
         }
 
-        static public List<TestAttachment> BuildTestAttacmentFromDataBase(string idStep)
+        static public List<TestAttachment> BuildTestAttacmentFromDataBase(string idStep, string idMedDocumentType)
         {
             List<TestAttachment> taList = new List<TestAttachment>();
             if (idStep != "")
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findDocuments = "SELECT * FROM MedDocument WHERE IdStep = '" + idStep + "'";
+                    string findDocuments = "SELECT * FROM MedDocument WHERE IdStep = '" + idStep + "' AND IdMedDocumentType = '" + idMedDocumentType + "'";
                     SqlCommand participantCommand = new SqlCommand(findDocuments, connection);
                     using (SqlDataReader docsReader = participantCommand.ExecuteReader())
                     {

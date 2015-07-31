@@ -137,8 +137,12 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение Birthdate TestPerson");
             if (this.person.Sex != b.person.Sex)
                 Global.errors3.Add("Несовпадение Sex TestPerson");
-            Global.IsEqual(this.docs, b.docs);
-            Global.IsEqual(this.name, b.name);
+            if (this.person.IdPersonMis != b.person.IdPersonMis)
+                Global.errors3.Add("Несовпадение IdPersonMis TestPerson");
+            if (!Global.IsEqual(this.docs, b.docs))
+                Global.errors3.Add("Несовпадение Documents TestPerson");
+            if (!Global.IsEqual(this.name, b.name))
+                Global.errors3.Add("Несовпадение Name TestPerson");
         }
 
         public bool CheckPersonInDataBase()
@@ -153,10 +157,10 @@ namespace PixServiseTests
             TestPerson p = obj as TestPerson;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestPerson с другим типом");
                 return false;
             }
             if ((this.person.Birthdate == p.person.Birthdate) &&
+                (this.person.IdPersonMis == p.person.IdPersonMis) &&
                 (Global.IsEqual(this.docs, p.docs)) &&
                 (this.person.Sex == p.person.Sex) &&
                 (Global.IsEqual(this.name, p.name)))

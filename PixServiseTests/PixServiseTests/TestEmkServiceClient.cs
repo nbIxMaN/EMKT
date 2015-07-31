@@ -9,19 +9,19 @@ namespace PixServiseTests
 {
     class TestEmkServiceClient
     {
-        static public EmkServiceClient client = new EmkServiceClient();
-        private void getErrors(object obj)
+        public void getErrors(object obj)
         {
             Array errors = obj as Array;
             if (errors != null)
             {
-                foreach (RequestFault i in errors)
+                foreach(RequestFault i in errors)
                 {
                     Global.errors1.Add(i.PropertyName + " - " + i.Message);
                     getErrors(i.Errors);
                 }
             }
         }
+        static public EmkServiceClient client = new EmkServiceClient();
         public void AddCase(string guid, CaseBase c)
         {
             try
