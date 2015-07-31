@@ -54,6 +54,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Service References\EMKServise\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -65,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="SetData.cs" />
     <Compile Include="TestAddress.cs" />
     <Compile Include="TestAmbCase.cs" />
     <Compile Include="TestAmbStep.cs" />

@@ -624,7 +624,7 @@ namespace PixServiseTests
      }*/
 
     [TestFixture]
-    public class UnitTest2
+    public class UnitTest2 : Data
     {
         /*  [Test]
           public void EMKAddMinAmbCase()
@@ -890,30 +890,54 @@ namespace PixServiseTests
         [Test]
         public void AddMinAmbCase()
         {
+            TestPixServiceClient PixClient = new TestPixServiceClient();
+
+            PatientDto patient = (new SetData()).PatientSet();
+            PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+
+            TestEmkServiceClient EmkClient = new TestEmkServiceClient();
+            CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+            EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddMinStatCase()
+        {
             TestPixServiceClient c = new TestPixServiceClient();
+
             PatientDto patient = new PatientDto();
             patient.FamilyName = "Жукин";
             patient.GivenName = "Дмитрий";
             patient.BirthDate = new DateTime(1983, 01, 07);
             patient.Sex = 1;
-            patient.IdPatientMIS = "123456789010";
+            patient.IdPatientMIS = "12930193123";
             c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+
             TestEmkServiceClient client = new TestEmkServiceClient();
-            client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", new CaseAmb
+            client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", new CaseStat
             {
-                OpenDate = new DateTime(2010, 10, 10),
-                CloseDate = new DateTime(2010, 10, 14),
-                HistoryNumber = "1000121",
-                IdCaseMis = "123412341234",
+                OpenDate = new DateTime(2013, 04, 24),
+                CloseDate = new DateTime(2013, 04, 27),
+                HistoryNumber = "19344",
+                IdCaseMis = "130059240420132617_1I",
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
                 CuratorConfidentiality = 1,
                 IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                IdCaseResult = 1,
-                Comment = "КОММЕНТ",
+                IdCaseResult = 6,
+                Comment = ".",
                 IdPatientMis = patient.IdPatientMIS,
-                IdCaseType = 2,
+                IdTypeFromDiseaseStart = 1,
+                IdRepetition = 1,
+                HospResult = 1,
+                IdHospChannel = 2,
+
                 DoctorInCharge = new MedicalStaff
                 {
                     IdSpeciality = 29,
@@ -928,6 +952,7 @@ namespace PixServiseTests
                         }
                     }
                 },
+
                 Authenticator = new Participant
                 {
                     Doctor = new MedicalStaff
@@ -945,6 +970,7 @@ namespace PixServiseTests
                         }
                     }
                 },
+
                 Author = new Participant
                 {
                     Doctor = new MedicalStaff
@@ -962,146 +988,37 @@ namespace PixServiseTests
                         }
                     }
                 },
-                Steps = new StepAmb[]
+
+                Steps = new StepStat[]
+                {
+                    new StepStat
                     {
-                        new StepAmb
+                        DateStart = new DateTime(2013, 04, 24),
+                        DateEnd = new DateTime(2013, 04, 27),
+                        IdStepMis = "130059240420132618F",
+                        IdPaymentType = 1,
+                        HospitalDepartmentName = "11 6 ХИРУРГИЧЕСКОЕ",
+                        IdHospitalDepartment = "0028",
+                        BedProfile = 18,
+                        DaySpend = 3,
+                        Doctor = new MedicalStaff
                         {
-                            DateStart = new DateTime(2010, 10, 10),
-                            DateEnd = new DateTime(2010, 10, 14),
-                            IdStepMis = "12341234",
-                            IdPaymentType = 1,
-                            IdVisitPlace = 1,
-                            IdVisitPurpose = 1,
-                            Doctor = new MedicalStaff
+                            IdSpeciality = 29,
+                            IdPosition = 72,
+                            Person = new PersonWithIdentity
                             {
-                                IdSpeciality = 29,
-                                IdPosition = 72,
-                                Person = new PersonWithIdentity
+                                IdPersonMis = "123123123",
+                                HumanName = new HumanName
                                 {
-                                    IdPersonMis = "123123123",
-                                    HumanName = new HumanName
-                                    {
-                                        FamilyName = "Лукин",
-                                        GivenName = "Василий"
-                                    }
+                                    FamilyName = "Лукин",
+                                    GivenName = "Василий"
                                 }
                             }
                         }
                     }
+                }
             });
-            if (Global.errors == "")
-                Assert.Pass();
-            else
-                Assert.Fail(Global.errors);
-        }
 
-        [Test]
-        public void AddMinStatCase()
-        {
-            TestPixServiceClient c = new TestPixServiceClient();
-            PatientDto patient = new PatientDto();
-            patient.FamilyName = "Жукин";
-            patient.GivenName = "Дмитрий";
-            patient.BirthDate = new DateTime(1983, 01, 07);
-            patient.Sex = 1;
-            patient.IdPatientMIS = "12930193123";
-            c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
-            TestEmkServiceClient client = new TestEmkServiceClient();
-            CaseStat ca = new CaseStat();
-            ca.OpenDate = new DateTime(2013, 04, 24);
-            ca.CloseDate = new DateTime(2013, 04, 27);
-            ca.HistoryNumber = "19344";
-            ca.IdCaseMis = "130059240420132617_1I";
-            ca.IdPaymentType = 1;
-            ca.Confidentiality = 1;
-            ca.DoctorConfidentiality = 1;
-            ca.CuratorConfidentiality = 1;
-            ca.IdLpu = "1.2.643.5.1.13.3.25.78.118";
-            ca.IdCaseResult = 6;
-            ca.Comment = ".";
-            ca.IdPatientMis = patient.IdPatientMIS;
-            ca.IdTypeFromDiseaseStart = 1;
-            ca.IdRepetition = 1;
-            ca.HospResult = 1;
-            ca.IdHospChannel = 2;
-            ca.DoctorInCharge = new MedicalStaff
-            {
-                IdSpeciality = 29,
-                IdPosition = 72,
-                Person = new PersonWithIdentity
-                {
-                    IdPersonMis = "123123123",
-                    HumanName = new HumanName
-                    {
-                        FamilyName = "Лукин",
-                        GivenName = "Василий"
-                    }
-                }
-            };
-            ca.Authenticator = new Participant
-            {
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий"
-                        }
-                    }
-                }
-            };
-            ca.Author = new Participant
-            {
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий"
-                        }
-                    }
-                }
-            };
-
-            ca.Steps = new StepStat[]
-            {
-                new StepStat
-                {
-                    DateStart = new DateTime(2013, 04, 24),
-                    DateEnd = new DateTime(2013, 04, 27),
-                    IdStepMis = "130059240420132618F",
-                    IdPaymentType = 1,
-                    HospitalDepartmentName = "11 6 ХИРУРГИЧЕСКОЕ",
-                    IdHospitalDepartment = "0028",
-                    BedProfile = 18,
-                    DaySpend = 3,
-                    Doctor = new MedicalStaff
-                    {
-                        IdSpeciality = 29,
-                        IdPosition = 72,
-                        Person = new PersonWithIdentity
-                        {
-                            IdPersonMis = "123123123",
-                            HumanName = new HumanName
-                            {
-                                FamilyName = "Лукин",
-                                GivenName = "Василий"
-                            }
-                        }
-                    },
-                }
-            };
-            client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", ca);
             if (Global.errors == "")
                 Assert.Pass();
             else
