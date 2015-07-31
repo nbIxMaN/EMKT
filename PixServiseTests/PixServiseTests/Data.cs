@@ -38,6 +38,13 @@ namespace PixServiseTests
         //public static HumanName doctorName { get; set; }
 
         public static MedRecord medRecord { get; set; }
+
+        public static Service service { get; set; }
+        public static TfomsInfo tfomsInfo { get; set; }
+        public static AppointedMedication appointedMedication { get; set; }
+        public static DeathInfo deathInfo { get; set; }
+        public static Diagnosis diagnosis { get; set; }
+        public static MedDocument medDocument { get; set; }
     }
 
     public static class CaseStatData
@@ -227,6 +234,45 @@ namespace PixServiseTests
 
             };
 
+            CaseAmbData.service = new Service
+            {
+                DateStart = new DateTime(2010, 11, 1),
+                DateEnd = new DateTime(2010, 11, 10),
+                IdServiceType = "1",
+                ServiceName = "Название услуги",
+                Performer = new Participant
+                {
+                    IdRole = 3,
+                    Doctor = new MedicalStaff
+                    {
+                        IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                        IdSpeciality = 29,
+                        IdPosition = 72,
+                        Person = new PersonWithIdentity
+                        {
+                            IdPersonMis = "123123123",
+                            Sex = 1,
+                            Birthdate = new DateTime(1973, 01, 07),
+                            //Documents
+                            HumanName = new HumanName
+                            {
+                                FamilyName = "Лукин",
+                                GivenName = "Василий",
+                                MiddleName = "Андреевич",
+                            },
+                        }
+                    }
+                },
+                PaymentInfo = new PaymentInfo
+                {
+                    HealthCareUnit = 1,
+                    IdPaymentType = 1,
+                    PaymentState = 1,
+                    Quantity = 1,
+                    Tariff = new Decimal(1000),
+                },
+            };
+
             CaseAmbData.caseAmb = new CaseAmb
             {
                 OpenDate = new DateTime(2010, 10, 10),
@@ -254,7 +300,7 @@ namespace PixServiseTests
                 Author = CaseAmbData.author,
                 LegalAuthenticator = CaseAmbData.legalAuthenticator,
                 Steps = new StepAmb[] { CaseAmbData.step },
-                MedRecords = new MedRecord[] { CaseAmbData.medRecord },
+                MedRecords = new MedRecord[] { CaseAmbData.service },
 
             };
         }
@@ -289,17 +335,17 @@ namespace PixServiseTests
                 {
                     IdSpeciality = 29,
                     IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118", 
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
                     Person = new PersonWithIdentity
                     {
                         Sex = 1,
                         Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123", 
+                        IdPersonMis = "123123123",
                         // Documents ещё добавить 
                         HumanName = new HumanName
                         {
                             FamilyName = "Лукин",
-                            GivenName = "Василий", 
+                            GivenName = "Василий",
                             MiddleName = "Андреевич",
                         }
                     }
@@ -307,45 +353,47 @@ namespace PixServiseTests
             };
 
             CaseStatData.authenticator = new Participant
-            { IdRole =1,
+            {
+                IdRole = 1,
                 Doctor = new MedicalStaff
                 {
-                    IdSpeciality = 29, 
+                    IdSpeciality = 29,
                     IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118", 
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
                     Person = new PersonWithIdentity
                     {
                         Sex = 1,
                         Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123", 
+                        IdPersonMis = "123123123",
                         // Documents ещё добавить 
                         HumanName = new HumanName
                         {
                             FamilyName = "Лукин",
                             GivenName = "Василий",
-                            MiddleName = "Андреевич", 
+                            MiddleName = "Андреевич",
                         }
                     }
                 }
             };
 
             CaseStatData.legalAuthenticator = new Participant
-            { IdRole =1,
+            {
+                IdRole = 1,
                 Doctor = new MedicalStaff
                 {
                     IdSpeciality = 29,
                     IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118", 
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
                     Person = new PersonWithIdentity
                     {
                         Sex = 1,
                         Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123", 
+                        IdPersonMis = "123123123",
                         // Documents ещё добавить   
                         HumanName = new HumanName
                         {
                             FamilyName = "Лукин",
-                            GivenName = "Василий", 
+                            GivenName = "Василий",
                             MiddleName = "Андреевич",
                         }
                     }
@@ -354,19 +402,19 @@ namespace PixServiseTests
 
             CaseStatData.guardian = new Guardian
             {
-                IdRelationType = 1, 
+                IdRelationType = 1,
                 UnderlyingDocument = "реквизиты",
                 Person = new PersonWithIdentity
                 {
                     Sex = 1,
-                    Birthdate = new DateTime(1973, 01, 07), 
+                    Birthdate = new DateTime(1973, 01, 07),
                     IdPersonMis = "123123123",
                     // Documents ещё добавить  
                     HumanName = new HumanName
                     {
                         FamilyName = "Лукин",
                         GivenName = "Василий",
-                        MiddleName = "Андреевич", 
+                        MiddleName = "Андреевич",
                     }
                 }
             };
@@ -377,7 +425,7 @@ namespace PixServiseTests
                 DateEnd = new DateTime(2010, 10, 14),
                 IdStepMis = "12341234",
                 IdPaymentType = 1,
-                Comment = "Comment", 
+                Comment = "Comment",
                 BedNumber = "1A",
                 BedProfile = 1,
                 DaySpend = 1,
@@ -391,18 +439,19 @@ namespace PixServiseTests
                 Doctor = new MedicalStaff
                 {
                     IdSpeciality = 29,
-                    IdPosition = 72, 
+                    IdPosition = 72,
                     IdLpu = "1.2.643.5.1.13.3.25.78.118",
                     Person = new PersonWithIdentity
                     {
-                        Sex = 1, 
+                        Sex = 1,
                         Birthdate = new DateTime(1973, 01, 07),
                         IdPersonMis = "123123123",
                         //Documents
+
                         HumanName = new HumanName
                         {
                             FamilyName = "Лукин",
-                            GivenName = "Василий", 
+                            GivenName = "Василий",
                             MiddleName = "Андреевич",
                         }
                     }
@@ -412,13 +461,13 @@ namespace PixServiseTests
             //??
             CaseStatData.medRecord = new MedRecord
             {
-                 
-            }; 
+
+            };
 
             CaseStatData.caseStat = new CaseStat
             {
                 OpenDate = new DateTime(2010, 10, 10),
-                CloseDate = new DateTime(2010, 10, 14), 
+                CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
                 IdCaseMis = "123412341234",
                 IdPaymentType = 1,
@@ -431,9 +480,7 @@ namespace PixServiseTests
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
                 IdCaseAidType = 1,
 
-                // 
-               // IdHospChannel = 1,
-               // 
+                // IdHospChannel = 1,
 
                 IdHospChannel = 2,
                 DeliveryCode = "Код бригады",
@@ -454,7 +501,7 @@ namespace PixServiseTests
                 Guardian = CaseStatData.guardian,
                 DoctorInCharge = CaseStatData.doctorInCharge,
                 Authenticator = CaseStatData.authenticator,
-                Author = CaseStatData.author, 
+                Author = CaseStatData.author,
                 LegalAuthenticator = CaseStatData.legalAuthenticator,
                 Steps = new StepStat[] { CaseStatData.step },
                 MedRecords = new MedRecord[] { CaseStatData.medRecord },
