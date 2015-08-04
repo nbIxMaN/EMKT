@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestPixServiceClient
+    class TestPixServiceClient : IDisposable
     {
         //private ArrayList er = new ArrayList();
         private PixServiceClient client = new PixServiceClient();
         private string reinclusionString = "Попытка повторного добавления пациента";
+        private bool disposed = false;
         //static private string _connectionPath =
         //    "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
 
@@ -237,6 +238,15 @@ namespace PixServiseTests
         ~TestPixServiceClient()
         {
             client.Close();
+        }
+
+        public void Dispose()
+        {
+            if (!disposed)
+            {
+                client.Close();
+                disposed = true;
+            }
         }
     }
 }

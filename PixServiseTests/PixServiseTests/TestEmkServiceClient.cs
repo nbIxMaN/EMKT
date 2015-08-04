@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestEmkServiceClient
+    class TestEmkServiceClient : IDisposable
     {
+        private EmkServiceClient client = new EmkServiceClient();
+        private bool disposed = false; 
         public void getErrors(object obj)
         {
             Array errors = obj as Array;
@@ -21,7 +23,6 @@ namespace PixServiseTests
                 }
             }
         }
-        static public EmkServiceClient client = new EmkServiceClient();
         private void CaseWork(string guid, CaseBase c, string method)
         {
             try
@@ -139,6 +140,15 @@ namespace PixServiseTests
         ~TestEmkServiceClient()
         {
             client.Close();
+        }
+
+        public void Dispose()
+        {
+            if (!disposed)
+            {
+                client.Close();
+                disposed = true;
+            }
         }
     }
 }
