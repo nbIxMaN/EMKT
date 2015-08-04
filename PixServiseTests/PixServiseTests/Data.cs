@@ -169,39 +169,40 @@ namespace PixServiseTests
                 ServiceName = "Название услуги",
                 Performer = new Participant
                 {
-                    IdRole = 3,
-                    Doctor = new MedicalStaff
-                    {
-                        IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                        IdSpeciality = 29,
-                        IdPosition = 72,
-                        Person = new PersonWithIdentity
-                        {
-                            IdPersonMis = "123123123",
-                            Sex = 1,
-                            Birthdate = new DateTime(1973, 01, 07),
-                            Documents = new IdentityDocument[]
-                            {
-                                DocumentData.Passport,
-                                DocumentData.SNILS
-                            },
-                            HumanName = new HumanName
-                            {
-                                FamilyName = "Лукин",
-                                GivenName = "Василий",
-                                MiddleName = "Андреевич",
-                            },
-                        }
-                    }
-                },
-                PaymentInfo = new PaymentInfo
-                {
-                    HealthCareUnit = 1,
-                    IdPaymentType = 1,
-                    PaymentState = 1,
-                    Quantity = 1,
-                    Tariff = new Decimal(1000),
-                },
+                    /*IdRole = 3,
+                     Doctor = new MedicalStaff
+                     {
+                         IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                         IdSpeciality = 29,
+                         IdPosition = 72,
+                         Person = new PersonWithIdentity
+                         {
+                             IdPersonMis = "123123123",
+                             Sex = 1,
+                             Birthdate = new DateTime(1973, 01, 07),
+                             Documents = new IdentityDocument[]
+                             {
+                                 DocumentData.Passport,
+                                 DocumentData.SNILS
+                             },
+                             HumanName = new HumanName
+                             {
+                                 FamilyName = "Лукин",
+                                 GivenName = "Василий",
+                                 MiddleName = "Андреевич",
+                             },
+                         }
+                     }*/
+                 },
+               /*  PaymentInfo = new PaymentInfo
+                 {
+                     HealthCareUnit = 1,
+                     IdPaymentType = 1,
+                     PaymentState = 1,
+                     Quantity = 1,
+                     Tariff = new Decimal(1000),
+                 },*/
+                
             };
 
             MedRecordData.tfomsInfo = new TfomsInfo
@@ -1025,10 +1026,10 @@ namespace PixServiseTests
                 Author = CaseAmbData.author,
                 LegalAuthenticator = CaseAmbData.legalAuthenticator,
                 Steps = new StepAmb[] { CaseAmbData.step },
-                MedRecords = new MedRecord[] { MedRecordData.service, MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                MedRecords = new MedRecord[] { MedRecordData.tfomsInfo/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
                     MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
-                    MedRecordData.LaboratoryReport, MedRecordData.service },
+                    MedRecordData.LaboratoryReport, MedRecordData.service*/ },
 
             };
         }

@@ -927,7 +927,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddMaxAmbCase()
+        public void AddFullAmbCase()
         {
             TestPixServiceClient c = new TestPixServiceClient();
 
@@ -935,7 +935,8 @@ namespace PixServiseTests
             c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
 
             TestEmkServiceClient client = new TestEmkServiceClient();
-            //тут вызываем функцию MaxCaseAmbSet()
+            CaseAmb caseAmb = (new SetData()).FullCaseAmbSet();
+            client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
 
             if (Global.errors == "")
                 Assert.Pass();
