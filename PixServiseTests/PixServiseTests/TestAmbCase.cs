@@ -10,6 +10,7 @@ namespace PixServiseTests
 {
     class TestAmbCase
     {
+        private const byte dispanseryId = 4;
         public string GUID;
         public CaseAmb caseAmb;
         public List<TestMedRecord> records;
@@ -57,12 +58,12 @@ namespace PixServiseTests
                     records = new List<TestMedRecord>();
                     foreach (object i in ca.MedRecords)
                     {
+                        Service ser = i as Service;
+                        if (ser != null)
+                            records.Add(new TestService(ser));
                         TfomsInfo tfi = i as TfomsInfo;
                         if (tfi != null)
                             records.Add(new TestTfomsInfo(tfi));
-                        DeathInfo di = i as DeathInfo;
-                        if (di != null)
-                            records.Add(new TestDeathInfo(di));
                         Diagnosis diag = i as Diagnosis;
                         if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestDiagnosis(diag));
@@ -85,7 +86,7 @@ namespace PixServiseTests
                         if (cn != null)
                             records.Add(new TestConsultNote(cn));
                         DispensaryOne d1 = i as DispensaryOne;
-                        if (d1 != null)
+                        if ((d1 != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
                             records.Add(new TestDispensaryOne(d1));
                     }
                 }
@@ -178,6 +179,91 @@ namespace PixServiseTests
                 }
             }
             return null;
+        }
+        public void ChangeUpdateAmbCase(string guid, CaseAmb ca)
+        {
+            GUID = guid.ToLower();
+            if (ca != null)
+            {
+                if (ca.IsActive != null)
+                    this.caseAmb.IsActive = ca.IsActive;
+                if (ca.IdAmbResult != null)
+                    this.caseAmb.IdAmbResult = ca.IdAmbResult;
+                if (ca.IdCasePurpose != null)
+                    this.caseAmb.IdCasePurpose = ca.IdCasePurpose;
+                caseBase.UpdateCaseBase(guid, ca);
+                if (ca.MedRecords != null)
+                {
+                    List<TestMedRecord> newMedRecords = new List<TestMedRecord>();
+                    TfomsInfo tfi;
+                    DeathInfo di;
+                    ClinicMainDiagnosis cmd;
+                    DischargeSummary ds;
+                    ConsultNote cn;
+                    DispensaryOne d1;
+                    foreach (object i in ca.MedRecords)
+                    {
+                        Service ser = i as Service;
+                        if (ser != null)
+                            newMedRecords.Add(new TestService(ser));
+                        tfi = i as TfomsInfo;
+                        Diagnosis diag = i as Diagnosis;
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
+                            newMedRecords.Add(new TestDiagnosis(diag));
+                        ClinicMainDiagnosis cm = i as ClinicMainDiagnosis;
+                        if ((cm != null) && (cm.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
+                            cmd = cm;
+                        Referral r = i as Referral;
+                        if (r != null)
+                            newMedRecords.Add(new TestReferral(r));
+                        SickList sl = i as SickList;
+                        if (sl != null)
+                            newMedRecords.Add(new TestSickList(sl));
+                        ds = i as DischargeSummary;
+                        LaboratoryReport lr = i as LaboratoryReport;
+                        if (lr != null)
+                            newMedRecords.Add(new TestLaboratoryReport(lr));
+                        cn = i as ConsultNote;
+                        DispensaryOne d = i as DispensaryOne;
+                        if ((d != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
+                            newMedRecords.Add(new TestDispensaryOne(d));
+                    }
+                    foreach (object i in ca.MedRecords)
+                    {
+                        Service ser = i as Service;
+                        if (ser != null)
+                            newMedRecords.Add(new TestService(ser));
+                        tfi = i as TfomsInfo;
+                        if (tfi != null)
+                            newMedRecords.Add(new TestTfomsInfo(tfi));
+                        Diagnosis diag = i as Diagnosis;
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
+                            newMedRecords.Add(new TestDiagnosis(diag));
+                        cmd = i as ClinicMainDiagnosis;
+                        if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
+                            newMedRecords.Add(new TestClinicMainDiagnosis(cmd));
+                        Referral r = i as Referral;
+                        if (r != null)
+                            newMedRecords.Add(new TestReferral(r));
+                        SickList sl = i as SickList;
+                        if (sl != null)
+                            newMedRecords.Add(new TestSickList(sl));
+                        ds = i as DischargeSummary;
+                        if (ds != null)
+                            newMedRecords.Add(new TestDischargeSummary(ds));
+                        LaboratoryReport lr = i as LaboratoryReport;
+                        if (lr != null)
+                            newMedRecords.Add(new TestLaboratoryReport(lr));
+                        cn = i as ConsultNote;
+                        if (cn != null)
+                            newMedRecords.Add(new TestConsultNote(cn));
+                        d1 = i as DispensaryOne;
+                        if ((d1 != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
+                            newMedRecords.Add(new TestDispensaryOne(d1));
+                    }
+                }
+            }
+
         }
         public void FindMismatch(TestAmbCase ac)
         {

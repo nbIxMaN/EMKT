@@ -39,7 +39,7 @@ namespace PixServiseTests
                             if (AMReader["PrescriptionSeries"].ToString() != "")
                                 a.Seria = AMReader["PrescriptionSeries"].ToString();
                             if (AMReader["IdRMedicineIssueType"].ToString() != "")
-                                a.MedicineIssueType = Convert.ToByte(AMReader["IdRMedicineIssueType"]);
+                                a.MedicineIssueType = Convert.ToString(AMReader["IdRMedicineIssueType"]);
                             if (AMReader["MedicineIssueTypeDate"].ToString() != "")
                                 a.IssuedDate = Convert.ToDateTime(AMReader["MedicineIssueTypeDate"]);
                             if (AMReader["IdRMedicineType"].ToString() != "")

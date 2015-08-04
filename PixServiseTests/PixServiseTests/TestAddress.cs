@@ -23,12 +23,10 @@ namespace PixServiseTests
             i = 9
         };
         public AddressDto address;
-        //private ArrayList _errors;
 
         public TestAddress(AddressDto a)
         {
             address = a;
-            //_errors = errors;
         }
 
         static public List<TestAddress> BuildAdressesFromDataBaseData(string idPerson)

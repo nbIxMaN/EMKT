@@ -12,30 +12,9 @@ namespace PixServiseTests
 {
     class TestPixServiceClient : IDisposable
     {
-        //private ArrayList er = new ArrayList();
         private PixServiceClient client = new PixServiceClient();
         private string reinclusionString = "Попытка повторного добавления пациента";
         private bool disposed = false;
-        //static private string _connectionPath =
-        //    "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
-
-        //private string ErrorsToString()
-        //{
-        //    string errors = "";
-        //    for (int i = 0; i < Global.er.Count; i++)
-        //    {
-        //        errors += (i + 1).ToString() + ". " + Global.er[i].ToString() + "\n";
-        //    }
-        //    return errors;
-        //}
-
-        //public string errors
-        //{
-        //    get 
-        //    {
-        //        return ErrorsToString();
-        //    }
-        //}
 
         public void AddPatient(string guid, string idlpu, PatientDto patient)
         {
@@ -44,9 +23,6 @@ namespace PixServiseTests
             {
                 p.DeletePatient();
                 client.AddPatient(guid, idlpu, patient);
-                //PatientDto pppp = new PatientDto();
-                //pppp.IdPatientMIS = patient.IdPatientMIS;
-                //PatientDto[] pppps = client.GetPatient(guid, idlpu, pppp, SourceType.Reg);
                 p = new TestPatient(guid, idlpu, patient);
                 TestPatient a = TestPatient.BuildPatientFromDataBaseData(guid, idlpu, patient.IdPatientMIS);
                 if (!p.CheckPatientInDataBase())

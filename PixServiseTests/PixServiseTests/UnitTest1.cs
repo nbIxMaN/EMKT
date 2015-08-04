@@ -900,6 +900,31 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                caseAmb.MedRecords = new MedRecord[]
+                {
+                    new DispensaryOne
+                    {
+                        CreationDate = new DateTime(2010, 11, 2),
+                        Header = "ДОКУМЕНТ",
+                        IsGuested = true,
+                        HasExtraResearchRefferal = true,
+                        IsUnderObservation = true,
+                        HasExpertCareRefferal = true,
+                        HasPrescribeCure = true,
+                        HasHealthResortRefferal = true,
+                        HasSecondStageRefferal = false,
+                        Author = caseAmb.DoctorInCharge,
+                        HealthGroup = new HealthGroup
+                        {
+                            Doctor = caseAmb.DoctorInCharge,
+                            HealthGroupInfo = new HealthGroupInfo
+                            {
+                                IdHealthGroup = 1,
+                                Date = new DateTime(2010, 11, 2),
+                            }
+                        }
+                    }
+                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")

@@ -209,13 +209,66 @@ namespace PixServiseTests
             return null;
         }
 
-        //private string PatientFieldToString(Object a)
-        //{
-        //    if (a == null)
-        //        return ("");
-        //    else
-        //        return a.ToString();
-        //}
+        public void UpdateCaseBase(string guid, CaseBase cb)
+        {
+            if (guid != "")
+                GUID = guid.ToLower();
+            if (cb != null)
+            {
+                if (cb.CloseDate != null)
+                    this.caseBase.CloseDate = cb.CloseDate;
+                if (cb.Comment != null)
+                    this.caseBase.Comment = cb.Comment;
+                if (cb.Confidentiality != null)
+                    this.caseBase.Confidentiality = cb.Confidentiality;
+                if (cb.CuratorConfidentiality != null)
+                    this.caseBase.CuratorConfidentiality = cb.CuratorConfidentiality;
+                if (cb.DoctorConfidentiality != null)
+                    this.caseBase.DoctorConfidentiality = cb.DoctorConfidentiality;
+                if (cb.HistoryNumber != null)
+                    this.caseBase.HistoryNumber = cb.HistoryNumber;
+                if (cb.IdCaseAidType != null)
+                    this.caseBase.IdCaseAidType = cb.IdCaseAidType;
+                if (cb.IdCaseMis != null)
+                    this.caseBase.IdCaseMis = cb.IdCaseMis;
+                if (cb.IdCaseResult != null)
+                    this.caseBase.IdCaseResult = cb.IdCaseResult;
+                if (cb.IdLpu != null)
+                    this.caseBase.IdLpu = cb.IdLpu;
+                if (cb.IdPaymentType != null)
+                    this.caseBase.IdPaymentType = cb.IdPaymentType;
+                if (cb.OpenDate != null)
+                    this.caseBase.OpenDate = cb.OpenDate;
+                if (cb.Author != null)
+                {
+                    autor = new TestParticipant(cb.Author);
+                    if (autor.doctor.doctor.IdLpu == null)
+                        autor.doctor.doctor.IdLpu = cb.IdLpu;
+                }
+                if (cb.Authenticator != null)
+                {
+                    authenticator = new TestParticipant(cb.Authenticator);
+                    if (authenticator.doctor.doctor.IdLpu == null)
+                        authenticator.doctor.doctor.IdLpu = cb.IdLpu;
+                }
+                if (cb.LegalAuthenticator != null)
+                {
+                    legalAuthenticator = new TestParticipant(cb.LegalAuthenticator);
+                    if (legalAuthenticator.doctor.doctor.IdLpu == null)
+                        legalAuthenticator.doctor.doctor.IdLpu = cb.IdLpu;
+                }
+                if (cb.DoctorInCharge != null)
+                {
+                    doctorInCharge = new TestDoctor(cb.DoctorInCharge);
+                    if (doctorInCharge.doctor.IdLpu == null)
+                        doctorInCharge.doctor.IdLpu = cb.IdLpu;
+                }
+                if (cb.Guardian != null)
+                    guardian = new TestGuardian(cb.Guardian);
+                if (cb.IdPatientMis != null)
+                    patient = TestPatient.BuildPatientFromDataBaseData(guid, cb.IdLpu, cb.IdPatientMis);
+            }
+        }
 
         public void FindMismatch(TestCaseBase cb)
         {

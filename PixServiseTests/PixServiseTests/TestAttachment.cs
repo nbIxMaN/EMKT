@@ -49,6 +49,8 @@ namespace PixServiseTests
                                 at.Url = new Uri(Convert.ToString(docsReader["AttachmentURL"]));
                             else
                                 at.Url = null;
+                            if (docsReader["MIMEType"].ToString() != "")
+                                at.MimeType = docsReader["MIMEType"].ToString();
                             TestAttachment t = new TestAttachment(at);
                             if (docsReader["IdMedDocument"].ToString() != "")
                                 t.idMedDocument = docsReader["IdMedDocument"].ToString();
@@ -60,8 +62,6 @@ namespace PixServiseTests
                                 t.IdDoctor = docsReader["IdDoctor"].ToString();
                             if (docsReader["IdMedDocumentType"].ToString() != "")
                                 t.IdMedDocumentType = docsReader["IdMedDocumentType"].ToString();
-                            if (docsReader["MIMEType"].ToString() != "")
-                                t.MIMEType = docsReader["MIMEType"].ToString();
                             taList.Add(t);
                         }
                     }

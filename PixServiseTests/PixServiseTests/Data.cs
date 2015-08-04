@@ -217,7 +217,7 @@ namespace PixServiseTests
                 AnatomicTherapeuticChemicalClassification = "1",
                 DaysCount = 5,
                 IssuedDate = new DateTime(2010, 03, 06),
-                MedicineIssueType = "PRE",
+                MedicineIssueType = "PRE", // по справочнику строка PRE или CURE 
                 MedicineName = "Валерьянка",
                 MedicineType = 136,
                 MedicineUseWay = 1,
