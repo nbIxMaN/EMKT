@@ -217,7 +217,7 @@ namespace PixServiseTests
                 AnatomicTherapeuticChemicalClassification = "1",
                 DaysCount = 5,
                 IssuedDate = new DateTime(2010, 03, 06),
-                MedicineIssueType = 1, // по справочнику строка PRE или CURE 
+                MedicineIssueType = "PRE",
                 MedicineName = "Валерьянка",
                 MedicineType = 136,
                 MedicineUseWay = 1,
@@ -282,7 +282,7 @@ namespace PixServiseTests
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
                     MedicalStandard = 21,// по справочнику 211010
-                    MkbCode = "11730",
+                    MkbCode = "A00",
                 },
                 Doctor = new MedicalStaff
                 {
@@ -323,7 +323,7 @@ namespace PixServiseTests
                      IdTraumaType = 1,
                      MESImplementationFeature = 10,
                      MedicalStandard = 21,// по справочнику 211010
-                     MkbCode = "11730",
+                     MkbCode = "A00",
                  },
                  Doctor = new MedicalStaff
                  {
@@ -364,7 +364,7 @@ namespace PixServiseTests
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
                             MedicalStandard = 21,// по справочнику 211010
-                            MkbCode = "11730",
+                            MkbCode = "A00",
                         },
                         Doctor = new MedicalStaff
                         {
@@ -407,7 +407,7 @@ namespace PixServiseTests
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
                     MedicalStandard = 21,// по справочнику 211010
-                    MkbCode = "11730",
+                    MkbCode = "A00",
                 },
                 Doctor = new MedicalStaff
                 {
@@ -448,7 +448,7 @@ namespace PixServiseTests
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
                             MedicalStandard = 21,// по справочнику 211010
-                            MkbCode = "11730",
+                            MkbCode = "A00",
                         },
                         Doctor = new MedicalStaff
                         {
@@ -627,7 +627,7 @@ namespace PixServiseTests
                     IdReferralType = 1,
                     IssuedDateTime = new DateTime(2010, 02, 05),
                     HospitalizationOrder = 2,
-                    MkbCode = "11730",
+                    MkbCode = "A00.0",
                 },
                 DepartmentHead = new MedicalStaff
                 {
@@ -1026,7 +1026,7 @@ namespace PixServiseTests
                 Author = CaseAmbData.author,
                 LegalAuthenticator = CaseAmbData.legalAuthenticator,
                 Steps = new StepAmb[] { CaseAmbData.step },
-                MedRecords = new MedRecord[] { MedRecordData.tfomsInfo/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                MedRecords = new MedRecord[] { MedRecordData.clinicMainDiagnosis/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
                     MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
                     MedRecordData.LaboratoryReport, MedRecordData.service*/ },
