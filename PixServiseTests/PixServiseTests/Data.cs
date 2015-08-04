@@ -44,7 +44,10 @@ namespace PixServiseTests
         public static AppointedMedication appointedMedication { get; set; }
         public static DeathInfo deathInfo { get; set; }
         public static Diagnosis diagnosis { get; set; }
+        public static ClinicMainDiagnosis clinicMainDiagnosis { get; set; }
         public static MedDocument medDocument { get; set; }
+
+        public static AnatomopathologicalClinicMainDiagnosis anatomopathologicalClinicMainDiagnosis { get; set; }
     }
 
     public static class CaseStatData
@@ -238,7 +241,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2010, 11, 1),
                 DateEnd = new DateTime(2010, 11, 10),
-                IdServiceType = "1",
+                IdServiceType = "1088",
                 ServiceName = "Название услуги",
                 Performer = new Participant
                 {
@@ -271,6 +274,183 @@ namespace PixServiseTests
                     Quantity = 1,
                     Tariff = new Decimal(1000),
                 },
+            };
+
+            CaseAmbData.tfomsInfo = new TfomsInfo
+            {
+                IdTfomsType = 211010,
+                Count = 1,
+                Tariff = 100,
+            };
+
+            CaseAmbData.appointedMedication = new AppointedMedication
+            {
+                AnatomicTherapeuticChemicalClassification = "1",
+                DaysCount = 5,
+                IssuedDate = new DateTime(2010, 03, 06),
+                MedicineIssueType = 1, // по справочнику строка PRE или CURE 
+                MedicineName = "Валерьянка",
+                MedicineType = 136,
+                MedicineUseWay = 1,
+                Number = "324465",
+                Seria = "3242309",
+                CourseDose = new Quantity
+                {
+                    IdUnit = 1,
+                    Value = 20,
+                },
+                DayDose = new Quantity
+                {
+                    IdUnit = 16,
+                    Value = 20
+                },
+                OneTimeDose = new Quantity
+                {
+                    IdUnit = 16,
+                    Value = 2,
+                },
+                Doctor = new MedicalStaff
+                {
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                    IdSpeciality = 29,
+                    IdPosition = 72,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = "123123123",
+                        Sex = 1,
+                        Birthdate = new DateTime(1973, 01, 07),
+                        //Documents
+                        HumanName = new HumanName
+                        {
+                            FamilyName = "Лукин",
+                            GivenName = "Василий",
+                            MiddleName = "Андреевич",
+                        },
+                    }
+                }
+            };
+
+            CaseAmbData.deathInfo = new DeathInfo
+            {
+                MkbCode = "11730",
+            };
+
+            CaseAmbData.diagnosis = new Diagnosis
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    IdDiseaseType = 1,
+                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    IdDiagnosisType = 1,
+                    Comment = "Комментарий",
+                    DiagnosisChangeReason = 2,
+                    DiagnosisStage = 1,
+                    IdDispensaryState = 8,
+                    IdTraumaType = 1,
+                    MESImplementationFeature = 10,
+                    MedicalStandard = 21,// по справочнику 211010
+                    MkbCode = "11730",
+                },
+                Doctor = new MedicalStaff
+                {
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                    IdSpeciality = 29,
+                    IdPosition = 72,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = "123123123",
+                        Sex = 1,
+                        Birthdate = new DateTime(1973, 01, 07),
+                        //Documents
+                        HumanName = new HumanName
+                        {
+                            FamilyName = "Лукин",
+                            GivenName = "Василий",
+                            MiddleName = "Андреевич",
+                        },
+                    }
+                }
+            };
+
+            CaseAmbData.clinicMainDiagnosis = new ClinicMainDiagnosis
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    IdDiseaseType = 1,
+                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    IdDiagnosisType = 1,
+                    Comment = "Комментарий",
+                    DiagnosisChangeReason = 2,
+                    DiagnosisStage = 1,
+                    IdDispensaryState = 8,
+                    IdTraumaType = 1,
+                    MESImplementationFeature = 10,
+                    MedicalStandard = 21,// по справочнику 211010
+                    MkbCode = "11730",
+                },
+                Doctor = new MedicalStaff
+                {
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                    IdSpeciality = 29,
+                    IdPosition = 72,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = "123123123",
+                        Sex = 1,
+                        Birthdate = new DateTime(1973, 01, 07),
+                        //Documents
+                        HumanName = new HumanName
+                        {
+                            FamilyName = "Лукин",
+                            GivenName = "Василий",
+                            MiddleName = "Андреевич",
+                        },
+                    }
+                },
+                Complications = new Diagnosis[]
+                 {
+                     new  Diagnosis
+                     {
+                         DiagnosisInfo = new DiagnosisInfo
+                         {
+                            IdDiseaseType = 2,
+                            DiagnosedDate = new DateTime(2010, 02, 02),
+                            IdDiagnosisType = 1,
+                            Comment = "Комментарий",
+                            DiagnosisChangeReason = 2,
+                            DiagnosisStage = 1,
+                            IdDispensaryState = 8,
+                            IdTraumaType = 1,
+                            MESImplementationFeature = 10,
+                            MedicalStandard = 21,// по справочнику 211010
+                            MkbCode = "11730",
+                        },
+                        Doctor = new MedicalStaff
+                        {
+                            IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                            IdSpeciality = 29,
+                            IdPosition = 72,
+                            Person = new PersonWithIdentity
+                            {
+                                IdPersonMis = "123123123",
+                                Sex = 1,
+                                Birthdate = new DateTime(1973, 01, 07),
+                                //Documents
+                                HumanName = new HumanName
+                                {
+                                    FamilyName = "Лукин",
+                                    GivenName = "Василий",
+                                    MiddleName = "Андреевич",
+                                },
+                            }
+                         }
+                     }
+                 }
+            };
+
+            CaseAmbData.anatomopathologicalClinicMainDiagnosis = new AnatomopathologicalClinicMainDiagnosis
+            {
+
             };
 
             CaseAmbData.caseAmb = new CaseAmb
