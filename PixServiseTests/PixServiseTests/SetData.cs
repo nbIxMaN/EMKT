@@ -401,5 +401,10 @@ namespace PixServiseTests
 
             return caseAmb;
         }
+
+        public CaseStat FullCaseStatSet()
+        {
+            return CaseStatData.caseStat;
+        }
     }
 }

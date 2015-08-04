@@ -36,34 +36,11 @@ namespace PixServiseTests
         //public static MedicalStaff doctor { get; set; }
         //public static PersonWithIdentity doctorPerson { get; set; }
         //public static HumanName doctorName { get; set; }
-    }
 
-    public static class MedRecordData
-    {
-        public static Service service { get; set; }
-        public static TfomsInfo tfomsInfo { get; set; }
-        public static AppointedMedication appointedMedication { get; set; }
-        public static DeathInfo deathInfo { get; set; }
-        public static Diagnosis diagnosis { get; set; }
-        public static ClinicMainDiagnosis clinicMainDiagnosis { get; set; }
         public static MedDocument medDocument { get; set; }
-        public static DispensaryOne dispensaryOne { get; set; }
-        public static Referral referral { get; set; }
-        public static SickList sickList { get; set; }
-        public static DischargeSummary dischargeSummary { get; set; }
-        public static LaboratoryReport LaboratoryReport { get; set; }
-        public static ConsultNote consultNote { get; set; }
-        public static AnatomopathologicalClinicMainDiagnosis anatomopathologicalClinicMainDiagnosis { get; set; }
     }
 
-    public static class DocumentData
-    {
-        public static IdentityDocument Passport { get; set; }
-        public static IdentityDocument SNILS { get; set; }
-        public static IdentityDocument OldOMS { get; set; }
-        public static IdentityDocument SingleOMS { get; set; }
-        public static IdentityDocument OtherDoc { get; set; }
-    }
+    
 
     public static class CaseStatData
     {
@@ -92,9 +69,34 @@ namespace PixServiseTests
         //public static PersonWithIdentity doctorPerson { get; set; }
         //public static HumanName doctorName { get; set; }
 
+        public static MedDocument medDocument { get; set; }
+    }
 
+    public static class MedRecordData
+    {
+        public static Service service { get; set; }
+        public static TfomsInfo tfomsInfo { get; set; }
+        public static AppointedMedication appointedMedication { get; set; }
+        public static DeathInfo deathInfo { get; set; }
+        public static Diagnosis diagnosis { get; set; }
+        public static ClinicMainDiagnosis clinicMainDiagnosis { get; set; }
+        public static MedDocument medDocument { get; set; }
+        public static DispensaryOne dispensaryOne { get; set; }
+        public static Referral referral { get; set; }
+        public static SickList sickList { get; set; }
+        public static DischargeSummary dischargeSummary { get; set; }
+        public static LaboratoryReport LaboratoryReport { get; set; }
+        public static ConsultNote consultNote { get; set; }
+        public static AnatomopathologicalClinicMainDiagnosis anatomopathologicalClinicMainDiagnosis { get; set; }
+    }
 
-        public static MedRecord medRecord { get; set; }
+    public static class DocumentData
+    {
+        public static IdentityDocument Passport { get; set; }
+        public static IdentityDocument SNILS { get; set; }
+        public static IdentityDocument OldOMS { get; set; }
+        public static IdentityDocument SingleOMS { get; set; }
+        public static IdentityDocument OtherDoc { get; set; }
     }
 
     [TestFixture]
@@ -169,7 +171,7 @@ namespace PixServiseTests
                 ServiceName = "Название услуги",
                 Performer = new Participant
                 {
-                    /*IdRole = 3,
+                    IdRole = 3,
                      Doctor = new MedicalStaff
                      {
                          IdLpu = "1.2.643.5.1.13.3.25.78.118",
@@ -192,16 +194,16 @@ namespace PixServiseTests
                                  MiddleName = "Андреевич",
                              },
                          }
-                     }*/
+                     }
                  },
-               /*  PaymentInfo = new PaymentInfo
+                PaymentInfo = new PaymentInfo
                  {
                      HealthCareUnit = 1,
                      IdPaymentType = 1,
                      PaymentState = 1,
                      Quantity = 1,
                      Tariff = new Decimal(1000),
-                 },*/
+                 },
                 
             };
 
@@ -447,7 +449,7 @@ namespace PixServiseTests
                             IdDispensaryState = 8,
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
-                            MedicalStandard = 21,// по справочнику 211010
+                            MedicalStandard = 21101,// по справочнику 211010
                             MkbCode = "A00",
                         },
                         Doctor = new MedicalStaff
@@ -592,7 +594,6 @@ namespace PixServiseTests
                 RelatedID = "relatedId02890",
                 Attachment = new MedDocument.DocumentAttachment
                 {
-
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
@@ -1248,10 +1249,10 @@ namespace PixServiseTests
                 Author = CaseStatData.author,
                 LegalAuthenticator = CaseStatData.legalAuthenticator,
                 Steps = new StepStat[] { CaseStatData.step },
-                MedRecords = new MedRecord[] { MedRecordData.service, MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                MedRecords = new MedRecord[] { MedRecordData.tfomsInfo/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
                     MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
-                    MedRecordData.LaboratoryReport, MedRecordData.service },
+                    MedRecordData.LaboratoryReport, MedRecordData.service */},
 
             };
         }
@@ -1269,12 +1270,12 @@ namespace PixServiseTests
             };
 
             SetMedRecord();
+
             SetDocument();
 
             SetAmbCase();
 
             SetStatCase();
-
         }
     }
 }
