@@ -190,6 +190,123 @@ namespace PixServiseTests
             }
             return null;
         }
+        public void ChangeUpdateStatCase(string guid, CaseStat cs)
+        {
+            GUID = guid.ToLower();
+            if (cs != null)
+            {
+                if (cs.DeliveryCode != null)
+                    this.caseStat.DeliveryCode = cs.DeliveryCode;
+                if (cs.IdIntoxicationType != null)
+                    this.caseStat.IdIntoxicationType = cs.IdIntoxicationType;
+                if (cs.IdPatientConditionOnAdmission != null)
+                    this.caseStat.IdPatientConditionOnAdmission = cs.IdPatientConditionOnAdmission;
+                if (cs.IdTypeFromDiseaseStart != null)
+                    this.caseStat.IdTypeFromDiseaseStart = cs.IdTypeFromDiseaseStart;
+                if (cs.IdTransportIntern != null)
+                    this.caseStat.IdTransportIntern = cs.IdTransportIntern;
+                if (cs.IdHospChannel != null)
+                    this.caseStat.IdHospChannel = cs.IdHospChannel;
+                if (cs.RW1Mark != null)
+                    this.caseStat.RW1Mark = cs.RW1Mark;
+                if (cs.AIDSMark != null)
+                    this.caseStat.AIDSMark = cs.AIDSMark;
+                caseBase.UpdateCaseBase(guid, cs);
+                if (cs.MedRecords != null)
+                {
+                    List<TestMedRecord> newMedRecords = new List<TestMedRecord>();
+                    TestTfomsInfo tfi = null;
+                    TestClinicMainDiagnosis cmd = null;
+                    TestDischargeSummary ds = null;
+                    TestConsultNote cn = null;
+                    //TestDispensaryOne d1 = null;
+                    foreach (object i in cs.MedRecords)
+                    {
+                        Service ser = i as Service;
+                        if (ser != null)
+                            newMedRecords.Add(new TestService(ser));
+                        TfomsInfo tf = i as TfomsInfo;
+                        if (tf != null)
+                            tfi = new TestTfomsInfo(tf);
+                        Diagnosis diag = i as Diagnosis;
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
+                            newMedRecords.Add(new TestDiagnosis(diag));
+                        ClinicMainDiagnosis cd = i as ClinicMainDiagnosis;
+                        if ((cd != null) && (cs.HospResult != IdDeath) && (cd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
+                            cmd = new TestClinicMainDiagnosis(cd);
+                        ClinicMainDiagnosis ca = i as ClinicMainDiagnosis;
+                        if ((ca != null) && (cs.HospResult == IdDeath) && (ca.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
+                            cmd = new TestClinicMainDiagnosis(ca);
+                        Referral r = i as Referral;
+                        if (r != null)
+                            newMedRecords.Add(new TestReferral(r));
+                        SickList sl = i as SickList;
+                        if (sl != null)
+                            newMedRecords.Add(new TestSickList(sl));
+                        DischargeSummary pds = i as DischargeSummary;
+                        if (pds != null)
+                            ds = new TestDischargeSummary(pds);
+                        LaboratoryReport lr = i as LaboratoryReport;
+                        if (lr != null)
+                            newMedRecords.Add(new TestLaboratoryReport(lr));
+                        ConsultNote pcn = i as ConsultNote;
+                        if (pcn != null)
+                            cn = new TestConsultNote(pcn);
+                        //DispensaryOne d = i as DispensaryOne;
+                        //if ((d != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
+                        //    d1 = new TestDispensaryOne(d);
+                    }
+                    foreach (object i in this.medRecords)
+                    {
+                        TestService ser = i as TestService;
+                        if (ser != null)
+                            newMedRecords.Add(ser);
+                        TestTfomsInfo tf = i as TestTfomsInfo;
+                        if ((tfi != null) && (tf != null))
+                            newMedRecords.Add(tf);
+                        else
+                            if (tfi != null)
+                                newMedRecords.Add(tfi);
+                        TestDiagnosis diag = i as TestDiagnosis;
+                        if (diag != null)
+                            newMedRecords.Add(diag);
+                        TestClinicMainDiagnosis cm = i as TestClinicMainDiagnosis;
+                        if (cmd != null)
+                            newMedRecords.Add(cmd);
+                        else
+                            if (cm != null)
+                                newMedRecords.Add(cm);
+                        TestReferral r = i as TestReferral;
+                        if (r != null)
+                            newMedRecords.Add(r);
+                        TestSickList sl = i as TestSickList;
+                        if (sl != null)
+                            newMedRecords.Add(sl);
+                        TestDischargeSummary pds = i as TestDischargeSummary;
+                        if (ds != null)
+                            newMedRecords.Add(ds);
+                        else
+                            if (pds != null)
+                                newMedRecords.Add(pds);
+                        TestLaboratoryReport lr = i as TestLaboratoryReport;
+                        if (lr != null)
+                            newMedRecords.Add(lr);
+                        TestConsultNote pcn = i as TestConsultNote;
+                        if (cn != null)
+                            newMedRecords.Add(cn);
+                        else
+                            if (pcn != null)
+                                newMedRecords.Add(pcn);
+                        //TestDispensaryOne d = i as TestDispensaryOne;
+                        //if (d1 != null)
+                        //    newMedRecords.Add(d1);
+                        //else
+                        //    if (d != null)
+                        //        newMedRecords.Add(d);
+                    }
+                }
+            }
+        }
         public void FindMismatch(TestStatCase cs)
         {
             if (this.caseStat.DeliveryCode != cs.caseStat.DeliveryCode)

@@ -195,75 +195,94 @@ namespace PixServiseTests
                 if (ca.MedRecords != null)
                 {
                     List<TestMedRecord> newMedRecords = new List<TestMedRecord>();
-                    TfomsInfo tfi;
-                    DeathInfo di;
-                    ClinicMainDiagnosis cmd;
-                    DischargeSummary ds;
-                    ConsultNote cn;
-                    DispensaryOne d1;
+                    TestTfomsInfo tfi = null;
+                    TestClinicMainDiagnosis cmd = null;
+                    TestDischargeSummary ds = null;
+                    TestConsultNote cn = null;
+                    TestDispensaryOne d1 = null;
                     foreach (object i in ca.MedRecords)
                     {
                         Service ser = i as Service;
                         if (ser != null)
                             newMedRecords.Add(new TestService(ser));
-                        tfi = i as TfomsInfo;
+                        TfomsInfo tf = i as TfomsInfo;
+                        if (tf != null)
+                            tfi = new TestTfomsInfo(tf);
                         Diagnosis diag = i as Diagnosis;
                         if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             newMedRecords.Add(new TestDiagnosis(diag));
                         ClinicMainDiagnosis cm = i as ClinicMainDiagnosis;
                         if ((cm != null) && (cm.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
-                            cmd = cm;
+                            cmd = new TestClinicMainDiagnosis(cm);
                         Referral r = i as Referral;
                         if (r != null)
                             newMedRecords.Add(new TestReferral(r));
                         SickList sl = i as SickList;
                         if (sl != null)
                             newMedRecords.Add(new TestSickList(sl));
-                        ds = i as DischargeSummary;
+                        DischargeSummary pds = i as DischargeSummary;
+                        if (pds != null)
+                            ds = new TestDischargeSummary(pds);
                         LaboratoryReport lr = i as LaboratoryReport;
                         if (lr != null)
                             newMedRecords.Add(new TestLaboratoryReport(lr));
-                        cn = i as ConsultNote;
+                        ConsultNote pcn = i as ConsultNote;
+                        if (pcn != null)
+                            cn = new TestConsultNote(pcn);
                         DispensaryOne d = i as DispensaryOne;
                         if ((d != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
-                            newMedRecords.Add(new TestDispensaryOne(d));
+                            d1 = new TestDispensaryOne(d);
                     }
-                    foreach (object i in ca.MedRecords)
+                    foreach (object i in this.medRecords)
                     {
-                        Service ser = i as Service;
+                        TestService ser = i as TestService;
                         if (ser != null)
-                            newMedRecords.Add(new TestService(ser));
-                        tfi = i as TfomsInfo;
-                        if (tfi != null)
-                            newMedRecords.Add(new TestTfomsInfo(tfi));
-                        Diagnosis diag = i as Diagnosis;
-                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
-                            newMedRecords.Add(new TestDiagnosis(diag));
-                        cmd = i as ClinicMainDiagnosis;
-                        if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
-                            newMedRecords.Add(new TestClinicMainDiagnosis(cmd));
-                        Referral r = i as Referral;
+                            newMedRecords.Add(ser);
+                        TestTfomsInfo tf = i as TestTfomsInfo;
+                        if ((tfi != null) && (tf != null))
+                            newMedRecords.Add(tf);
+                        else
+                            if (tfi != null)
+                                newMedRecords.Add(tfi);
+                        TestDiagnosis diag = i as TestDiagnosis;
+                        if (diag != null)
+                            newMedRecords.Add(diag);
+                        TestClinicMainDiagnosis cm = i as TestClinicMainDiagnosis;
+                        if (cmd != null)
+                            newMedRecords.Add(cmd);
+                        else
+                            if (cm != null)
+                                newMedRecords.Add(cm);
+                        TestReferral r = i as TestReferral;
                         if (r != null)
-                            newMedRecords.Add(new TestReferral(r));
-                        SickList sl = i as SickList;
+                            newMedRecords.Add(r);
+                        TestSickList sl = i as TestSickList;
                         if (sl != null)
-                            newMedRecords.Add(new TestSickList(sl));
-                        ds = i as DischargeSummary;
+                            newMedRecords.Add(sl);
+                        TestDischargeSummary pds = i as TestDischargeSummary;
                         if (ds != null)
-                            newMedRecords.Add(new TestDischargeSummary(ds));
-                        LaboratoryReport lr = i as LaboratoryReport;
+                            newMedRecords.Add(ds);
+                        else
+                            if (pds != null)
+                                newMedRecords.Add(pds);
+                        TestLaboratoryReport lr = i as TestLaboratoryReport;
                         if (lr != null)
-                            newMedRecords.Add(new TestLaboratoryReport(lr));
-                        cn = i as ConsultNote;
+                            newMedRecords.Add(lr);
+                        TestConsultNote pcn = i as TestConsultNote;
                         if (cn != null)
-                            newMedRecords.Add(new TestConsultNote(cn));
-                        d1 = i as DispensaryOne;
-                        if ((d1 != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
-                            newMedRecords.Add(new TestDispensaryOne(d1));
+                            newMedRecords.Add(cn);
+                        else
+                            if (pcn != null)
+                                newMedRecords.Add(pcn);
+                        TestDispensaryOne d = i as TestDispensaryOne;
+                        if (d1 != null)
+                            newMedRecords.Add(d1);
+                        else
+                            if (d != null)
+                                newMedRecords.Add(d);
                     }
                 }
             }
-
         }
         public void FindMismatch(TestAmbCase ac)
         {
