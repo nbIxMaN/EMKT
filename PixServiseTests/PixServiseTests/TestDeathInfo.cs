@@ -50,14 +50,12 @@ namespace PixServiseTests
             TestDeathInfo p = obj as TestDeathInfo;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравение TestDeathInfo с другим типом");
                 return false;
             }
             if (this.document == p.document)
                 return true;
             if ((this.document == null) || (p.document == null))
             {
-                Global.errors3.Add("Сравнение TestDeathInfo = null с TestDeathInfo != null");
                 return false;
             }
             if (this.document.MkbCode == p.document.MkbCode)

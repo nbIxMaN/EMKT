@@ -10,6 +10,7 @@ namespace PixServiseTests
 {
     class TestDiagnosis : TestMedRecord
     {
+        public const byte IdClinicMainDiagnosis = 1;
         TestDiagnosisInfo info;
         Diagnosis document;
         TestDoctor doctor;
@@ -29,7 +30,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "'";
+                    string findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "'";
                     SqlCommand TDcommand = new SqlCommand(findTD, connection);
                     using (SqlDataReader TDReader = TDcommand.ExecuteReader())
                     {
@@ -50,26 +51,18 @@ namespace PixServiseTests
             else
                 return null;
         }
-        private void FindMismatch(TestDiagnosis td)
-        {
-            if (!Global.IsEqual(this.doctor, td.doctor))
-                Global.errors3.Add("Несовпадение doctor TestDiagnosis");
-            if (!Global.IsEqual(this.info, td.info))
-                Global.errors3.Add("Несовпадение info TestDiagnosis");
-        }
+
         public override bool Equals(Object obj)
         {
             TestDiagnosis p = obj as TestDiagnosis;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравение TestDiagnosis с другим типом");
                 return false;
             }
             if (this.info == p.info)
                 return true;
             if ((this.info == null) || (p.info == null))
             {
-                Global.errors3.Add("Сравнение TestDiagnosis = null с TestDiagnosis != null");
                 return false;
             }
             if (Global.IsEqual(this.info, p.info)&&
@@ -79,7 +72,6 @@ namespace PixServiseTests
             }
             else
             {
-                this.FindMismatch(p);
                 return false;
             }
         }

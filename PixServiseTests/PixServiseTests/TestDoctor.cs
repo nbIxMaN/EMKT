@@ -23,28 +23,6 @@ namespace PixServiseTests
             }
         }
 
-        //static private string GetDoctorId(string mis)
-        //{
-        //    string patientId = "";
-        //    using (SqlConnection connection = Global.GetSqlConnection())
-        //    {
-        //        string findIdPersonString =
-        //                "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "'";
-        //        SqlCommand command = new SqlCommand(findIdPersonString, connection);
-        //        using (SqlDataReader IdPerson = command.ExecuteReader())
-        //        {
-        //            while (IdPerson.Read())
-        //            {
-        //                patientId = IdPerson["IdPerson"].ToString();
-        //            }
-        //        }
-        //    }
-        //    if (patientId != "")
-        //        return patientId;
-        //    else
-        //        return null;
-        //}
-
         static public TestDoctor BuildTestDoctorFromDataBase(string doctorId)
         {
             if (doctorId != null)

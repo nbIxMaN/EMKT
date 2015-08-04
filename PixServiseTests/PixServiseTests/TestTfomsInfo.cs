@@ -61,7 +61,6 @@ namespace PixServiseTests
                 return true;
             if ((this.document == null) || (p.document == null))
             {
-                Global.errors3.Add("Сравнение TestTfomsInfo = null с TestTfomsInfo != null");
                 return false;
             }
             if ((this.document.Count == p.document.Count) &&

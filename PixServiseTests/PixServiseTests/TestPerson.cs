@@ -139,10 +139,8 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение Sex TestPerson");
             if (this.person.IdPersonMis != b.person.IdPersonMis)
                 Global.errors3.Add("Несовпадение IdPersonMis TestPerson");
-            if (!Global.IsEqual(this.docs, b.docs))
-                Global.errors3.Add("Несовпадение Documents TestPerson");
-            if (!Global.IsEqual(this.name, b.name))
-                Global.errors3.Add("Несовпадение Name TestPerson");
+            if (Global.GetLength(this.docs) != Global.GetLength(b.docs))
+                Global.errors3.Add("Несовпадение длинны Documents TestPerson");
         }
 
         public bool CheckPersonInDataBase()

@@ -20,6 +20,21 @@ namespace PixServiseTests
                 return ErrorsToString();
             }
         }
+        static public int GetLength(object a)
+        {
+            if (a == null)
+            {
+                return 0;
+            }
+            else
+            {
+                Array arrayA = a as Array;
+                if (arrayA != null)
+                    return arrayA.Length;
+                else
+                    return 1;
+            }
+        }
         static private string _connectionPath =
             "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
         static public SqlConnection GetSqlConnection()

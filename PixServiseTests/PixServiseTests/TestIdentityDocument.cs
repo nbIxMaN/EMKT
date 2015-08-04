@@ -134,14 +134,12 @@ namespace PixServiseTests
             TestIdentityDocument p = obj as TestIdentityDocument;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравение TestDocument с другим типом");
                 return false;
             }
             if (this.document == p.document)
                 return true;
             if ((this.document == null) || (p.document == null))
             {
-                Global.errors3.Add("Сравнение TestDocument = null с TestDocument != null");
                 return false;
             }
             if ((this.document.DocN == p.document.DocN) &&

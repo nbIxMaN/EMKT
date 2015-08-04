@@ -92,7 +92,6 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение Tariff TestService");
             if (this.document.ServiceName != s.document.ServiceName)
                 Global.errors3.Add("Несовпадение ServiceName TestService");
-            Global.IsEqual(this.doctor, s.doctor);
         }
         public bool CheckTestServiceInDataBase(string caseId)
         {
@@ -112,14 +111,12 @@ namespace PixServiseTests
             TestService p = obj as TestService;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравение TestService с другим типом");
                 return false;
             }
             if (this.document == p.document)
                 return true;
             if ((this.document == null) || (p.document == null))
             {
-                Global.errors3.Add("Сравнение TestService = null с TestService != null");
                 return false;
             }
             if ((this.document.DateEnd != p.document.DateEnd) &&

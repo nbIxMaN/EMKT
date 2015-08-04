@@ -41,10 +41,10 @@ namespace PixServiseTests
                         if (am != null)
                             records.Add(new TestAppointedMedication(am));
                         Diagnosis diag = i as Diagnosis;
-                        if (diag != null)
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestDiagnosis(diag));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
-                        if (cmd != null)
+                        if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd));
                         Referral r = i as Referral;
                         if (r != null)
@@ -56,7 +56,17 @@ namespace PixServiseTests
                 }
             }
         }
-        static public List<TestAmbStep> BuildAmbTestStepsFromDataBase(string idCase, string caseLpu, string patientId)
+        static public TestAmbStep BuildAmbTestStepsFromDataBase(string guid, string patientMis, string idLpu, string caseMis, string stepMis)
+        {
+            string patientId = TestPerson.GetPersonId(guid, idLpu, patientMis);
+            if (patientId != null)
+            {
+                string caseId = TestCaseBase.GetCaseId(guid, idLpu, caseMis, patientId);
+                return (BuildAmbTestStepsFromDataBase(caseId, idLpu).Last(st => st.step.step.IdStepMis == stepMis));
+            }
+            return null;
+        }
+        static public List<TestAmbStep> BuildAmbTestStepsFromDataBase(string idCase, string caseLpu)
         {
             List<TestAmbStep> ambSteps = new List<TestAmbStep>();
             if (idCase != string.Empty)
@@ -102,6 +112,8 @@ namespace PixServiseTests
                                 List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(tlr, null))
                                     st.records.AddRange(trl);
+                                if (st.records.Count == 0)
+                                    st.records = null;
                                 ambSteps.Add(st);
                             }
                         }
@@ -119,9 +131,16 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение IdVisitPlace TestAmbStep");
             if (this.ambStep.IdVisitPurpose != astep.ambStep.IdVisitPurpose)
                 Global.errors3.Add("несовпадение IdVisitPurpose TestAmbStep");
-            Global.IsEqual(this.step, astep.step);
+            if (Global.GetLength(this.medRecords) != Global.GetLength(astep.medRecords))
+                Global.errors3.Add("несовпадение длинны medRecords TestAmbStep");
         }
-        
+
+        public bool CheckStepInDataBase(string guid, string patientMis, string idLpu, string caseMis)
+        {
+            TestAmbStep tas = TestAmbStep.BuildAmbTestStepsFromDataBase(guid, patientMis, idLpu, caseMis, this.step.step.IdStepMis);
+            return (this == tas);
+        }
+
         public override bool Equals(Object obj)
         {
             TestAmbStep p = obj as TestAmbStep;
@@ -137,7 +156,8 @@ namespace PixServiseTests
             }
             if ((this.ambStep.IdVisitPlace == p.ambStep.IdVisitPlace) &&
                 (this.ambStep.IdVisitPurpose == p.ambStep.IdVisitPurpose) &&
-                Global.IsEqual(this.step, p.step))
+                Global.IsEqual(this.step, p.step)&&
+                Global.IsEqual(this.medRecords, p.medRecords))
             {
                 return true;
             }

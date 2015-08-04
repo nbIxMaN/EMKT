@@ -41,10 +41,10 @@ namespace PixServiseTests
                         if (am != null)
                             records.Add(new TestAppointedMedication(am));
                         Diagnosis diag = i as Diagnosis;
-                        if (diag != null)
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestDiagnosis(diag));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
-                        if (cmd != null)
+                        if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd));
                         Referral r = i as Referral;
                         if (r != null)
@@ -56,7 +56,19 @@ namespace PixServiseTests
                 }
             }
         }
-        static public List<TestStatStep> BuildStatStepsFromDataBase(string idCase, string caseLpu, string patientId)
+
+        static public TestStatStep BuildStatStepsFromDataBase(string guid, string patientMis, string idLpu, string caseMis, string stepMis)
+        {
+            string patientId = TestPerson.GetPersonId(guid, idLpu, patientMis);
+            if (patientId != null)
+            {
+                string caseId = TestCaseBase.GetCaseId(guid, idLpu, caseMis, patientId);
+                return (BuildStatStepsFromDataBase(caseId, idLpu).Last<TestStatStep>(s => s.step.step.IdStepMis == stepMis));
+            }
+            return null;
+        }
+
+        static public List<TestStatStep> BuildStatStepsFromDataBase(string idCase, string caseLpu)
         {
             List<TestStatStep> statSteps = new List<TestStatStep>();
             if (idCase != string.Empty)
@@ -149,19 +161,16 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение IdRegimen TestStatStep");
             if (this.statStep.WardNumber != astep.statStep.WardNumber)
                 Global.errors3.Add("несовпадение WardNumber TestStatStep");
-            Global.IsEqual(this.step, astep.step);
+            if (Global.GetLength(this.medRecords) != Global.GetLength(astep.medRecords))
+                Global.errors3.Add("несовпадение длинны MedRecords TestStatStep");
         }
-        
-        //public bool CheckAmbStepsInDataBase(string idStep, string caseLpu)
-        //{
-        //    List<TestStatStep> steps = TestStatStep.BuildStatStepsFromDataBase(idStep, caseLpu);
-        //    foreach (TestStatStep step in steps)
-        //    {
-        //        if (this != step)
-        //            return false;
-        //    }
-        //    return true;
-        //}
+
+        public bool CheckStepInDataBase(string guid, string patientMis, string idLpu, string caseMis)
+        {
+            TestStatStep tss = TestStatStep.BuildStatStepsFromDataBase(guid, patientMis, idLpu, caseMis, this.step.step.IdStepMis);
+            return (this == tss);
+        }
+
         public override bool Equals(Object obj)
         {
             TestStatStep p = obj as TestStatStep;
@@ -182,7 +191,8 @@ namespace PixServiseTests
             (this.statStep.IdHospitalDepartment == p.statStep.IdHospitalDepartment) &&
             (this.statStep.IdRegimen == p.statStep.IdRegimen) &&
             (this.statStep.WardNumber == p.statStep.WardNumber) &&
-            Global.IsEqual(this.step, p.step))
+            Global.IsEqual(this.step, p.step)&&
+            Global.IsEqual(this.medRecords, p.medRecords))
             {
                 return true;
             }

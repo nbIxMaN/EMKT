@@ -10,6 +10,7 @@ namespace PixServiseTests
 {
     class TestStatCase
     {
+        private const byte IdDeath = 6;
         public string GUID;
         public CaseStat caseStat;
         public List<TestMedRecord> records;
@@ -64,13 +65,13 @@ namespace PixServiseTests
                         if (di != null)
                             records.Add(new TestDeathInfo(di));
                         Diagnosis diag = i as Diagnosis;
-                        if (diag != null)
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestDiagnosis(diag));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
-                        if (cmd != null)
+                        if ((cmd != null) && (cs.HospResult != IdDeath) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd));
                         AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
-                        if (acmd != null)
+                        if ((acmd != null) && (cs.HospResult == IdDeath) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(acmd));
                         Referral r = i as Referral;
                         if (r != null)
@@ -140,7 +141,7 @@ namespace PixServiseTests
                     }
                     TestStatCase statcase = new TestStatCase(guid, ca);
                     statcase.caseBase = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idlpu, mis, patientId);
-                    statcase.statSteps = TestStatStep.BuildStatStepsFromDataBase(caseId, ca.IdLpu, patientId);
+                    statcase.statSteps = TestStatStep.BuildStatStepsFromDataBase(caseId, ca.IdLpu);
                     List<TestStepBase> st = TestStepBase.BuildTestStepsFromDataBase(caseId, ca.IdLpu);
                     if (st != null)
                     {
@@ -204,12 +205,10 @@ namespace PixServiseTests
                 Global.errors2.Add("несовпадение RW1Mark caseStat");
             if (this.caseStat.AIDSMark != cs.caseStat.AIDSMark)
                 Global.errors2.Add("несовпадение AIDSMark caseStat");
-            if (!Global.IsEqual(this.caseBase, cs.caseBase))
-                Global.errors2.Add("несовпадение caseBase caseStat");
-            if (!Global.IsEqual(this.medRecords, cs.medRecords))
-                Global.errors2.Add("несовпадение medRecords caseStat");
-            if (!Global.IsEqual(this.steps, cs.steps))
-                Global.errors2.Add("несовпадение statSteps caseStat");
+            if (Global.GetLength(this.medRecords) != Global.GetLength(cs.medRecords))
+                Global.errors2.Add("несовпадение длинны medRecords caseStat");
+            if (Global.GetLength(this.steps) != Global.GetLength(cs.steps))
+                Global.errors2.Add("несовпадение длинны statSteps caseStat");
         }
         public bool CheckCaseInDataBase()
         {

@@ -67,14 +67,12 @@ namespace PixServiseTests
             TestHumanName p = obj as TestHumanName;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestHumanName с другим типом");
                 return false;
             }
             if (this.humanName == p.humanName)
                 return true;
             if ((this.humanName == null) || (p.humanName == null))
             {
-                Global.errors3.Add("Сравнение TestBirthplace = null с TestBirthplace != null");
                 return false;
             }
             if ((this.humanName.FamilyName == p.humanName.FamilyName) &&

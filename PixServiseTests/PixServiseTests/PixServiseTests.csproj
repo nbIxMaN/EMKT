@@ -100,6 +100,7 @@
     <Compile Include="TestPrivilege.cs" />
     <Compile Include="TestRecommendation.cs" />
     <Compile Include="TestReferral.cs" />
+    <Compile Include="TestReferralTuple.cs" />
     <Compile Include="TestService.cs" />
     <Compile Include="TestSickList.cs" />
     <Compile Include="TestStatCase.cs" />

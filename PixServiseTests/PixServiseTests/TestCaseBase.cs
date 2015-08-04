@@ -23,7 +23,13 @@ namespace PixServiseTests
         {
             GUID = guid.ToLower();
             if (cb != null)
+            {
                 caseBase = cb;
+                if (caseBase.OpenDate == null)
+                    caseBase.OpenDate = DateTime.MinValue;
+                if (caseBase.CloseDate == null)
+                    caseBase.CloseDate = DateTime.MinValue;
+            }
             if (cb.Author != null)
             {
                 autor = new TestParticipant(cb.Author);
@@ -71,7 +77,7 @@ namespace PixServiseTests
                         InstId = IdInstitutional["IdInstitution"].ToString();
                     }
                     findIdCaseString =
-                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "'";
+                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
                 }
                 SqlCommand command = new SqlCommand(findIdCaseString, connection);
                 using (SqlDataReader IdCaseReader = command.ExecuteReader())
@@ -236,19 +242,7 @@ namespace PixServiseTests
             if (this.caseBase.IdPaymentType != cb.caseBase.IdPaymentType)
                 Global.errors3.Add("несовпадение IdPaymentType TestCaseBase");
             if (this.caseBase.OpenDate != cb.caseBase.OpenDate)
-                Global.errors3.Add("несовпадение OpenDate TestCaseBase");
-            if (!Global.IsEqual(this.doctorInCharge, cb.doctorInCharge))
-                Global.errors3.Add("несовпадение doctorInCharge TestCaseBase");
-            if (!Global.IsEqual(this.guardian, cb.guardian))
-                Global.errors3.Add("несовпадение guardian TestCaseBase");
-            if (!Global.IsEqual(this.patient, cb.patient))
-                Global.errors3.Add("несовпадение patient TestCaseBase");
-            if (!Global.IsEqual(this.authenticator, cb.authenticator))
-                Global.errors3.Add("несовпадение authenticator TestCaseBase");
-            if (!Global.IsEqual(this.autor, cb.autor))
-                Global.errors3.Add("несовпадение autor TestCaseBase");
-            if (!Global.IsEqual(this.legalAuthenticator, cb.legalAuthenticator))
-                Global.errors3.Add("несовпадение legalAuthenticator TestCaseBase");      
+                Global.errors3.Add("несовпадение OpenDate TestCaseBase");  
         }
 
         public bool CheckCaseBaseInDataBase()
@@ -262,7 +256,6 @@ namespace PixServiseTests
             TestCaseBase p = obj as TestCaseBase;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestCaseBase с другим типом");
                 return false;
             }
             if ((Global.IsEqual(this.doctorInCharge, p.doctorInCharge)) &&

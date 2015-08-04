@@ -50,7 +50,6 @@ namespace PixServiseTests
             {
                 if (this.participant.IdRole != p.participant.IdRole)
                     Global.errors3.Add("Несовпадение IdRole TestParticipant");
-                Global.IsEqual(this.doctor, p.doctor);
             }
         }
 
@@ -70,14 +69,13 @@ namespace PixServiseTests
             TestParticipant p = obj as TestParticipant;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestParticipant с другим типом");
                 return false;
             }
             if (this.participant == p.participant)
                 return true;
             if ((this.participant == null) || (p.participant == null))
             {
-                Global.errors3.Add("Сравнение TestDoctor = null с TestDoctor != null");
+                return false;
             }
             if (Global.IsEqual(this.doctor, p.doctor))
             {

@@ -60,7 +60,6 @@ namespace PixServiseTests
                     Global.errors3.Add("Несовпадение IdRelationType TestGuardian");
                 if (this.guardian.UnderlyingDocument != g.guardian.UnderlyingDocument)
                     Global.errors3.Add("Несовпадение UnderlyingDocument TestGuardian");
-                this.person.FindMismatch(g.person);
             }
         }
 
@@ -80,14 +79,13 @@ namespace PixServiseTests
             TestGuardian p = obj as TestGuardian;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestGuardian с другим типом");
                 return false;
             }
             if (this.guardian == p.guardian)
                 return true;
             if ((this.guardian == null) || (p.guardian == null))
             {
-                Global.errors3.Add("Сравнение TestGuardian = null с TestGuardian != null");
+                return false;
             }
             if ((this.guardian.IdRelationType == p.guardian.IdRelationType) &&
                 (this.guardian.UnderlyingDocument == p.guardian.UnderlyingDocument) &&

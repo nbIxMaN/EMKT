@@ -64,10 +64,10 @@ namespace PixServiseTests
                         if (di != null)
                             records.Add(new TestDeathInfo(di));
                         Diagnosis diag = i as Diagnosis;
-                        if (diag != null)
+                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestDiagnosis(diag));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
-                        if (cmd != null)
+                        if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd));
                         Referral r = i as Referral;
                         if (r != null)
@@ -130,7 +130,7 @@ namespace PixServiseTests
                     }
                     TestAmbCase ambcase = new TestAmbCase(guid, ca);
                     ambcase.caseBase = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idlpu, mis, patientId);
-                    ambcase.ambSteps = TestAmbStep.BuildAmbTestStepsFromDataBase(caseId, ca.IdLpu, patientId);
+                    ambcase.ambSteps = TestAmbStep.BuildAmbTestStepsFromDataBase(caseId, ca.IdLpu);
                     List<TestStepBase> st = TestStepBase.BuildTestStepsFromDataBase(caseId, ca.IdLpu);
                     if (st != null)
                     {
@@ -187,9 +187,10 @@ namespace PixServiseTests
                 Global.errors2.Add("несовпадение IdAmbResult caseAmb");
             if (this.caseAmb.IdCasePurpose != ac.caseAmb.IdCasePurpose)
                 Global.errors2.Add("несовпадение IdCasePurpose caseAmb");
-            Global.IsEqual(this.caseBase, ac.caseBase);
-            Global.IsEqual(this.ambSteps, ac.ambSteps);
-            Global.IsEqual(this.records, ac.records);
+            if (Global.GetLength(this.steps) != Global.GetLength(ac.steps))
+                Global.errors2.Add("несовпадение длинны Steps caseAmb");
+            if (Global.GetLength(this.medRecords) != Global.GetLength(ac.medRecords))
+                Global.errors2.Add("Несовпадение длинны MedRecords CaseAmb");
         }
         public bool CheckCaseInDataBase()
         {

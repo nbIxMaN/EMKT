@@ -91,7 +91,6 @@ namespace PixServiseTests
                 return true;
             if ((this.info == null) || (p.info == null))
             {
-                Global.errors3.Add("Сравнение TestDiagnosisInfo = null с TestDiagnosisInfo != null");
                 return false;
             }
             if ((this.info.Comment != p.info.Comment)&&

@@ -66,12 +66,8 @@ namespace PixServiseTests
         }
         private void FindMismatch(TestClinicMainDiagnosis tcmd)
         {
-            if (!Global.IsEqual(this.doctor, tcmd.doctor))
-                Global.errors3.Add("Несовпадение doctor TestClinicMainDiagnosis");
-            if (!Global.IsEqual(this.diagnosInfo, tcmd.diagnosInfo))
-                Global.errors3.Add("Несовпадение diagnosInfo TestClinicMainDiagnosis");
-            if (!Global.IsEqual(this.diagnosis, tcmd.diagnosis))
-                Global.errors3.Add("Несовпадение diagnosis TestClinicMainDiagnosis");
+            if (Global.GetLength(this.diagnosis) != Global.GetLength(tcmd.diagnosis))
+                Global.errors3.Add("Несовпадение длинны diagnosis TestClinicMainDiagnosis");
         }
         public override bool Equals(Object obj)
         {
@@ -84,7 +80,6 @@ namespace PixServiseTests
                 return true;
             if ((this.diagnosInfo == null) || (p.diagnosInfo== null))
             {
-                Global.errors3.Add("Сравнение TestClinicMainDiagnosis = null с TestClinicMainDiagnosis != null");
                 return false;
             }
             if (Global.IsEqual(this.diagnosInfo, p.diagnosInfo)&&
