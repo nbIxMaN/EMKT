@@ -58,6 +58,9 @@ namespace PixServiseTests
                     records = new List<TestMedRecord>();
                     foreach (object i in cs.MedRecords)
                     {
+                        Service ser = i as Service;
+                        if (ser != null)
+                            records.Add(new TestService(ser));
                         TfomsInfo tfi = i as TfomsInfo;
                         if (tfi != null)
                             records.Add(new TestTfomsInfo(tfi));
