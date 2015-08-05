@@ -1127,7 +1127,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddAmbCaseWithLaboratoryReport()
+        public void AddAmbCaseWithLaboratoryReportFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -1150,6 +1150,29 @@ namespace PixServiseTests
         }
 
         [Test]
+        public void AddAmbCaseWithLaboratoryReportMin()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                caseAmb.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinLaboratoryReportSet()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+       /* [Test]
         public void CreateAmbCaseWithLaboratoryReportFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
@@ -1193,7 +1216,7 @@ namespace PixServiseTests
                 Assert.Pass();
             else
                 Assert.Fail(Global.errors);
-        }
+        }*/
 
         [Test]
         public void UpdateAmbCaseWithLaboratoryReportFull()
