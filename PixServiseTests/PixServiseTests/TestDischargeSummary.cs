@@ -62,8 +62,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.dischargeSummary.CreationDate != p.dischargeSummary.CreationDate)&&
-            (this.dischargeSummary.Header != p.dischargeSummary.Header)&&
+            if ((this.dischargeSummary.CreationDate == p.dischargeSummary.CreationDate)&&
+            (this.dischargeSummary.Header == p.dischargeSummary.Header)&&
             Global.IsEqual(this.doctor, p.doctor)&&
             Global.IsEqual(this.attachment, p.attachment))
             {

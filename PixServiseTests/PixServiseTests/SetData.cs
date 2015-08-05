@@ -173,6 +173,52 @@ namespace PixServiseTests
             return stepStat;
         }
 
+        public CaseAmb MinCaseDispSet()
+        {
+            CaseAmb caseDisp = new CaseAmb();
+            caseDisp.OpenDate = CaseDispData.caseDisp.OpenDate;
+            caseDisp.CloseDate = CaseDispData.caseDisp.CloseDate;
+            caseDisp.HistoryNumber = CaseDispData.caseDisp.HistoryNumber;
+            caseDisp.IdCaseMis = CaseDispData.caseDisp.IdCaseMis;
+            caseDisp.IdPaymentType = CaseDispData.caseDisp.IdPaymentType;
+            caseDisp.Confidentiality = CaseDispData.caseDisp.Confidentiality;
+            caseDisp.DoctorConfidentiality = CaseDispData.caseDisp.DoctorConfidentiality;
+            caseDisp.CuratorConfidentiality = CaseDispData.caseDisp.CuratorConfidentiality;
+            caseDisp.IdLpu = CaseDispData.caseDisp.IdLpu;
+            caseDisp.IdCaseResult = CaseDispData.caseDisp.IdCaseResult;
+            caseDisp.Comment = CaseDispData.caseDisp.Comment;
+            caseDisp.IdPatientMis = CaseDispData.caseDisp.IdPatientMis;
+            caseDisp.IdCaseType = CaseDispData.caseDisp.IdCaseType;
+
+            caseDisp.DoctorInCharge = MinDoctorSet();
+
+            caseDisp.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Steps = new StepAmb[]
+            {
+               new StepAmb
+               {
+                    DateStart = CaseAmbData.step.DateStart,
+                    DateEnd = CaseAmbData.step.DateEnd,
+                    IdStepMis = CaseAmbData.step.IdStepMis,
+                    IdPaymentType = CaseAmbData.step.IdPaymentType,
+                    IdVisitPlace = CaseAmbData.step.IdVisitPlace,
+                    IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
+                    Doctor = MinDoctorSet()
+                },
+            };
+
+            return caseDisp;
+        }
+
         public CaseAmb MinCaseAmbSet()
         {
             CaseAmb caseAmb = new CaseAmb();
@@ -214,6 +260,76 @@ namespace PixServiseTests
                     IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
                     Doctor = MinDoctorSet()
                 },
+            };
+
+            return caseAmb;
+        }
+
+        public CaseAmb MinCaseAmbSetForCreate()
+        {
+            CaseAmb caseAmb = new CaseAmb();
+            caseAmb.OpenDate = CaseAmbData.caseAmb.OpenDate;
+            caseAmb.IdCaseMis = CaseAmbData.caseAmb.IdCaseMis;
+            caseAmb.IdPaymentType = CaseAmbData.caseAmb.IdPaymentType;
+            caseAmb.Confidentiality = CaseAmbData.caseAmb.Confidentiality;
+            caseAmb.DoctorConfidentiality = CaseAmbData.caseAmb.DoctorConfidentiality;
+            caseAmb.CuratorConfidentiality = CaseAmbData.caseAmb.CuratorConfidentiality;
+            caseAmb.IdLpu = CaseAmbData.caseAmb.IdLpu;
+            caseAmb.IdPatientMis = CaseAmbData.caseAmb.IdPatientMis;
+            caseAmb.IdCaseType = CaseAmbData.caseAmb.IdCaseType;
+
+            caseAmb.DoctorInCharge = MinDoctorSet();
+
+            caseAmb.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseAmb.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseAmb.Steps = new StepAmb[]
+            {
+               new StepAmb
+               {
+                    DateStart = CaseAmbData.step.DateStart,
+                    DateEnd = CaseAmbData.step.DateEnd,
+                    IdStepMis = CaseAmbData.step.IdStepMis,
+                    IdPaymentType = CaseAmbData.step.IdPaymentType,
+                    IdVisitPlace = CaseAmbData.step.IdVisitPlace,
+                    IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
+                    Doctor = MinDoctorSet()
+                },
+            };
+
+            return caseAmb;
+        }
+
+        public CaseAmb MinCaseAmbSetForClose()
+        {
+            CaseAmb caseAmb = new CaseAmb();
+            caseAmb.CloseDate = CaseAmbData.caseAmb.CloseDate;
+            caseAmb.IdCaseMis = CaseAmbData.caseAmb.IdCaseMis;
+            caseAmb.Confidentiality = CaseAmbData.caseAmb.Confidentiality;
+            caseAmb.DoctorConfidentiality = CaseAmbData.caseAmb.DoctorConfidentiality;
+            caseAmb.CuratorConfidentiality = CaseAmbData.caseAmb.CuratorConfidentiality;
+            caseAmb.IdLpu = CaseAmbData.caseAmb.IdLpu;
+            caseAmb.IdCaseResult = CaseAmbData.caseAmb.IdCaseResult;
+            caseAmb.Comment = CaseAmbData.caseAmb.Comment;
+            caseAmb.IdPatientMis = CaseAmbData.caseAmb.IdPatientMis;
+
+            caseAmb.DoctorInCharge = MinDoctorSet();
+
+            caseAmb.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseAmb.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
             };
 
             return caseAmb;

@@ -22,6 +22,18 @@ namespace PixServiseTests
         public static MedDocument medDocument { get; set; }
     }
 
+    public static class CaseDispData
+    {
+        public static CaseAmb caseDisp { get; set; }
+
+        public static StepAmb step { get; set; }
+        //public static MedicalStaff doctor { get; set; }
+        //public static PersonWithIdentity doctorPerson { get; set; }
+        //public static HumanName doctorName { get; set; }
+
+        public static MedDocument medDocument { get; set; }
+    }
+
     public static class CaseStatData
     {
         public static CaseStat caseStat { get; set; }
@@ -555,6 +567,39 @@ namespace PixServiseTests
                 Comment = "КОММЕНТ",
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
                 IdCaseType = 2,
+
+                IdCaseAidType = 1,
+                IdAmbResult = 1,
+                IdCasePurpose = 1,
+                IsActive = true,
+
+                Guardian = DoctorData.guardian,
+                DoctorInCharge = DoctorData.doctorInCharge,
+                Authenticator = DoctorData.authenticator,
+                Author = DoctorData.author,
+                LegalAuthenticator = DoctorData.legalAuthenticator,
+                Steps = new StepAmb[] { CaseAmbData.step },
+                MedRecords = new MedRecord[] { MedRecordData.clinicMainDiagnosis/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                    MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
+                    MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
+                    MedRecordData.LaboratoryReport, MedRecordData.service*/ },
+
+            };
+            CaseDispData.caseDisp = new CaseAmb
+            {
+                OpenDate = new DateTime(2010, 10, 10),
+                CloseDate = new DateTime(2010, 10, 14),
+                HistoryNumber = "1000121",
+                IdCaseMis = "123412341234",
+                IdPaymentType = 1,
+                Confidentiality = 1,
+                DoctorConfidentiality = 1,
+                CuratorConfidentiality = 1,
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdCaseResult = 1,
+                Comment = "КОММЕНТ",
+                IdPatientMis = PatientData.Patient.IdPatientMIS,
+                IdCaseType = 4,
 
                 IdCaseAidType = 1,
                 IdAmbResult = 1,
