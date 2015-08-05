@@ -22,6 +22,37 @@ namespace PixServiseTests
             return patient;
         }
 
+        public LaboratoryReport MinLaboratoryReportSet()
+        {
+            LaboratoryReport labrep = new LaboratoryReport
+            {
+                CreationDate = MedRecordData.LaboratoryReport.CreationDate,
+                Header = MedRecordData.LaboratoryReport.Header,
+                Author = MinDoctorSet(),
+            };
+            return labrep;
+        }
+
+        public MedicalStaff MinDoctorSet()
+        {
+            MedicalStaff doctor = new MedicalStaff
+            {
+                IdSpeciality = DoctorData.doctorInCharge.IdSpeciality,
+                IdPosition = DoctorData.doctorInCharge.IdPosition,
+                Person = new PersonWithIdentity
+                {
+                    IdPersonMis = DoctorData.doctorInCharge.Person.IdPersonMis,
+                    HumanName = new HumanName
+                    {
+                        FamilyName = DoctorData.doctorInCharge.Person.HumanName.FamilyName,
+                        GivenName = DoctorData.doctorInCharge.Person.HumanName.GivenName,
+                    }
+                }
+            };
+
+            return doctor;
+        }
+
         public CaseAmb MinCaseAmbSet()
         {
             CaseAmb caseAmb = new CaseAmb();
@@ -39,55 +70,16 @@ namespace PixServiseTests
             caseAmb.IdPatientMis = CaseAmbData.caseAmb.IdPatientMis;
             caseAmb.IdCaseType = CaseAmbData.caseAmb.IdCaseType;
 
-            caseAmb.DoctorInCharge = new MedicalStaff
-            {
-                IdSpeciality = CaseAmbData.doctorInCharge.IdSpeciality,
-                IdPosition = CaseAmbData.doctorInCharge.IdPosition,
-                Person = new PersonWithIdentity
-                {
-                    IdPersonMis = CaseAmbData.doctorInCharge.Person.IdPersonMis,
-                    HumanName = new HumanName
-                    {
-                        FamilyName = CaseAmbData.doctorInCharge.Person.HumanName.FamilyName,
-                        GivenName = CaseAmbData.doctorInCharge.Person.HumanName.GivenName,
-                    }
-                }
-            };
+            caseAmb.DoctorInCharge = MinDoctorSet();
 
             caseAmb.Author = new Participant
             {
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = CaseAmbData.author.Doctor.IdSpeciality,
-                    IdPosition = CaseAmbData.author.Doctor.IdPosition,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = CaseAmbData.author.Doctor.Person.IdPersonMis,
-                        HumanName = new HumanName
-                        {
-                            FamilyName = CaseAmbData.author.Doctor.Person.HumanName.FamilyName,
-                            GivenName = CaseAmbData.author.Doctor.Person.HumanName.GivenName,
-                        }
-                    }
-                }
+                Doctor = MinDoctorSet()
             };
 
             caseAmb.Authenticator = new Participant
             {
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = CaseAmbData.authenticator.Doctor.IdSpeciality,
-                    IdPosition = CaseAmbData.authenticator.Doctor.IdPosition,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = CaseAmbData.authenticator.Doctor.Person.IdPersonMis,
-                        HumanName = new HumanName
-                        {
-                            FamilyName = CaseAmbData.authenticator.Doctor.Person.HumanName.FamilyName,
-                            GivenName = CaseAmbData.authenticator.Doctor.Person.HumanName.GivenName,
-                        }
-                    }
-                }
+                Doctor = MinDoctorSet()
             };
 
             caseAmb.Steps = new StepAmb[]
@@ -100,20 +92,7 @@ namespace PixServiseTests
                     IdPaymentType = CaseAmbData.step.IdPaymentType,
                     IdVisitPlace = CaseAmbData.step.IdVisitPlace,
                     IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
-                    Doctor = new MedicalStaff
-                    {
-                        IdSpeciality = CaseAmbData.step.Doctor.IdSpeciality,
-                        IdPosition = CaseAmbData.step.Doctor.IdPosition,
-                        Person = new PersonWithIdentity
-                        {
-                            IdPersonMis = CaseAmbData.step.Doctor.Person.IdPersonMis,
-                            HumanName = new HumanName
-                            {
-                                FamilyName = CaseAmbData.step.Doctor.Person.HumanName.FamilyName,
-                                GivenName = CaseAmbData.step.Doctor.Person.HumanName.GivenName,
-                            }
-                        }
-                    }
+                    Doctor = MinDoctorSet()
                 },
             };
 
@@ -141,55 +120,16 @@ namespace PixServiseTests
             caseStat.HospResult = CaseStatData.caseStat.HospResult;
             caseStat.IdHospChannel = CaseStatData.caseStat.IdHospChannel;
 
-            caseStat.DoctorInCharge = new MedicalStaff
-            {
-                IdSpeciality = CaseStatData.doctorInCharge.IdSpeciality,
-                IdPosition = CaseStatData.doctorInCharge.IdPosition,
-                Person = new PersonWithIdentity
-                {
-                    IdPersonMis = CaseStatData.doctorInCharge.Person.IdPersonMis,
-                    HumanName = new HumanName
-                    {
-                        FamilyName = CaseStatData.doctorInCharge.Person.HumanName.FamilyName,
-                        GivenName = CaseStatData.doctorInCharge.Person.HumanName.GivenName,
-                    }
-                }
-            };
+            caseStat.DoctorInCharge = MinDoctorSet();
 
             caseStat.Author = new Participant
             {
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = CaseStatData.author.Doctor.IdSpeciality,
-                    IdPosition = CaseStatData.author.Doctor.IdPosition,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = CaseStatData.author.Doctor.Person.IdPersonMis,
-                        HumanName = new HumanName
-                        {
-                            FamilyName = CaseStatData.author.Doctor.Person.HumanName.FamilyName,
-                            GivenName = CaseStatData.author.Doctor.Person.HumanName.GivenName,
-                        }
-                    }
-                }
+                Doctor = MinDoctorSet()
             };
 
             caseStat.Authenticator = new Participant
             {
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = CaseStatData.authenticator.Doctor.IdSpeciality,
-                    IdPosition = CaseStatData.authenticator.Doctor.IdPosition,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = CaseStatData.authenticator.Doctor.Person.IdPersonMis,
-                        HumanName = new HumanName
-                        {
-                            FamilyName = CaseStatData.authenticator.Doctor.Person.HumanName.FamilyName,
-                            GivenName = CaseStatData.authenticator.Doctor.Person.HumanName.GivenName,
-                        }
-                    }
-                }
+                Doctor = MinDoctorSet()
             };
 
             caseStat.Steps = new StepStat[]
@@ -205,24 +145,9 @@ namespace PixServiseTests
                     BedProfile = CaseStatData.step.BedProfile,
                     DaySpend = CaseStatData.step.DaySpend,
 
-                    Doctor = new MedicalStaff
-                    {
-                        IdSpeciality = CaseStatData.step.Doctor.IdSpeciality,
-                        IdPosition = CaseStatData.step.Doctor.IdPosition,
-                        Person = new PersonWithIdentity
-                        {
-                            IdPersonMis = CaseStatData.step.Doctor.Person.IdPersonMis,
-                            HumanName = new HumanName
-                            {
-                                FamilyName = CaseStatData.step.Doctor.Person.HumanName.FamilyName,
-                                GivenName = CaseStatData.step.Doctor.Person.HumanName.GivenName,
-                            }
-                        }
-                    }
+                    Doctor = MinDoctorSet()
                 },
             };
-
-
             return caseStat;
         }
 

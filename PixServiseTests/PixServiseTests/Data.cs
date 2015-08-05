@@ -14,24 +14,6 @@ namespace PixServiseTests
     {
         public static CaseAmb caseAmb { get; set; }
 
-        public static MedicalStaff doctorInCharge { get; set; }
-        // public static PersonWithIdentity doctorInChargePerson { get; set; }
-        // public static HumanName doctorInChargeName { get; set; }
-
-        public static Participant authenticator { get; set; }
-        //public static PersonWithIdentity authenticatorPerson { get; set; }
-        //public static HumanName authenticatorName { get; set; }
-
-        public static Participant author { get; set; }
-        //public static PersonWithIdentity authorPerson { get; set; }
-        //public static HumanName authorName { get; set; }
-
-        public static Participant legalAuthenticator { get; set; }
-        //public static PersonWithIdentity legalAuthenticatorPerson { get; set; }
-        //public static HumanName legalAuthenticatorName { get; set; }
-
-        public static Guardian guardian { get; set; }
-
         public static StepAmb step { get; set; }
         //public static MedicalStaff doctor { get; set; }
         //public static PersonWithIdentity doctorPerson { get; set; }
@@ -40,29 +22,9 @@ namespace PixServiseTests
         public static MedDocument medDocument { get; set; }
     }
 
-    
-
     public static class CaseStatData
     {
         public static CaseStat caseStat { get; set; }
-
-        public static MedicalStaff doctorInCharge { get; set; }
-        // public static PersonWithIdentity doctorInChargePerson { get; set; }
-        // public static HumanName doctorInChargeName { get; set; }
-
-        public static Participant authenticator { get; set; }
-        //public static PersonWithIdentity authenticatorPerson { get; set; }
-        //public static HumanName authenticatorName { get; set; }
-
-        public static Participant author { get; set; }
-        //public static PersonWithIdentity authorPerson { get; set; }
-        //public static HumanName authorName { get; set; }
-
-        public static Participant legalAuthenticator { get; set; }
-        //public static PersonWithIdentity legalAuthenticatorPerson { get; set; }
-        //public static HumanName legalAuthenticatorName { get; set; }
-
-        public static Guardian guardian { get; set; }
 
         public static StepStat step { get; set; }
         //public static MedicalStaff doctor { get; set; }
@@ -72,6 +34,26 @@ namespace PixServiseTests
         public static MedDocument medDocument { get; set; }
     }
 
+    public static class DoctorData
+    {
+        public static MedicalStaff doctorInCharge { get; set; }
+        // public static PersonWithIdentity doctorInChargePerson { get; set; }
+        // public static HumanName doctorInChargeName { get; set; }
+
+        public static Participant authenticator { get; set; }
+        //public static PersonWithIdentity authenticatorPerson { get; set; }
+        //public static HumanName authenticatorName { get; set; }
+
+        public static Participant author { get; set; }
+        //public static PersonWithIdentity authorPerson { get; set; }
+        //public static HumanName authorName { get; set; }
+
+        public static Participant legalAuthenticator { get; set; }
+        //public static PersonWithIdentity legalAuthenticatorPerson { get; set; }
+        //public static HumanName legalAuthenticatorName { get; set; }
+
+        public static Guardian guardian { get; set; }
+    }
     public static class MedRecordData
     {
         public static Service service { get; set; }
@@ -172,30 +154,8 @@ namespace PixServiseTests
                 Performer = new Participant
                 {
                     IdRole = 3,
-                     Doctor = new MedicalStaff
-                     {
-                         IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                         IdSpeciality = 29,
-                         IdPosition = 72,
-                         Person = new PersonWithIdentity
-                         {
-                             IdPersonMis = "123123123",
-                             Sex = 1,
-                             Birthdate = new DateTime(1973, 01, 07),
-                             Documents = new IdentityDocument[]
-                             {
-                                 DocumentData.Passport,
-                                 DocumentData.SNILS
-                             },
-                             HumanName = new HumanName
-                             {
-                                 FamilyName = "Лукин",
-                                 GivenName = "Василий",
-                                 MiddleName = "Андреевич",
-                             },
-                         }
-                     }
-                 },
+                    Doctor = SetDoctor(),
+                },
                 PaymentInfo = new PaymentInfo
                  {
                      HealthCareUnit = 1,
@@ -204,7 +164,7 @@ namespace PixServiseTests
                      Quantity = 1,
                      Tariff = new Decimal(1000),
                  },
-                
+
             };
 
             MedRecordData.tfomsInfo = new TfomsInfo
@@ -240,29 +200,7 @@ namespace PixServiseTests
                     IdUnit = 16,
                     Value = 2,
                 },
-                Doctor = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
             MedRecordData.deathInfo = new DeathInfo
@@ -286,29 +224,7 @@ namespace PixServiseTests
                     MedicalStandard = 21,// по справочнику 211010
                     MkbCode = "A00",
                 },
-                Doctor = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
             MedRecordData.clinicMainDiagnosis = new ClinicMainDiagnosis
@@ -327,29 +243,7 @@ namespace PixServiseTests
                      MedicalStandard = 21,// по справочнику 211010
                      MkbCode = "A00",
                  },
-                 Doctor = new MedicalStaff
-                 {
-                     IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                     IdSpeciality = 29,
-                     IdPosition = 72,
-                     Person = new PersonWithIdentity
-                     {
-                         IdPersonMis = "123123123",
-                         Sex = 1,
-                         Birthdate = new DateTime(1973, 01, 07),
-                         Documents = new IdentityDocument[]
-                         {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                         },
-                         HumanName = new HumanName
-                         {
-                             FamilyName = "Лукин",
-                             GivenName = "Василий",
-                             MiddleName = "Андреевич",
-                         },
-                     }
-                 },
+                 Doctor = SetDoctor(),
                  Complications = new Diagnosis[]
                  {
                      new  Diagnosis
@@ -368,29 +262,7 @@ namespace PixServiseTests
                             MedicalStandard = 21,// по справочнику 211010
                             MkbCode = "A00",
                         },
-                        Doctor = new MedicalStaff
-                        {
-                            IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                            IdSpeciality = 29,
-                            IdPosition = 72,
-                            Person = new PersonWithIdentity
-                            {
-                                IdPersonMis = "123123123",
-                                Sex = 1,
-                                Birthdate = new DateTime(1973, 01, 07),
-                                Documents = new IdentityDocument[]
-                                {
-                                    DocumentData.Passport,
-                                    DocumentData.SNILS
-                                },
-                                HumanName = new HumanName
-                                {
-                                    FamilyName = "Лукин",
-                                    GivenName = "Василий",
-                                    MiddleName = "Андреевич",
-                                },
-                            }
-                         }
+                        Doctor = SetDoctor(),
                      }
                  }
              };
@@ -411,29 +283,7 @@ namespace PixServiseTests
                     MedicalStandard = 21,// по справочнику 211010
                     MkbCode = "A00",
                 },
-                Doctor = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                },
+                Doctor = SetDoctor(),
                 Complications = new Diagnosis[]
                  {
                      new  Diagnosis
@@ -452,29 +302,7 @@ namespace PixServiseTests
                             MedicalStandard = 21101,// по справочнику 211010
                             MkbCode = "A00",
                         },
-                        Doctor = new MedicalStaff
-                        {
-                            IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                            IdSpeciality = 29,
-                            IdPosition = 72,
-                            Person = new PersonWithIdentity
-                            {
-                                IdPersonMis = "123123123",
-                                Sex = 1,
-                                Birthdate = new DateTime(1973, 01, 07),
-                                Documents = new IdentityDocument[]
-                                {
-                                    DocumentData.Passport,
-                                    DocumentData.SNILS
-                                },
-                                HumanName = new HumanName
-                                {
-                                    FamilyName = "Лукин",
-                                    GivenName = "Василий",
-                                    MiddleName = "Андреевич",
-                                },
-                            }
-                         }
+                        Doctor = SetDoctor(),
                      }
                  }
             };
@@ -497,54 +325,10 @@ namespace PixServiseTests
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                 },
-                Author = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                },
+                Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
-                    Doctor = new MedicalStaff
-                    {
-                        IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                        IdSpeciality = 29,
-                        IdPosition = 72,
-                        Person = new PersonWithIdentity
-                        {
-                            IdPersonMis = "123123123",
-                            Sex = 1,
-                            Birthdate = new DateTime(1973, 01, 07),
-                            Documents = new IdentityDocument[]
-                            {
-                                DocumentData.Passport,
-                                DocumentData.SNILS
-                            },
-                            HumanName = new HumanName
-                            {
-                                FamilyName = "Лукин",
-                                GivenName = "Василий",
-                                MiddleName = "Андреевич",
-                            },
-                        }
-                    },
+                    Doctor = SetDoctor(),
                     HealthGroupInfo = new HealthGroupInfo
                     {
                         Date = new DateTime(2010, 02, 03),
@@ -555,29 +339,7 @@ namespace PixServiseTests
                 { 
                     new Recommendation
                     {
-                         Doctor = new MedicalStaff
-                         {
-                            IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                            IdSpeciality = 29,
-                            IdPosition = 72,
-                            Person = new PersonWithIdentity
-                            {
-                                IdPersonMis = "123123123",
-                                Sex = 1,
-                                Birthdate = new DateTime(1973, 01, 07),
-                                Documents = new IdentityDocument[]
-                                {
-                                    DocumentData.Passport,
-                                    DocumentData.SNILS
-                                },
-                                HumanName = new HumanName
-                                {
-                                    FamilyName = "Лукин",
-                                    GivenName = "Василий",
-                                    MiddleName = "Андреевич",
-                                },
-                            }
-                         },
+                         Doctor = SetDoctor(),
                          Date = new DateTime(2010,02,04),
                          Text = "Текст рекомендации",
                     }
@@ -598,29 +360,7 @@ namespace PixServiseTests
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                 },
-                Author = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                },
+                Author = SetDoctor(),
                 ReferralInfo = new ReferralInfo
                 {
                     Reason = "Потому что",
@@ -630,29 +370,7 @@ namespace PixServiseTests
                     HospitalizationOrder = 2,
                     MkbCode = "A00.0",
                 },
-                DepartmentHead = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                }
+                DepartmentHead = SetDoctor(),
             };
 
             MedRecordData.sickList = new SickList
@@ -666,29 +384,7 @@ namespace PixServiseTests
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                 },
-                Author = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                },
+                Author = SetDoctor(),
                 SickListInfo = new SickListInfo
                 {
                     Number = "34",
@@ -697,28 +393,7 @@ namespace PixServiseTests
                     DisabilityDocState = 1,
                     DisabilityDocReason = 1,
                     IsPatientTaker = false,
-                    Caregiver = new Guardian
-                    {
-                        IdRelationType = 1,
-                        UnderlyingDocument = "Реквизиты",
-                        Person = new PersonWithIdentity
-                        {
-                            IdPersonMis = "123123123",
-                            Sex = 1,
-                            Birthdate = new DateTime(1973, 01, 07),
-                            Documents = new IdentityDocument[]
-                            {
-                                DocumentData.Passport,
-                                DocumentData.SNILS
-                            }, 
-                            HumanName = new HumanName
-                            {
-                                FamilyName = "Лукин",
-                                GivenName = "Василий",
-                                MiddleName = "Андреевич",
-                            },
-                        }
-                    }
+                    Caregiver = SetGuardian()
                 }
             };
 
@@ -734,29 +409,7 @@ namespace PixServiseTests
                     Url = new Uri("https://www.google.ru"),
                     MimeType = "application/pdf",
                 },
-                Author = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                }
+                Author = SetDoctor(),
             };
 
             MedRecordData.LaboratoryReport = new LaboratoryReport
@@ -769,30 +422,9 @@ namespace PixServiseTests
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                 },
-                Author = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                },
+                Author = SetDoctor(),
             };
+
             MedRecordData.consultNote = new ConsultNote
             {
                 CreationDate = new DateTime(2010, 02, 02),
@@ -803,145 +435,42 @@ namespace PixServiseTests
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                 },
-                Author = new MedicalStaff
-                {
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "123123123",
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        },
-                    }
-                },
+                Author = SetDoctor(),
             };
 
         }
 
-        private void SetAmbCase()
+        private MedicalStaff SetDoctor()
         {
-            CaseAmbData.doctorInCharge = new MedicalStaff
+            MedicalStaff doctor = new MedicalStaff
             {
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
                 IdSpeciality = 29,
                 IdPosition = 72,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
                 Person = new PersonWithIdentity
                 {
+                    IdPersonMis = "123123123",
                     Sex = 1,
                     Birthdate = new DateTime(1973, 01, 07),
-                    IdPersonMis = "123123123",
                     Documents = new IdentityDocument[]
-                    {
-                        DocumentData.Passport,
-                        DocumentData.SNILS
-                    },
-
+                        {
+                            DocumentData.Passport,
+                            DocumentData.SNILS
+                        },
                     HumanName = new HumanName
                     {
                         FamilyName = "Лукин",
                         GivenName = "Василий",
                         MiddleName = "Андреевич",
-                    }
+                    },
                 }
             };
+            return doctor;
+        }
 
-            CaseAmbData.author = new Participant
-            {
-                IdRole = 1,
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
-            };
-
-            CaseAmbData.authenticator = new Participant
-            {
-                IdRole = 1,
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
-            };
-
-            CaseAmbData.legalAuthenticator = new Participant
-            {
-                IdRole = 1,
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        }, 
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
-            };
-
-            CaseAmbData.guardian = new Guardian
+        private Guardian SetGuardian()
+        {
+            Guardian guardian = new Guardian
             {
                 IdRelationType = 1,
                 UnderlyingDocument = "реквизиты",
@@ -964,6 +493,33 @@ namespace PixServiseTests
                 }
             };
 
+            return guardian;
+        }
+
+        private void SetAmbCase()
+        {
+            DoctorData.doctorInCharge = SetDoctor();
+
+            DoctorData.author = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctor(),
+            };
+
+            DoctorData.authenticator = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctor(),
+            };
+
+            DoctorData.legalAuthenticator = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctor(),
+            };
+
+            DoctorData.guardian = SetGuardian();
+
             CaseAmbData.step = new StepAmb
             {
                 DateStart = new DateTime(2010, 10, 10),
@@ -976,29 +532,7 @@ namespace PixServiseTests
 
                 //MedRecords
 
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
             CaseAmbData.caseAmb = new CaseAmb
@@ -1022,11 +556,11 @@ namespace PixServiseTests
                 IdCasePurpose = 1,
                 IsActive = true,
 
-                Guardian = CaseAmbData.guardian,
-                DoctorInCharge = CaseAmbData.doctorInCharge,
-                Authenticator = CaseAmbData.authenticator,
-                Author = CaseAmbData.author,
-                LegalAuthenticator = CaseAmbData.legalAuthenticator,
+                Guardian = DoctorData.guardian,
+                DoctorInCharge = DoctorData.doctorInCharge,
+                Authenticator = DoctorData.authenticator,
+                Author = DoctorData.author,
+                LegalAuthenticator = DoctorData.legalAuthenticator,
                 Steps = new StepAmb[] { CaseAmbData.step },
                 MedRecords = new MedRecord[] { MedRecordData.clinicMainDiagnosis/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
@@ -1038,136 +572,27 @@ namespace PixServiseTests
 
         private void SetStatCase()
         {
-            CaseStatData.doctorInCharge = new MedicalStaff
-            {
-                IdSpeciality = 29,
-                IdPosition = 72,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                Person = new PersonWithIdentity
-                {
-                    Sex = 1,
-                    Birthdate = new DateTime(1973, 01, 07),
-                    IdPersonMis = "123123123",
-                    Documents = new IdentityDocument[]
-                    {
-                        DocumentData.Passport,
-                        DocumentData.SNILS
-                    }, 
-                    HumanName = new HumanName
-                    {
-                        FamilyName = "Лукин",
-                        GivenName = "Василий",
-                        MiddleName = "Андреевич",
-                    }
-                }
-            };
+            DoctorData.doctorInCharge = SetDoctor();
 
-            CaseStatData.author = new Participant
+            DoctorData.author = new Participant
             {
                 IdRole = 1,
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        }, 
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
-            CaseStatData.authenticator = new Participant
+            DoctorData.authenticator = new Participant
             {
                 IdRole = 1,
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        }, 
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
-            CaseStatData.legalAuthenticator = new Participant
+            DoctorData.legalAuthenticator = new Participant
             {
                 IdRole = 1,
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },   
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
-            CaseStatData.guardian = new Guardian
-            {
-                IdRelationType = 1,
-                UnderlyingDocument = "реквизиты",
-                Person = new PersonWithIdentity
-                {
-                    Sex = 1,
-                    Birthdate = new DateTime(1973, 01, 07),
-                    IdPersonMis = "123123123",
-                    Documents = new IdentityDocument[]
-                    {
-                        DocumentData.Passport,
-                        DocumentData.SNILS
-                    },  
-                    HumanName = new HumanName
-                    {
-                        FamilyName = "Лукин",
-                        GivenName = "Василий",
-                        MiddleName = "Андреевич",
-                    }
-                }
-            };
+            DoctorData.guardian = SetGuardian();
 
             CaseStatData.step = new StepStat
             {
@@ -1186,29 +611,7 @@ namespace PixServiseTests
 
                 //MedRecords
 
-                Doctor = new MedicalStaff
-                {
-                    IdSpeciality = 29,
-                    IdPosition = 72,
-                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                    Person = new PersonWithIdentity
-                    {
-                        Sex = 1,
-                        Birthdate = new DateTime(1973, 01, 07),
-                        IdPersonMis = "123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "Лукин",
-                            GivenName = "Василий",
-                            MiddleName = "Андреевич",
-                        }
-                    }
-                }
+                Doctor = SetDoctor(),
             };
 
             CaseStatData.caseStat = new CaseStat
@@ -1244,11 +647,11 @@ namespace PixServiseTests
 
                 //PrehospitalDefects = new byte[] { 1, 2 },
 
-                Guardian = CaseStatData.guardian,
-                DoctorInCharge = CaseStatData.doctorInCharge,
-                Authenticator = CaseStatData.authenticator,
-                Author = CaseStatData.author,
-                LegalAuthenticator = CaseStatData.legalAuthenticator,
+                Guardian = DoctorData.guardian,
+                DoctorInCharge = DoctorData.doctorInCharge,
+                Authenticator = DoctorData.authenticator,
+                Author = DoctorData.author,
+                LegalAuthenticator = DoctorData.legalAuthenticator,
                 Steps = new StepStat[] { CaseStatData.step },
                 MedRecords = new MedRecord[] { MedRecordData.tfomsInfo/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
