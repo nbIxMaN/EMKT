@@ -900,31 +900,31 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-              /*  caseAmb.MedRecords = new MedRecord[]
-                {
-                    new DispensaryOne
-                    {
-                        CreationDate = new DateTime(2010, 11, 2),
-                        Header = "ДОКУМЕНТ",
-                        IsGuested = true,
-                        HasExtraResearchRefferal = true,
-                        IsUnderObservation = true,
-                        HasExpertCareRefferal = true,
-                        HasPrescribeCure = true,
-                        HasHealthResortRefferal = true,
-                        HasSecondStageRefferal = false,
-                        Author = caseAmb.DoctorInCharge,
-                        HealthGroup = new HealthGroup
-                        {
-                            Doctor = caseAmb.DoctorInCharge,
-                            HealthGroupInfo = new HealthGroupInfo
-                            {
-                                IdHealthGroup = 1,
-                                Date = new DateTime(2010, 11, 2),
-                            }
-                        }
-                    }
-                };*/
+                /*  caseAmb.MedRecords = new MedRecord[]
+                  {
+                      new DispensaryOne
+                      {
+                          CreationDate = new DateTime(2010, 11, 2),
+                          Header = "ДОКУМЕНТ",
+                          IsGuested = true,
+                          HasExtraResearchRefferal = true,
+                          IsUnderObservation = true,
+                          HasExpertCareRefferal = true,
+                          HasPrescribeCure = true,
+                          HasHealthResortRefferal = true,
+                          HasSecondStageRefferal = false,
+                          Author = caseAmb.DoctorInCharge,
+                          HealthGroup = new HealthGroup
+                          {
+                              Doctor = caseAmb.DoctorInCharge,
+                              HealthGroupInfo = new HealthGroupInfo
+                              {
+                                  IdHealthGroup = 1,
+                                  Date = new DateTime(2010, 11, 2),
+                              }
+                          }
+                      }
+                  };*/
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -1126,6 +1126,8 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
+        //--------------------------- LaboratoryReport
+
         [Test]
         public void AddAmbCaseWithLaboratoryReportFull()
         {
@@ -1172,51 +1174,51 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
-       /* [Test]
-        public void CreateAmbCaseWithLaboratoryReportFull()
-        {
-            using (TestPixServiceClient c = new TestPixServiceClient())
-            {
-                PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
-            }
-            using (TestEmkServiceClient client = new TestEmkServiceClient())
-            {
-                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport
-                };
-                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-            }
-            if (Global.errors == "")
-                Assert.Pass();
-            else
-                Assert.Fail(Global.errors);
-        }
+         [Test]
+         public void CreateAmbCaseWithLaboratoryReportFull()
+         {
+             using (TestPixServiceClient c = new TestPixServiceClient())
+             {
+                 PatientDto patient = (new SetData()).PatientSet();
+                 c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+             }
+             using (TestEmkServiceClient client = new TestEmkServiceClient())
+             {
+                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                 caseAmb.MedRecords = new MedRecord[]
+                 {
+                     MedRecordData.LaboratoryReport
+                 };
+                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+             }
+             if (Global.errors == "")
+                 Assert.Pass();
+             else
+                 Assert.Fail(Global.errors);
+         }
 
-        [Test]
-        public void CreateAmbCaseWithLaboratoryReportMin()
-        {
-            using (TestPixServiceClient c = new TestPixServiceClient())
-            {
-                PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
-            }
-            using (TestEmkServiceClient client = new TestEmkServiceClient())
-            {
-                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
-                {
-                    (new SetData()).MinLaboratoryReportSet()
-                };
-                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-            }
-            if (Global.errors == "")
-                Assert.Pass();
-            else
-                Assert.Fail(Global.errors);
-        }*/
+         [Test]
+         public void CreateAmbCaseWithLaboratoryReportMin()
+         {
+             using (TestPixServiceClient c = new TestPixServiceClient())
+             {
+                 PatientDto patient = (new SetData()).PatientSet();
+                 c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+             }
+             using (TestEmkServiceClient client = new TestEmkServiceClient())
+             {
+                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                 caseAmb.MedRecords = new MedRecord[]
+                 {
+                     (new SetData()).MinLaboratoryReportSet()
+                 };
+                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+             }
+             if (Global.errors == "")
+                 Assert.Pass();
+             else
+                 Assert.Fail(Global.errors);
+         }
 
         [Test]
         public void UpdateAmbCaseWithLaboratoryReportFull()
@@ -1265,6 +1267,8 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+        //end LaboratoryReport
 
         [TearDown]
         public void Clear()

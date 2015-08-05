@@ -84,6 +84,40 @@ namespace PixServiseTests
             return dischargeSummary;
         }
 
+        public Service MinService()
+        {
+            Service service = new Service
+            {
+                DateStart = MedRecordData.service.DateStart,
+                DateEnd = MedRecordData.service.DateEnd,
+                IdServiceType = MedRecordData.service.IdServiceType,
+                ServiceName = MedRecordData.service.ServiceName,
+                Performer = new Participant(),
+            };
+            return service;
+        }
+
+        public TfomsInfo MinTfomsInfo()
+        {
+            TfomsInfo tfomsInfo = new TfomsInfo
+            {
+                IdTfomsType = MedRecordData.tfomsInfo.IdTfomsType,
+                Count = MedRecordData.tfomsInfo.Count,
+            };
+            return tfomsInfo;
+        }
+
+        public AppointedMedication MinAppointedMedication()
+        {
+            AppointedMedication apMed = new AppointedMedication
+            {
+                IssuedDate = new DateTime(2010, 03, 06),
+                MedicineName = "Валерьянка",
+                Doctor = MinDoctorSet(),
+            };
+            return apMed;
+        }
+
         public MedicalStaff MinDoctorSet()
         {
             MedicalStaff doctor = new MedicalStaff
@@ -102,6 +136,41 @@ namespace PixServiseTests
             };
 
             return doctor;
+        }
+
+        public StepAmb MinStepAmbSet()
+        {
+            StepAmb stepAmb = new StepAmb
+            {
+                DateStart = CaseAmbData.step.DateStart,
+                DateEnd = CaseAmbData.step.DateEnd,
+                IdStepMis = CaseAmbData.step.IdStepMis,
+                IdPaymentType = CaseAmbData.step.IdPaymentType,
+                IdVisitPlace = CaseAmbData.step.IdVisitPlace,
+                IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
+                Doctor = MinDoctorSet(),
+            };
+
+            return stepAmb;
+        }
+
+        public StepStat MinStepStatSet()
+        {
+            StepStat stepStat = new StepStat
+            {
+                DateStart = CaseStatData.step.DateStart,
+                DateEnd = CaseStatData.step.DateEnd,
+                IdStepMis = CaseStatData.step.IdStepMis,
+                IdPaymentType = CaseStatData.step.IdPaymentType,
+                BedProfile = CaseStatData.step.BedProfile,
+                DaySpend = CaseStatData.step.DaySpend,
+                HospitalDepartmentName = CaseStatData.step.HospitalDepartmentName,
+                IdHospitalDepartment = CaseStatData.step.IdHospitalDepartment,
+
+                Doctor = MinDoctorSet(),
+            };
+
+            return stepStat;
         }
 
         public CaseAmb MinCaseAmbSet()
@@ -372,9 +441,8 @@ namespace PixServiseTests
                      }
                  },
              };*/
-            caseAmb = CaseAmbData.caseAmb;
 
-            return caseAmb;
+            return CaseAmbData.caseAmb;
         }
 
         public CaseStat FullCaseStatSet()

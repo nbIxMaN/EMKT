@@ -324,6 +324,7 @@ namespace PixServiseTests
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
+                    MimeType = "text/html"
                 },
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
@@ -359,6 +360,7 @@ namespace PixServiseTests
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
+                    MimeType = "text/html"
                 },
                 Author = SetDoctor(),
                 ReferralInfo = new ReferralInfo
@@ -383,6 +385,7 @@ namespace PixServiseTests
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
+                    MimeType = "text/html"
                 },
                 Author = SetDoctor(),
                 SickListInfo = new SickListInfo
@@ -421,6 +424,7 @@ namespace PixServiseTests
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
+                    MimeType = "text/html"
                 },
                 Author = SetDoctor(),
             };
@@ -434,6 +438,7 @@ namespace PixServiseTests
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
+                    MimeType = "text/html"
                 },
                 Author = SetDoctor(),
             };
