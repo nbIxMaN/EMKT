@@ -334,7 +334,7 @@ namespace PixServiseTests
         {
             string patientId = TestPerson.GetPersonId(GUID, caseStat.IdLpu, caseStat.IdPatientMis);
             TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseStat.IdLpu, caseStat.IdCaseMis, patientId);
-     //       this.Equals(ac);
+            this.Equals(ac);
             return (this == ac);
         }
         public override bool Equals(Object obj)

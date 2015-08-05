@@ -1241,7 +1241,7 @@ namespace PixServiseTests
                 RW1Mark = true,
                 AIDSMark = true,
 
-                PrehospitalDefects = new byte[] { 1, 2 },
+                //PrehospitalDefects = new byte[] { 1, 2 },
 
                 Guardian = CaseStatData.guardian,
                 DoctorInCharge = CaseStatData.doctorInCharge,

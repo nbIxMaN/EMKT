@@ -20,7 +20,7 @@ namespace PixServiseTests
                 if (documents != null)
                     return documents.ToArray();
                 else
-                    return new int[0];
+                    return null;
             }
         }
         public TestPerson(PersonWithIdentity p)
