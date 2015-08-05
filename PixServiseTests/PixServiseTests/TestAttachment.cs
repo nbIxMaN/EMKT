@@ -38,11 +38,19 @@ namespace PixServiseTests
                         {
                             MedDocument.DocumentAttachment at = new MedDocument.DocumentAttachment();
                             if (docsReader["Attachment"].ToString() != "")
-                                at.Data = Convert.FromBase64String(docsReader["Attachment"].ToString());
+                            {
+                                byte[] ata = docsReader["Attachment"] as byte[];
+                                if (ata != null)
+                                    at.Data = ata;
+                            }
                             else
                                 at.Data = null;
                             if (docsReader["AttachmentHash"].ToString() != "")
-                                at.Hash = Convert.FromBase64String(docsReader["AttachmentHash"].ToString());
+                            {
+                                byte[] ath = docsReader["AttachmentHash"] as byte[];
+                                if (ath != null)
+                                    at.Hash = ath;
+                            }
                             else
                                 at.Hash = null;
                             if (docsReader["AttachmentURL"].ToString() != "")

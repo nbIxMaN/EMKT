@@ -65,8 +65,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.laboratoryReport.CreationDate != p.laboratoryReport.CreationDate)&&
-            (this.laboratoryReport.Header != p.laboratoryReport.Header)&&
+            if ((this.laboratoryReport.CreationDate == p.laboratoryReport.CreationDate)&&
+            (this.laboratoryReport.Header == p.laboratoryReport.Header)&&
             Global.IsEqual(this.doctor, p.doctor)&&
             Global.IsEqual(this.attachment, p.attachment))
             {

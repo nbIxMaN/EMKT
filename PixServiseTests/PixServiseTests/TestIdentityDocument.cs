@@ -40,9 +40,12 @@ namespace PixServiseTests
 
         public TestIdentityDocument(IdentityDocument d)
         {
-            document = d;
-            if (document.IssuedDate == DateTime.MinValue)
-                document.IssuedDate = null;
+            if (d != null)
+            {
+                document = d;
+                if (document.IssuedDate == DateTime.MinValue)
+                    document.IssuedDate = null;
+            }
         }
 
         static public List<TestIdentityDocument> BuildDocumentsFromDataBaseData(string idPerson)

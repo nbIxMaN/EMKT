@@ -84,7 +84,7 @@ namespace PixServiseTests
     [TestFixture]
     public abstract class Data
     {
-        private void SetDocument()
+        static public void SetDocument()
         {
             DocumentData.Passport = new IdentityDocument
             {
@@ -143,7 +143,7 @@ namespace PixServiseTests
             };
         }
 
-        private void SetMedRecord()
+        static public void SetMedRecord()
         {
             MedRecordData.service = new Service
             {
@@ -404,8 +404,8 @@ namespace PixServiseTests
                 Attachment = new MedDocument.DocumentAttachment
                 {
 
-                    //Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                     MimeType = "application/pdf",
                 },
@@ -619,7 +619,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2010, 10, 10),
                 CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "123412341234",
+                IdCaseMis = "123412351236",
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -673,9 +673,9 @@ namespace PixServiseTests
                 IdPatientMIS = "123456789010",
             };
 
-            SetMedRecord();
-
             SetDocument();
+
+            SetMedRecord();
 
             SetAmbCase();
 

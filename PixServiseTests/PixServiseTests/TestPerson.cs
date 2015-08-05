@@ -29,7 +29,7 @@ namespace PixServiseTests
             if (person.Sex == 0)
                 person.Sex = 3;
             name = new TestHumanName(p.HumanName);
-            if ((p.Documents != null) && (p.Documents.Length != 0))
+            if ((p.Documents != null) && (Global.GetLength(p.Documents) != 0))
             {
                 List<TestIdentityDocument> doc = new List<TestIdentityDocument>();
                 foreach (IdentityDocument d in p.Documents)
