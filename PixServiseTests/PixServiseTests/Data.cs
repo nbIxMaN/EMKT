@@ -440,7 +440,7 @@ namespace PixServiseTests
 
         }
 
-        private MedicalStaff SetDoctor()
+        private static MedicalStaff SetDoctor()
         {
             MedicalStaff doctor = new MedicalStaff
             {
@@ -468,7 +468,7 @@ namespace PixServiseTests
             return doctor;
         }
 
-        private Guardian SetGuardian()
+        private static Guardian SetGuardian()
         {
             Guardian guardian = new Guardian
             {
