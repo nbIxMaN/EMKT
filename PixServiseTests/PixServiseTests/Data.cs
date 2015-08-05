@@ -1183,7 +1183,7 @@ namespace PixServiseTests
                 IdRegimen = 1,
                 WardNumber = "1",
 
-                //MedReacords
+                //MedRecords
 
                 Doctor = new MedicalStaff
                 {
