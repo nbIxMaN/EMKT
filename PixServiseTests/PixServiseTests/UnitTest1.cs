@@ -963,7 +963,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    (new SetData()).MinDischargeSummary()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -986,7 +986,7 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    (new SetData()).MinDischargeSummary()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -1010,7 +1010,7 @@ namespace PixServiseTests
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    (new SetData()).MinDischargeSummary()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -1033,7 +1033,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.consultNote
+                    (new SetData()).MinConsultNote()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -1056,7 +1056,7 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.consultNote
+                    (new SetData()).MinConsultNote()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -1080,7 +1080,7 @@ namespace PixServiseTests
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.consultNote
+                    (new SetData()).MinConsultNote()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
