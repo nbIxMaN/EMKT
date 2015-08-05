@@ -30,22 +30,28 @@ namespace PixServiseTests
                 CaseAmb ca = c as CaseAmb;
                 if ((object)ca != null)
                 {
+                    TestAmbCase example = null;
                     switch (method)
                     {
                         case "AddCase":
                             client.AddCase(guid, ca);
+                            example = new TestAmbCase(guid, ca);
                             break;
                         case "CreateCase":
                             client.CreateCase(guid, ca);
+                            example = new TestAmbCase(guid, ca);
                             break;
                         case "CloseCase":
                             client.CloseCase(guid, ca);
+                            string patientId = TestPerson.GetPersonId(guid, ca.IdLpu, ca.IdPatientMis);
+                            example = TestAmbCase.BuildAmbCaseFromDataBaseData(guid, ca.IdLpu, ca.IdCaseMis, patientId);
+                            example.ChangeUpdateAmbCase(guid, ca);
                             break;
                         case "UpdateCase":
                             client.UpdateCase(guid, ca);
+                            example = new TestAmbCase(guid, ca);
                             break;
                     }
-                    TestAmbCase example = new TestAmbCase(guid, ca);
                     if (!example.CheckCaseInDataBase())
                     {
                         Global.errors1.AddRange(Global.errors2);
@@ -55,22 +61,28 @@ namespace PixServiseTests
                 CaseStat cs = c as CaseStat;
                 if ((object)cs != null)
                 {
+                    TestStatCase example = null;
                     switch (method)
                     {
                         case "AddCase":
-                            client.AddCase(guid, ca);
+                            client.AddCase(guid, cs);
+                            example = new TestStatCase(guid, cs);
                             break;
                         case "CreateCase":
-                            client.CreateCase(guid, ca);
+                            client.CreateCase(guid, cs);
+                            example = new TestStatCase(guid, cs);
                             break;
                         case "CloseCase":
-                            client.CloseCase(guid, ca);
+                            client.CloseCase(guid, cs);
+                            string patientId = TestPerson.GetPersonId(guid, cs.IdLpu, cs.IdPatientMis);
+                            example = TestStatCase.BuildAmbCaseFromDataBaseData(guid, cs.IdLpu, cs.IdCaseMis, patientId);
+                            example.ChangeUpdateStatCase(guid, cs);
                             break;
                         case "UpdateCase":
-                            client.UpdateCase(guid, ca);
+                            client.UpdateCase(guid, cs);
+                            example = new TestStatCase(guid, cs);
                             break;
                     }
-                    TestStatCase example = new TestStatCase(guid, cs);
                     if (!example.CheckCaseInDataBase())
                         Global.errors1.AddRange(Global.errors2);
                 }
