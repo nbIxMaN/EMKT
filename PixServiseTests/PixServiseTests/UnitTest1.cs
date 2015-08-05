@@ -1174,7 +1174,7 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
-         [Test]
+       /*  [Test]
          public void CreateAmbCaseWithLaboratoryReportFull()
          {
              using (TestPixServiceClient c = new TestPixServiceClient())
@@ -1218,7 +1218,7 @@ namespace PixServiseTests
                  Assert.Pass();
              else
                  Assert.Fail(Global.errors);
-         }
+         }*/
 
         [Test]
         public void UpdateAmbCaseWithLaboratoryReportFull()
