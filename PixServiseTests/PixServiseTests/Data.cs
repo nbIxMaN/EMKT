@@ -729,9 +729,10 @@ namespace PixServiseTests
                 Attachment = new MedDocument.DocumentAttachment
                 {
 
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
+                    MimeType = "application/pdf",
                 },
                 Author = new MedicalStaff
                 {
