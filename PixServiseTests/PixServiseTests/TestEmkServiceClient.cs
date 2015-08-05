@@ -84,7 +84,10 @@ namespace PixServiseTests
                             break;
                     }
                     if (!example.CheckCaseInDataBase())
+                    {
                         Global.errors1.AddRange(Global.errors2);
+                        Global.errors1.Add("Несовпадение");
+                    }
                 }
             }
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
