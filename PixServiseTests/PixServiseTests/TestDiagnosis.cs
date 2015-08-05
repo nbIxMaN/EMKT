@@ -14,13 +14,13 @@ namespace PixServiseTests
         TestDiagnosisInfo info;
         Diagnosis document;
         TestDoctor doctor;
-        public TestDiagnosis(Diagnosis d)
+        public TestDiagnosis(Diagnosis d, string idLpu = "")
         {
             if (d != null)
             {
                 document = d;
                 info = new TestDiagnosisInfo(d.DiagnosisInfo);
-                doctor = new TestDoctor(d.Doctor);
+                doctor = new TestDoctor(d.Doctor, idLpu);
             }
         }
         static public List<TestDiagnosis> BuildDiagnosisFromDataBaseDate(string IdStep)

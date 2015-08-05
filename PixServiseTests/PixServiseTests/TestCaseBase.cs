@@ -32,25 +32,25 @@ namespace PixServiseTests
             }
             if (cb.Author != null)
             {
-                autor = new TestParticipant(cb.Author);
+                autor = new TestParticipant(cb.Author, cb.IdLpu);
                 if (autor.doctor.doctor.IdLpu == null)
                     autor.doctor.doctor.IdLpu = cb.IdLpu;
             }
             if (cb.Authenticator != null)
             {
-                authenticator = new TestParticipant(cb.Authenticator);
+                authenticator = new TestParticipant(cb.Authenticator, cb.IdLpu);
                 if (authenticator.doctor.doctor.IdLpu == null)
                     authenticator.doctor.doctor.IdLpu = cb.IdLpu;
             }
             if (cb.LegalAuthenticator != null)
             {
-                legalAuthenticator = new TestParticipant(cb.LegalAuthenticator);
+                legalAuthenticator = new TestParticipant(cb.LegalAuthenticator, cb.IdLpu);
                 if (legalAuthenticator.doctor.doctor.IdLpu == null)
                     legalAuthenticator.doctor.doctor.IdLpu = cb.IdLpu;
             }
             if (cb.DoctorInCharge != null)
             {
-                doctorInCharge = new TestDoctor(cb.DoctorInCharge);
+                doctorInCharge = new TestDoctor(cb.DoctorInCharge, cb.IdLpu);
                 if (doctorInCharge.doctor.IdLpu == null)
                     doctorInCharge.doctor.IdLpu = cb.IdLpu;
             }
@@ -241,25 +241,25 @@ namespace PixServiseTests
                     this.caseBase.OpenDate = cb.OpenDate;
                 if (cb.Author != null)
                 {
-                    autor = new TestParticipant(cb.Author);
+                    autor = new TestParticipant(cb.Author, cb.IdLpu);
                     if (autor.doctor.doctor.IdLpu == null)
                         autor.doctor.doctor.IdLpu = cb.IdLpu;
                 }
                 if (cb.Authenticator != null)
                 {
-                    authenticator = new TestParticipant(cb.Authenticator);
+                    authenticator = new TestParticipant(cb.Authenticator, cb.IdLpu);
                     if (authenticator.doctor.doctor.IdLpu == null)
                         authenticator.doctor.doctor.IdLpu = cb.IdLpu;
                 }
                 if (cb.LegalAuthenticator != null)
                 {
-                    legalAuthenticator = new TestParticipant(cb.LegalAuthenticator);
+                    legalAuthenticator = new TestParticipant(cb.LegalAuthenticator, cb.IdLpu);
                     if (legalAuthenticator.doctor.doctor.IdLpu == null)
                         legalAuthenticator.doctor.doctor.IdLpu = cb.IdLpu;
                 }
                 if (cb.DoctorInCharge != null)
                 {
-                    doctorInCharge = new TestDoctor(cb.DoctorInCharge);
+                    doctorInCharge = new TestDoctor(cb.DoctorInCharge, cb.IdLpu);
                     if (doctorInCharge.doctor.IdLpu == null)
                         doctorInCharge.doctor.IdLpu = cb.IdLpu;
                 }

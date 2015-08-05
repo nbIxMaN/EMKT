@@ -26,19 +26,19 @@ namespace PixServiseTests
                     return null;
             }
         }
-        public TestDispensaryOne(DispensaryOne r)
+        public TestDispensaryOne(DispensaryOne r, string idLpu = "")
         {
             if (r != null)
             {
                 dispansaryOne = r;
                 attachment = new TestAttachment(r.Attachment);
-                doctor = new TestDoctor(r.Author);
-                hdDoctor = new TestDoctor(r.HealthGroup.Doctor);
+                doctor = new TestDoctor(r.Author, idLpu);
+                hdDoctor = new TestDoctor(r.HealthGroup.Doctor, idLpu);
                 if (r.Recommendations != null)
                 {
                     foreach(Recommendation i in r.Recommendations)
                     {
-                        recom.Add(new TestRecommendation(i));
+                        recom.Add(new TestRecommendation(i, idLpu));
                     }
                 }
             }

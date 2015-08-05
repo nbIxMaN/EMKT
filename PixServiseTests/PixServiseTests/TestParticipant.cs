@@ -13,10 +13,10 @@ namespace PixServiseTests
         public TestDoctor doctor;
         public Participant participant;
 
-        public TestParticipant(Participant d)
+        public TestParticipant(Participant d, string idLpu = "")
         {
             if (d.Doctor != null)
-                doctor = new TestDoctor(d.Doctor);
+                doctor = new TestDoctor(d.Doctor, idLpu);
             participant = d;
         }
 

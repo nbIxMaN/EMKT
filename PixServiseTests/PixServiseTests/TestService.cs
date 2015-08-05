@@ -12,12 +12,12 @@ namespace PixServiseTests
     {
         Service document;
         TestParticipant doctor;
-        public TestService(Service s)
+        public TestService(Service s, string idLpu = "")
         {
             if (s != null)
             {
                 document = s;
-                doctor = new TestParticipant(s.Performer);
+                doctor = new TestParticipant(s.Performer, idLpu);
             }
         }
         static public List<TestService> BuildServiseFromDataBaseData(string IdStep)

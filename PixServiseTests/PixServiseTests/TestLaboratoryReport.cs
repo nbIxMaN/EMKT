@@ -13,13 +13,13 @@ namespace PixServiseTests
         LaboratoryReport laboratoryReport;
         TestAttachment attachment;
         TestDoctor doctor;
-        public TestLaboratoryReport(LaboratoryReport r)
+        public TestLaboratoryReport(LaboratoryReport r, string idLpu = "")
         {
             if (r != null)
             {
                 laboratoryReport = r;
                 attachment = new TestAttachment(r.Attachment);
-                doctor = new TestDoctor(r.Author);
+                doctor = new TestDoctor(r.Author, idLpu);
             }
         }
         static public List<TestLaboratoryReport> BuildSickListFromDataBaseData(string idStep)
@@ -51,6 +51,8 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение CreationDate TestLaboratoryReport");
             if (this.laboratoryReport.Header != r.laboratoryReport.Header)
                 Global.errors3.Add("Несовпадение Header TestLaboratoryReport");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несщвпадение длины doctor TestLaboratoryReport");
         }
         public override bool Equals(Object obj)
         {

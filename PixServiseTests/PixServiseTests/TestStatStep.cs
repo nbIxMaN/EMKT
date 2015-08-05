@@ -36,22 +36,22 @@ namespace PixServiseTests
                     {
                         Service s = i as Service;
                         if (s != null)
-                            records.Add(new TestService(s));
+                            records.Add(new TestService(s, caseLpu));
                         AppointedMedication am = i as AppointedMedication;
                         if (am != null)
-                            records.Add(new TestAppointedMedication(am));
+                            records.Add(new TestAppointedMedication(am, caseLpu));
                         Diagnosis diag = i as Diagnosis;
                         if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
-                            records.Add(new TestDiagnosis(diag));
+                            records.Add(new TestDiagnosis(diag, caseLpu));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
                         if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
-                            records.Add(new TestClinicMainDiagnosis(cmd));
+                            records.Add(new TestClinicMainDiagnosis(cmd, caseLpu));
                         Referral r = i as Referral;
                         if (r != null)
-                            records.Add(new TestReferral(r));
+                            records.Add(new TestReferral(r, caseLpu));
                         LaboratoryReport lr = i as LaboratoryReport;
                         if (lr != null)
-                            records.Add(new TestLaboratoryReport(lr));
+                            records.Add(new TestLaboratoryReport(lr, caseLpu));
                     }
                 }
             }

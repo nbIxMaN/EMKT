@@ -15,12 +15,12 @@ namespace PixServiseTests
         TestAttachment attachment;
         TestDoctor doctor;
         TestDoctor departmentHead;
-        public TestReferral(Referral r)
+        public TestReferral(Referral r, string idLpu = "")
         {
             referral = r;
             attachment = new TestAttachment(r.Attachment);
-            doctor = new TestDoctor(r.Author);
-            departmentHead = new TestDoctor(r.DepartmentHead);
+            doctor = new TestDoctor(r.Author, idLpu);
+            departmentHead = new TestDoctor(r.DepartmentHead, idLpu);
         }
         static public List<TestReferral> BuildReferralFromDataBaseData(string idStep)
         {

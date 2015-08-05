@@ -13,13 +13,13 @@ namespace PixServiseTests
         ConsultNote consultNote;
         TestAttachment attachment;
         TestDoctor doctor;
-        public TestConsultNote(ConsultNote r)
+        public TestConsultNote(ConsultNote r, string idLpu = "")
         {
             if (r != null)
             {
                 consultNote = r;
                 attachment = new TestAttachment(r.Attachment);
-                doctor = new TestDoctor(r.Author);
+                doctor = new TestDoctor(r.Author, idLpu);
             }
         }
         static public TestConsultNote BuildSickListFromDataBaseData(string idStep)
@@ -61,8 +61,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.consultNote.CreationDate != p.consultNote.CreationDate)&&
-            (this.consultNote.Header != p.consultNote.Header)&&
+            if ((this.consultNote.CreationDate == p.consultNote.CreationDate)&&
+            (this.consultNote.Header == p.consultNote.Header)&&
             Global.IsEqual(this.doctor, p.doctor)&&
             Global.IsEqual(this.attachment, p.attachment))
             {

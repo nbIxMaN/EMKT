@@ -23,7 +23,7 @@ namespace PixServiseTests
         }
         TestDoctor doctor;
         TestDiagnosisInfo diagnosInfo;
-        public TestClinicMainDiagnosis(ClinicMainDiagnosis d)
+        public TestClinicMainDiagnosis(ClinicMainDiagnosis d, string idLpu = "")
         {
             if (d != null)
             {
@@ -33,10 +33,10 @@ namespace PixServiseTests
                 {
                     _diagnosis = new List<TestDiagnosis>();
                     foreach (Diagnosis i in d.Complications)
-                        _diagnosis.Add(new TestDiagnosis(i));
+                        _diagnosis.Add(new TestDiagnosis(i, idLpu));
                 }
                 if (d.Doctor != null)
-                    doctor = new TestDoctor(d.Doctor);
+                    doctor = new TestDoctor(d.Doctor, idLpu);
             }
         }
         static public TestClinicMainDiagnosis BuildTestClinicMainDiagnosisFromDataBaseDate(string idStep)

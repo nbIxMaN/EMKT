@@ -15,13 +15,13 @@ namespace PixServiseTests
         TestAttachment attachment;
         TestDoctor doctor;
         TestGuardian guardian;
-        public TestSickList(SickList r)
+        public TestSickList(SickList r, string idLpu = "")
         {
             if (r != null)
             {
                 sickList = r;
                 attachment = new TestAttachment(r.Attachment);
-                doctor = new TestDoctor(r.Author);
+                doctor = new TestDoctor(r.Author, idLpu);
                 guardian = new TestGuardian(r.SickListInfo.Caregiver);
             }
         }

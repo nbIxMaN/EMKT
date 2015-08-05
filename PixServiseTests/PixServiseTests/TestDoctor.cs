@@ -13,11 +13,13 @@ namespace PixServiseTests
         public TestPerson person;
         public MedicalStaff doctor;
 
-        public TestDoctor(MedicalStaff d)
+        public TestDoctor(MedicalStaff d, string idLpu = "")
         {
             if (d != null)
             {
                 doctor = d;
+                if (d.IdLpu == null)
+                    d.IdLpu = idLpu;
                 if (d.Person != null)
                     person = new TestPerson(d.Person);
             }

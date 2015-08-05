@@ -12,12 +12,12 @@ namespace PixServiseTests
     {
         Recommendation recommendation;
         TestDoctor doctor;
-        public TestRecommendation(Recommendation r)
+        public TestRecommendation(Recommendation r, string idLpu = "")
         {
             if (r != null)
             {
                 recommendation = r;
-                doctor = new TestDoctor(r.Doctor);
+                doctor = new TestDoctor(r.Doctor, idLpu);
             }
         }
         static public List<TestRecommendation> BuildSickListFromDataBaseData(string idDispensaryStage1)

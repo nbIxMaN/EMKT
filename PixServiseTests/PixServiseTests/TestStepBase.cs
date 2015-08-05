@@ -19,9 +19,7 @@ namespace PixServiseTests
                 step = s;
             if (s.Doctor != null)
             {
-                doctor = new TestDoctor(s.Doctor);
-                if (doctor.doctor.IdLpu == null)
-                    doctor.doctor.IdLpu = caseLpu;
+                doctor = new TestDoctor(s.Doctor, caseLpu);
             }
         }
         static public List<TestStepBase> BuildTestStepsFromDataBase(string idCase, string stepLpu)

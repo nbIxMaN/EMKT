@@ -12,12 +12,12 @@ namespace PixServiseTests
     {
         AppointedMedication document;
         TestDoctor doctor;
-        public TestAppointedMedication(AppointedMedication a)
+        public TestAppointedMedication(AppointedMedication a, string idLpu = "")
         {
             if (a != null)
             {
                 document = a;
-                doctor = new TestDoctor(a.Doctor);
+                doctor = new TestDoctor(a.Doctor, idLpu);
             }
         }
         static public List<TestAppointedMedication> BuildAppointedMedicationFromDataBaseDate(string idStep)

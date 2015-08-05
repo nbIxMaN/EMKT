@@ -59,7 +59,11 @@ namespace PixServiseTests
                                 at.Url = null;
                             if (docsReader["MIMEType"].ToString() != "")
                                 at.MimeType = docsReader["MIMEType"].ToString();
-                            TestAttachment t = new TestAttachment(at);
+                            TestAttachment t = null;
+                            if ((at.MimeType == null) && (at.Hash == null) && (at.Url == null) && (at.Data == null))
+                                t = new TestAttachment(null);
+                            else
+                                t = new TestAttachment(null);
                             if (docsReader["IdMedDocument"].ToString() != "")
                                 t.idMedDocument = docsReader["IdMedDocument"].ToString();
                             if (docsReader["DocHead"].ToString() != "")
@@ -94,14 +98,13 @@ namespace PixServiseTests
             TestAttachment p = obj as TestAttachment;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestAttachment с другим типом");
                 return false;
             }
             if (this.attachment == p.attachment)
                 return true;
             if ((this.attachment == null) || (p.attachment == null))
             {
-                Global.errors3.Add("Сравнение TestAttachment = null с TestAttachment != null");
+                return false;
             }
             if ((this.attachment.Data == p.attachment.Data) &&
                 (this.attachment.Hash == p.attachment.Hash) &&

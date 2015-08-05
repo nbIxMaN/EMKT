@@ -14,13 +14,13 @@ namespace PixServiseTests
         DischargeSummary dischargeSummary;
         TestAttachment attachment;
         TestDoctor doctor;
-        public TestDischargeSummary(DischargeSummary r)
+        public TestDischargeSummary(DischargeSummary r, string idLpu = "")
         {
             if (r != null)
             {
                 dischargeSummary = r;
                 attachment = new TestAttachment(r.Attachment);
-                doctor = new TestDoctor(r.Author);
+                doctor = new TestDoctor(r.Author, idLpu);
             }
         }
         static public TestDischargeSummary BuildSickListFromDataBaseData(string idStep)
