@@ -33,6 +33,57 @@ namespace PixServiseTests
             return labrep;
         }
 
+        public DispensaryOne MinDispensaryOne()
+        {
+            DispensaryOne disp = new DispensaryOne
+            {
+                CreationDate = MedRecordData.dispensaryOne.CreationDate,
+                Header = MedRecordData.dispensaryOne.Header,
+                IsGuested = MedRecordData.dispensaryOne.IsGuested,
+                HasExpertCareRefferal = MedRecordData.dispensaryOne.HasExpertCareRefferal,
+                IsUnderObservation = MedRecordData.dispensaryOne.IsUnderObservation,
+                HasExtraResearchRefferal = MedRecordData.dispensaryOne.HasExtraResearchRefferal,
+                HasPrescribeCure = MedRecordData.dispensaryOne.HasPrescribeCure,
+                HasHealthResortRefferal = MedRecordData.dispensaryOne.HasHealthResortRefferal,
+                HasSecondStageRefferal = MedRecordData.dispensaryOne.HasSecondStageRefferal,
+                Author = MinDoctorSet(),
+                HealthGroup = new HealthGroup
+                {
+                    Doctor = MinDoctorSet(),
+                    HealthGroupInfo = new HealthGroupInfo
+                    {
+                        Date = MedRecordData.dispensaryOne.HealthGroup.HealthGroupInfo.Date,
+                        IdHealthGroup = MedRecordData.dispensaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup,
+                    }
+                }
+            };
+
+            return disp;
+        }
+
+        public ConsultNote MinConsultNote()
+        {
+            ConsultNote consultNote = new ConsultNote 
+            {
+                CreationDate = MedRecordData.consultNote.CreationDate,
+                Header = MedRecordData.consultNote.Header,
+                Author = MinDoctorSet(),
+            };
+            return consultNote;
+        }
+
+        public DischargeSummary MinDischargeSummary()
+        {
+            DischargeSummary dischargeSummary = new DischargeSummary
+            {
+                CreationDate = MedRecordData.dischargeSummary.CreationDate,
+                Header = MedRecordData.dischargeSummary.Header,
+                Author = MinDoctorSet(),
+            };
+
+            return dischargeSummary;
+        }
+
         public MedicalStaff MinDoctorSet()
         {
             MedicalStaff doctor = new MedicalStaff
