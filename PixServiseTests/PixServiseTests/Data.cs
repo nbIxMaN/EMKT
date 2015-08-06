@@ -462,7 +462,7 @@ namespace PixServiseTests
             MedicalStaff doctor = new MedicalStaff
             {
                 IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                IdSpeciality = 29,
+                IdSpeciality = 31,
                 IdPosition = 72,
                 Person = new PersonWithIdentity
                 {

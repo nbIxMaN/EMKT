@@ -63,7 +63,7 @@ namespace PixServiseTests
 
         public ConsultNote MinConsultNote()
         {
-            ConsultNote consultNote = new ConsultNote 
+            ConsultNote consultNote = new ConsultNote
             {
                 CreationDate = MedRecordData.consultNote.CreationDate,
                 Header = MedRecordData.consultNote.Header,
@@ -173,6 +173,7 @@ namespace PixServiseTests
             return stepStat;
         }
 
+        //диспансеризация
         public CaseAmb MinCaseDispSet()
         {
             CaseAmb caseDisp = new CaseAmb();
@@ -204,16 +205,7 @@ namespace PixServiseTests
 
             caseDisp.Steps = new StepAmb[]
             {
-               new StepAmb
-               {
-                    DateStart = CaseAmbData.step.DateStart,
-                    DateEnd = CaseAmbData.step.DateEnd,
-                    IdStepMis = CaseAmbData.step.IdStepMis,
-                    IdPaymentType = CaseAmbData.step.IdPaymentType,
-                    IdVisitPlace = CaseAmbData.step.IdVisitPlace,
-                    IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
-                    Doctor = MinDoctorSet()
-                },
+               MinStepAmbSet()
             };
 
             return caseDisp;
@@ -250,16 +242,7 @@ namespace PixServiseTests
 
             caseAmb.Steps = new StepAmb[]
             {
-               new StepAmb
-               {
-                    DateStart = CaseAmbData.step.DateStart,
-                    DateEnd = CaseAmbData.step.DateEnd,
-                    IdStepMis = CaseAmbData.step.IdStepMis,
-                    IdPaymentType = CaseAmbData.step.IdPaymentType,
-                    IdVisitPlace = CaseAmbData.step.IdVisitPlace,
-                    IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
-                    Doctor = MinDoctorSet()
-                },
+               MinStepAmbSet()
             };
 
             return caseAmb;
@@ -278,7 +261,7 @@ namespace PixServiseTests
             caseAmb.IdPatientMis = CaseAmbData.caseAmb.IdPatientMis;
             caseAmb.IdCaseType = CaseAmbData.caseAmb.IdCaseType;
 
-            caseAmb.DoctorInCharge = MinDoctorSet();
+          //  caseAmb.DoctorInCharge = MinDoctorSet();
 
             caseAmb.Author = new Participant
             {
@@ -292,16 +275,7 @@ namespace PixServiseTests
 
             caseAmb.Steps = new StepAmb[]
             {
-               new StepAmb
-               {
-                    DateStart = CaseAmbData.step.DateStart,
-                    DateEnd = CaseAmbData.step.DateEnd,
-                    IdStepMis = CaseAmbData.step.IdStepMis,
-                    IdPaymentType = CaseAmbData.step.IdPaymentType,
-                    IdVisitPlace = CaseAmbData.step.IdVisitPlace,
-                    IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
-                    Doctor = MinDoctorSet()
-                },
+               MinStepAmbSet()
             };
 
             return caseAmb;
@@ -370,19 +344,7 @@ namespace PixServiseTests
 
             caseStat.Steps = new StepStat[]
             {
-               new StepStat
-               {
-                    DateStart = CaseStatData.step.DateStart,
-                    DateEnd = CaseStatData.step.DateEnd,
-                    IdStepMis = CaseStatData.step.IdStepMis,
-                    IdPaymentType = CaseStatData.step.IdPaymentType,
-                    HospitalDepartmentName = CaseStatData.step.HospitalDepartmentName,
-                    IdHospitalDepartment = CaseStatData.step.IdHospitalDepartment,
-                    BedProfile = CaseStatData.step.BedProfile,
-                    DaySpend = CaseStatData.step.DaySpend,
-
-                    Doctor = MinDoctorSet()
-                },
+               MinStepStatSet()
             };
             return caseStat;
         }
