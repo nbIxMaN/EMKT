@@ -121,7 +121,7 @@ namespace PixServiseTests
                  {
                      (new SetData()).MinLaboratoryReportSet()
                  };
-
+                
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -288,6 +288,33 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+    /*    [Test]
+        public void AddMedRecordAmbCaseWithLaboratoryReportMin()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+
+                MedRecord medRecord
+                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
+                stepAmb.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinLaboratoryReportSet()
+                };
+                client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }*/
 
         //--------------------------- StatCase
         [Test]

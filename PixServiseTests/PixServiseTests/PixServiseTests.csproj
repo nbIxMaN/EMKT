@@ -130,6 +130,7 @@
     <Compile Include="TestStatStep.cs" />
     <Compile Include="TestStepBase.cs" />
     <Compile Include="TestTfomsInfo.cs" />
+    <Compile Include="TfomsInfoTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LaboratoryReportTest.cs" />
