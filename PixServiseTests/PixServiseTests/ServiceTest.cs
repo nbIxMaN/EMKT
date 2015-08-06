@@ -9,7 +9,6 @@ using PixServiseTests.EMKServise;
 
 namespace PixServiseTests
 {
-    //тут  пока что всё неправильно!!
     [TestFixture]
     public class ServiceTest : Data
     {

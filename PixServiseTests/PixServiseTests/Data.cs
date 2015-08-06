@@ -13,12 +13,7 @@ namespace PixServiseTests
     public static class CaseAmbData
     {
         public static CaseAmb caseAmb { get; set; }
-
         public static StepAmb step { get; set; }
-        //public static MedicalStaff doctor { get; set; }
-        //public static PersonWithIdentity doctorPerson { get; set; }
-        //public static HumanName doctorName { get; set; }
-
         public static MedDocument medDocument { get; set; }
     }
 
