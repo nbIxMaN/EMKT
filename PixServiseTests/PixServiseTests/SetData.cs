@@ -122,6 +122,22 @@ namespace PixServiseTests
             return apMed;
         }
 
+        public Diagnosis MinDiagnosis()
+        {
+            Diagnosis diag = new Diagnosis
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    DiagnosedDate = MedRecordData.diagnosis.DiagnosisInfo.DiagnosedDate,
+                    IdDiagnosisType = MedRecordData.diagnosis.DiagnosisInfo.IdDiagnosisType,
+                    Comment = MedRecordData.diagnosis.DiagnosisInfo.Comment,
+                    MkbCode = MedRecordData.diagnosis.DiagnosisInfo.MkbCode
+                },
+                Doctor = MinDoctorSet()
+            };
+            return diag;
+        }
+
         public MedicalStaff MinDoctorSet()
         {
             MedicalStaff doctor = new MedicalStaff

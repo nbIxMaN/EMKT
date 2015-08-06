@@ -93,17 +93,17 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.info.Comment != p.info.Comment)&&
-            (this.info.DiagnosedDate != p.info.DiagnosedDate)&&
-            (this.info.DiagnosisChangeReason != p.info.DiagnosisChangeReason)&&
-            (this.info.DiagnosisStage != p.info.DiagnosisStage)&&
-            (this.info.IdDiagnosisType != p.info.IdDiagnosisType)&&
-            (this.info.IdDiseaseType != p.info.IdDiseaseType)&&
-            (this.info.IdDispensaryState != p.info.IdDispensaryState)&&
-            (this.info.IdTraumaType != p.info.IdTraumaType)&&
-            (this.info.MedicalStandard != p.info.MedicalStandard)&&
-            (this.info.MESImplementationFeature != p.info.MESImplementationFeature)&&
-            (this.info.MkbCode != p.info.MkbCode))
+            if ((this.info.Comment == p.info.Comment)&&
+            (this.info.DiagnosedDate == p.info.DiagnosedDate)&&
+            (this.info.DiagnosisChangeReason == p.info.DiagnosisChangeReason)&&
+            (this.info.DiagnosisStage == p.info.DiagnosisStage)&&
+            (this.info.IdDiagnosisType == p.info.IdDiagnosisType)&&
+            (this.info.IdDiseaseType == p.info.IdDiseaseType)&&
+            (this.info.IdDispensaryState == p.info.IdDispensaryState)&&
+            (this.info.IdTraumaType == p.info.IdTraumaType)&&
+            (this.info.MedicalStandard == p.info.MedicalStandard)&&
+            (this.info.MESImplementationFeature == p.info.MESImplementationFeature)&&
+            (this.info.MkbCode == p.info.MkbCode))
             {
                 return true;
             }

@@ -39,6 +39,16 @@ namespace PixServiseTests
                     doctor = new TestDoctor(d.Doctor, idLpu);
             }
         }
+        public TestClinicMainDiagnosis(Diagnosis d, string idLpu = "")
+        {
+            if (d != null)
+            {
+                if (d.DiagnosisInfo != null)
+                    diagnosInfo = new TestDiagnosisInfo(d.DiagnosisInfo);
+                if (d.Doctor != null)
+                    doctor = new TestDoctor(d.Doctor, idLpu);
+            }
+        }
         static public TestClinicMainDiagnosis BuildTestClinicMainDiagnosisFromDataBaseDate(string idStep)
         {
             using (SqlConnection connection = Global.GetSqlConnection())

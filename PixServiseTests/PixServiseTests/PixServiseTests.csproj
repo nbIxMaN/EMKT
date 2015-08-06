@@ -72,10 +72,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConsultNoteTests.cs" />
+    <Compile Include="DianosisTests.cs" />
     <Compile Include="DishargeSummaryTests.cs" />
     <Compile Include="DispensaryOneTests.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="MethodTests.cs" />
     <Compile Include="Service References\EMKServise\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

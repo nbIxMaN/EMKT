@@ -67,15 +67,20 @@ namespace PixServiseTests
                         DeathInfo di = i as DeathInfo;
                         if (di != null)
                             records.Add(new TestDeathInfo(di));
-                        Diagnosis diag = i as Diagnosis;
-                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
-                            records.Add(new TestDiagnosis(diag, cs.IdLpu));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
                         if ((cmd != null) && (cs.HospResult != IdDeath) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd, cs.IdLpu));
                         AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
                         if ((acmd != null) && (cs.HospResult == IdDeath) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(acmd, cs.IdLpu));
+                        if ((cmd == null) && (acmd == null))
+                        {
+                            Diagnosis diag = i as Diagnosis;
+                            if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
+                                records.Add(new TestDiagnosis(diag, cs.IdLpu));
+                            if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
+                                records.Add(new TestClinicMainDiagnosis(diag, cs.IdLpu));
+                        }
                         Referral r = i as Referral;
                         if (r != null)
                             records.Add(new TestReferral(r, cs.IdLpu));

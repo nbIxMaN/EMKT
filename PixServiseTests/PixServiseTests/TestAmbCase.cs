@@ -64,12 +64,17 @@ namespace PixServiseTests
                         TfomsInfo tfi = i as TfomsInfo;
                         if (tfi != null)
                             records.Add(new TestTfomsInfo(tfi));
-                        Diagnosis diag = i as Diagnosis;
-                        if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
-                            records.Add(new TestDiagnosis(diag, ca.IdLpu));
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
                         if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd, ca.IdLpu));
+                        if (cmd == null)
+                        {
+                            Diagnosis diag = i as Diagnosis;
+                            if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
+                                records.Add(new TestClinicMainDiagnosis(diag, ca.IdLpu));
+                            if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
+                                records.Add(new TestDiagnosis(diag, ca.IdLpu));
+                        }
                         Referral r = i as Referral;
                         if (r != null)
                             records.Add(new TestReferral(r, ca.IdLpu));
