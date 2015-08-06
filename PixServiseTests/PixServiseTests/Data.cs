@@ -470,10 +470,10 @@ namespace PixServiseTests
                     Sex = 1,
                     Birthdate = new DateTime(1973, 01, 07),
                     Documents = new IdentityDocument[]
-                        {
-                            DocumentData.Passport,
-                            DocumentData.SNILS
-                        },
+                    {
+                        DocumentData.Passport,
+                        DocumentData.SNILS
+                    },
                     HumanName = new HumanName
                     {
                         FamilyName = "Лукин",
