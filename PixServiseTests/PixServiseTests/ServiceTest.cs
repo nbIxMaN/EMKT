@@ -9,14 +9,14 @@ using PixServiseTests.EMKServise;
 
 namespace PixServiseTests
 {
-    //тут  пока что всё не правильно!!
+    //тут  пока что всё неправильно!!
     [TestFixture]
     public class ServiceTest : Data
     {
         //--------------------------- AmbCase
 
         [Test]
-        public void AddAmbCaseWithLaboratoryReportFull()
+        public void AddAmbCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -28,14 +28,14 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
 
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    MedRecordData.service,
+                    (new SetData()).MinService()
 
                 };
                 caseAmb.Steps = new StepAmb[]
@@ -51,7 +51,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddAmbCaseWithLaboratoryReportMin()
+        public void AddAmbCaseWithServicetMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -63,19 +63,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
-                };
-
-                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseAmb.Steps = new StepAmb[]
-                {
-                    stepAmb
+                    (new SetData()).MinService()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -86,7 +74,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CreateAmbCaseWithLaboratoryReportFull()
+        public void CreateAmbCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -98,13 +86,13 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 caseAmb.MedRecords = new MedRecord[]
                  {
-                     MedRecordData.LaboratoryReport
+                     MedRecordData.service
                  };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    MedRecordData.service,
+                    (new SetData()).MinService()
 
                 };
                 caseAmb.Steps = new StepAmb[]
@@ -120,7 +108,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CreateAmbCaseWithLaboratoryReportMin()
+        public void CreateAmbCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -132,19 +120,8 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 caseAmb.MedRecords = new MedRecord[]
                  {
-                     (new SetData()).MinLaboratoryReportSet()
+                     (new SetData()).MinService()
                  };
-                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseAmb.Steps = new StepAmb[]
-                {
-                    stepAmb
-                };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -154,7 +131,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void UpdateAmbCaseWithLaboratoryReportFull()
+        public void UpdateAmbCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -167,13 +144,13 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    MedRecordData.service,
+                    (new SetData()).MinService()
 
                 };
                 caseAmb.Steps = new StepAmb[]
@@ -189,7 +166,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void UpdateAmbCaseWithLaboratoryReportMin()
+        public void UpdateAmbCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -202,19 +179,9 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinService()
                 };
-                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
 
-                };
-                caseAmb.Steps = new StepAmb[]
-                {
-                    stepAmb
-                };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -224,7 +191,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CloseAmbCaseWithLaboratoryReportFull()
+        public void CloseAmbCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -238,7 +205,7 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -249,7 +216,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CloseAmbCaseWithLaboratoryReportMin()
+        public void CloseAmbCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -263,7 +230,7 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinService()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -274,7 +241,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddStepToCaseAmbCaseWithLaboratoryReportFull()
+        public void AddStepToCaseAmbCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -288,7 +255,7 @@ namespace PixServiseTests
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
@@ -299,7 +266,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddStepToCaseAmbCaseWithLaboratoryReportMin()
+        public void AddStepToCaseAmbCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -313,7 +280,7 @@ namespace PixServiseTests
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinAppointedMedication()
+                    (new SetData()).MinService()
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
@@ -325,7 +292,7 @@ namespace PixServiseTests
 
         //--------------------------- StatCase
         [Test]
-        public void AddStatCaseWithLaboratoryReportFull()
+        public void AddStatCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -337,14 +304,14 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
 
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    MedRecordData.service,
+                    (new SetData()).MinService()
 
                 };
                 caseStat.Steps = new StepStat[]
@@ -360,7 +327,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddStatCaseWithLaboratoryReportMin()
+        public void AddStatCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -372,20 +339,9 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinService()
                 };
 
-                StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseStat.Steps = new StepStat[]
-                {
-                    stepStat
-                };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -395,7 +351,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CreateStatCaseWithLaboratoryReportFull()
+        public void CreateStatCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -407,13 +363,13 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 caseStat.MedRecords = new MedRecord[]
                  {
-                     MedRecordData.LaboratoryReport
+                     MedRecordData.service
                  };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    MedRecordData.service,
+                    (new SetData()).MinService()
 
                 };
                 caseStat.Steps = new StepStat[]
@@ -429,7 +385,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CreateStatCaseWithLaboratoryReportMin()
+        public void CreateStatCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -441,19 +397,9 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 caseStat.MedRecords = new MedRecord[]
                  {
-                     (new SetData()).MinLaboratoryReportSet()
+                     (new SetData()).MinService()
                  };
-                StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
 
-                };
-                caseStat.Steps = new StepStat[]
-                {
-                    stepStat
-                };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -463,7 +409,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void UpdateStatCaseWithLaboratoryReportFull()
+        public void UpdateStatCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -476,14 +422,13 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
+                    MedRecordData.service,
+                    (new SetData()).MinService()
                 };
                 caseStat.Steps = new StepStat[]
                 {
@@ -498,7 +443,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void UpdateStatCaseWithLaboratoryReportMin()
+        public void UpdateStatCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -511,19 +456,9 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinService()
                 };
-                StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
 
-                };
-                caseStat.Steps = new StepStat[]
-                {
-                    stepStat
-                };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -533,7 +468,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CloseStatCaseWithLaboratoryReportFull()
+        public void CloseStatCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -547,7 +482,7 @@ namespace PixServiseTests
                 caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -558,7 +493,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CloseStatCaseWithLaboratoryReportMin()
+        public void CloseStatCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -572,7 +507,7 @@ namespace PixServiseTests
                 caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinService()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -583,7 +518,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddStepToCaseStatCaseWithLaboratoryReportFull()
+        public void AddStepToCaseStatCaseWithServiceFull()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -597,7 +532,7 @@ namespace PixServiseTests
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.LaboratoryReport
+                    MedRecordData.service
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
             }
@@ -608,7 +543,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddStepToCaseStatCaseWithLaboratoryReportMin()
+        public void AddStepToCaseStatCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -622,7 +557,7 @@ namespace PixServiseTests
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinAppointedMedication()
+                    (new SetData()).MinService()
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
             }

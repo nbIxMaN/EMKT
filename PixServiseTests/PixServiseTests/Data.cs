@@ -139,7 +139,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2010, 11, 1),
                 DateEnd = new DateTime(2010, 11, 10),
-                IdServiceType = "1088",
+                IdServiceType = "1089",
                 ServiceName = "Название услуги",
                 Performer = new Participant
                 {

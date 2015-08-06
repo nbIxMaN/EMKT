@@ -92,7 +92,11 @@ namespace PixServiseTests
                 DateEnd = MedRecordData.service.DateEnd,
                 IdServiceType = MedRecordData.service.IdServiceType,
                 ServiceName = MedRecordData.service.ServiceName,
-                Performer = new Participant(),
+
+                Performer = new Participant
+                {
+                    IdRole = 1
+                }
             };
             return service;
         }

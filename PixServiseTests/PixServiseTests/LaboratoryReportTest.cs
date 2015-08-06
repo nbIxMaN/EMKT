@@ -64,18 +64,6 @@ namespace PixServiseTests
                 {
                     (new SetData()).MinLaboratoryReportSet()
                 };
-
-                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseAmb.Steps = new StepAmb[]
-                {
-                    stepAmb
-                };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -133,17 +121,7 @@ namespace PixServiseTests
                  {
                      (new SetData()).MinLaboratoryReportSet()
                  };
-                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
 
-                };
-                caseAmb.Steps = new StepAmb[]
-                {
-                    stepAmb
-                };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -202,17 +180,6 @@ namespace PixServiseTests
                 caseAmb.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinLaboratoryReportSet()
-                };
-                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseAmb.Steps = new StepAmb[]
-                {
-                    stepAmb
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -312,7 +279,7 @@ namespace PixServiseTests
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinAppointedMedication()
+                    (new SetData()).MinLaboratoryReportSet()
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
@@ -373,18 +340,6 @@ namespace PixServiseTests
                 {
                     (new SetData()).MinLaboratoryReportSet()
                 };
-
-                StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseStat.Steps = new StepStat[]
-                {
-                    stepStat
-                };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -442,17 +397,6 @@ namespace PixServiseTests
                  {
                      (new SetData()).MinLaboratoryReportSet()
                  };
-                StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseStat.Steps = new StepStat[]
-                {
-                    stepStat
-                };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -511,17 +455,6 @@ namespace PixServiseTests
                 caseStat.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinLaboratoryReportSet()
-                };
-                StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
-
-                };
-                caseStat.Steps = new StepStat[]
-                {
-                    stepStat
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -621,7 +554,7 @@ namespace PixServiseTests
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinAppointedMedication()
+                    (new SetData()).MinLaboratoryReportSet()
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
             }
