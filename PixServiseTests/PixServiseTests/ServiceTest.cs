@@ -289,6 +289,53 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
+
+        [Test]
+        public void AddMedRecord_ToCase_AmbCaseWithServicetMin()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+
+                MedRecord medRecord = (new SetData()).MinService();
+
+                client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, medRecord, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddMedRecord_ToCase_AmbCaseWithServiceFull()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+
+                MedRecord medRecord = MedRecordData.service;
+
+                client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, medRecord, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         //--------------------------- StatCase
         [Test]
         public void AddStatCaseWithServiceFull()
@@ -565,6 +612,53 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+        [Test]
+        public void AddMedRecord_ToCase_StatCaseWithServiceMin()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+
+                MedRecord medRecord = (new SetData()).MinService();
+
+                client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, medRecord, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddMedRecord_ToCase_StatCaseWithServiceFull()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+
+                MedRecord medRecord = MedRecordData.service;
+
+                client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, medRecord, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         [TearDown]
         public void Clear()
         {
