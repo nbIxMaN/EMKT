@@ -71,6 +71,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ConsultNoteTests.cs" />
+    <Compile Include="DishargeSummaryTests.cs" />
+    <Compile Include="DispensaryOneTests.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Service References\EMKServise\Reference.cs">
