@@ -353,12 +353,63 @@ namespace PixServiseTests
         {
             CaseStat caseStat = new CaseStat();
 
+            caseStat.CloseDate = CaseStatData.caseStat.CloseDate;
+            caseStat.IdCaseMis = CaseStatData.caseStat.IdCaseMis;
+            caseStat.Confidentiality = CaseStatData.caseStat.Confidentiality;
+            caseStat.DoctorConfidentiality = CaseStatData.caseStat.DoctorConfidentiality;
+            caseStat.CuratorConfidentiality = CaseStatData.caseStat.CuratorConfidentiality;
+            caseStat.IdLpu = CaseStatData.caseStat.IdLpu;
+            caseStat.IdCaseResult = CaseStatData.caseStat.IdCaseResult;
+            caseStat.Comment = CaseStatData.caseStat.Comment;
+            caseStat.IdPatientMis = CaseStatData.caseStat.IdPatientMis;
+            caseStat.HospResult = CaseStatData.caseStat.HospResult;
+
+            caseStat.DoctorInCharge = MinDoctorSet();
+
+            caseStat.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseStat.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
             return caseStat;
         }
 
         public CaseStat MinCaseStatSetForCreate()
         {
             CaseStat caseStat = new CaseStat();
+
+            caseStat.OpenDate = CaseStatData.caseStat.OpenDate;
+            caseStat.IdCaseMis = CaseStatData.caseStat.IdCaseMis;
+            caseStat.IdPaymentType = CaseStatData.caseStat.IdPaymentType;
+            caseStat.Confidentiality = CaseStatData.caseStat.Confidentiality;
+            caseStat.DoctorConfidentiality = CaseStatData.caseStat.DoctorConfidentiality;
+            caseStat.CuratorConfidentiality = CaseStatData.caseStat.CuratorConfidentiality;
+            caseStat.IdLpu = CaseStatData.caseStat.IdLpu;
+            caseStat.IdPatientMis = CaseStatData.caseStat.IdPatientMis;
+            caseStat.HistoryNumber = CaseStatData.caseStat.HistoryNumber;
+            caseStat.IdTypeFromDiseaseStart = CaseStatData.caseStat.IdTypeFromDiseaseStart;
+            caseStat.IdRepetition = CaseStatData.caseStat.IdRepetition;
+            caseStat.IdHospChannel = CaseStatData.caseStat.IdHospChannel;
+
+            caseStat.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseStat.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseStat.Steps = new StepStat[]
+            {
+               MinStepStatSet()
+            };
 
             return caseStat;
         }
