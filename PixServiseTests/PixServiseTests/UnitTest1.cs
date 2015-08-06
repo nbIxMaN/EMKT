@@ -1512,6 +1512,7 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
+<<<<<<< HEAD
         //--------------------------- LaboratoryReport
 
         [Test]
@@ -2000,6 +2001,8 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
+=======
+>>>>>>> origin/master
         [TearDown]
         public void Clear()
         {

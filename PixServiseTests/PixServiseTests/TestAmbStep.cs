@@ -111,7 +111,7 @@ namespace PixServiseTests
                                     st.records.AddRange(trl);
                                 List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(tlr, null))
-                                    st.records.AddRange(trl);
+                                    st.records.AddRange(tlr);
                                 if (st.records.Count == 0)
                                     st.records = null;
                                 ambSteps.Add(st);
