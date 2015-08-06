@@ -349,6 +349,20 @@ namespace PixServiseTests
             return caseStat;
         }
 
+        public CaseStat MinCaseStatSetForClose()
+        {
+            CaseStat caseStat = new CaseStat();
+
+            return caseStat;
+        }
+
+        public CaseStat MinCaseStatSetForCreate()
+        {
+            CaseStat caseStat = new CaseStat();
+
+            return caseStat;
+        }
+
         /// в разработке
         public CaseAmb FullCaseAmbSet()
         {
