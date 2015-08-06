@@ -10,7 +10,7 @@ using PixServiseTests.EMKServise;
 namespace PixServiseTests
 {
     [TestFixture]
-    public class AppointedMedicationTest: Data
+    public class AppointedMedicationTest : Data
     {
         //--------------------------- AmbCase
         [Test]
