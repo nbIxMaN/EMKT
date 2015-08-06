@@ -34,6 +34,7 @@ namespace PixServiseTests
                 attachment = new TestAttachment(r.Attachment);
                 doctor = new TestDoctor(r.Author, idLpu);
                 hdDoctor = new TestDoctor(r.HealthGroup.Doctor, idLpu);
+                recom = new List<TestRecommendation>();
                 if (r.Recommendations != null)
                 {
                     foreach(Recommendation i in r.Recommendations)
