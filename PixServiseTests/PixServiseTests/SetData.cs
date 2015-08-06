@@ -211,6 +211,65 @@ namespace PixServiseTests
             return caseDisp;
         }
 
+        public CaseAmb MinCaseDispSetForCreate()
+        {
+            CaseAmb caseDisp = new CaseAmb();
+            caseDisp.OpenDate = CaseDispData.caseDisp.OpenDate;
+            caseDisp.IdCaseMis = CaseDispData.caseDisp.IdCaseMis;
+            caseDisp.IdPaymentType = CaseDispData.caseDisp.IdPaymentType;
+            caseDisp.Confidentiality = CaseDispData.caseDisp.Confidentiality;
+            caseDisp.DoctorConfidentiality = CaseDispData.caseDisp.DoctorConfidentiality;
+            caseDisp.CuratorConfidentiality = CaseDispData.caseDisp.CuratorConfidentiality;
+            caseDisp.IdLpu = CaseDispData.caseDisp.IdLpu;
+            caseDisp.IdPatientMis = CaseDispData.caseDisp.IdPatientMis;
+            caseDisp.IdCaseType = CaseDispData.caseDisp.IdCaseType;
+
+            caseDisp.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Steps = new StepAmb[]
+            {
+               MinStepAmbSet()
+            };
+
+            return caseDisp;
+        }
+
+        public CaseAmb MinCaseDispSetForClose()
+        {
+            CaseAmb caseDisp = new CaseAmb();
+            caseDisp.CloseDate = CaseDispData.caseDisp.CloseDate;
+            caseDisp.IdCaseMis = CaseDispData.caseDisp.IdCaseMis;
+            caseDisp.Confidentiality = CaseDispData.caseDisp.Confidentiality;
+            caseDisp.DoctorConfidentiality = CaseDispData.caseDisp.DoctorConfidentiality;
+            caseDisp.CuratorConfidentiality = CaseDispData.caseDisp.CuratorConfidentiality;
+            caseDisp.IdLpu = CaseDispData.caseDisp.IdLpu;
+            caseDisp.IdCaseResult = CaseDispData.caseDisp.IdCaseResult;
+            caseDisp.Comment = CaseDispData.caseDisp.Comment;
+            caseDisp.IdPatientMis = CaseDispData.caseDisp.IdPatientMis;
+
+            caseDisp.DoctorInCharge = MinDoctorSet();
+
+            caseDisp.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            return caseDisp;
+        }
+
         public CaseAmb MinCaseAmbSet()
         {
             CaseAmb caseAmb = new CaseAmb();
@@ -260,8 +319,6 @@ namespace PixServiseTests
             caseAmb.IdLpu = CaseAmbData.caseAmb.IdLpu;
             caseAmb.IdPatientMis = CaseAmbData.caseAmb.IdPatientMis;
             caseAmb.IdCaseType = CaseAmbData.caseAmb.IdCaseType;
-
-          //  caseAmb.DoctorInCharge = MinDoctorSet();
 
             caseAmb.Author = new Participant
             {

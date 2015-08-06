@@ -83,6 +83,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ServiceTest.cs" />
     <Compile Include="SetData.cs" />
     <Compile Include="TestAddress.cs" />
     <Compile Include="TestAmbCase.cs" />

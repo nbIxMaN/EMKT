@@ -25,45 +25,23 @@ namespace PixServiseTests
     public static class CaseDispData
     {
         public static CaseAmb caseDisp { get; set; }
-
         public static StepAmb step { get; set; }
-        //public static MedicalStaff doctor { get; set; }
-        //public static PersonWithIdentity doctorPerson { get; set; }
-        //public static HumanName doctorName { get; set; }
-
         public static MedDocument medDocument { get; set; }
     }
 
     public static class CaseStatData
     {
         public static CaseStat caseStat { get; set; }
-
         public static StepStat step { get; set; }
-        //public static MedicalStaff doctor { get; set; }
-        //public static PersonWithIdentity doctorPerson { get; set; }
-        //public static HumanName doctorName { get; set; }
-
         public static MedDocument medDocument { get; set; }
     }
 
     public static class DoctorData
     {
         public static MedicalStaff doctorInCharge { get; set; }
-        // public static PersonWithIdentity doctorInChargePerson { get; set; }
-        // public static HumanName doctorInChargeName { get; set; }
-
         public static Participant authenticator { get; set; }
-        //public static PersonWithIdentity authenticatorPerson { get; set; }
-        //public static HumanName authenticatorName { get; set; }
-
         public static Participant author { get; set; }
-        //public static PersonWithIdentity authorPerson { get; set; }
-        //public static HumanName authorName { get; set; }
-
         public static Participant legalAuthenticator { get; set; }
-        //public static PersonWithIdentity legalAuthenticatorPerson { get; set; }
-        //public static HumanName legalAuthenticatorName { get; set; }
-
         public static Guardian guardian { get; set; }
     }
     public static class MedRecordData
