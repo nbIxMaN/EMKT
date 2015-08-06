@@ -972,6 +972,53 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+        [Test]
+        public void AddStatCaseWithDishargeSummary()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDischargeSummary()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddDispCaseWithDishargeSummary()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDischargeSummary()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         [Test]
         public void UpdateAmbCaseWithDishargeSummary()
         {
@@ -989,6 +1036,54 @@ namespace PixServiseTests
                     (new SetData()).MinDischargeSummary()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void UpdateStatCaseWithDishargeSummary()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDischargeSummary()
+                };
+                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void UpdateDispCaseWithDishargeSummary()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDischargeSummary()
+                };
+                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -1021,6 +1116,54 @@ namespace PixServiseTests
         }
 
         [Test]
+        public void CloseStatCaseWithDishargeSummary()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDischargeSummary()
+                };
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void CloseDispCaseWithDishargeSummary()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDischargeSummary()
+                };
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
         public void AddAmbCaseWithConsultNote()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
@@ -1042,6 +1185,53 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+        [Test]
+        public void AddStatCaseWithConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinConsultNote()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddDispCaseWithConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinConsultNote()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         [Test]
         public void UpdateAmbCaseWithConsultNote()
         {
@@ -1059,6 +1249,54 @@ namespace PixServiseTests
                     (new SetData()).MinConsultNote()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void UpdateStatCaseWithConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinConsultNote()
+                };
+                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void UpdateDispCaseWithConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinConsultNote()
+                };
+                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -1090,6 +1328,57 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+        [Test]
+        public void CloseStatCaseWithConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
+                client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat = (new SetData()).MinCaseStatSetForClose();
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinConsultNote()
+                };
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void CloseDispCaseWithConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
+                client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp = (new SetData()).MinCaseDispSetForClose();
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinConsultNote()
+                };
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         [Test]
         public void AddDispCaseWithDispanseryOne()
         {
@@ -1689,6 +1978,27 @@ namespace PixServiseTests
         }
 
         //
+
+        [Test]
+        public void TT()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                MedRecord r = (new SetData()).MinTfomsInfo();
+                client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb.IdLpu, caseAmb.IdPatientMis, r);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
 
         [TearDown]
         public void Clear()

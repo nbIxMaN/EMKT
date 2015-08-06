@@ -10,6 +10,7 @@ namespace PixServiseTests
 {
     class TestCaseBase
     {
+        private const string masterCaseId = "1";
         public string GUID;
         public CaseBase caseBase;
         public TestDoctor doctorInCharge;
@@ -18,6 +19,7 @@ namespace PixServiseTests
         public TestParticipant autor;
         public TestParticipant authenticator;
         public TestParticipant legalAuthenticator;
+        public int idCaseType;
 
         public TestCaseBase(string guid, CaseBase cb)
         {
@@ -76,8 +78,12 @@ namespace PixServiseTests
                     {
                         InstId = IdInstitutional["IdInstitution"].ToString();
                     }
-                    findIdCaseString =
+                    if (mis != "")
+                        findIdCaseString =
                         "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
+                    else
+                        findIdCaseString =
+                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseType = '" + masterCaseId + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
                 }
                 SqlCommand command = new SqlCommand(findIdCaseString, connection);
                 using (SqlDataReader IdCaseReader = command.ExecuteReader())
@@ -103,6 +109,7 @@ namespace PixServiseTests
                 {
                     string IdDoctor = "";
                     string IdGuardian = "";
+                    int idCaseT = 0;
                     CaseBase p = new CaseBase();
                     string findCase = "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = '" + caseId + "'";
                     SqlCommand caseCommand = new SqlCommand(findCase, connection);
@@ -146,6 +153,8 @@ namespace PixServiseTests
                                 IdDoctor = Convert.ToString(caseReader["IDDoctor"]);
                             if (caseReader["IdGuardian"].ToString() != "")
                                 IdGuardian = Convert.ToString(caseReader["IDGuardian"]);
+                            if (caseReader["IdCaseType"].ToString() != "")
+                                idCaseT = Convert.ToInt32(caseReader["IdCaseType"]);
                         }
                     }
                     findCase = "SELECT * FROM mm_AccessRole2Case WHERE IdCase = '" + caseId + "'";
@@ -171,6 +180,7 @@ namespace PixServiseTests
                     p.IdCaseMis = mis;
                     p.IdLpu = idlpu;
                     TestCaseBase cb = new TestCaseBase(guid, p);
+                    cb.idCaseType = idCaseT;
                     if (IdDoctor != "")
                         cb.doctorInCharge = TestDoctor.BuildTestDoctorFromDataBase(IdDoctor);
                     else

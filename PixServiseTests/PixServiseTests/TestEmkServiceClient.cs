@@ -148,6 +148,24 @@ namespace PixServiseTests
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
             }
         }
+        public void AddMedRecord(string guid, string idLpu, string idPatientMis, MedRecord mr, string idCaseMis = "")
+        {
+            try
+            {
+                client.AddMedRecord(guid, idLpu, idPatientMis, idCaseMis, mr);
+                TestMasterCase tmc = TestMasterCase.BuildTestMasterCase(guid, idLpu, idPatientMis, idCaseMis);
+                if (!tmc.CheckDocumentInCase(mr, idLpu))
+                    Global.errors1.Add("Не добавлен");
+            }
+            catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
+            {
+                getErrors(e.Detail);
+            }
+            catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
+            {
+                Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
+            }
+        }
         //public ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, DateTime startDate, DateTime endDate)
         //{
         //    var a = client.GetReferralList(guid, idLpu, idReferralType, startDate, endDate);

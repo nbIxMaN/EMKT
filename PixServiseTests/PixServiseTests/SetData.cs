@@ -211,6 +211,65 @@ namespace PixServiseTests
             return caseDisp;
         }
 
+        public CaseAmb MinCaseDispSetForCreate()
+        {
+            CaseAmb caseDisp = new CaseAmb();
+            caseDisp.OpenDate = CaseDispData.caseDisp.OpenDate;
+            caseDisp.IdCaseMis = CaseDispData.caseDisp.IdCaseMis;
+            caseDisp.IdPaymentType = CaseDispData.caseDisp.IdPaymentType;
+            caseDisp.Confidentiality = CaseDispData.caseDisp.Confidentiality;
+            caseDisp.DoctorConfidentiality = CaseDispData.caseDisp.DoctorConfidentiality;
+            caseDisp.CuratorConfidentiality = CaseDispData.caseDisp.CuratorConfidentiality;
+            caseDisp.IdLpu = CaseDispData.caseDisp.IdLpu;
+            caseDisp.IdPatientMis = CaseDispData.caseDisp.IdPatientMis;
+            caseDisp.IdCaseType = CaseDispData.caseDisp.IdCaseType;
+
+            caseDisp.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Steps = new StepAmb[]
+            {
+               MinStepAmbSet()
+            };
+
+            return caseDisp;
+        }
+
+        public CaseAmb MinCaseDispSetForClose()
+        {
+            CaseAmb caseDisp = new CaseAmb();
+            caseDisp.CloseDate = CaseDispData.caseDisp.CloseDate;
+            caseDisp.IdCaseMis = CaseDispData.caseDisp.IdCaseMis;
+            caseDisp.Confidentiality = CaseDispData.caseDisp.Confidentiality;
+            caseDisp.DoctorConfidentiality = CaseDispData.caseDisp.DoctorConfidentiality;
+            caseDisp.CuratorConfidentiality = CaseDispData.caseDisp.CuratorConfidentiality;
+            caseDisp.IdLpu = CaseDispData.caseDisp.IdLpu;
+            caseDisp.IdCaseResult = CaseDispData.caseDisp.IdCaseResult;
+            caseDisp.Comment = CaseDispData.caseDisp.Comment;
+            caseDisp.IdPatientMis = CaseDispData.caseDisp.IdPatientMis;
+
+            caseDisp.DoctorInCharge = MinDoctorSet();
+
+            caseDisp.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseDisp.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            return caseDisp;
+        }
+
         public CaseAmb MinCaseAmbSet()
         {
             CaseAmb caseAmb = new CaseAmb();
@@ -346,6 +405,72 @@ namespace PixServiseTests
             {
                MinStepStatSet()
             };
+            return caseStat;
+        }
+
+        public CaseStat MinCaseStatSetForCreate()
+        {
+            CaseStat caseStat = new CaseStat();
+
+            caseStat.OpenDate = CaseStatData.caseStat.OpenDate;
+            caseStat.HistoryNumber = CaseStatData.caseStat.HistoryNumber;
+            caseStat.IdCaseMis = CaseStatData.caseStat.IdCaseMis;
+            caseStat.IdPaymentType = CaseStatData.caseStat.IdPaymentType;
+            caseStat.Confidentiality = CaseStatData.caseStat.Confidentiality;
+            caseStat.DoctorConfidentiality = CaseStatData.caseStat.DoctorConfidentiality;
+            caseStat.CuratorConfidentiality = CaseStatData.caseStat.CuratorConfidentiality;
+            caseStat.IdLpu = CaseStatData.caseStat.IdLpu;
+            caseStat.IdPatientMis = CaseStatData.caseStat.IdPatientMis;
+            caseStat.IdTypeFromDiseaseStart = CaseStatData.caseStat.IdTypeFromDiseaseStart;
+            caseStat.IdRepetition = CaseStatData.caseStat.IdRepetition;
+            caseStat.IdHospChannel = CaseStatData.caseStat.IdHospChannel;
+
+            caseStat.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseStat.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseStat.Steps = new StepStat[]
+            {
+               MinStepStatSet()
+            };
+            return caseStat;
+        }
+
+        public CaseStat MinCaseStatSetForClose()
+        {
+            CaseStat caseStat = new CaseStat();
+
+            caseStat.CloseDate = CaseStatData.caseStat.CloseDate;
+            caseStat.IdCaseMis = CaseStatData.caseStat.IdCaseMis;
+            caseStat.Confidentiality = CaseStatData.caseStat.Confidentiality;
+            caseStat.DoctorConfidentiality = CaseStatData.caseStat.DoctorConfidentiality;
+            caseStat.CuratorConfidentiality = CaseStatData.caseStat.CuratorConfidentiality;
+            caseStat.IdLpu = CaseStatData.caseStat.IdLpu;
+            caseStat.IdCaseResult = CaseStatData.caseStat.IdCaseResult;
+            caseStat.Comment = CaseStatData.caseStat.Comment;
+            caseStat.IdPatientMis = CaseStatData.caseStat.IdPatientMis;
+            caseStat.IdTypeFromDiseaseStart = CaseStatData.caseStat.IdTypeFromDiseaseStart;
+            caseStat.IdRepetition = CaseStatData.caseStat.IdRepetition;
+            caseStat.HospResult = CaseStatData.caseStat.HospResult;
+
+            caseStat.DoctorInCharge = MinDoctorSet();
+
+            caseStat.Author = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
+            caseStat.Authenticator = new Participant
+            {
+                Doctor = MinDoctorSet()
+            };
+
             return caseStat;
         }
 
