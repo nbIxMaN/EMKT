@@ -31,7 +31,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findDoctor = "SELECT TOP(1) * FROM Doctor WHERE IdDoctor = '" + doctorId + "'";
+                    string findDoctor = "SELECT TOP(1) * FROM Doctor, nsi.DoctorSpec WHERE Doctor.IdDoctor = '" + doctorId + "' AND Doctor.IdSpeciality = nsi.DoctorSpec.IdSpeciality";
                     SqlCommand doc = new SqlCommand(findDoctor, connection);
                     using (SqlDataReader doctorReader = doc.ExecuteReader())
                     {
@@ -40,7 +40,7 @@ namespace PixServiseTests
                             string IdPerson = Convert.ToString(doctorReader["IdPerson"]);
                             MedicalStaff ms = new MedicalStaff();
                             ms.IdPosition = Convert.ToUInt16(doctorReader["IdPosition"]);
-                            ms.IdSpeciality = Convert.ToUInt16(doctorReader["IdSpeciality"]);
+                            ms.IdSpeciality = Convert.ToUInt16(doctorReader["Code"]);
                             string idlpu = Convert.ToString(doctorReader["IdLpu"]);
                             string findIdInstitutionalString =
                                 "SELECT TOP(1) * FROM Institution WHERE IdInstitution = '" + idlpu + "'";
