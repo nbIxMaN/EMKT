@@ -92,6 +92,8 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение Tariff TestService");
             if (this.document.ServiceName != s.document.ServiceName)
                 Global.errors3.Add("Несовпадение ServiceName TestService");
+            if (Global.GetLength(this.doctor) != Global.GetLength(s.doctor))
+                Global.errors3.Add("Несовпадение длинны doctor TestService");
         }
         public bool CheckTestServiceInDataBase(string caseId)
         {
@@ -119,15 +121,15 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.document.DateEnd != p.document.DateEnd) &&
-            (this.document.DateStart != p.document.DateStart) &&
+            if ((this.document.DateEnd == p.document.DateEnd) &&
+            (this.document.DateStart == p.document.DateStart) &&
             (this.document.IdServiceType != p.document.IdServiceType) &&
-            (this.document.PaymentInfo.HealthCareUnit != p.document.PaymentInfo.HealthCareUnit) &&
-            (this.document.PaymentInfo.IdPaymentType != p.document.PaymentInfo.IdPaymentType) &&
-            (this.document.PaymentInfo.PaymentState != p.document.PaymentInfo.PaymentState) &&
-            (this.document.PaymentInfo.Quantity != p.document.PaymentInfo.Quantity) &&
-            (this.document.PaymentInfo.Tariff != p.document.PaymentInfo.Tariff) &&
-            (this.document.ServiceName != p.document.ServiceName) &&
+            (this.document.PaymentInfo.HealthCareUnit == p.document.PaymentInfo.HealthCareUnit) &&
+            (this.document.PaymentInfo.IdPaymentType == p.document.PaymentInfo.IdPaymentType) &&
+            (this.document.PaymentInfo.PaymentState == p.document.PaymentInfo.PaymentState) &&
+            (this.document.PaymentInfo.Quantity == p.document.PaymentInfo.Quantity) &&
+            (this.document.PaymentInfo.Tariff == p.document.PaymentInfo.Tariff) &&
+            (this.document.ServiceName == p.document.ServiceName) &&
             Global.IsEqual(this.doctor, p.doctor))
             {
                 return true;

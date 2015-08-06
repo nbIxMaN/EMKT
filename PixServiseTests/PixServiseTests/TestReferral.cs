@@ -99,6 +99,12 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение MkbCode TestReferral");
             if (this.referral.ReferralInfo.Reason != r.referral.ReferralInfo.Reason)
                 Global.errors3.Add("Несовпадение Reason TestReferral");
+            if (Global.GetLength(this.departmentHead) != Global.GetLength(r.departmentHead))
+                Global.errors3.Add("Несовпадение длинны departmentHead TestReferral");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несовпадение длинны doctor TestReferral");
+            if (Global.GetLength(this.attachment) != Global.GetLength(r.attachment))
+                Global.errors3.Add("Несовпадение длинны attachment TestReferral");
         }
         public override bool Equals(Object obj)
         {
@@ -113,17 +119,17 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.referral.CreationDate != p.referral.CreationDate)&&
-            (this.referral.Header != p.referral.Header)&&
-            (this.referral.IdSourceLpu != p.referral.IdSourceLpu)&&
-            (this.referral.IdTargetLpu != p.referral.IdTargetLpu)&&
-            (this.referral.ReferralID != p.referral.ReferralID)&&
-            (this.referral.ReferralInfo.HospitalizationOrder != p.referral.ReferralInfo.HospitalizationOrder)&&
-            (this.referral.ReferralInfo.IdReferralMis != p.referral.ReferralInfo.IdReferralMis)&&
-            (this.referral.ReferralInfo.IdReferralType != p.referral.ReferralInfo.IdReferralType)&&
-            (this.referral.ReferralInfo.IssuedDateTime != p.referral.ReferralInfo.IssuedDateTime)&&
-            (this.referral.ReferralInfo.MkbCode != p.referral.ReferralInfo.MkbCode)&&
-            (this.referral.ReferralInfo.Reason != p.referral.ReferralInfo.Reason)&&
+            if ((this.referral.CreationDate == p.referral.CreationDate)&&
+            (this.referral.Header == p.referral.Header)&&
+            (this.referral.IdSourceLpu == p.referral.IdSourceLpu)&&
+            (this.referral.IdTargetLpu == p.referral.IdTargetLpu)&&
+            (this.referral.ReferralID == p.referral.ReferralID)&&
+            (this.referral.ReferralInfo.HospitalizationOrder == p.referral.ReferralInfo.HospitalizationOrder)&&
+            (this.referral.ReferralInfo.IdReferralMis == p.referral.ReferralInfo.IdReferralMis)&&
+            (this.referral.ReferralInfo.IdReferralType == p.referral.ReferralInfo.IdReferralType)&&
+            (this.referral.ReferralInfo.IssuedDateTime == p.referral.ReferralInfo.IssuedDateTime)&&
+            (this.referral.ReferralInfo.MkbCode == p.referral.ReferralInfo.MkbCode)&&
+            (this.referral.ReferralInfo.Reason == p.referral.ReferralInfo.Reason)&&
             Global.IsEqual(this.departmentHead, p.departmentHead)&&
             Global.IsEqual(this.doctor, p.doctor)&&
             Global.IsEqual(this.attachment, p.attachment))

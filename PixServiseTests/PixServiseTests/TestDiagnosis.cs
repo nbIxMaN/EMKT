@@ -52,6 +52,14 @@ namespace PixServiseTests
                 return null;
         }
 
+        private void FindMismatch(TestDiagnosis t)
+        {
+            if (Global.GetLength(this.doctor) != Global.GetLength(t.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestDiagnosis");
+            if (Global.GetLength(this.info) != Global.GetLength(t.info))
+                Global.errors3.Add("Несовпадение длины info TestDiagnosis");
+        }
+
         public override bool Equals(Object obj)
         {
             TestDiagnosis p = obj as TestDiagnosis;
@@ -72,6 +80,7 @@ namespace PixServiseTests
             }
             else
             {
+
                 return false;
             }
         }

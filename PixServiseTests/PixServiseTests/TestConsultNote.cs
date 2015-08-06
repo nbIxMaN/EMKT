@@ -47,6 +47,10 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение CreationDate TestConsultNote");
             if (this.consultNote.Header != r.consultNote.Header)
                 Global.errors3.Add("Несовпадение Header TestConsultNote");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestConsultNote");
+            if (Global.GetLength(this.attachment) != Global.GetLength(r.attachment))
+                Global.errors3.Add("Несовпадение длины attachment TestConsultNote");
         }
         public override bool Equals(Object obj)
         {

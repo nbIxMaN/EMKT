@@ -50,6 +50,8 @@ namespace PixServiseTests
             {
                 if (this.participant.IdRole != p.participant.IdRole)
                     Global.errors3.Add("Несовпадение IdRole TestParticipant");
+                if (Global.GetLength(this.doctor) != Global.GetLength(p.doctor))
+                    Global.errors3.Add("Несjвпадение длины doctor TestParticipant");
             }
         }
 
@@ -77,7 +79,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if (Global.IsEqual(this.doctor, p.doctor))
+            if (Global.IsEqual(this.doctor, p.doctor)&&
+                (this.participant.IdRole != p.participant.IdRole))
             {
                 return true;
             }

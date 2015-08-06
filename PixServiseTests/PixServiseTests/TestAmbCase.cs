@@ -142,7 +142,7 @@ namespace PixServiseTests
                     {
                         foreach (TestStepBase i in st)
                         {
-                            if (Global.IsEqual(i.doctor, null))
+                            if (Global.IsEqual(i.step.IdStepMis, null))
                                 ambcase.defaultStep = i;
                         }
                         if (!Global.IsEqual(ambcase.defaultStep, null))
@@ -178,6 +178,8 @@ namespace PixServiseTests
                             TestDispensaryOne d1 = TestDispensaryOne.BuildSickListFromDataBaseData(ambcase.defaultStep.idStep);
                             if (!Global.IsEqual(d1, null))
                                 ambcase.records.Add(d1);
+                            if (ambcase.records.Count == 0)
+                                ambcase.records = null;
                         }
                     }
                     return ambcase;
@@ -298,15 +300,17 @@ namespace PixServiseTests
             if (this.caseAmb.IdCasePurpose != ac.caseAmb.IdCasePurpose)
                 Global.errors2.Add("несовпадение IdCasePurpose caseAmb");
             if (Global.GetLength(this.steps) != Global.GetLength(ac.steps))
-                Global.errors2.Add("несовпадение длинны Steps caseAmb");
+                Global.errors2.Add("несовпадение длины Steps caseAmb");
             if (Global.GetLength(this.medRecords) != Global.GetLength(ac.medRecords))
-                Global.errors2.Add("Несовпадение длинны MedRecords CaseAmb");
+                Global.errors2.Add("Несовпадение длины MedRecords CaseAmb");
+            if (Global.GetLength(this.caseBase) != Global.GetLength(ac.caseBase))
+                Global.errors2.Add("Несовпадение длины caseBase CaseAmb");
         }
         public bool CheckCaseInDataBase()
         {
             string patientId = TestPerson.GetPersonId(GUID, caseAmb.IdLpu, caseAmb.IdPatientMis);
             TestAmbCase ac = TestAmbCase.BuildAmbCaseFromDataBaseData(GUID, caseAmb.IdLpu, caseAmb.IdCaseMis, patientId);
-            //this.Equals(ac);
+            this.Equals(ac);
             return (this == ac);
         }
         public override bool Equals(Object obj)

@@ -93,6 +93,12 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение IsPatientTaker TestSickList");
             if (this.sickList.SickListInfo.Number != r.sickList.SickListInfo.Number)
                 Global.errors3.Add("Несовпадение Number TestSickList");
+            if (Global.GetLength(this.guardian) != Global.GetLength(r.guardian))
+                Global.errors3.Add("Несовпадение длины guardian TestSickList");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestSickList");
+            if (Global.GetLength(this.attachment) != Global.GetLength(r.attachment))
+                Global.errors3.Add("Несовпадение длины attachment TestSickList");
         }
         public override bool Equals(Object obj)
         {
@@ -107,15 +113,15 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.sickList.CreationDate != p.sickList.CreationDate)&&
-            (this.sickList.Header != p.sickList.Header)&&
-            (this.sickList.SickListInfo.Caregiver != p.sickList.SickListInfo.Caregiver)&&
-            (this.sickList.SickListInfo.DateEnd != p.sickList.SickListInfo.DateEnd)&&
-            (this.sickList.SickListInfo.DateStart != p.sickList.SickListInfo.DateStart)&&
-            (this.sickList.SickListInfo.DisabilityDocReason != p.sickList.SickListInfo.DisabilityDocReason)&&
-            (this.sickList.SickListInfo.DisabilityDocState!= p.sickList.SickListInfo.DisabilityDocState)&&
-            (this.sickList.SickListInfo.IsPatientTaker != p.sickList.SickListInfo.IsPatientTaker)&&
-            (this.sickList.SickListInfo.Number != p.sickList.SickListInfo.Number)&&
+            if ((this.sickList.CreationDate == p.sickList.CreationDate)&&
+            (this.sickList.Header == p.sickList.Header)&&
+            (this.sickList.SickListInfo.Caregiver == p.sickList.SickListInfo.Caregiver)&&
+            (this.sickList.SickListInfo.DateEnd == p.sickList.SickListInfo.DateEnd)&&
+            (this.sickList.SickListInfo.DateStart == p.sickList.SickListInfo.DateStart)&&
+            (this.sickList.SickListInfo.DisabilityDocReason == p.sickList.SickListInfo.DisabilityDocReason)&&
+            (this.sickList.SickListInfo.DisabilityDocState == p.sickList.SickListInfo.DisabilityDocState)&&
+            (this.sickList.SickListInfo.IsPatientTaker == p.sickList.SickListInfo.IsPatientTaker)&&
+            (this.sickList.SickListInfo.Number == p.sickList.SickListInfo.Number)&&
             Global.IsEqual(this.guardian, p.guardian)&&
             Global.IsEqual(this.doctor, p.doctor)&&
             Global.IsEqual(this.attachment, p.attachment))

@@ -57,6 +57,8 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение Date TestRecommendation");
             if (this.recommendation.Text != r.recommendation.Text)
                 Global.errors3.Add("Несовпадение Text TestRecommendation");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestRecommendation");
         }
         public override bool Equals(Object obj)
         {
@@ -71,8 +73,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.recommendation.Date != p.recommendation.Date)&&
-            (this.recommendation.Text != p.recommendation.Text)&&
+            if ((this.recommendation.Date == p.recommendation.Date)&&
+            (this.recommendation.Text == p.recommendation.Text)&&
             Global.IsEqual(this.doctor, p.doctor))
             {
                 return true;

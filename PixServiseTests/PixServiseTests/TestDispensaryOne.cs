@@ -120,8 +120,14 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение HealthGroupInfo.Date TestDispensaryOne");
             if (this.dispansaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup != r.dispansaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup)
                 Global.errors3.Add("Несовпадение HealthGroupInfo.IdHealthGroup TestDispensaryOne");
-            if (this.recommendation.Length != r.recommendation.Length)
-                Global.errors3.Add("Несовпадение recommendation TestDispensaryOne");
+            if (Global.GetLength(this.recommendation) != Global.GetLength (r.recommendation))
+                Global.errors3.Add("Несовпадение длины recommendation TestDispensaryOne");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestDispensaryOne");
+            if (Global.GetLength(this.hdDoctor) != Global.GetLength(r.hdDoctor))
+                Global.errors3.Add("Несовпадение длины hdDoctor TestDispensaryOne");
+            if (Global.GetLength(this.attachment) != Global.GetLength(r.attachment))
+                Global.errors3.Add("Несовпадение длины attachment TestDispensaryOne");
         }
         public override bool Equals(Object obj)
         {

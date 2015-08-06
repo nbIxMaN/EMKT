@@ -75,6 +75,8 @@ namespace PixServiseTests
                     Global.errors3.Add("Несовпадение IdPosition TestDoctor");
                 if (this.doctor.IdSpeciality != d.doctor.IdSpeciality)
                     Global.errors3.Add("Несовпадение IdSpeciality TestDoctor");
+                if (Global.GetLength(this.person) != Global.GetLength(d.person))
+                    Global.errors3.Add("Несовпадение длины person TestDoctor");
             }
         }
 

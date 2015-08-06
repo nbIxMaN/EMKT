@@ -77,7 +77,11 @@ namespace PixServiseTests
         private void FindMismatch(TestClinicMainDiagnosis tcmd)
         {
             if (Global.GetLength(this.diagnosis) != Global.GetLength(tcmd.diagnosis))
-                Global.errors3.Add("Несовпадение длинны diagnosis TestClinicMainDiagnosis");
+                Global.errors3.Add("Несовпадение длины diagnosis TestClinicMainDiagnosis");
+            if (Global.GetLength(this.diagnosInfo) != Global.GetLength(tcmd.diagnosInfo))
+                Global.errors3.Add("Несовпадение длины diagnosInfo TestClinicMainDiagnosis");
+            if (Global.GetLength(this.doctor) != Global.GetLength(tcmd.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestClinicMainDiagnosis");
         }
         public override bool Equals(Object obj)
         {

@@ -84,6 +84,10 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение IdPaymentType TestStepBase");
             if (this.step.IdStepMis != sb.step.IdStepMis)
                 Global.errors3.Add("несовпадение IdStepMis TestStepBase");
+            if (Global.GetLength(step) != Global.GetLength(sb.step))
+                Global.errors3.Add("несовпадение длины step TestStepBase");
+            if (Global.GetLength(doctor) != Global.GetLength(sb.doctor))
+                Global.errors3.Add("несовпадение длины doctor TestStepBase");
         }
         public bool CheckTestStepsInDataBase(string idStep, string caseLpu)
         {

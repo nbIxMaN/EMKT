@@ -305,7 +305,18 @@ namespace PixServiseTests
             if (this.caseBase.IdPaymentType != cb.caseBase.IdPaymentType)
                 Global.errors3.Add("несовпадение IdPaymentType TestCaseBase");
             if (this.caseBase.OpenDate != cb.caseBase.OpenDate)
-                Global.errors3.Add("несовпадение OpenDate TestCaseBase");  
+                Global.errors3.Add("несовпадение OpenDate TestCaseBase");
+            if (Global.GetLength(this.guardian) != Global.GetLength(cb.guardian))
+                Global.errors3.Add("несовпадение длины guardian TestCaseBase");
+            if (Global.GetLength(this.patient) != Global.GetLength(cb.patient))
+                Global.errors3.Add("несовпадение длины patient TestCaseBase");
+            if (Global.GetLength(this.autor) != Global.GetLength(cb.autor))
+                Global.errors3.Add("несовпадение длины autor TestCaseBase");
+            if (Global.GetLength(this.authenticator) != Global.GetLength(cb.authenticator))
+                Global.errors3.Add("несовпадение длины authenticator TestCaseBase");
+            if (Global.GetLength(this.legalAuthenticator) != Global.GetLength(cb.legalAuthenticator))
+                Global.errors3.Add("несовпадение длины legalAuthenticator TestCaseBase");
+            
         }
 
         public bool CheckCaseBaseInDataBase()

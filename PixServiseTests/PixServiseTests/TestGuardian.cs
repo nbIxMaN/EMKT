@@ -60,6 +60,8 @@ namespace PixServiseTests
                     Global.errors3.Add("Несовпадение IdRelationType TestGuardian");
                 if (this.guardian.UnderlyingDocument != g.guardian.UnderlyingDocument)
                     Global.errors3.Add("Несовпадение UnderlyingDocument TestGuardian");
+                if (Global.GetLength(this.person) != Global.GetLength(g.person))
+                    Global.errors3.Add("Несовпадение длины person TestGuardian");
             }
         }
 

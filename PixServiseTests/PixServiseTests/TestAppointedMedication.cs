@@ -95,6 +95,8 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение OneTimeDose TestAppointedMedication");
             if (this.document.Seria != ta.document.Seria)
                 Global.errors3.Add("несовпадение Seria TestAppointedMedication");
+            if (Global.GetLength(this.doctor) != Global.GetLength(ta.doctor))
+                Global.errors3.Add("несовпадение длины doctor TestAppointedMedication");
         }
         public override bool Equals(Object obj)
         {

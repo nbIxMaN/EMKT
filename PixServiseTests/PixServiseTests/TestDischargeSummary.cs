@@ -48,6 +48,10 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение CreationDate TestDischargeSummary");
             if (this.dischargeSummary.Header != r.dischargeSummary.Header)
                 Global.errors3.Add("Несовпадение Header TestDischargeSummary");
+            if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
+                Global.errors3.Add("Несовпадение длины doctor TestDiagnosis");
+            if (Global.GetLength(this.attachment) != Global.GetLength(r.attachment))
+                Global.errors3.Add("Несовпадение длины attachment TestDiagnosis");
         }
         public override bool Equals(Object obj)
         {

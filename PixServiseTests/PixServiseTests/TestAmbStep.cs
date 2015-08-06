@@ -133,6 +133,8 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение IdVisitPurpose TestAmbStep");
             if (Global.GetLength(this.medRecords) != Global.GetLength(astep.medRecords))
                 Global.errors3.Add("несовпадение длинны medRecords TestAmbStep");
+            if (Global.GetLength(this.step) != Global.GetLength(astep.step))
+                Global.errors3.Add("несовпадение длинны step TestAmbStep");
         }
 
         public bool CheckStepInDataBase(string guid, string patientMis, string idLpu, string caseMis)

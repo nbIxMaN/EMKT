@@ -140,7 +140,9 @@ namespace PixServiseTests
             if (this.person.IdPersonMis != b.person.IdPersonMis)
                 Global.errors3.Add("Несовпадение IdPersonMis TestPerson");
             if (Global.GetLength(this.docs) != Global.GetLength(b.docs))
-                Global.errors3.Add("Несовпадение длинны Documents TestPerson");
+                Global.errors3.Add("Несовпадение длины Documents TestPerson");
+            if (Global.GetLength(this.name) != Global.GetLength(b.name))
+                Global.errors3.Add("Несовпадение длины name TestPerson");
         }
 
         public bool CheckPersonInDataBase()

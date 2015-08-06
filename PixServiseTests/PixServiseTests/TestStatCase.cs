@@ -331,9 +331,11 @@ namespace PixServiseTests
             if (this.caseStat.AIDSMark != cs.caseStat.AIDSMark)
                 Global.errors2.Add("несовпадение AIDSMark caseStat");
             if (Global.GetLength(this.medRecords) != Global.GetLength(cs.medRecords))
-                Global.errors2.Add("несовпадение длинны medRecords caseStat");
+                Global.errors2.Add("несовпадение длины medRecords caseStat");
             if (Global.GetLength(this.steps) != Global.GetLength(cs.steps))
-                Global.errors2.Add("несовпадение длинны statSteps caseStat");
+                Global.errors2.Add("несовпадение длины statSteps caseStat");
+            if (Global.GetLength(this.caseBase) != Global.GetLength(cs.caseBase))
+                Global.errors2.Add("несовпадение длины caseBase caseStat");
         }
         public bool CheckCaseInDataBase()
         {
