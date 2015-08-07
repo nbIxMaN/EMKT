@@ -188,6 +188,8 @@ namespace PixServiseTests
                             TestConsultNote tcn = TestConsultNote.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
                             if (!Global.IsEqual(tcn, null))
                                 statcase.records.Add(tcn);
+                            if (statcase.records.Count == 0)
+                                statcase.records = null;
                         }
                     }
                     return statcase;
@@ -341,7 +343,7 @@ namespace PixServiseTests
         {
             string patientId = TestPerson.GetPersonId(GUID, caseStat.IdLpu, caseStat.IdPatientMis);
             TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseStat.IdLpu, caseStat.IdCaseMis, patientId);
-//            this.Equals(ac);
+            this.Equals(ac);
             return (this == ac);
         }
         public override bool Equals(Object obj)

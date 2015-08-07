@@ -50,12 +50,68 @@ namespace PixServiseTests
                                 a.MedicineUseWay = Convert.ToByte(AMReader["IdRMedicineUseWay"]);
                             if (AMReader["TreatmentDays"].ToString() != "")
                                 a.DaysCount = Convert.ToUInt16(AMReader["TreatmentDays"]);
-                            //if (AMReader["CourseDose"].ToString() != "")
-                            //    a.CourseDose = Convert.ToByte(AMReader["CourseDose"]);
-                            //if (AMReader["DayDose"].ToString() != "")
-                            //    a.DayDose = Convert.ToByte(AMReader["DayDose"]);
-                            //if (AMReader["SingleDose"].ToString() != "")
-                            //    a.OneTimeDose = Convert.ToByte(AMReader["SingleDose"]);
+                            if (AMReader["MedecineName"].ToString() != "")
+                                a.MedicineName = AMReader["MedecineName"].ToString();
+                            if (AMReader["CourseDose"].ToString() != "")
+                            {
+                                int id = Convert.ToInt32(AMReader["CourseDose"]);
+                                using (SqlConnection connection2 = Global.GetSqlConnection())
+                                {
+                                    string findDose = "SELECT * FROM MedicationQuantity WHERE IdMedicationQuantity = '" + id + "'";
+                                    SqlCommand DoseCommand = new SqlCommand(findDose, connection2);
+                                    using (SqlDataReader DoseReader = DoseCommand.ExecuteReader())
+                                    {
+                                        while (DoseReader.Read())
+                                        {
+                                            a.CourseDose = new Quantity();
+                                            if (DoseReader["Quantity"].ToString() != "")
+                                                a.CourseDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
+                                            if (DoseReader["IdUnitClassifier"].ToString() != "")
+                                                a.CourseDose.IdUnit = Convert.ToInt32(DoseReader["IdUnitClassifier"]);
+                                        }
+                                    }
+                                }
+                            }
+                            if (AMReader["DayDose"].ToString() != "")
+                            {
+                                int id = Convert.ToInt32(AMReader["DayDose"]);
+                                using (SqlConnection connection2 = Global.GetSqlConnection())
+                                {
+                                    string findDose = "SELECT * FROM MedicationQuantity WHERE IdMedicationQuantity = '" + id + "'";
+                                    SqlCommand DoseCommand = new SqlCommand(findDose, connection2);
+                                    using (SqlDataReader DoseReader = DoseCommand.ExecuteReader())
+                                    {
+                                        while (DoseReader.Read())
+                                        {
+                                            a.DayDose = new Quantity();
+                                            if (DoseReader["Quantity"].ToString() != "")
+                                                a.DayDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
+                                            if (DoseReader["IdUnitClassifier"].ToString() != "")
+                                                a.DayDose.IdUnit = Convert.ToInt32(DoseReader["IdUnitClassifier"]);
+                                        }
+                                    }
+                                }
+                            }
+                            if (AMReader["SingleDose"].ToString() != "")
+                            {
+                                int id = Convert.ToInt32(AMReader["SingleDose"]);
+                                using (SqlConnection connection2 = Global.GetSqlConnection())
+                                {
+                                    string findDose = "SELECT * FROM MedicationQuantity WHERE IdMedicationQuantity = '" + id + "'";
+                                    SqlCommand DoseCommand = new SqlCommand(findDose, connection2);
+                                    using (SqlDataReader DoseReader = DoseCommand.ExecuteReader())
+                                    {
+                                        while (DoseReader.Read())
+                                        {
+                                            a.OneTimeDose = new Quantity();
+                                            if (DoseReader["Quantity"].ToString() != "")
+                                                a.OneTimeDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
+                                            if (DoseReader["IdUnitClassifier"].ToString() != "")
+                                                a.OneTimeDose.IdUnit = Convert.ToInt32(DoseReader["IdUnitClassifier"]);
+                                        }
+                                    }
+                                }
+                            }
                             TestAppointedMedication ta = new TestAppointedMedication(a);
                             if (AMReader["IdDoctor"].ToString() != "")
                                 ta.doctor = TestDoctor.BuildTestDoctorFromDataBase(AMReader["IdDoctor"].ToString());
