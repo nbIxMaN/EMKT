@@ -7,14 +7,13 @@ using System.Collections;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
 
-
 namespace PixServiseTests
 {
     [TestFixture]
-    public class AddCaseTest : Data
+    class CreateCaseTests : Data
     {
         [Test]
-        public void AddMinAmbCase()
+        public void CreateMinAmbCase()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -23,8 +22,8 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
-                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -33,7 +32,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddMinStatCase()
+        public void CreateMinStatCase()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -42,12 +41,8 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
-                CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.Steps[0].MedRecords = new MedRecord[]
-                {
-                    MedRecordData.appointedMedication
-                };
-                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
+                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
