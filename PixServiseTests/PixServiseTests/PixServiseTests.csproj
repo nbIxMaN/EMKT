@@ -71,6 +71,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AddCaseTest.cs" />
     <Compile Include="ConsultNoteTests.cs" />
     <Compile Include="DianosisTests.cs" />
     <Compile Include="DishargeSummaryTests.cs" />
