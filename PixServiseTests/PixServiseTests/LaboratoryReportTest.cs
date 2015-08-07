@@ -231,7 +231,7 @@ namespace PixServiseTests
                 {
                     (new SetData()).MinLaboratoryReportSet()
                 };
-                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -598,7 +598,7 @@ namespace PixServiseTests
                 {
                     (new SetData()).MinLaboratoryReportSet()
                 };
-                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();

@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="AddCaseTest.cs" />
     <Compile Include="ConsultNoteTests.cs" />
+    <Compile Include="CreateCaseTest.cs" />
     <Compile Include="DianosisTests.cs" />
     <Compile Include="DishargeSummaryTests.cs" />
     <Compile Include="DispensaryOneTests.cs" />
@@ -136,7 +137,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LaboratoryReportTest.cs" />
     <Compile Include="AppointedMedicationTest.cs" />
-    <Compile Include="UpdateTest.cs" />
+    <Compile Include="UpdateCaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
