@@ -11,7 +11,7 @@ using PixServiseTests.EMKServise;
 namespace PixServiseTests
 {
     [TestFixture]
-    class AddCaseTest : Data
+    public class AddCaseTest : Data
     {
         [Test]
         public void AddMinAmbCase()
@@ -62,6 +62,33 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).FullCaseAmbSet();
+                SetData set = new SetData();
+                caseAmb.MedRecords = new MedRecord[]
+                {
+                    set.MinService(),
+                    set.MinTfomsInfo(),
+                    set.MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.referral,
+                    MedRecordData.sickList,
+                    set.MinDischargeSummary(),
+                    set.MinLaboratoryReportSet(),
+                    set.MinConsultNote()
+                };
+                StepAmb stepAmb = (new SetData()).MinStepAmbSet();
+                stepAmb.MedRecords = new MedRecord[]
+                {
+                    set.MinService(),
+                    set.MinAppointedMedication(),
+                    set.MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.referral,
+                    set.MinLaboratoryReportSet(),
+                };
+                caseAmb.Steps = new StepAmb[]
+                {
+                    stepAmb
+                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
 
@@ -82,6 +109,35 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).FullCaseStatSet();
+                SetData set = new SetData();
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    set.MinService(),
+                    set.MinTfomsInfo(),
+                    MedRecordData.deathInfo,
+                    set.MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                    MedRecordData.referral,   
+                    MedRecordData.sickList,
+                    set.MinDischargeSummary(),
+                    set.MinLaboratoryReportSet(),
+                    set.MinConsultNote()
+                };
+                StepStat stepStat = (new SetData()).MinStepStatSet();
+                stepStat.MedRecords = new MedRecord[]
+                {
+                    set.MinService(),
+                    set.MinAppointedMedication(),
+                    set.MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.referral,
+                    set.MinLaboratoryReportSet(),
+                };
+                caseStat.Steps = new StepStat[]
+                {
+                    stepStat
+                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")

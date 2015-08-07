@@ -551,12 +551,8 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
-                Steps = new StepAmb[] { CaseAmbData.step },
-                MedRecords = new MedRecord[] { MedRecordData.clinicMainDiagnosis/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
-                    MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
-                    MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
-                    MedRecordData.LaboratoryReport, MedRecordData.service*/ },
-
+                Steps = new StepAmb[] { CaseAmbData.step }
+                //MedRecords
             };
             CaseDispData.caseDisp = new CaseAmb
             {
@@ -584,12 +580,8 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
-                Steps = new StepAmb[] { CaseAmbData.step },
-                MedRecords = new MedRecord[] { MedRecordData.clinicMainDiagnosis/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
-                    MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
-                    MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
-                    MedRecordData.LaboratoryReport, MedRecordData.service*/ },
-
+                Steps = new StepAmb[] { CaseAmbData.step }
+                //MedRecords
             };
         }
 
@@ -676,11 +668,7 @@ namespace PixServiseTests
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
                 Steps = new StepStat[] { CaseStatData.step },
-                MedRecords = new MedRecord[] { MedRecordData.tfomsInfo/*, MedRecordData.anatomopathologicalClinicMainDiagnosis,
-                    MedRecordData.appointedMedication, MedRecordData.clinicMainDiagnosis, MedRecordData.consultNote, 
-                    MedRecordData.deathInfo, MedRecordData.diagnosis, MedRecordData.dischargeSummary, MedRecordData.dispensaryOne, 
-                    MedRecordData.LaboratoryReport, MedRecordData.service */},
-
+                //MedRecords
             };
         }
 
