@@ -3286,7 +3286,7 @@ namespace PixServiseTests.EMKServise {
         private byte MESImplementationFeatureField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private short MedicalStandardField;
+        private int MedicalStandardField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MkbCodeField;
@@ -3419,7 +3419,7 @@ namespace PixServiseTests.EMKServise {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=9)]
-        public short MedicalStandard {
+        public int MedicalStandard {
             get {
                 return this.MedicalStandardField;
             }

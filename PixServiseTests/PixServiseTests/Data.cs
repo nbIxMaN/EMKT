@@ -134,7 +134,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2010, 11, 1),
                 DateEnd = new DateTime(2010, 11, 10),
-                IdServiceType = "1089",
+                IdServiceType = "A01.01.001.001",
                 ServiceName = "Название услуги",
                 Performer = new Participant
                 {
@@ -206,7 +206,7 @@ namespace PixServiseTests
                     IdDispensaryState = 8,
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
-                    MedicalStandard = 21,// по справочнику 211010
+                    MedicalStandard = 211010,
                     MkbCode = "A00",
                 },
                 Doctor = SetDoctor(),
@@ -225,7 +225,7 @@ namespace PixServiseTests
                      IdDispensaryState = 8,
                      IdTraumaType = 1,
                      MESImplementationFeature = 10,
-                     MedicalStandard = 21,// по справочнику 211010
+                     MedicalStandard = 211010,
                      MkbCode = "A00",
                  },
                  Doctor = SetDoctor(),
@@ -244,7 +244,7 @@ namespace PixServiseTests
                             IdDispensaryState = 8,
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
-                            MedicalStandard = 21,// по справочнику 211010
+                            MedicalStandard = 211010,
                             MkbCode = "A00",
                         },
                         Doctor = SetDoctor(),
@@ -265,7 +265,7 @@ namespace PixServiseTests
                     IdDispensaryState = 8,
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
-                    MedicalStandard = 21,// по справочнику 211010
+                    MedicalStandard = 211010,
                     MkbCode = "A00",
                 },
                 Doctor = SetDoctor(),
@@ -284,7 +284,7 @@ namespace PixServiseTests
                             IdDispensaryState = 8,
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
-                            MedicalStandard = 21101,// по справочнику 211010
+                            MedicalStandard = 211010,
                             MkbCode = "A00",
                         },
                         Doctor = SetDoctor(),

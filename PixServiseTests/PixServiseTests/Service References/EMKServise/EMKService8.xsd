@@ -42,7 +42,7 @@
       <xs:element minOccurs="0" name="IdDispensaryState" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="IdTraumaType" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="MESImplementationFeature" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="MedicalStandard" type="xs:short" />
+      <xs:element minOccurs="0" name="MedicalStandard" type="xs:int" />
       <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
