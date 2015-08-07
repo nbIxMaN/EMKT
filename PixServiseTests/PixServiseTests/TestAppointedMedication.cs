@@ -111,18 +111,18 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.document.AnatomicTherapeuticChemicalClassification != p.document.AnatomicTherapeuticChemicalClassification)&&
-            (this.document.CourseDose != p.document.CourseDose)&&
-            (this.document.DayDose != p.document.DayDose)&&
-            (this.document.DaysCount != p.document.DaysCount)&&
-            (this.document.IssuedDate != p.document.IssuedDate)&&
-            (this.document.MedicineIssueType != p.document.MedicineIssueType)&&
-            (this.document.MedicineName != p.document.MedicineName)&&
-            (this.document.MedicineType != p.document.MedicineType)&&
-            (this.document.MedicineUseWay != p.document.MedicineUseWay)&&
-            (this.document.Number != p.document.Number)&&
-            (this.document.OneTimeDose != p.document.OneTimeDose)&&
-            (this.document.Seria != p.document.Seria)&&
+            if ((this.document.AnatomicTherapeuticChemicalClassification == p.document.AnatomicTherapeuticChemicalClassification)&&
+            (this.document.CourseDose == p.document.CourseDose)&&
+            (this.document.DayDose == p.document.DayDose)&&
+            (this.document.DaysCount == p.document.DaysCount)&&
+            (this.document.IssuedDate == p.document.IssuedDate)&&
+            (this.document.MedicineIssueType == p.document.MedicineIssueType)&&
+            (this.document.MedicineName == p.document.MedicineName)&&
+            (this.document.MedicineType == p.document.MedicineType)&&
+            (this.document.MedicineUseWay == p.document.MedicineUseWay)&&
+            (this.document.Number == p.document.Number)&&
+            (this.document.OneTimeDose == p.document.OneTimeDose)&&
+            (this.document.Seria == p.document.Seria)&&
             Global.IsEqual(this.doctor, p.doctor))
             {
                 return true;

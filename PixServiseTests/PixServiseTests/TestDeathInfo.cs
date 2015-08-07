@@ -52,7 +52,7 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if (this.document == p.document)
+            if (this.document.MkbCode == p.document.MkbCode)
                 return true;
             if ((this.document == null) || (p.document == null))
             {

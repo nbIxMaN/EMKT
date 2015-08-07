@@ -90,7 +90,9 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if (this.diagnosInfo == p.diagnosInfo)
+            if ((Global.IsEqual(this.doctor, p.doctor))&&
+                (Global.IsEqual(this.diagnosInfo, p.diagnosInfo))&&
+                (Global.IsEqual(this.diagnosis, p.diagnosis)))
                 return true;
             if ((this.diagnosInfo == null) || (p.diagnosInfo== null))
             {

@@ -123,7 +123,7 @@ namespace PixServiseTests
             }
             if ((this.document.DateEnd == p.document.DateEnd) &&
             (this.document.DateStart == p.document.DateStart) &&
-            (this.document.IdServiceType != p.document.IdServiceType) &&
+            (this.document.IdServiceType == p.document.IdServiceType) &&
             (this.document.PaymentInfo.HealthCareUnit == p.document.PaymentInfo.HealthCareUnit) &&
             (this.document.PaymentInfo.IdPaymentType == p.document.PaymentInfo.IdPaymentType) &&
             (this.document.PaymentInfo.PaymentState == p.document.PaymentInfo.PaymentState) &&

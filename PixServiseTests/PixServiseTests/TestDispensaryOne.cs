@@ -142,17 +142,17 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.dispansaryOne.CreationDate != p.dispansaryOne.CreationDate)&&
-            (this.dispansaryOne.HasExpertCareRefferal != p.dispansaryOne.HasExpertCareRefferal)&&
-            (this.dispansaryOne.HasExtraResearchRefferal != p.dispansaryOne.HasExtraResearchRefferal)&&
-            (this.dispansaryOne.HasHealthResortRefferal != p.dispansaryOne.HasHealthResortRefferal)&&
-            (this.dispansaryOne.HasPrescribeCure != p.dispansaryOne.HasPrescribeCure)&&
-            (this.dispansaryOne.HasSecondStageRefferal != p.dispansaryOne.HasSecondStageRefferal)&&
-            (this.dispansaryOne.Header != p.dispansaryOne.Header)&&
-            (this.dispansaryOne.IsGuested != p.dispansaryOne.IsGuested)&&
-            (this.dispansaryOne.IsUnderObservation != p.dispansaryOne.IsUnderObservation)&&
-            (this.dispansaryOne.HealthGroup.HealthGroupInfo.Date != p.dispansaryOne.HealthGroup.HealthGroupInfo.Date)&&
-            (this.dispansaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup != p.dispansaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup)&&
+            if ((this.dispansaryOne.CreationDate == p.dispansaryOne.CreationDate)&&
+            (this.dispansaryOne.HasExpertCareRefferal == p.dispansaryOne.HasExpertCareRefferal)&&
+            (this.dispansaryOne.HasExtraResearchRefferal == p.dispansaryOne.HasExtraResearchRefferal)&&
+            (this.dispansaryOne.HasHealthResortRefferal == p.dispansaryOne.HasHealthResortRefferal)&&
+            (this.dispansaryOne.HasPrescribeCure == p.dispansaryOne.HasPrescribeCure)&&
+            (this.dispansaryOne.HasSecondStageRefferal == p.dispansaryOne.HasSecondStageRefferal)&&
+            (this.dispansaryOne.Header == p.dispansaryOne.Header)&&
+            (this.dispansaryOne.IsGuested == p.dispansaryOne.IsGuested)&&
+            (this.dispansaryOne.IsUnderObservation == p.dispansaryOne.IsUnderObservation)&&
+            (this.dispansaryOne.HealthGroup.HealthGroupInfo.Date == p.dispansaryOne.HealthGroup.HealthGroupInfo.Date)&&
+            (this.dispansaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup == p.dispansaryOne.HealthGroup.HealthGroupInfo.IdHealthGroup)&&
             (Global.IsEqual(this.attachment, p.attachment))&&
             (Global.IsEqual(this.doctor, p.doctor))&&
             (Global.IsEqual(this.hdDoctor, p.hdDoctor))&&
