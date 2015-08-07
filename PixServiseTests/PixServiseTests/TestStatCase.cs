@@ -266,43 +266,43 @@ namespace PixServiseTests
                     foreach (object i in this.medRecords)
                     {
                         TestService ser = i as TestService;
-                        if (ser != null)
+                        if (!Global.IsEqual(ser, null))
                             newMedRecords.Add(ser);
                         TestTfomsInfo tf = i as TestTfomsInfo;
-                        if ((tfi != null) && (tf != null))
+                        if (!Global.IsEqual(tfi, null) && (!Global.IsEqual(tf, null)))
                             newMedRecords.Add(tf);
                         else
-                            if (tfi != null)
+                            if (!Global.IsEqual(tfi, null))
                                 newMedRecords.Add(tfi);
                         TestDiagnosis diag = i as TestDiagnosis;
-                        if (diag != null)
+                        if (!Global.IsEqual(diag, null))
                             newMedRecords.Add(diag);
                         TestClinicMainDiagnosis cm = i as TestClinicMainDiagnosis;
-                        if (cmd != null)
+                        if (!Global.IsEqual(cmd, null))
                             newMedRecords.Add(cmd);
                         else
-                            if (cm != null)
+                            if (!Global.IsEqual(cm, null))
                                 newMedRecords.Add(cm);
                         TestReferral r = i as TestReferral;
-                        if (r != null)
+                        if (!Global.IsEqual(r, null))
                             newMedRecords.Add(r);
                         TestSickList sl = i as TestSickList;
-                        if (sl != null)
+                        if (!Global.IsEqual(sl, null))
                             newMedRecords.Add(sl);
                         TestDischargeSummary pds = i as TestDischargeSummary;
-                        if (ds != null)
+                        if (!Global.IsEqual(ds, null))
                             newMedRecords.Add(ds);
                         else
-                            if (pds != null)
+                            if (!Global.IsEqual(pds, null))
                                 newMedRecords.Add(pds);
                         TestLaboratoryReport lr = i as TestLaboratoryReport;
-                        if (lr != null)
+                        if (!Global.IsEqual(lr, null))
                             newMedRecords.Add(lr);
                         TestConsultNote pcn = i as TestConsultNote;
-                        if (cn != null)
+                        if (!Global.IsEqual(cn, null))
                             newMedRecords.Add(cn);
                         else
-                            if (pcn != null)
+                            if (!Global.IsEqual(pcn, null))
                                 newMedRecords.Add(pcn);
                         //TestDispensaryOne d = i as TestDispensaryOne;
                         //if (d1 != null)
