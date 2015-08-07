@@ -17,7 +17,11 @@ namespace PixServiseTests
         {
             get
             {
-                return ErrorsToString();
+                string s = ErrorsToString();
+                errors3.Clear();
+                errors2.Clear();
+                errors1.Clear();
+                return s;
             }
         }
         static public int GetLength(object a)

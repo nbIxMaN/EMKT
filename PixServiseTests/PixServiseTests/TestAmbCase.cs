@@ -148,6 +148,9 @@ namespace PixServiseTests
                         if (!Global.IsEqual(ambcase.defaultStep, null))
                         {
                             ambcase.records = new List<TestMedRecord>();
+                            List<TestService> ser = TestService.BuildServiseFromDataBaseData(ambcase.defaultStep.idStep);
+                            if (!Global.IsEqual(ser, null))
+                                ambcase.records.AddRange(ser);
                             TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(ambcase.defaultStep.idStep);
                             if (!Global.IsEqual(forms, null))
                                 ambcase.records.Add(forms);

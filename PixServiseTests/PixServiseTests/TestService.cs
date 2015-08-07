@@ -17,7 +17,10 @@ namespace PixServiseTests
             if (s != null)
             {
                 document = s;
-                doctor = new TestParticipant(s.Performer, idLpu);
+                if (s.Performer != null)
+                    doctor = new TestParticipant(s.Performer, idLpu);
+                if (document.PaymentInfo == null)
+                    document.PaymentInfo = new PaymentInfo();
             }
         }
         static public List<TestService> BuildServiseFromDataBaseData(string IdStep)
@@ -25,13 +28,14 @@ namespace PixServiseTests
             List<TestService> serviseList = new List<TestService>();
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                string findService = "SELECT * FROM Service, Step WHERE Service.IdStep = '" + IdStep + "' AND Service.IdStep = Step.IdStep";
+                string findService = "SELECT * FROM Service, Step, nsi.ServiceType WHERE Service.IdStep = '" + IdStep + "' AND Service.IdStep = Step.IdStep AND Service.idServiceType = nsi.ServiceType.IdServiceType";
                 SqlCommand serviceCommand = new SqlCommand(findService, connection);
                 using (SqlDataReader serviceReader = serviceCommand.ExecuteReader())
                 {
                     while (serviceReader.Read())
                     {
                         Service s = new Service();
+                        s.PaymentInfo = new PaymentInfo();
                         if (serviceReader["DateEnd"].ToString() != "")
                             s.DateEnd = Convert.ToDateTime(serviceReader["DateEnd"]);
                         else
@@ -40,26 +44,18 @@ namespace PixServiseTests
                             s.DateStart = Convert.ToDateTime(serviceReader["DateStart"]);
                         else
                             s.DateStart = DateTime.MinValue;
-                        if (serviceReader["IdServiceType"].ToString() != "")
-                            s.IdServiceType = Convert.ToString(serviceReader["IdServiceType"]);
+                        if (serviceReader["IdFedNsi"].ToString() != "")
+                            s.IdServiceType = Convert.ToString(serviceReader["IdFedNsi"]);
                         if (serviceReader["ServiceName"].ToString() != "")
                             s.ServiceName = Convert.ToString(serviceReader["ServiceName"]);
                         if (serviceReader["IdRHealthCareUnit"].ToString() != "")
                             s.PaymentInfo.HealthCareUnit = Convert.ToByte(serviceReader["IdRHealthCareUnit"]);
-                        else
-                            s.PaymentInfo.HealthCareUnit = 0;
-                        if (serviceReader["IdRVisitIdPaymentType"].ToString() != "")
-                            s.PaymentInfo.IdPaymentType = Convert.ToByte(serviceReader["IdRVisitIdPaymentType"]);
-                        else
-                            s.PaymentInfo.IdPaymentType = null;
+                        if (serviceReader["IdRVisitPaymentType"].ToString() != "")
+                            s.PaymentInfo.IdPaymentType = Convert.ToByte(serviceReader["IdRVisitPaymentType"]);
                         if (serviceReader["IdRPaymentStatus"].ToString() != "")
                             s.PaymentInfo.PaymentState = Convert.ToByte(serviceReader["IdRPaymentStatus"]);
-                        else
-                            s.PaymentInfo.HealthCareUnit = 0;
                         if (serviceReader["Quantity"].ToString() != "")
                             s.PaymentInfo.Quantity = Convert.ToInt32(serviceReader["Quantity"]);
-                        else
-                            s.PaymentInfo.HealthCareUnit = 0;
                         TestService ts = new TestService(s);
                         if ((serviceReader["IdDoctor"].ToString() != "") && (serviceReader["IdCase"].ToString() != ""))
                             ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["IdCase"].ToString(), serviceReader["IdDoctor"].ToString());
@@ -88,8 +84,8 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение PaymentState TestService");
             if (this.document.PaymentInfo.Quantity != s.document.PaymentInfo.Quantity)
                 Global.errors3.Add("Несовпадение Quantity TestService");
-            if (this.document.PaymentInfo.Tariff != s.document.PaymentInfo.Tariff)
-                Global.errors3.Add("Несовпадение Tariff TestService");
+            //if (this.document.PaymentInfo.Tariff != s.document.PaymentInfo.Tariff)
+            //    Global.errors3.Add("Несовпадение Tariff TestService");
             if (this.document.ServiceName != s.document.ServiceName)
                 Global.errors3.Add("Несовпадение ServiceName TestService");
             if (Global.GetLength(this.doctor) != Global.GetLength(s.doctor))
@@ -128,7 +124,7 @@ namespace PixServiseTests
             (this.document.PaymentInfo.IdPaymentType == p.document.PaymentInfo.IdPaymentType) &&
             (this.document.PaymentInfo.PaymentState == p.document.PaymentInfo.PaymentState) &&
             (this.document.PaymentInfo.Quantity == p.document.PaymentInfo.Quantity) &&
-            (this.document.PaymentInfo.Tariff == p.document.PaymentInfo.Tariff) &&
+            //(this.document.PaymentInfo.Tariff == p.document.PaymentInfo.Tariff) &&
             (this.document.ServiceName == p.document.ServiceName) &&
             Global.IsEqual(this.doctor, p.doctor))
             {

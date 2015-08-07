@@ -15,9 +15,12 @@ namespace PixServiseTests
 
         public TestParticipant(Participant d, string idLpu = "")
         {
-            if (d.Doctor != null)
-                doctor = new TestDoctor(d.Doctor, idLpu);
-            participant = d;
+            if (d != null)
+            {
+                if (d.Doctor != null)
+                    doctor = new TestDoctor(d.Doctor, idLpu);
+                participant = d;
+            }
         }
 
         static public TestParticipant BuildTestParticipantFromDataBase(string idCase, string idDoctor)
