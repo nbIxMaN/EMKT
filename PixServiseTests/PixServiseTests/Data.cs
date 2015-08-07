@@ -33,6 +33,7 @@ namespace PixServiseTests
     public static class DoctorData
     {
         public static MedicalStaff doctorInCharge { get; set; }
+        public static MedicalStaff otherDoctor { get; set; }
         public static Participant authenticator { get; set; }
         public static Participant author { get; set; }
         public static Participant legalAuthenticator { get; set; }
@@ -456,6 +457,34 @@ namespace PixServiseTests
             return doctor;
         }
 
+        private static MedicalStaff SetOtherDoctor()
+        {
+            MedicalStaff doctor = new MedicalStaff
+            {
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdSpeciality = 3,
+                IdPosition = 71,
+                Person = new PersonWithIdentity
+                {
+                    IdPersonMis = "1231231232",
+                    Sex = 1,
+                    Birthdate = new DateTime(1974, 01, 07),
+                    Documents = new IdentityDocument[]
+                    {
+                        DocumentData.Passport,
+                        DocumentData.SNILS
+                    },
+                    HumanName = new HumanName
+                    {
+                        FamilyName = "НеЛукин",
+                        GivenName = "НеВасилий",
+                        MiddleName = "НеАндреевич",
+                    },
+                }
+            };
+            return doctor;
+        }
+
         private static Guardian SetGuardian()
         {
             Guardian guardian = new Guardian
@@ -718,7 +747,9 @@ namespace PixServiseTests
             };
 
             SetDocument();
-
+        
+            DoctorData.otherDoctor = SetOtherDoctor();
+            
             SetMedRecord();
 
             SetAmbCase();

@@ -142,15 +142,15 @@ namespace PixServiseTests
         {
             MedicalStaff doctor = new MedicalStaff
             {
-                IdSpeciality = DoctorData.doctorInCharge.IdSpeciality,
-                IdPosition = DoctorData.doctorInCharge.IdPosition,
+                IdSpeciality = DoctorData.otherDoctor.IdSpeciality,
+                IdPosition = DoctorData.otherDoctor.IdPosition,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = DoctorData.doctorInCharge.Person.IdPersonMis,
+                    IdPersonMis = DoctorData.otherDoctor.Person.IdPersonMis,
                     HumanName = new HumanName
                     {
-                        FamilyName = DoctorData.doctorInCharge.Person.HumanName.FamilyName,
-                        GivenName = DoctorData.doctorInCharge.Person.HumanName.GivenName,
+                        FamilyName = DoctorData.otherDoctor.Person.HumanName.FamilyName,
+                        GivenName = DoctorData.otherDoctor.Person.HumanName.GivenName,
                     }
                 }
             };
@@ -567,6 +567,8 @@ namespace PixServiseTests
 
         public CaseAmb FullCaseAmbSet()
         {
+            CaseAmb caseAmb = CaseAmbData.caseAmb;
+
             return CaseAmbData.caseAmb;
         }
 
