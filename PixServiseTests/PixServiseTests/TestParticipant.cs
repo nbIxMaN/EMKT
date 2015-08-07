@@ -73,7 +73,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if (this.participant == p.participant)
+            if ((this.participant.IdRole == p.participant.IdRole)&&
+                (Global.IsEqual(this.doctor, p.doctor)))
                 return true;
             if ((this.participant == null) || (p.participant == null))
             {
