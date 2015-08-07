@@ -32,37 +32,37 @@ namespace PixServiseTests
                     while (serviceReader.Read())
                     {
                         Service s = new Service();
-                        if (serviceReader["Servise.DateEnd"].ToString() != "")
-                            s.DateEnd = Convert.ToDateTime(serviceReader["Servise.DateEnd"]);
+                        if (serviceReader["DateEnd"].ToString() != "")
+                            s.DateEnd = Convert.ToDateTime(serviceReader["DateEnd"]);
                         else
                             s.DateEnd = DateTime.MinValue;
-                        if (serviceReader["Servise.DateStart"].ToString() != "")
-                            s.DateStart = Convert.ToDateTime(serviceReader["Servise.DateStart"]);
+                        if (serviceReader["DateStart"].ToString() != "")
+                            s.DateStart = Convert.ToDateTime(serviceReader["DateStart"]);
                         else
                             s.DateStart = DateTime.MinValue;
-                        if (serviceReader["Servise.IdServiceType"].ToString() != "")
-                            s.IdServiceType = Convert.ToString(serviceReader["Servise.IdServiceType"]);
-                        if (serviceReader["Servise.ServiceName"].ToString() != "")
-                            s.ServiceName = Convert.ToString(serviceReader["Servise.ServiceName"]);
-                        if (serviceReader["Servise.IdRHealthCareUnit"].ToString() != "")
-                            s.PaymentInfo.HealthCareUnit = Convert.ToByte(serviceReader["Servise.IdRHealthCareUnit"]);
+                        if (serviceReader["IdServiceType"].ToString() != "")
+                            s.IdServiceType = Convert.ToString(serviceReader["IdServiceType"]);
+                        if (serviceReader["ServiceName"].ToString() != "")
+                            s.ServiceName = Convert.ToString(serviceReader["ServiceName"]);
+                        if (serviceReader["IdRHealthCareUnit"].ToString() != "")
+                            s.PaymentInfo.HealthCareUnit = Convert.ToByte(serviceReader["IdRHealthCareUnit"]);
                         else
                             s.PaymentInfo.HealthCareUnit = 0;
-                        if (serviceReader["Servise.IdRVisitIdPaymentType"].ToString() != "")
-                            s.PaymentInfo.IdPaymentType = Convert.ToByte(serviceReader["Servise.IdRVisitIdPaymentType"]);
+                        if (serviceReader["IdRVisitIdPaymentType"].ToString() != "")
+                            s.PaymentInfo.IdPaymentType = Convert.ToByte(serviceReader["IdRVisitIdPaymentType"]);
                         else
                             s.PaymentInfo.IdPaymentType = null;
-                        if (serviceReader["Servise.IdRPaymentStatus"].ToString() != "")
-                            s.PaymentInfo.PaymentState = Convert.ToByte(serviceReader["Servise.IdRPaymentStatus"]);
+                        if (serviceReader["IdRPaymentStatus"].ToString() != "")
+                            s.PaymentInfo.PaymentState = Convert.ToByte(serviceReader["IdRPaymentStatus"]);
                         else
                             s.PaymentInfo.HealthCareUnit = 0;
-                        if (serviceReader["Servise.Quantity"].ToString() != "")
-                            s.PaymentInfo.Quantity = Convert.ToInt32(serviceReader["Servise.Quantity"]);
+                        if (serviceReader["Quantity"].ToString() != "")
+                            s.PaymentInfo.Quantity = Convert.ToInt32(serviceReader["Quantity"]);
                         else
                             s.PaymentInfo.HealthCareUnit = 0;
                         TestService ts = new TestService(s);
-                        if ((serviceReader["Servise.IdDoctor"].ToString() != "") && (serviceReader["Step.IdCase"].ToString() != ""))
-                            ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["Step.IdCase"].ToString(), serviceReader["Servise.IdDoctor"].ToString());
+                        if ((serviceReader["IdDoctor"].ToString() != "") && (serviceReader["IdCase"].ToString() != ""))
+                            ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["IdCase"].ToString(), serviceReader["IdDoctor"].ToString());
                         serviseList.Add(ts);
                     }
                 }
