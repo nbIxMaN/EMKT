@@ -14,6 +14,7 @@ namespace PixServiseTests
     {
         public static CaseAmb caseAmb { get; set; }
         public static StepAmb step { get; set; }
+        public static StepAmb otherStep { get; set; }
         public static MedDocument medDocument { get; set; }
     }
 
@@ -519,6 +520,21 @@ namespace PixServiseTests
                 IdVisitPlace = 1,
                 IdVisitPurpose = 1,
                 Comment = "Comment",
+
+                //MedRecords
+
+                Doctor = SetDoctor(),
+            };
+
+            CaseAmbData.otherStep = new StepAmb
+            {
+                DateStart = new DateTime(2010, 09, 07),
+                DateEnd = new DateTime(2013, 10, 14),
+                IdStepMis = "OtherIdStepMis",
+                IdPaymentType = 2,
+                IdVisitPlace = 2,
+                IdVisitPurpose = 2,
+                Comment = "OtherComment",
 
                 //MedRecords
 

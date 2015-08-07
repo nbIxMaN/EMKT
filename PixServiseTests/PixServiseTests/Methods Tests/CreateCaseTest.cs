@@ -50,7 +50,6 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
-        //дальше неверно
         [Test]
         public void CreateFullAmbCase()
         {
@@ -71,7 +70,7 @@ namespace PixServiseTests
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,
                     MedRecordData.sickList,
-                    set.MinLaboratoryReportSet(),
+                    set.MinLaboratoryReport(),
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
@@ -81,7 +80,7 @@ namespace PixServiseTests
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,
-                    set.MinLaboratoryReportSet(),
+                    set.MinLaboratoryReport(),
                 };
                 caseAmb.Steps = new StepAmb[]
                 {
@@ -116,7 +115,7 @@ namespace PixServiseTests
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,   
                     MedRecordData.sickList,
-                    set.MinLaboratoryReportSet(),
+                    set.MinLaboratoryReport(),
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
@@ -126,7 +125,7 @@ namespace PixServiseTests
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,
-                    set.MinLaboratoryReportSet(),
+                    set.MinLaboratoryReport(),
                 };
                 caseStat.Steps = new StepStat[]
                 {

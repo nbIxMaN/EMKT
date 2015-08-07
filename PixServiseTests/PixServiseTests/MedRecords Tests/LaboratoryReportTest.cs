@@ -34,7 +34,7 @@ namespace PixServiseTests
                 stepAmb.MedRecords = new MedRecord[]
                 {
                     MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
 
                 };
                 caseAmb.Steps = new StepAmb[]
@@ -62,7 +62,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -91,7 +91,7 @@ namespace PixServiseTests
                 stepAmb.MedRecords = new MedRecord[]
                 {
                     MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
 
                 };
                 caseAmb.Steps = new StepAmb[]
@@ -119,7 +119,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 caseAmb.MedRecords = new MedRecord[]
                  {
-                     (new SetData()).MinLaboratoryReportSet()
+                     (new SetData()).MinLaboratoryReport()
                  };
                 
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
@@ -150,7 +150,7 @@ namespace PixServiseTests
                 stepAmb.MedRecords = new MedRecord[]
                 {
                     MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
 
                 };
                 caseAmb.Steps = new StepAmb[]
@@ -179,7 +179,7 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -229,7 +229,7 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -279,7 +279,7 @@ namespace PixServiseTests
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
@@ -302,7 +302,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
 
-                MedRecord medRecord = (new SetData()).MinLaboratoryReportSet();
+                MedRecord medRecord = (new SetData()).MinLaboratoryReport();
                 
                 client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, medRecord, caseAmb.IdCaseMis);
             }
@@ -325,7 +325,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
 
-                MedRecord medRecord = (new SetData()).MinLaboratoryReportSet();
+                MedRecord medRecord = (new SetData()).MinLaboratoryReport();
 
                 client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, medRecord);
             }
@@ -402,7 +402,7 @@ namespace PixServiseTests
                 stepStat.MedRecords = new MedRecord[]
                 {
                     MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
 
                 };
                 caseStat.Steps = new StepStat[]
@@ -430,7 +430,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -459,7 +459,7 @@ namespace PixServiseTests
                 stepStat.MedRecords = new MedRecord[]
                 {
                     MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
 
                 };
                 caseStat.Steps = new StepStat[]
@@ -487,7 +487,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 caseStat.MedRecords = new MedRecord[]
                  {
-                     (new SetData()).MinLaboratoryReportSet()
+                     (new SetData()).MinLaboratoryReport()
                  };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -517,7 +517,7 @@ namespace PixServiseTests
                 stepStat.MedRecords = new MedRecord[]
                 {
                     MedRecordData.LaboratoryReport,
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
 
                 };
                 caseStat.Steps = new StepStat[]
@@ -546,7 +546,7 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -596,7 +596,7 @@ namespace PixServiseTests
                 caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -646,7 +646,7 @@ namespace PixServiseTests
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReportSet()
+                    (new SetData()).MinLaboratoryReport()
                 };
                 client.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
             }
@@ -669,7 +669,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
 
-                MedRecord medRecord = (new SetData()).MinLaboratoryReportSet();
+                MedRecord medRecord = (new SetData()).MinLaboratoryReport();
 
                 client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, medRecord, caseStat.IdCaseMis);
             }
@@ -692,7 +692,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
 
-                MedRecord medRecord = (new SetData()).MinLaboratoryReportSet();
+                MedRecord medRecord = (new SetData()).MinLaboratoryReport();
 
                 client.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, medRecord);
             }

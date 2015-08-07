@@ -22,7 +22,7 @@ namespace PixServiseTests
             return patient;
         }
 
-        public LaboratoryReport MinLaboratoryReportSet()
+        public LaboratoryReport MinLaboratoryReport()
         {
             LaboratoryReport labrep = new LaboratoryReport
             {
@@ -168,6 +168,22 @@ namespace PixServiseTests
                 IdPaymentType = CaseAmbData.step.IdPaymentType,
                 IdVisitPlace = CaseAmbData.step.IdVisitPlace,
                 IdVisitPurpose = CaseAmbData.step.IdVisitPurpose,
+                Doctor = MinDoctorSet(),
+            };
+
+            return stepAmb;
+        }
+
+        public StepAmb MinOtherStepAmbSet()
+        {
+            StepAmb stepAmb = new StepAmb
+            {
+                DateStart = CaseAmbData.otherStep.DateStart,
+                DateEnd = CaseAmbData.otherStep.DateEnd,
+                IdStepMis = CaseAmbData.otherStep.IdStepMis,
+                IdPaymentType = CaseAmbData.otherStep.IdPaymentType,
+                IdVisitPlace = CaseAmbData.otherStep.IdVisitPlace,
+                IdVisitPurpose = CaseAmbData.otherStep.IdVisitPurpose,
                 Doctor = MinDoctorSet(),
             };
 
