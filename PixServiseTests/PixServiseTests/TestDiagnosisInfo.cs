@@ -44,7 +44,7 @@ namespace PixServiseTests
                         if (TDReader["IdTraumaType"].ToString() != "")
                             d.IdTraumaType = Convert.ToByte(TDReader["IdTraumaType"]);
                         if (TDReader["IdRMedicalStandard"].ToString() != "")
-                            d.MedicalStandard = Convert.ToInt16(TDReader["IdRMedicalStandard"]);
+                            d.MedicalStandard = Convert.ToInt32(TDReader["IdRMedicalStandard"]);
                         if (TDReader["IdRMESImplementationFeature"].ToString() != "")
                             d.MESImplementationFeature = Convert.ToByte(TDReader["IdRMESImplementationFeature"]);
                         if (TDReader["MkbCode"].ToString() != "")

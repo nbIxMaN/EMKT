@@ -129,10 +129,14 @@ namespace PixServiseTests
         {
             if (this.document.AnatomicTherapeuticChemicalClassification != ta.document.AnatomicTherapeuticChemicalClassification)
                 Global.errors3.Add("несовпадение AnatomicTherapeuticChemicalClassification TestAppointedMedication");
-            if (this.document.CourseDose != ta.document.CourseDose)
-                Global.errors3.Add("несовпадение CourseDose TestAppointedMedication");
-            if (this.document.DayDose != ta.document.DayDose)
-                Global.errors3.Add("несовпадение DayDose TestAppointedMedication");
+            if (this.document.CourseDose.IdUnit != ta.document.CourseDose.IdUnit)
+                Global.errors3.Add("несовпадение CourseDose.IdUnit TestAppointedMedication");
+            if (this.document.CourseDose.Value != ta.document.CourseDose.Value)
+                Global.errors3.Add("несовпадение CourseDose.Value TestAppointedMedication");
+            if (this.document.DayDose.IdUnit != ta.document.DayDose.IdUnit)
+                Global.errors3.Add("несовпадение DayDose.IdUnit TestAppointedMedication");
+            if (this.document.DayDose.Value != ta.document.DayDose.Value)
+                Global.errors3.Add("несовпадение DayDose.Value TestAppointedMedication");
             if (this.document.DaysCount != ta.document.DaysCount)
                 Global.errors3.Add("несовпадение DaysCount TestAppointedMedication");
             if (this.document.IssuedDate != ta.document.IssuedDate)
@@ -147,8 +151,10 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение MedicineUseWay TestAppointedMedication");
             if (this.document.Number != ta.document.Number)
                 Global.errors3.Add("несовпадение Number TestAppointedMedication");
-            if (this.document.OneTimeDose != ta.document.OneTimeDose)
-                Global.errors3.Add("несовпадение OneTimeDose TestAppointedMedication");
+            if (this.document.OneTimeDose.IdUnit != ta.document.OneTimeDose.IdUnit)
+                Global.errors3.Add("несовпадение OneTimeDose.IdUnit TestAppointedMedication");
+            if (this.document.OneTimeDose.Value != ta.document.OneTimeDose.Value)
+                Global.errors3.Add("несовпадение OneTimeDose.Value TestAppointedMedication");
             if (this.document.Seria != ta.document.Seria)
                 Global.errors3.Add("несовпадение Seria TestAppointedMedication");
             if (Global.GetLength(this.doctor) != Global.GetLength(ta.doctor))
@@ -168,8 +174,10 @@ namespace PixServiseTests
                 return false;
             }
             if ((this.document.AnatomicTherapeuticChemicalClassification == p.document.AnatomicTherapeuticChemicalClassification)&&
-            (this.document.CourseDose == p.document.CourseDose)&&
-            (this.document.DayDose == p.document.DayDose)&&
+            (this.document.CourseDose.IdUnit == p.document.CourseDose.IdUnit) &&
+            (this.document.CourseDose.Value == p.document.CourseDose.Value) &&
+            (this.document.DayDose.IdUnit == p.document.DayDose.IdUnit) &&
+            (this.document.DayDose.Value == p.document.DayDose.Value) &&
             (this.document.DaysCount == p.document.DaysCount)&&
             (this.document.IssuedDate == p.document.IssuedDate)&&
             (this.document.MedicineIssueType == p.document.MedicineIssueType)&&
@@ -177,7 +185,8 @@ namespace PixServiseTests
             (this.document.MedicineType == p.document.MedicineType)&&
             (this.document.MedicineUseWay == p.document.MedicineUseWay)&&
             (this.document.Number == p.document.Number)&&
-            (this.document.OneTimeDose == p.document.OneTimeDose)&&
+            (this.document.OneTimeDose.IdUnit == p.document.OneTimeDose.IdUnit) &&
+            (this.document.OneTimeDose.Value == p.document.OneTimeDose.Value) &&
             (this.document.Seria == p.document.Seria)&&
             Global.IsEqual(this.doctor, p.doctor))
             {

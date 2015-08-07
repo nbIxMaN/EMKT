@@ -40,6 +40,7 @@ namespace PixServiseTests
                                 while (RReader.Read())
                                 {
                                     Referral r = new Referral();
+                                    r.ReferralInfo = new ReferralInfo();
                                     if (RReader["MkbCode"].ToString() != "")
                                         r.ReferralInfo.MkbCode = Convert.ToString(RReader["MkbCode"]);
                                     if (RReader["IdSourceLpu"].ToString() != "")
@@ -54,8 +55,8 @@ namespace PixServiseTests
                                         r.ReferralInfo.IdReferralType = Convert.ToByte(RReader["IdReferralType"]);
                                     if (RReader["IssuedDateTime"].ToString() != "")
                                         r.ReferralInfo.IssuedDateTime = Convert.ToDateTime(RReader["IssuedDateTime"]);
-                                    if (RReader["HospitalizationOrder"].ToString() != "")
-                                        r.ReferralInfo.HospitalizationOrder = Convert.ToByte(RReader["HospitalizationOrder"]);
+                                    if (RReader["IdHospitalizationOrder"].ToString() != "")
+                                        r.ReferralInfo.HospitalizationOrder = Convert.ToByte(RReader["IdHospitalizationOrder"]);
                                     r.CreationDate = i.CreationDate;
                                     r.Header = i.DocHead;
                                     //Тут нет ReferalId и referedId
