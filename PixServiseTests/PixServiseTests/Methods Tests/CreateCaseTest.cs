@@ -7,7 +7,6 @@ using System.Collections;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
 
-
 namespace PixServiseTests
 {
     [TestFixture]
