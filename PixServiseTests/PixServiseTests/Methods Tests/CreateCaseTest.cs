@@ -138,5 +138,13 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
+        [TearDown]
+        public void Clear()
+        {
+            Global.errors3.Clear();
+            Global.errors2.Clear();
+            Global.errors1.Clear();
+        }
     }
 }
