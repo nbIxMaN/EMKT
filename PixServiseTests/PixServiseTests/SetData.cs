@@ -386,6 +386,18 @@ namespace PixServiseTests
             return caseAmb;
         }
 
+        public CaseAmb FullCaseAmbSetForCreate()
+        {
+            CaseAmb caseAmb = CaseAmbData.caseAmb;
+
+            caseAmb.CloseDate = new DateTime();
+            caseAmb.IdCaseResult = new byte();
+            caseAmb.Comment = null;
+            caseAmb.IdAmbResult = new byte();
+
+            return caseAmb;
+        }
+
         public CaseStat MinCaseStatSet()
         {
             CaseStat caseStat = new CaseStat();
@@ -487,6 +499,18 @@ namespace PixServiseTests
             {
                MinStepStatSet()
             };
+
+            return caseStat;
+        }
+
+        public CaseStat FullCaseStatSetForCreate()
+        {
+            CaseStat caseStat = CaseStatData.caseStat;
+
+            caseStat.CloseDate = new DateTime();
+            caseStat.IdCaseResult = new byte();
+            caseStat.Comment = null;
+            caseStat.HospResult = new byte();
 
             return caseStat;
         }

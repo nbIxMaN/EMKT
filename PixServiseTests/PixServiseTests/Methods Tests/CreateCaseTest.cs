@@ -50,7 +50,7 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
-        //дальше невверно
+        //дальше неверно
         [Test]
         public void CreateFullAmbCase()
         {
@@ -61,7 +61,7 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
-                CaseAmb caseAmb = (new SetData()).FullCaseAmbSet();
+                CaseAmb caseAmb = (new SetData()).FullCaseAmbSetForCreate();
                 SetData set = new SetData();
                 caseAmb.MedRecords = new MedRecord[]
                 {
@@ -71,9 +71,7 @@ namespace PixServiseTests
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,
                     MedRecordData.sickList,
-                    set.MinDischargeSummary(),
                     set.MinLaboratoryReportSet(),
-                    set.MinConsultNote()
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new MedRecord[]
@@ -108,21 +106,17 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
-                CaseStat caseStat = (new SetData()).FullCaseStatSet();
+                CaseStat caseStat = (new SetData()).FullCaseStatSetForCreate();
                 SetData set = new SetData();
                 caseStat.MedRecords = new MedRecord[]
                 {
                     set.MinService(),
                     set.MinTfomsInfo(),
-                    MedRecordData.deathInfo,
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.referral,   
                     MedRecordData.sickList,
-                    set.MinDischargeSummary(),
                     set.MinLaboratoryReportSet(),
-                    set.MinConsultNote()
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new MedRecord[]
