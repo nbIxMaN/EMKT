@@ -209,6 +209,25 @@ namespace PixServiseTests
             return stepStat;
         }
 
+        public StepStat MinOtherStepStatSet()
+        {
+            StepStat stepStat = new StepStat
+            {
+                DateStart = CaseStatData.otherStep.DateStart,
+                DateEnd = CaseStatData.otherStep.DateEnd,
+                IdStepMis = CaseStatData.otherStep.IdStepMis,
+                IdPaymentType = CaseStatData.otherStep.IdPaymentType,
+                BedProfile = CaseStatData.otherStep.BedProfile,
+                DaySpend = CaseStatData.otherStep.DaySpend,
+                HospitalDepartmentName = CaseStatData.otherStep.HospitalDepartmentName,
+                IdHospitalDepartment = CaseStatData.otherStep.IdHospitalDepartment,
+
+                Doctor = MinDoctorSet(),
+            };
+
+            return stepStat;
+        }
+
         //диспансеризация
         public CaseAmb MinCaseDispSet()
         {
@@ -540,5 +559,7 @@ namespace PixServiseTests
         {
             return CaseStatData.caseStat;
         }
+
+
     }
 }

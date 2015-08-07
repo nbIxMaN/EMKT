@@ -15,21 +15,19 @@ namespace PixServiseTests
         public static CaseAmb caseAmb { get; set; }
         public static StepAmb step { get; set; }
         public static StepAmb otherStep { get; set; }
-        public static MedDocument medDocument { get; set; }
     }
 
     public static class CaseDispData
     {
         public static CaseAmb caseDisp { get; set; }
         public static StepAmb step { get; set; }
-        public static MedDocument medDocument { get; set; }
     }
 
     public static class CaseStatData
     {
         public static CaseStat caseStat { get; set; }
         public static StepStat step { get; set; }
-        public static MedDocument medDocument { get; set; }
+        public static StepStat otherStep { get; set; }
     }
 
     public static class DoctorData
@@ -48,7 +46,6 @@ namespace PixServiseTests
         public static DeathInfo deathInfo { get; set; }
         public static Diagnosis diagnosis { get; set; }
         public static ClinicMainDiagnosis clinicMainDiagnosis { get; set; }
-        public static MedDocument medDocument { get; set; }
         public static DispensaryOne dispensaryOne { get; set; }
         public static Referral referral { get; set; }
         public static SickList sickList { get; set; }
@@ -639,6 +636,26 @@ namespace PixServiseTests
                 IdHospitalDepartment = "1",
                 IdRegimen = 1,
                 WardNumber = "1",
+
+                //MedRecords
+
+                Doctor = SetDoctor(),
+            };
+
+            CaseStatData.otherStep = new StepStat
+            {
+                DateStart = new DateTime(2010, 09, 09),
+                DateEnd = new DateTime(2011, 10, 14),
+                IdStepMis = "OtherIdStepMis",
+                IdPaymentType = 2,
+                Comment = "OtherComment",
+                BedNumber = "3A",
+                BedProfile = 2,
+                DaySpend = 2,
+                HospitalDepartmentName = "Другое название Госпиталя",
+                IdHospitalDepartment = "2",
+                IdRegimen = 2,
+                WardNumber = "2",
 
                 //MedRecords
 
