@@ -366,6 +366,7 @@ namespace PixServiseTests
         {
             CaseAmb caseAmb = new CaseAmb();
             caseAmb.OpenDate = CaseAmbData.caseAmb.OpenDate;
+            caseAmb.HistoryNumber = CaseAmbData.caseAmb.HistoryNumber;
             caseAmb.IdCaseMis = CaseAmbData.caseAmb.IdCaseMis;
             caseAmb.IdPaymentType = CaseAmbData.caseAmb.IdPaymentType;
             caseAmb.Confidentiality = CaseAmbData.caseAmb.Confidentiality;
@@ -423,6 +424,20 @@ namespace PixServiseTests
 
         public CaseAmb FullCaseAmbSetForCreate()
         {
+            /*CaseAmb caseAmb = MinCaseAmbSetForCreate();
+            
+            caseAmb.IdCaseAidType = CaseAmbData.caseAmb.IdCaseAidType;
+            caseAmb.IdCasePurpose = CaseAmbData.caseAmb.IdCasePurpose;
+            caseAmb.IsActive = CaseAmbData.caseAmb.IsActive;
+
+            caseAmb.DoctorInCharge = DoctorData.doctorInCharge;
+            caseAmb.Author = DoctorData.author;
+            caseAmb.Authenticator = DoctorData.authenticator;
+            caseAmb.LegalAuthenticator = DoctorData.legalAuthenticator;
+            caseAmb.Steps = new StepAmb[]{CaseAmbData.step};
+            caseAmb.Guardian = DoctorData.guardian;
+
+            return caseAmb;*/
             CaseAmb caseAmb = CaseAmbData.caseAmb;
 
             caseAmb.CloseDate = new DateTime();

@@ -159,10 +159,10 @@ namespace PixServiseTests
 
             MedRecordData.appointedMedication = new AppointedMedication
             {
-                AnatomicTherapeuticChemicalClassification = "1",
+                AnatomicTherapeuticChemicalClassification = "A",
                 DaysCount = 5,
                 IssuedDate = new DateTime(2010, 03, 06),
-                MedicineIssueType = "PRE", // по справочнику строка PRE или CURE 
+                MedicineIssueType = "PRE", 
                 MedicineName = "Валерьянка",
                 MedicineType = 136,
                 MedicineUseWay = 1,

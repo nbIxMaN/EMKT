@@ -118,7 +118,7 @@
       <xs:element minOccurs="0" name="DateEnd" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DisabilityDocReason" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="DisabilityDocState" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="IsPatientTaker" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPatientTaker" nillable="true" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SickListInfo" nillable="true" type="tns:SickListInfo" />
