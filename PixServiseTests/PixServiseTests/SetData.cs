@@ -61,6 +61,29 @@ namespace PixServiseTests
             return disp;
         }
 
+        public Referral MinRefferal()
+        {
+            Referral r = new Referral
+            {
+                CreationDate = MedRecordData.referral.CreationDate,
+                Header = MedRecordData.referral.Header,
+                IdSourceLpu = MedRecordData.referral.IdSourceLpu,
+                IdTargetLpu = MedRecordData.referral.IdTargetLpu,
+                Author = MinDoctorSet(),
+                ReferralInfo = new ReferralInfo
+                {
+                    Reason = MedRecordData.referral.ReferralInfo.Reason,
+                    IdReferralMis = MedRecordData.referral.ReferralInfo.IdReferralMis,
+                    IdReferralType = MedRecordData.referral.ReferralInfo.IdReferralType,
+                    HospitalizationOrder = MedRecordData.referral.ReferralInfo.HospitalizationOrder,
+                    IssuedDateTime = MedRecordData.referral.ReferralInfo.IssuedDateTime,
+                    MkbCode = MedRecordData.referral.ReferralInfo.MkbCode
+                },
+                DepartmentHead = MinDoctorSet()
+            };
+            return r;
+        }
+
         public ConsultNote MinConsultNote()
         {
             ConsultNote consultNote = new ConsultNote

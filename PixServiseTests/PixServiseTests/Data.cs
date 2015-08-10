@@ -426,7 +426,6 @@ namespace PixServiseTests
                 },
                 Author = SetDoctor(),
             };
-
         }
 
         private static MedicalStaff SetDoctor()
