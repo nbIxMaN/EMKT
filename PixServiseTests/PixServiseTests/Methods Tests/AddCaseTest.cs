@@ -45,7 +45,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    MedRecordData.referral
                 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }

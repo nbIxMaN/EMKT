@@ -60,10 +60,12 @@ namespace PixServiseTests
                             if (docsReader["MIMEType"].ToString() != "")
                                 at.MimeType = docsReader["MIMEType"].ToString();
                             TestAttachment t = null;
+                            //!!!ПЛОХОЙ КОД
                             if ((at.MimeType == null) && (at.Hash == null) && (at.Url == null) && (at.Data == null))
                                 t = new TestAttachment(null);
                             else
-                                t = new TestAttachment(null);
+                                t = new TestAttachment(at);
+                            //
                             if (docsReader["IdMedDocument"].ToString() != "")
                                 t.idMedDocument = docsReader["IdMedDocument"].ToString();
                             if (docsReader["DocHead"].ToString() != "")
@@ -86,9 +88,9 @@ namespace PixServiseTests
         }
         public void FindMismatch(TestAttachment at)
         {
-            if (this.attachment.Data != at.attachment.Data)
+            if (!(this.attachment.Data.SequenceEqual(at.attachment.Data)))
                 Global.errors3.Add("несовпадение Data TestAttachment");
-            if (this.attachment.Hash != at.attachment.Hash)
+            if (!(this.attachment.Hash.SequenceEqual(at.attachment.Hash)))
                 Global.errors3.Add("несовпадение Hash TestAttachment");
             if (this.attachment.Url != at.attachment.Url)
                 Global.errors3.Add("несовпадение Url TestAttachment");
@@ -106,8 +108,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((this.attachment.Data == p.attachment.Data) &&
-                (this.attachment.Hash == p.attachment.Hash) &&
+            if (this.attachment.Data.SequenceEqual(p.attachment.Data) &&
+                this.attachment.Hash.SequenceEqual(p.attachment.Hash) &&
                 (this.attachment.Url == p.attachment.Url))
             {
                 return true;
