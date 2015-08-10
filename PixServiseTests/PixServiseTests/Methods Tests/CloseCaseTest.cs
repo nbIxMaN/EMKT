@@ -12,6 +12,11 @@ namespace PixServiseTests.Methods_Tests
     [TestFixture]
     public class CloseCaseTest : Data
     {
+        [Test]
+        public void Test()
+        {
+
+        }
         [TearDown]
         public void Clear()
         {
