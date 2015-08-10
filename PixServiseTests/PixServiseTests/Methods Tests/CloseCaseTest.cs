@@ -47,6 +47,19 @@ namespace PixServiseTests.Methods_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 CaseAmb CaseAmbClose = (new SetData()).FullCaseAmbSetForClose();
+                CaseAmbClose.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinService(),
+                    (new SetData()).MinTfomsInfo(),
+                    MedRecordData.deathInfo,
+                    (new SetData()).MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.referral,
+                    MedRecordData.sickList,
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinLaboratoryReport(),
+                    (new SetData()).MinConsultNote()
+                };
 
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", CaseAmbClose);
             }
@@ -91,6 +104,20 @@ namespace PixServiseTests.Methods_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 CaseStat CaseStatClose = (new SetData()).FullCaseStatSetForClose();
+                CaseStatClose.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinService(),
+                    (new SetData()).MinTfomsInfo(),
+                    MedRecordData.deathInfo,
+                    (new SetData()).MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                    MedRecordData.referral,
+                    MedRecordData.sickList,
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinLaboratoryReport(),
+                    (new SetData()).MinConsultNote()
+                };
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", CaseStatClose);
             }
             if (Global.errors == "")

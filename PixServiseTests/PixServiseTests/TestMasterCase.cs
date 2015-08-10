@@ -68,7 +68,7 @@ namespace PixServiseTests
                                 mcase.records.AddRange(trl);
                             List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(mcase.defaultStep.idStep, patientId);
                             if (!Global.IsEqual(tsl, null))
-                                mcase.records.AddRange(trl);
+                                mcase.records.AddRange(tsl);
                             TestDischargeSummary tds = TestDischargeSummary.BuildSickListFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(tds, null))
                                 mcase.records.Add(tds);

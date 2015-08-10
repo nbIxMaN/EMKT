@@ -43,6 +43,7 @@ namespace PixServiseTests
                                 while (SLReader.Read())
                                 {
                                     SickList r = new SickList();
+                                    r.SickListInfo = new SickListInfo();
                                     if (SLReader["Number"].ToString() != "")
                                         r.SickListInfo.Number = Convert.ToString(SLReader["Number"]);
                                     if (SLReader["DateStart"].ToString() != "")

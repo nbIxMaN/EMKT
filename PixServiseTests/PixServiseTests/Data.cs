@@ -434,13 +434,13 @@ namespace PixServiseTests
             MedicalStaff doctor = new MedicalStaff
             {
                 IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                IdSpeciality = 31,
-                IdPosition = 72,
+                IdSpeciality = 29,
+                IdPosition = 74,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "123123123",
+                    IdPersonMis = "123456123",
                     Sex = 1,
-                    Birthdate = new DateTime(1973, 01, 07),
+                    Birthdate = new DateTime(1974, 01, 07),
                     Documents = new IdentityDocument[]
                     {
                         DocumentData.Passport,
@@ -448,9 +448,9 @@ namespace PixServiseTests
                     },
                     HumanName = new HumanName
                     {
-                        FamilyName = "Лукин",
-                        GivenName = "Василий",
-                        MiddleName = "Андреевич",
+                        FamilyName = "Иванов",
+                        GivenName = "Дмитрий",
+                        MiddleName = "Александрович",
                     },
                 }
             };
@@ -462,13 +462,13 @@ namespace PixServiseTests
             MedicalStaff doctor = new MedicalStaff
             {
                 IdLpu = "1.2.643.5.1.13.3.25.78.118",
-                IdSpeciality = 3,
-                IdPosition = 71,
+                IdSpeciality = 4,
+                IdPosition = 69,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "1231231232",
+                    IdPersonMis = "123123123256",
                     Sex = 1,
-                    Birthdate = new DateTime(1974, 01, 07),
+                    Birthdate = new DateTime(1978, 01, 07),
                     Documents = new IdentityDocument[]
                     {
                         DocumentData.Passport,
@@ -476,9 +476,9 @@ namespace PixServiseTests
                     },
                     HumanName = new HumanName
                     {
-                        FamilyName = "НеЛукин",
-                        GivenName = "НеВасилий",
-                        MiddleName = "НеАндреевич",
+                        FamilyName = "Петров",
+                        GivenName = "Евгений",
+                        MiddleName = "Васильевич",
                     },
                 }
             };
