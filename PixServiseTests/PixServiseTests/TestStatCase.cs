@@ -204,20 +204,18 @@ namespace PixServiseTests
             {
                 if (cs.DeliveryCode != null)
                     this.caseStat.DeliveryCode = cs.DeliveryCode;
-                if (cs.IdIntoxicationType != null)
+                if (cs.IdIntoxicationType != 0)
                     this.caseStat.IdIntoxicationType = cs.IdIntoxicationType;
-                if (cs.IdPatientConditionOnAdmission != null)
+                if (cs.IdPatientConditionOnAdmission != 0)
                     this.caseStat.IdPatientConditionOnAdmission = cs.IdPatientConditionOnAdmission;
-                if (cs.IdTypeFromDiseaseStart != null)
+                if (cs.IdTypeFromDiseaseStart != 0)
                     this.caseStat.IdTypeFromDiseaseStart = cs.IdTypeFromDiseaseStart;
-                if (cs.IdTransportIntern != null)
+                if (cs.IdTransportIntern != 0)
                     this.caseStat.IdTransportIntern = cs.IdTransportIntern;
-                if (cs.IdHospChannel != null)
+                if (cs.IdHospChannel != 0)
                     this.caseStat.IdHospChannel = cs.IdHospChannel;
-                if (cs.RW1Mark != null)
-                    this.caseStat.RW1Mark = cs.RW1Mark;
-                if (cs.AIDSMark != null)
-                    this.caseStat.AIDSMark = cs.AIDSMark;
+                this.caseStat.RW1Mark = cs.RW1Mark;
+                this.caseStat.AIDSMark = cs.AIDSMark;
                 caseBase.UpdateCaseBase(guid, cs);
                 if (cs.MedRecords != null)
                 {
@@ -226,7 +224,6 @@ namespace PixServiseTests
                     TestClinicMainDiagnosis cmd = null;
                     TestDischargeSummary ds = null;
                     TestConsultNote cn = null;
-                    //TestDispensaryOne d1 = null;
                     foreach (object i in cs.MedRecords)
                     {
                         Service ser = i as Service;
@@ -259,58 +256,64 @@ namespace PixServiseTests
                         ConsultNote pcn = i as ConsultNote;
                         if (pcn != null)
                             cn = new TestConsultNote(pcn, cs.IdLpu);
-                        //DispensaryOne d = i as DispensaryOne;
-                        //if ((d != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
-                        //    d1 = new TestDispensaryOne(d);
                     }
-                    foreach (object i in this.medRecords)
+                    if (Global.GetLength(this.medRecords) != 0)
                     {
-                        TestService ser = i as TestService;
-                        if (!Global.IsEqual(ser, null))
-                            newMedRecords.Add(ser);
-                        TestTfomsInfo tf = i as TestTfomsInfo;
-                        if (!Global.IsEqual(tfi, null) && (!Global.IsEqual(tf, null)))
-                            newMedRecords.Add(tf);
-                        else
-                            if (!Global.IsEqual(tfi, null))
-                                newMedRecords.Add(tfi);
-                        TestDiagnosis diag = i as TestDiagnosis;
-                        if (!Global.IsEqual(diag, null))
-                            newMedRecords.Add(diag);
-                        TestClinicMainDiagnosis cm = i as TestClinicMainDiagnosis;
+                        foreach (object i in this.medRecords)
+                        {
+                            TestService ser = i as TestService;
+                            if (!Global.IsEqual(ser, null))
+                                newMedRecords.Add(ser);
+                            TestTfomsInfo tf = i as TestTfomsInfo;
+                            if (!Global.IsEqual(tfi, null) && (!Global.IsEqual(tf, null)))
+                                newMedRecords.Add(tf);
+                            else
+                                if (!Global.IsEqual(tfi, null))
+                                    newMedRecords.Add(tfi);
+                            TestDiagnosis diag = i as TestDiagnosis;
+                            if (!Global.IsEqual(diag, null))
+                                newMedRecords.Add(diag);
+                            TestClinicMainDiagnosis cm = i as TestClinicMainDiagnosis;
+                            if (!Global.IsEqual(cmd, null))
+                                newMedRecords.Add(cmd);
+                            else
+                                if (!Global.IsEqual(cm, null))
+                                    newMedRecords.Add(cm);
+                            TestReferral r = i as TestReferral;
+                            if (!Global.IsEqual(r, null))
+                                newMedRecords.Add(r);
+                            TestSickList sl = i as TestSickList;
+                            if (!Global.IsEqual(sl, null))
+                                newMedRecords.Add(sl);
+                            TestDischargeSummary pds = i as TestDischargeSummary;
+                            if (!Global.IsEqual(ds, null))
+                                newMedRecords.Add(ds);
+                            else
+                                if (!Global.IsEqual(pds, null))
+                                    newMedRecords.Add(pds);
+                            TestLaboratoryReport lr = i as TestLaboratoryReport;
+                            if (!Global.IsEqual(lr, null))
+                                newMedRecords.Add(lr);
+                            TestConsultNote pcn = i as TestConsultNote;
+                            if (!Global.IsEqual(cn, null))
+                                newMedRecords.Add(cn);
+                            else
+                                if (!Global.IsEqual(pcn, null))
+                                    newMedRecords.Add(pcn);
+                        }
+                    }
+                    else
+                    {
+                        if (!Global.IsEqual(tfi, null))
+                            newMedRecords.Add(tfi);
                         if (!Global.IsEqual(cmd, null))
                             newMedRecords.Add(cmd);
-                        else
-                            if (!Global.IsEqual(cm, null))
-                                newMedRecords.Add(cm);
-                        TestReferral r = i as TestReferral;
-                        if (!Global.IsEqual(r, null))
-                            newMedRecords.Add(r);
-                        TestSickList sl = i as TestSickList;
-                        if (!Global.IsEqual(sl, null))
-                            newMedRecords.Add(sl);
-                        TestDischargeSummary pds = i as TestDischargeSummary;
                         if (!Global.IsEqual(ds, null))
                             newMedRecords.Add(ds);
-                        else
-                            if (!Global.IsEqual(pds, null))
-                                newMedRecords.Add(pds);
-                        TestLaboratoryReport lr = i as TestLaboratoryReport;
-                        if (!Global.IsEqual(lr, null))
-                            newMedRecords.Add(lr);
-                        TestConsultNote pcn = i as TestConsultNote;
                         if (!Global.IsEqual(cn, null))
                             newMedRecords.Add(cn);
-                        else
-                            if (!Global.IsEqual(pcn, null))
-                                newMedRecords.Add(pcn);
-                        //TestDispensaryOne d = i as TestDispensaryOne;
-                        //if (d1 != null)
-                        //    newMedRecords.Add(d1);
-                        //else
-                        //    if (d != null)
-                        //        newMedRecords.Add(d);
                     }
+                    this.records = newMedRecords;
                 }
             }
         }
@@ -341,8 +344,8 @@ namespace PixServiseTests
         }
         public bool CheckCaseInDataBase()
         {
-            string patientId = TestPerson.GetPersonId(GUID, caseStat.IdLpu, caseStat.IdPatientMis);
-            TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseStat.IdLpu, caseStat.IdCaseMis, patientId);
+            string patientId = TestPerson.GetPersonId(GUID, caseBase.caseBase.IdLpu, caseBase.patient.patient.IdPatientMIS);
+            TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseBase.caseBase.IdLpu, caseBase.patient.patient.IdPatientMIS, patientId);
             this.Equals(ac);
             return (this == ac);
         }

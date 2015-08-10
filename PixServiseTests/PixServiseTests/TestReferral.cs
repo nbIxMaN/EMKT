@@ -44,9 +44,9 @@ namespace PixServiseTests
                                     if (RReader["MkbCode"].ToString() != "")
                                         r.ReferralInfo.MkbCode = Convert.ToString(RReader["MkbCode"]);
                                     if (RReader["IdSourceLpu"].ToString() != "")
-                                        r.IdSourceLpu = Convert.ToString(RReader["IdSourceLpu"]);
+                                        r.IdSourceLpu = Global.GetIdIdLpu(Convert.ToString(RReader["IdSourceLpu"]));
                                     if (RReader["IdTargetLpu"].ToString() != "")
-                                        r.IdTargetLpu = Convert.ToString(RReader["IdTargetLpu"]);
+                                        r.IdTargetLpu = Global.GetIdIdLpu(Convert.ToString(RReader["IdTargetLpu"]));
                                     if (RReader["Reason"].ToString() != "")
                                         r.ReferralInfo.Reason = Convert.ToString(RReader["Reason"]);
                                     if (RReader["IdReferralMIS"].ToString() != "")
@@ -57,6 +57,10 @@ namespace PixServiseTests
                                         r.ReferralInfo.IssuedDateTime = Convert.ToDateTime(RReader["IssuedDateTime"]);
                                     if (RReader["IdHospitalizationOrder"].ToString() != "")
                                         r.ReferralInfo.HospitalizationOrder = Convert.ToByte(RReader["IdHospitalizationOrder"]);
+                                    if (RReader["ReferralId"].ToString() != "")
+                                        r.ReferralID = Convert.ToString(RReader["ReferralId"]);
+                                    if (RReader["RelatedId"].ToString() != "")
+                                        r.RelatedID = Convert.ToString(RReader["RelatedId"]);
                                     r.CreationDate = i.CreationDate;
                                     r.Header = i.DocHead;
                                     //Тут нет ReferalId и referedId

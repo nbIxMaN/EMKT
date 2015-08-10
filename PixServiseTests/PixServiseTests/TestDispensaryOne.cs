@@ -34,9 +34,9 @@ namespace PixServiseTests
                 attachment = new TestAttachment(r.Attachment);
                 doctor = new TestDoctor(r.Author, idLpu);
                 hdDoctor = new TestDoctor(r.HealthGroup.Doctor, idLpu);
-                recom = new List<TestRecommendation>();
                 if (r.Recommendations != null)
                 {
+                    recom = new List<TestRecommendation>();
                     foreach(Recommendation i in r.Recommendations)
                     {
                         recom.Add(new TestRecommendation(i, idLpu));
@@ -61,6 +61,8 @@ namespace PixServiseTests
                                 while (DOReader.Read())
                                 {
                                     DispensaryOne r = new DispensaryOne();
+                                    r.HealthGroup = new HealthGroup();
+                                    r.HealthGroup.HealthGroupInfo = new HealthGroupInfo();
                                     if (DOReader["IsGuested"].ToString() != "")
                                         r.IsGuested = Convert.ToBoolean(DOReader["IsGuested"]);
                                     if (DOReader["HasExtraResearchRefferal"].ToString() != "")

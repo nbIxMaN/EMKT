@@ -66,25 +66,15 @@ namespace PixServiseTests
         {
             string caseId = "";
             string findIdCaseString = "";
-            string findIdInstitutionalString =
-                "SELECT TOP(1) IdInstitution FROM Institution WHERE IdFedNsi = '" + idlpu + "'";
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
-                using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-                {
-                    string InstId = "";
-                    while (IdInstitutional.Read())
-                    {
-                        InstId = IdInstitutional["IdInstitution"].ToString();
-                    }
-                    if (mis != "")
-                        findIdCaseString =
-                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
-                    else
-                        findIdCaseString =
-                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseType = '" + masterCaseId + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
-                }
+                string InstId = Global.GetIdInstitution(idlpu);
+                if (mis != "")
+                    findIdCaseString =
+                    "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
+                else
+                    findIdCaseString =
+                    "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseType = '" + masterCaseId + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
                 SqlCommand command = new SqlCommand(findIdCaseString, connection);
                 using (SqlDataReader IdCaseReader = command.ExecuteReader())
                 {
@@ -202,13 +192,13 @@ namespace PixServiseTests
                             switch (caseReader["IdAuthorshipType"].ToString())
                             {
                                 case "1":
-                                    cb.autor = TestParticipant.BuildTestParticipantFromDataBase(caseId, Convert.ToString(caseReader["IdDoctor"]));
+                                    cb.autor = TestParticipant.BuildTestParticipantFromDataBase(caseId, Convert.ToString(caseReader["IdDoctor"]), 1);
                                     break;
                                 case "3":
-                                    cb.authenticator = TestParticipant.BuildTestParticipantFromDataBase(caseId, Convert.ToString(caseReader["IdDoctor"]));
+                                    cb.authenticator = TestParticipant.BuildTestParticipantFromDataBase(caseId, Convert.ToString(caseReader["IdDoctor"]), 3);
                                     break;
                                 case "4":
-                                    cb.legalAuthenticator = TestParticipant.BuildTestParticipantFromDataBase(caseId, Convert.ToString(caseReader["IdDoctor"]));
+                                    cb.legalAuthenticator = TestParticipant.BuildTestParticipantFromDataBase(caseId, Convert.ToString(caseReader["IdDoctor"]), 4);
                                     break;
                             }
                         }
@@ -237,7 +227,7 @@ namespace PixServiseTests
                     this.caseBase.DoctorConfidentiality = cb.DoctorConfidentiality;
                 if (cb.HistoryNumber != null)
                     this.caseBase.HistoryNumber = cb.HistoryNumber;
-                if (cb.IdCaseAidType != null)
+                if (cb.IdCaseAidType != 0)
                     this.caseBase.IdCaseAidType = cb.IdCaseAidType;
                 if (cb.IdCaseMis != null)
                     this.caseBase.IdCaseMis = cb.IdCaseMis;

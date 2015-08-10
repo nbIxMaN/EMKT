@@ -23,28 +23,13 @@ namespace PixServiseTests
             }
         }
 
-        static public TestParticipant BuildTestParticipantFromDataBase(string idCase, string idDoctor)
+        static public TestParticipant BuildTestParticipantFromDataBase(string idCase, string idDoctor, byte idPersonRole)
         {
-            using (SqlConnection connection = Global.GetSqlConnection())
-            {
-                string findParticipant = "SELECT TOP(1) * FROM mm_Author2Case WHERE IdCase = '" + idCase + "' AND IdDoctor = '" + idDoctor + "'";
-                SqlCommand participantCommand = new SqlCommand(findParticipant, connection);
-                using (SqlDataReader participantReader = participantCommand.ExecuteReader())
-                {
-                    while (participantReader.Read())
-                    {
-                        Participant p = new Participant();
-                        if (participantReader["IdPersonRole"].ToString() != "")
-                            p.IdRole = Convert.ToByte(participantReader["IdPersonRole"]);
-                        else
-                            p.IdRole = 0;
-                        TestParticipant part = new TestParticipant(p);
-                        part.doctor = TestDoctor.BuildTestDoctorFromDataBase(idDoctor);
-                        return part;
-                    }
-                }
-            }
-            return null;
+            Participant p = new Participant();
+            p.IdRole = idPersonRole;
+            TestParticipant part = new TestParticipant(p);
+            part.doctor = TestDoctor.BuildTestDoctorFromDataBase(idDoctor);
+            return part;
         }
 
         public void FindMismatch(TestParticipant p)
@@ -56,17 +41,6 @@ namespace PixServiseTests
                 if (Global.GetLength(this.doctor) != Global.GetLength(p.doctor))
                     Global.errors3.Add("Несjвпадение длины doctor TestParticipant");
             }
-        }
-
-        public bool CheckParticipantInDataBase(string idCase, string idDoctor)
-        {
-            TestParticipant part = TestParticipant.BuildTestParticipantFromDataBase(idCase, idDoctor);
-            if (this != part)
-            {
-                this.FindMismatch(part);
-                return false;
-            }
-            return true;
         }
 
         public override bool Equals(Object obj)

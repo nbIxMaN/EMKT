@@ -44,21 +44,11 @@ namespace PixServiseTests
         {
             string patientId = "";
             string findIdPersonString = "";
-            string findIdInstitutionalString =
-                "SELECT TOP(1) IdInstitution FROM Institution WHERE IdFedNsi = '" + idlpu + "'";
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
-                using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-                {
-                    string InstId = "";
-                    while (IdInstitutional.Read())
-                    {
-                        InstId = IdInstitutional["IdInstitution"].ToString();
-                    }
-                    findIdPersonString =
-                        "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "'";
-                }
+                string InstId = Global.GetIdInstitution(idlpu);
+                findIdPersonString =
+                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "'";
                 SqlCommand command = new SqlCommand(findIdPersonString, connection);
                 using (SqlDataReader IdPerson = command.ExecuteReader())
                 {

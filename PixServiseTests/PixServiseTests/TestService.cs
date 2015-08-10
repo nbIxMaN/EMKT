@@ -57,8 +57,8 @@ namespace PixServiseTests
                         if (serviceReader["Quantity"].ToString() != "")
                             s.PaymentInfo.Quantity = Convert.ToInt32(serviceReader["Quantity"]);
                         TestService ts = new TestService(s);
-                        if ((serviceReader["IdDoctor"].ToString() != "") && (serviceReader["IdCase"].ToString() != ""))
-                            ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["IdCase"].ToString(), serviceReader["IdDoctor"].ToString());
+                        if ((serviceReader["IdPersonRole"].ToString() != "") && (serviceReader["IdCase"].ToString() != ""))
+                            ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["IdCase"].ToString(), serviceReader["IdDoctor"].ToString(), Convert.ToByte(serviceReader["IdPersonRole"]));
                         serviseList.Add(ts);
                     }
                 }
