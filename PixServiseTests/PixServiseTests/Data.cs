@@ -374,7 +374,7 @@ namespace PixServiseTests
                 Author = SetDoctor(),
                 SickListInfo = new SickListInfo
                 {
-                    Number = "34",
+                    Number = "341234567890",
                     DateStart = new DateTime(2010, 02, 02),
                     DateEnd = new DateTime(2010, 02, 22),
                     DisabilityDocState = 1,
