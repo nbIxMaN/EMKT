@@ -434,7 +434,7 @@ namespace PixServiseTests.Methods_Tests
         }
 
         [Test]
-        public void AddStatMedRecAnatomDiagnosis_OpenCase()
+        public void AddStatMedRecSickList_OpenCase()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
