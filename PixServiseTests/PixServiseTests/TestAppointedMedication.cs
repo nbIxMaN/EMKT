@@ -27,7 +27,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findAM = "SELECT * FROM PrescribedMedication WHERE IdStep = '" + idStep + "'";
+                    string findAM = "SELECT * FROM PrescribedMedication, RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdAnatomicTherapeuticChemicalClassification = RAnatomicTherapeuticChemicalClassification.IdAnatomicTherapeuticChemicalClassification";
                     SqlCommand AMcommand = new SqlCommand(findAM, connection);
                     using (SqlDataReader AMReader = AMcommand.ExecuteReader())
                     {
@@ -44,8 +44,8 @@ namespace PixServiseTests
                                 a.IssuedDate = Convert.ToDateTime(AMReader["MedicineIssueTypeDate"]);
                             if (AMReader["IdRMedicineType"].ToString() != "")
                                 a.MedicineType = Convert.ToUInt16(AMReader["IdRMedicineType"]);
-                            if (AMReader["IdRAnatomicTherapeuticChemicalClassification"].ToString() != "")
-                                a.AnatomicTherapeuticChemicalClassification = Convert.ToString(AMReader["IdRAnatomicTherapeuticChemicalClassification"]);
+                            if (AMReader["code"].ToString() != "")
+                                a.AnatomicTherapeuticChemicalClassification = Convert.ToString(AMReader["code"]);
                             if (AMReader["IdRMedicineUseWay"].ToString() != "")
                                 a.MedicineUseWay = Convert.ToByte(AMReader["IdRMedicineUseWay"]);
                             if (AMReader["TreatmentDays"].ToString() != "")
