@@ -198,7 +198,7 @@ namespace PixServiseTests
                 {
                     IdDiseaseType = 1,
                     DiagnosedDate = new DateTime(2010, 02, 02),
-                    IdDiagnosisType = 1,
+                    IdDiagnosisType = 2,
                     Comment = "Комментарий",
                     DiagnosisChangeReason = 2,
                     DiagnosisStage = 1,
@@ -438,7 +438,7 @@ namespace PixServiseTests
                 IdPosition = 74,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "123456123",
+                    IdPersonMis = "123400009",
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
                     Documents = new IdentityDocument[]
