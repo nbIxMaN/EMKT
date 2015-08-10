@@ -138,8 +138,10 @@ namespace PixServiseTests
         {
             AppointedMedication apMed = new AppointedMedication
             {
-                IssuedDate = new DateTime(2010, 03, 06),
-                MedicineName = "Валерьянка",
+                IssuedDate = MedRecordData.appointedMedication.IssuedDate,
+                MedicineName = MedRecordData.appointedMedication.MedicineName,
+                AnatomicTherapeuticChemicalClassification = MedRecordData.appointedMedication.AnatomicTherapeuticChemicalClassification,
+               
                 Doctor = MinDoctorSet(),
             };
             return apMed;

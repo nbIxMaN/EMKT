@@ -35,7 +35,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findAM = "SELECT * FROM PrescribedMedication, RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdAnatomicTherapeuticChemicalClassification = RAnatomicTherapeuticChemicalClassification.IdAnatomicTherapeuticChemicalClassification";
+                    string findAM = "SELECT * FROM PrescribedMedication, nsi.RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdRAnatomicTherapeuticChemicalClassification = nsi.RAnatomicTherapeuticChemicalClassification.IdRAnatomicTherapeuticChemicalClassification";
                     SqlCommand AMcommand = new SqlCommand(findAM, connection);
                     using (SqlDataReader AMReader = AMcommand.ExecuteReader())
                     {
