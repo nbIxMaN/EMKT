@@ -17,6 +17,14 @@ namespace PixServiseTests
             if (a != null)
             {
                 document = a;
+                //!!!ПЛОХОЙ КОД - ТАК ДЕЛАТЬ НЕЛЬЗЯ
+                if (a.CourseDose == null)
+                    a.CourseDose = new Quantity();
+                if (a.DayDose == null)
+                    a.DayDose = new Quantity();
+                if (a.OneTimeDose == null)
+                    a.OneTimeDose = new Quantity();
+                //
                 doctor = new TestDoctor(a.Doctor, idLpu);
             }
         }
@@ -52,6 +60,11 @@ namespace PixServiseTests
                                 a.DaysCount = Convert.ToUInt16(AMReader["TreatmentDays"]);
                             if (AMReader["MedecineName"].ToString() != "")
                                 a.MedicineName = AMReader["MedecineName"].ToString();
+                            //!!!ПРОДОЛЖЕНИЕ ПЛОХОГО КОДА!!!
+                            a.OneTimeDose = new Quantity();
+                            a.CourseDose = new Quantity();
+                            a.DayDose = new Quantity();
+                            //
                             if (AMReader["CourseDose"].ToString() != "")
                             {
                                 int id = Convert.ToInt32(AMReader["CourseDose"]);
@@ -63,7 +76,7 @@ namespace PixServiseTests
                                     {
                                         while (DoseReader.Read())
                                         {
-                                            a.CourseDose = new Quantity();
+                                            //a.CourseDose = new Quantity();
                                             if (DoseReader["Quantity"].ToString() != "")
                                                 a.CourseDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
                                             if (DoseReader["IdUnitClassifier"].ToString() != "")
@@ -83,7 +96,7 @@ namespace PixServiseTests
                                     {
                                         while (DoseReader.Read())
                                         {
-                                            a.DayDose = new Quantity();
+                                            //a.DayDose = new Quantity();
                                             if (DoseReader["Quantity"].ToString() != "")
                                                 a.DayDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
                                             if (DoseReader["IdUnitClassifier"].ToString() != "")
@@ -103,7 +116,7 @@ namespace PixServiseTests
                                     {
                                         while (DoseReader.Read())
                                         {
-                                            a.OneTimeDose = new Quantity();
+                                            //a.OneTimeDose = new Quantity();
                                             if (DoseReader["Quantity"].ToString() != "")
                                                 a.OneTimeDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
                                             if (DoseReader["IdUnitClassifier"].ToString() != "")
