@@ -10,7 +10,7 @@ using PixServiseTests.EMKServise;
 namespace PixServiseTests.Methods_Tests
 {
     [TestFixture]
-    public class CloseCaseTest:Data
+    public class CloseCaseTest : Data
     {
         [TearDown]
         public void Clear()
