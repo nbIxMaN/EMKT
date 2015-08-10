@@ -448,6 +448,14 @@ namespace PixServiseTests
             return caseAmb;
         }
 
+        public CaseAmb FullCaseAmbSetForClose()
+        {
+            CaseAmb caseAmb = CaseAmbData.caseAmb;
+            caseAmb.IdCaseType = new byte();
+            caseAmb.Steps = null;
+            return caseAmb;
+        }
+
         public CaseStat MinCaseStatSet()
         {
             CaseStat caseStat = new CaseStat();
@@ -565,10 +573,15 @@ namespace PixServiseTests
             return caseStat;
         }
 
+        public CaseStat FullCaseStatSetForClose()
+        {
+            CaseStat caseStat = CaseStatData.caseStat;
+            caseStat.Steps = null;
+            return caseStat;
+        }
+
         public CaseAmb FullCaseAmbSet()
         {
-            CaseAmb caseAmb = CaseAmbData.caseAmb;
-
             return CaseAmbData.caseAmb;
         }
 
@@ -576,7 +589,5 @@ namespace PixServiseTests
         {
             return CaseStatData.caseStat;
         }
-
-
     }
 }
