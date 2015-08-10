@@ -437,7 +437,7 @@ namespace PixServiseTests
                 IdPosition = 74,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "123400009",
+                    IdPersonMis = "123400010",
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
                     Documents = new IdentityDocument[]

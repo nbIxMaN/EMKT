@@ -71,6 +71,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="MedRecords Tests\ReferralTest.cs" />
+    <Compile Include="MedRecords Tests\SickListTest.cs" />
     <Compile Include="Methods Tests\AddMedRecordTest.cs" />
     <Compile Include="Methods Tests\AddStepToCaseTest.cs" />
     <Compile Include="Methods Tests\AddCaseTest.cs" />
