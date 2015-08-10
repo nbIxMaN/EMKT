@@ -189,7 +189,7 @@ namespace PixServiseTests
 
             MedRecordData.deathInfo = new DeathInfo
             {
-                MkbCode = "11730",
+                MkbCode = "A00",
             };
 
             MedRecordData.diagnosis = new Diagnosis

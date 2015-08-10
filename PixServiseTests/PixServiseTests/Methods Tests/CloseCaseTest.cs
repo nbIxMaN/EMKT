@@ -79,7 +79,7 @@ namespace PixServiseTests.Methods_Tests
         }
 
         [Test]
-        public void CloseStatCaseMin()
+        public void CloseStatCaseFull()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
