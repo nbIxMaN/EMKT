@@ -94,12 +94,14 @@ namespace PixServiseTests
                         PersonWithIdentity p = new PersonWithIdentity();
                         while (personFromDataBase.Read())
                         {
-                            DateTime a = Convert.ToDateTime(personFromDataBase["BirthDate"]);
-                            DateTime b =  Convert.ToDateTime(personFromDataBase["RecordCreated"]);
-                            if (a.Date == b.Date)
-                                p.Birthdate = DateTime.MinValue;
-                            else
+                            if (personFromDataBase["BirthDate"].ToString() != "")
                                 p.Birthdate = Convert.ToDateTime(personFromDataBase["BirthDate"]);
+                            //if (personFromDataBase["RecordCreated"].ToString() != "")
+                            //    DateTime b =  Convert.ToDateTime(personFromDataBase["RecordCreated"]);
+                            //if (a.Date == b.Date)
+                            //    p.Birthdate = DateTime.MinValue;
+                            //else
+                            //    p.Birthdate = Convert.ToDateTime(personFromDataBase["BirthDate"]);
                             p.Sex = Convert.ToByte(personFromDataBase["IdSex"]);
                         }
                         p.IdPersonMis = mis;

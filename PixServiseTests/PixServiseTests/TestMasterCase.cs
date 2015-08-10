@@ -48,6 +48,9 @@ namespace PixServiseTests
                         if (!Global.IsEqual(mcase.defaultStep, null))
                         {
                             mcase.records = new List<TestMedRecord>();
+                            List<TestService> serv = TestService.BuildServiseFromDataBaseData(mcase.defaultStep.idStep);
+                            if (!Global.IsEqual(serv, null))
+                                mcase.records.AddRange(serv);
                             TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(forms, null))
                                 mcase.records.Add(forms);
@@ -89,6 +92,9 @@ namespace PixServiseTests
         public bool CheckDocumentInCase(MedRecord i, string idLpu)
         {
             TestMedRecord doc = null;
+            Service serv = i as Service;
+            if (serv != null)
+                doc = new TestService(serv);
             TfomsInfo tfi = i as TfomsInfo;
             if (tfi != null)
                 doc = new TestTfomsInfo(tfi);
@@ -124,7 +130,7 @@ namespace PixServiseTests
                 doc = new TestDispensaryOne(d1, idLpu);
             if (Global.IsEqual(doc, null))
             {
-                Global.errors1.Add("doc == null");
+                Global.errors1.Add("Документ не найден");
                 return true;
             }
             foreach (TestMedRecord document in this.medRecords)

@@ -161,6 +161,9 @@ namespace PixServiseTests
                         if (!Global.IsEqual(statcase.defaultStep, null))
                         {
                             statcase.records = new List<TestMedRecord>();
+                            List<TestService> serv = TestService.BuildServiseFromDataBaseData(statcase.defaultStep.idStep);
+                            if (!Global.IsEqual(serv, null))
+                                statcase.records.AddRange(serv);
                             TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(statcase.defaultStep.idStep);
                             if (!Global.IsEqual(forms, null))
                                 statcase.records.Add(forms);
@@ -345,7 +348,7 @@ namespace PixServiseTests
         public bool CheckCaseInDataBase()
         {
             string patientId = TestPerson.GetPersonId(GUID, caseBase.caseBase.IdLpu, caseBase.patient.patient.IdPatientMIS);
-            TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseBase.caseBase.IdLpu, caseBase.patient.patient.IdPatientMIS, patientId);
+            TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseBase.caseBase.IdLpu, caseBase.caseBase.IdCaseMis, patientId);
             this.Equals(ac);
             return (this == ac);
         }
