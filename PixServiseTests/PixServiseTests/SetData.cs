@@ -163,6 +163,23 @@ namespace PixServiseTests
             return diag;
         }
 
+        public SickList MinSickList()
+        {
+            SickList sl= new SickList
+            {
+                CreationDate = MedRecordData.sickList.CreationDate,
+                Header = MedRecordData.sickList.Header,
+                Author = MinDoctorSet(),
+                SickListInfo = new SickListInfo
+                {
+                    Number = MedRecordData.sickList.SickListInfo.Number,
+                    DateStart = MedRecordData.sickList.SickListInfo.DateStart,
+                    DateEnd = MedRecordData.sickList.SickListInfo.DateEnd
+                }
+            };
+            return sl;
+        }
+
         public MedicalStaff MinDoctorSet()
         {
             MedicalStaff doctor = new MedicalStaff

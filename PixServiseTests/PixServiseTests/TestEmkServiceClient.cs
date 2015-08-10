@@ -42,9 +42,9 @@ namespace PixServiseTests
                             example = new TestAmbCase(guid, ca);
                             break;
                         case "CloseCase":
-                            client.CloseCase(guid, ca);
                             string patientId = TestPerson.GetPersonId(guid, ca.IdLpu, ca.IdPatientMis);
                             example = TestAmbCase.BuildAmbCaseFromDataBaseData(guid, ca.IdLpu, ca.IdCaseMis, patientId);
+                            client.CloseCase(guid, ca);
                             example.ChangeUpdateAmbCase(guid, ca);
                             break;
                         case "UpdateCase":
