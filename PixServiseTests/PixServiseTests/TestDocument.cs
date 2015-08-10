@@ -132,6 +132,7 @@ namespace PixServiseTests
                 if (this != document)
                 {
                     this.FindMismatch(document);
+                    Global.errors3.Add("несовпадение TestDocument");
                     return false;
                 }
             }

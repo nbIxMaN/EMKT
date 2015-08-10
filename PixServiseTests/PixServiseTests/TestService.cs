@@ -133,6 +133,7 @@ namespace PixServiseTests
             else
             {
                 this.FindMismatch(p);
+                Global.errors3.Add("несовпадение TestService");
                 return false;
             }
         }

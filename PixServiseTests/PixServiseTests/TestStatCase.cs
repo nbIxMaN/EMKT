@@ -373,6 +373,7 @@ namespace PixServiseTests
             else
             {
                 this.FindMismatch(p);
+                Global.errors2.Add("несовпадение TestStatCase");
                 return false;
             }
         }

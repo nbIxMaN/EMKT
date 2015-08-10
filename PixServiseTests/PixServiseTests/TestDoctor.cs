@@ -114,6 +114,7 @@ namespace PixServiseTests
             else
             {
                 this.FindMismatch(p);
+                Global.errors3.Add("несовпадение TestDoctor");
                 return false;
             }
         }
