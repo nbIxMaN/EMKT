@@ -73,9 +73,9 @@ namespace PixServiseTests
                             example = new TestStatCase(guid, cs);
                             break;
                         case "CloseCase":
-                            client.CloseCase(guid, cs);
                             string patientId = TestPerson.GetPersonId(guid, cs.IdLpu, cs.IdPatientMis);
                             example = TestStatCase.BuildAmbCaseFromDataBaseData(guid, cs.IdLpu, cs.IdCaseMis, patientId);
+                            client.CloseCase(guid, cs);
                             example.ChangeUpdateStatCase(guid, cs);
                             break;
                         case "UpdateCase":
