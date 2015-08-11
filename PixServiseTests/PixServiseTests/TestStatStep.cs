@@ -147,7 +147,7 @@ namespace PixServiseTests
             else
                 return null;
         }
-        public void FindMismatch(TestStatStep astep)
+        private void FindMismatch(TestStatStep astep)
         {
             if (this.statStep.BedNumber != astep.statStep.BedNumber)
                 Global.errors3.Add("несовпадение BedNumber TestStatStep");

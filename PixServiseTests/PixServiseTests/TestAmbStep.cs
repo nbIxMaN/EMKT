@@ -125,7 +125,7 @@ namespace PixServiseTests
             else
                 return null;
         }
-        public void FindMismatch(TestAmbStep astep)
+        private void FindMismatch(TestAmbStep astep)
         {
             if (this.ambStep.IdVisitPlace != astep.ambStep.IdVisitPlace)
                 Global.errors3.Add("несовпадение IdVisitPlace TestAmbStep");

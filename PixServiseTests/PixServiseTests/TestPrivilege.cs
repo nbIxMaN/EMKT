@@ -18,14 +18,6 @@ namespace PixServiseTests
             privilege = p;
         }
 
-        //static private SqlDataReader GetPrivilege(string patientId)
-        //{
-        //    SqlConnection connection = Global.GetSqlConnection();
-        //    string findPatient = "SELECT TOP(1) * FROM Privilege WHERE IdPrivilege = (SELECT MAX(IdPrivilege) FROM Privilege  WHERE IdPerson = '" + patientId + "')";
-        //    SqlCommand person = new SqlCommand(findPatient, connection);
-        //    return person.ExecuteReader();
-        //}
-
         static public TestPrivilege BuildTestPrivilegeFromDataBase(string idPerson)
         {
             using (SqlConnection connection = Global.GetSqlConnection())
@@ -61,30 +53,18 @@ namespace PixServiseTests
             }
         }
 
-        public bool CheckPrivilegeInDataBase(string patientId)
-        {
-            TestPrivilege priv = TestPrivilege.BuildTestPrivilegeFromDataBase(patientId);
-            if (this != priv)
-            {
-                this.FindMismatch (priv);
-                return false;
-            }
-            return true;
-        }
-
         public override bool Equals(Object obj)
         {
             TestPrivilege p = obj as TestPrivilege;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestPrivilege с другим типом");
                 return false;
             }
             if (this.privilege == p.privilege)
                 return true;
             if ((this.privilege == null) || (p.privilege == null))
             {
-                Global.errors3.Add("Сравнение TestPrivilege = null с TestPrivilege != null");
+                return false;
             }
             if ((this.privilege.DateEnd == p.privilege.DateEnd) &&
                 (this.privilege.DateStart == p.privilege.DateStart) &&

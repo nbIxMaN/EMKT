@@ -270,7 +270,7 @@ namespace PixServiseTests
             }
         }
 
-        public void FindMismatch(TestCaseBase cb)
+        private void FindMismatch(TestCaseBase cb)
         {
             if (this.caseBase.CloseDate != cb.caseBase.CloseDate)
                 Global.errors3.Add("несовпадение CloseDate TestCaseBase");
@@ -307,12 +307,6 @@ namespace PixServiseTests
             if (Global.GetLength(this.legalAuthenticator) != Global.GetLength(cb.legalAuthenticator))
                 Global.errors3.Add("несовпадение длины legalAuthenticator TestCaseBase");
             
-        }
-
-        public bool CheckCaseBaseInDataBase()
-        {
-            TestCaseBase p = TestCaseBase.BuildBaseCaseFromDataBaseData(GUID, caseBase.IdLpu, caseBase.IdCaseMis, TestPerson.GetPersonId(GUID, caseBase.IdLpu, caseBase.IdCaseMis));
-            return (this == p);
         }
 
         public override bool Equals(Object obj)

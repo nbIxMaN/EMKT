@@ -118,20 +118,6 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение RegionCode TestDocument");
         }
 
-        public bool CheckDocumentsInDataBase(string patientId)
-        {
-            List<TestIdentityDocument> docs = BuildDocumentsFromDataBaseData (patientId);
-            foreach (TestIdentityDocument document in docs)
-            {
-                if (this != document)
-                {
-                    this.FindMismatch(document);
-                    return false;
-                }
-            }
-            return true;
-        }
-
         public override bool Equals(Object obj)
         {
             TestIdentityDocument p = obj as TestIdentityDocument;

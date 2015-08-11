@@ -64,7 +64,7 @@ namespace PixServiseTests
             return null;
         }
 
-        public void FindMismatch(TestContactPerson b)
+        private void FindMismatch(TestContactPerson b)
         {
             if (b.contactPerson != null)
             {

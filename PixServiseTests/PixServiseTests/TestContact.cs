@@ -43,7 +43,7 @@ namespace PixServiseTests
                 return null;
         }
 
-        public void FindMismatch(TestContact b)
+        private void FindMismatch(TestContact b)
         {
             if (this.contact.ContactValue != b.contact.ContactValue)
                 Global.errors3.Add("Несовпадение ContactValue TestContact");

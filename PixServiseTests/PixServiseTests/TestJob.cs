@@ -57,7 +57,7 @@ namespace PixServiseTests
             return null;
         }
 
-        public void FindMismatch(TestJob b)
+        private void FindMismatch(TestJob b)
         {
             if (b.job != null)
             {
@@ -76,30 +76,17 @@ namespace PixServiseTests
             }
         }
 
-        public bool CheckJobInDataBase(string patientId)
-        {
-            TestJob job = TestJob.BuildTestJobFromDataBase(patientId);
-            if (this != job)
-            {
-                this.FindMismatch(job);
-                return false;
-            }
-            return true;
-        }
-
         public override bool Equals(Object obj)
         {
             TestJob p = obj as TestJob;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestJob с другим типом");
                 return false;
             }
             if (this.job == p.job)
                 return true;
             if ((this.job == null) || (p.job == null))
             {
-                Global.errors3.Add("Сравнение TestJob = null с TestJob != null");
                 return false;
             }
             if ((this.job.CompanyName == p.job.CompanyName) &&

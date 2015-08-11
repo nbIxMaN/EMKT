@@ -72,7 +72,7 @@ namespace PixServiseTests
             else
                 return null;
         }
-        public void FindMismatch(TestStepBase sb)
+        private void FindMismatch(TestStepBase sb)
         {
             if (this.step.Comment != sb.step.Comment)
                 Global.errors3.Add("несовпадение Comment TestStepBase");
@@ -89,18 +89,7 @@ namespace PixServiseTests
             if (Global.GetLength(doctor) != Global.GetLength(sb.doctor))
                 Global.errors3.Add("несовпадение длины doctor TestStepBase");
         }
-        public bool CheckTestStepsInDataBase(string idStep, string caseLpu)
-        {
-            List<TestStepBase> steps = TestStepBase.BuildTestStepsFromDataBase(idStep, caseLpu);
-            foreach (TestStepBase step in steps)
-            {
-                if (this != step)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+
         public override bool Equals(Object obj)
         {
             TestStepBase p = obj as TestStepBase;

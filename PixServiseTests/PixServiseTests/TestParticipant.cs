@@ -32,7 +32,7 @@ namespace PixServiseTests
             return part;
         }
 
-        public void FindMismatch(TestParticipant p)
+        private void FindMismatch(TestParticipant p)
         {
             if (p.participant != null)
             {

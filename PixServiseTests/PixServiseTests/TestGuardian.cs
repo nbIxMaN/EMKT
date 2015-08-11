@@ -52,7 +52,7 @@ namespace PixServiseTests
             return null;
         }
 
-        public void FindMismatch(TestGuardian g)
+        private void FindMismatch(TestGuardian g)
         {
             if (g.guardian != null)
             {
@@ -63,17 +63,6 @@ namespace PixServiseTests
                 if (Global.GetLength(this.person) != Global.GetLength(g.person))
                     Global.errors3.Add("Несовпадение длины person TestGuardian");
             }
-        }
-
-        public bool CheckGuardianInDataBase(string guardianId, string patientId)
-        {
-            TestGuardian guad = TestGuardian.BuildTestGuardianFromDataBase(guardianId, patientId);
-            if (this != guad)
-            {
-                this.FindMismatch(guad);
-                return false;
-            }
-            return true;
         }
 
         public override bool Equals(Object obj)

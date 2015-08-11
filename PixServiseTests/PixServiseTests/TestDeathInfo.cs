@@ -40,11 +40,7 @@ namespace PixServiseTests
             if (this.document.MkbCode != t.document.MkbCode)
                 Global.errors3.Add("Несовпадение MkbCode TestDeathInfo");
         }
-        public bool CheckTestDeathInfoInfoInDataBase(string IdStep)
-        {
-            TestDeathInfo doc = BuildDeathInfoFromDataBaseDate(IdStep);
-            return this == doc;
-        }
+
         public override bool Equals(Object obj)
         {
             TestDeathInfo p = obj as TestDeathInfo;

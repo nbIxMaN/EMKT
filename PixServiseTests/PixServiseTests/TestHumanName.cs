@@ -41,7 +41,7 @@ namespace PixServiseTests
             return null;
         }
 
-        public void FindMismatch(TestHumanName n)
+        private void FindMismatch(TestHumanName n)
         {
             if (this.humanName.FamilyName != n.humanName.FamilyName)
                 Global.errors3.Add("Несовпадение FamilyName HumanName");
@@ -49,17 +49,6 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение GivenName HumanName");
             if (this.humanName.MiddleName != n.humanName.MiddleName)
                 Global.errors3.Add("Несовпадение MiddleName HumanName");
-        }
-
-        public bool CheckHumanNameInDataBase(string patientId)
-        {
-            TestHumanName hn = BuildHumanNameFromDataBaseData(patientId);
-            if (this != hn)
-            {
-                this.FindMismatch(hn);
-                return false;
-            }
-            return true;
         }
 
         public override bool Equals(Object obj)

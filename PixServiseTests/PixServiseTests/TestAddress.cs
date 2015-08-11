@@ -93,7 +93,7 @@ namespace PixServiseTests
                 return null;
         }
 
-        public void FindMismatch(TestAddress b)
+        private void FindMismatch(TestAddress b)
         {
             if (this.address.Appartment != b.address.Appartment)
                 Global.errors3.Add("Несовпадение Appartment TestAddress");

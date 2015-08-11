@@ -165,21 +165,6 @@ namespace PixServiseTests
             string[] s = new string[] {guid, idlpu, mis};
             return s;
         }
-        //static private SqlDataReader GetPerson(string patientId)
-        //{
-        //    SqlConnection connection = Global.GetSqlConnection();
-        //    string findPatient = "SELECT TOP(1) * FROM Person WHERE IdPerson = '" + patientId + "'";
-        //    SqlCommand person = new SqlCommand(findPatient, connection);
-        //    return person.ExecuteReader();
-        //}
-
-        //static private SqlDataReader GetPatientAdditionat(string patientId)
-        //{
-        //    string findPatientAdditional = "SELECT TOP(1) * FROM PatientAdditionalInfo WHERE IdPerson = '" + patientId + "'";
-        //    SqlConnection connection2 = Global.GetSqlConnection();
-        //    SqlCommand patientAddit = new SqlCommand(findPatientAdditional, connection2);
-        //    return patientAddit.ExecuteReader();
-        //}
 
         static public TestPatient BuildPatientFromDataBaseData(string guid = null, string idlpu = null, string mis = null, string patientId = null)
         {
@@ -196,70 +181,59 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findPatient = "SELECT TOP(1) * FROM Person WHERE IdPerson = '" + patientId + "'";
+                    string findPatient = "SELECT TOP(1) * FROM Person, PatientAdditionalInfo WHERE Person.IdPerson = '" + patientId + "' AND Person.IdPerson = PatientAdditionalInfo.IdPerson";
                     SqlCommand person = new SqlCommand(findPatient, connection);
                     using (SqlDataReader patientFromDataBase = person.ExecuteReader())
                     {
-                        string findPatientAdditional = "SELECT TOP(1) * FROM PatientAdditionalInfo WHERE IdPerson = '" + patientId + "'";
-                        using (SqlConnection connection2 = Global.GetSqlConnection())
+                        while (patientFromDataBase.Read())
                         {
-                            SqlCommand patientAddit = new SqlCommand(findPatientAdditional, connection2);
-                            using (SqlDataReader patientAdditReader = patientAddit.ExecuteReader())
-                            {
-                                while (patientFromDataBase.Read())
-                                {
-                                    PatientDto p = new PatientDto();
-                                    while (patientAdditReader.Read())
-                                    {
-                                        if (patientFromDataBase["FamilyName"].ToString() != "")
-                                            p.FamilyName = Convert.ToString(patientFromDataBase["FamilyName"]);
-                                        else
-                                            p.FamilyName = null;
-                                        if (patientFromDataBase["MiddleName"].ToString() != "")
-                                            p.MiddleName = Convert.ToString(patientFromDataBase["MiddleName"]);
-                                        else
-                                            p.MiddleName = null;
-                                        if (patientFromDataBase["GivenName"].ToString() != "")
-                                            p.GivenName = Convert.ToString(patientFromDataBase["GivenName"]);
-                                        else
-                                            p.GivenName = null;
-                                        p.BirthDate = Convert.ToDateTime(patientFromDataBase["BirthDate"]);
-                                        p.Sex = Convert.ToByte(patientFromDataBase["IdSex"]);
-                                        p.IsVip = Convert.ToBoolean(patientAdditReader["IsVip"]);
-                                        if (patientAdditReader["IdSocialStatus"].ToString() != "")
-                                            p.SocialStatus = Convert.ToString(patientAdditReader["IdSocialStatus"]);
-                                        else
-                                            p.SocialStatus = null;
-                                        if (patientAdditReader["IdSocialGroup"].ToString() != "")
-                                            p.SocialGroup = Convert.ToByte(patientAdditReader["IdSocialGroup"]);
-                                        else
-                                            p.SocialGroup = null;
-                                        if (patientAdditReader["IdLivingAreaType"].ToString() != "")
-                                            p.IdLivingAreaType = Convert.ToByte(patientAdditReader["IdLivingAreaType"]);
-                                        else
-                                            p.IdLivingAreaType = null;
-                                        if (patientAdditReader["IdBloodType"].ToString() != "")
-                                            p.IdBloodType = Convert.ToByte(patientAdditReader["IdBloodType"]);
-                                        else
-                                            p.IdBloodType = null;
-                                        if (patientAdditReader["DeathTime"].ToString() != "")
-                                            p.DeathTime = Convert.ToDateTime(patientAdditReader["DeathTime"]);
-                                        else
-                                            p.DeathTime = null;
-                                    }
-                                    p.IdPatientMIS = mis;
-                                    p.IdGlobal = patientId;
-                                    TestPatient patient = new TestPatient(guid, idlpu, p);
-                                    patient.documents = TestDocument.BuildDocumentsFromDataBaseData(patientId);
-                                    patient.addreses = TestAddress.BuildAdressesFromDataBaseData(patientId);
-                                    patient.contacts = TestContact.BuildContactsFromDataBaseData(patientId);
-                                    patient.job = TestJob.BuildTestJobFromDataBase(patientId);
-                                    patient.contactPerson = TestContactPerson.BuildTestContactPersonFromDataBase(patientId);
-                                    patient.privilege = TestPrivilege.BuildTestPrivilegeFromDataBase(patientId);
-                                    patient.birthplace = TestBirthplace.BuildBirthplaceFromDataBaseData(patientId);
-                                    return patient;
-                                }
-                            }
+                            PatientDto p = new PatientDto();
+                            if (patientFromDataBase["FamilyName"].ToString() != "")
+                                p.FamilyName = Convert.ToString(patientFromDataBase["FamilyName"]);
+                            else
+                                p.FamilyName = null;
+                            if (patientFromDataBase["MiddleName"].ToString() != "")
+                                p.MiddleName = Convert.ToString(patientFromDataBase["MiddleName"]);
+                            else
+                                p.MiddleName = null;
+                            if (patientFromDataBase["GivenName"].ToString() != "")
+                                p.GivenName = Convert.ToString(patientFromDataBase["GivenName"]);
+                            else
+                                p.GivenName = null;
+                            p.BirthDate = Convert.ToDateTime(patientFromDataBase["BirthDate"]);
+                            p.Sex = Convert.ToByte(patientFromDataBase["IdSex"]);
+                            p.IsVip = Convert.ToBoolean(patientFromDataBase["IsVip"]);
+                            if (patientFromDataBase["IdSocialStatus"].ToString() != "")
+                                p.SocialStatus = Convert.ToString(patientFromDataBase["IdSocialStatus"]);
+                            else
+                                p.SocialStatus = null;
+                            if (patientFromDataBase["IdSocialGroup"].ToString() != "")
+                                p.SocialGroup = Convert.ToByte(patientFromDataBase["IdSocialGroup"]);
+                            else
+                                p.SocialGroup = null;
+                            if (patientFromDataBase["IdLivingAreaType"].ToString() != "")
+                                p.IdLivingAreaType = Convert.ToByte(patientFromDataBase["IdLivingAreaType"]);
+                            else
+                                p.IdLivingAreaType = null;
+                            if (patientFromDataBase["IdBloodType"].ToString() != "")
+                                p.IdBloodType = Convert.ToByte(patientFromDataBase["IdBloodType"]);
+                            else
+                                p.IdBloodType = null;
+                            if (patientFromDataBase["DeathTime"].ToString() != "")
+                                p.DeathTime = Convert.ToDateTime(patientFromDataBase["DeathTime"]);
+                            else
+                                p.DeathTime = null;
+                            p.IdPatientMIS = mis;
+                            p.IdGlobal = patientId;
+                            TestPatient patient = new TestPatient(guid, idlpu, p);
+                            patient.documents = TestDocument.BuildDocumentsFromDataBaseData(patientId);
+                            patient.addreses = TestAddress.BuildAdressesFromDataBaseData(patientId);
+                            patient.contacts = TestContact.BuildContactsFromDataBaseData(patientId);
+                            patient.job = TestJob.BuildTestJobFromDataBase(patientId);
+                            patient.contactPerson = TestContactPerson.BuildTestContactPersonFromDataBase(patientId);
+                            patient.privilege = TestPrivilege.BuildTestPrivilegeFromDataBase(patientId);
+                            patient.birthplace = TestBirthplace.BuildBirthplaceFromDataBaseData(patientId);
+                            return patient;
                         }
                     }
                 }
@@ -267,15 +241,7 @@ namespace PixServiseTests
             return null;
         }
 
-        private string PatientFieldToString(Object a)
-        {
-            if (a == null)
-                return ("");
-            else
-                return a.ToString();
-        }
-
-        public void FindMismatch(TestPatient b)
+        private void FindMismatch(TestPatient b)
         {
             if (this.patient.FamilyName != b.patient.FamilyName)
                 Global.errors2.Add("несовпадение FamilyName TestPatient");
@@ -299,20 +265,20 @@ namespace PixServiseTests
                 Global.errors2.Add("несовпадение IdBloodType TestPatient");
             if (this.patient.DeathTime != b.patient.DeathTime)
                 Global.errors2.Add("несовпадение DeathTime TestPatient");
-            if (!Global.IsEqual(this.docs, b.docs))
-                Global.errors2.Add("несовпадение documents TestPatient");
-            if (!Global.IsEqual(this.conts, b.conts))
-                Global.errors2.Add("несовпадение contacts TestPatient");
-            if (!Global.IsEqual(this.adds, b.adds))
-                Global.errors2.Add("несовпадение addreses TestPatient");
-            if (!Global.IsEqual(this.job, b.job))
-                Global.errors2.Add("несовпадение job TestPatient");
-            if (!Global.IsEqual(this.privilege, b.privilege))
-                Global.errors2.Add("несовпадение privilege TestPatient");
-            if (!Global.IsEqual(this.contactPerson, b.contactPerson))
-                Global.errors2.Add("несовпадение contactPerson TestPatient");
-            if (!Global.IsEqual(this.birthplace, b.birthplace))
-                Global.errors2.Add("несовпадение birthplace TestPatient");
+            if (Global.GetLength(this.docs) != Global.GetLength(b.docs))
+                Global.errors2.Add("несовпадение длины documents TestPatient");
+            if (Global.GetLength(this.conts) != Global.GetLength(b.conts))
+                Global.errors2.Add("несовпадение длины contacts TestPatient");
+            if (Global.GetLength(this.adds) != Global.GetLength(b.adds))
+                Global.errors2.Add("несовпадение длины addreses TestPatient");
+            if (Global.GetLength(this.job) != Global.GetLength(b.job))
+                Global.errors2.Add("несовпадение длины job TestPatient");
+            if (Global.GetLength(this.privilege) != Global.GetLength(b.privilege))
+                Global.errors2.Add("несовпадение длины privilege TestPatient");
+            if (Global.GetLength(this.contactPerson) != Global.GetLength(b.contactPerson))
+                Global.errors2.Add("несовпадение длины contactPerson TestPatient");
+            if (Global.GetLength(this.birthplace) != Global.GetLength(b.birthplace))
+                Global.errors2.Add("несовпадение длины birthplace TestPatient");
             
         }
 
@@ -415,7 +381,6 @@ namespace PixServiseTests
 
         public bool CheckPatientInDataBase()
         {
-            //string patientId = GetPatientId(IDLPU, patient.IdPatientMIS);
             TestPatient p = TestPatient.BuildPatientFromDataBaseData(GUID, IDLPU, patient.IdPatientMIS);
             this.Equals(p);
             return (this == p);
@@ -446,29 +411,8 @@ namespace PixServiseTests
             TestPatient p = obj as TestPatient;
             if ((object)p == null)
             {
-                Global.errors2.Add("Сравнение TestPatient с другим типом");
                 return false;
             }
-            bool x = (Global.IsEqual(this.adds, p.adds));
-            x = (this.patient.BirthDate == p.patient.BirthDate);
-            x = (Global.IsEqual(this.contactPerson, p.contactPerson));
-            x = (Global.IsEqual(this.conts, p.conts));
-            x = (this.patient.DeathTime == p.patient.DeathTime);
-            x = (Global.IsEqual(this.docs, p.docs));
-            x = (this.patient.FamilyName == p.patient.FamilyName);
-            x = (this.patient.GivenName == p.patient.GivenName);
-            x = (this.patient.IdBloodType == p.patient.IdBloodType);
-            x = (this.patient.IdGlobal == p.patient.IdGlobal);
-            x = (this.patient.IdLivingAreaType == p.patient.IdLivingAreaType);
-            x = (this.patient.IdPatientMIS == p.patient.IdPatientMIS);
-            x = (this.patient.IsVip == p.patient.IsVip);
-            x = Global.IsEqual(this.job, p.job);
-            x = (this.patient.MiddleName == p.patient.MiddleName);
-            x = Global.IsEqual(this.privilege, p.privilege);
-            x = Global.IsEqual(this.birthplace, p.birthplace);
-            x = (this.patient.Sex == p.patient.Sex);
-            x = (this.patient.SocialGroup == p.patient.SocialGroup);
-            x = (this.patient.SocialStatus == p.patient.SocialStatus);
             if ((Global.IsEqual(this.adds, p.adds)) &&
                 (this.patient.BirthDate == p.patient.BirthDate) &&
                 (Global.IsEqual(this.contactPerson, p.contactPerson)) &&
@@ -480,7 +424,6 @@ namespace PixServiseTests
                 (this.patient.IdBloodType == p.patient.IdBloodType) &&
                 (this.patient.IdGlobal == p.patient.IdGlobal) &&
                 (this.patient.IdLivingAreaType == p.patient.IdLivingAreaType) &&
-                //(this.patient.IdPatientMIS == p.patient.IdPatientMIS) &&
                 (this.patient.IsVip == p.patient.IsVip) &&
                 (Global.IsEqual(this.job, p.job)) &&
                 (this.patient.MiddleName == p.patient.MiddleName) &&

@@ -86,7 +86,7 @@ namespace PixServiseTests
             else
                 return null;
         }
-        public void FindMismatch(TestAttachment at)
+        private void FindMismatch(TestAttachment at)
         {
             if (!(this.attachment.Data.SequenceEqual(at.attachment.Data)))
                 Global.errors3.Add("несовпадение Data TestAttachment");

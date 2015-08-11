@@ -294,7 +294,7 @@ namespace PixServiseTests
                 }
             }
         }
-        public void FindMismatch(TestAmbCase ac)
+        private void FindMismatch(TestAmbCase ac)
         {
             if (this.caseAmb.IsActive != ac.caseAmb.IsActive)
                 Global.errors2.Add("несовпадение IsActive caseAmb");

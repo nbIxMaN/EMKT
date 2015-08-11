@@ -320,7 +320,7 @@ namespace PixServiseTests
                 }
             }
         }
-        public void FindMismatch(TestStatCase cs)
+        private void FindMismatch(TestStatCase cs)
         {
             if (this.caseStat.DeliveryCode != cs.caseStat.DeliveryCode)
                 Global.errors2.Add("несовпадение DeliveryCode caseStat");

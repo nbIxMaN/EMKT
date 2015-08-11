@@ -96,12 +96,6 @@ namespace PixServiseTests
                         {
                             if (personFromDataBase["BirthDate"].ToString() != "")
                                 p.Birthdate = Convert.ToDateTime(personFromDataBase["BirthDate"]);
-                            //if (personFromDataBase["RecordCreated"].ToString() != "")
-                            //    DateTime b =  Convert.ToDateTime(personFromDataBase["RecordCreated"]);
-                            //if (a.Date == b.Date)
-                            //    p.Birthdate = DateTime.MinValue;
-                            //else
-                            //    p.Birthdate = Convert.ToDateTime(personFromDataBase["BirthDate"]);
                             p.Sex = Convert.ToByte(personFromDataBase["IdSex"]);
                         }
                         p.IdPersonMis = mis;
@@ -115,15 +109,7 @@ namespace PixServiseTests
             return null;
         }
 
-        private string PersonFieldToString(Object a)
-        {
-            if (a == null)
-                return ("");
-            else
-                return a.ToString();
-        }
-
-        public void FindMismatch(TestPerson b)
+        private void FindMismatch(TestPerson b)
         {
             if (this.person.Birthdate != b.person.Birthdate)
                 Global.errors3.Add("Несовпадение Birthdate TestPerson");
@@ -135,13 +121,6 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение длины Documents TestPerson");
             if (Global.GetLength(this.name) != Global.GetLength(b.name))
                 Global.errors3.Add("Несовпадение длины name TestPerson");
-        }
-
-        public bool CheckPersonInDataBase()
-        {
-            TestPerson p = TestPerson.BuildPersonFromDataBaseData(person.IdPersonMis);
-            this.Equals(p);
-            return (this == p);
         }
 
         public override bool Equals(Object obj)

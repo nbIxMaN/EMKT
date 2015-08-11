@@ -91,19 +91,7 @@ namespace PixServiseTests
             if (Global.GetLength(this.doctor) != Global.GetLength(s.doctor))
                 Global.errors3.Add("Несовпадение длинны doctor TestService");
         }
-        public bool CheckTestServiceInDataBase(string caseId)
-        {
-            List<TestService> docs = BuildServiseFromDataBaseData(caseId);
-            foreach (TestService document in docs)
-            {
-                if (this != document)
-                {
-                    this.FindMismatch(document);
-                    return false;
-                }
-            }
-            return true;
-        }
+
         public override bool Equals(Object obj)
         {
             TestService p = obj as TestService;

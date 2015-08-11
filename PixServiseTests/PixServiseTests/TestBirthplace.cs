@@ -50,7 +50,7 @@ namespace PixServiseTests
             return null;
         }
 
-        public void FindMismatch(TestBirthplace b)
+        private void FindMismatch(TestBirthplace b)
         {
             if (this.birthplace.City != b.birthplace.City)
                 Global.errors3.Add("Несовпадение City TestBirthplace");
