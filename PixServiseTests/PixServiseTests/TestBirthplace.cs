@@ -11,12 +11,10 @@ namespace PixServiseTests
     class TestBirthplace
     {
         public BirthPlaceDto birthplace;
-        //private ArrayList _errors;
 
         public TestBirthplace(BirthPlaceDto b)
         {
             birthplace = b;
-            //_errors = errors;
         }
 
         static public TestBirthplace BuildBirthplaceFromDataBaseData(string idPerson)
@@ -62,30 +60,17 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение Region TestBirthplace");
         }
 
-        public bool CheckBirthplaceInDataBase(string patientId)
-        {
-            TestBirthplace b = BuildBirthplaceFromDataBaseData (patientId);
-            if (this != b)
-            {
-                this.FindMismatch(b);
-                return false;
-            }
-            return true;
-        }
-
         public override bool Equals(Object obj)
         {
             TestBirthplace p = obj as TestBirthplace;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestBirthplace с другим типом");
                 return false;
             }
             if (this.birthplace == p.birthplace)
                 return true;
             if ((this.birthplace == null) || (p.birthplace == null))
             {
-                Global.errors3.Add("Сравнение TestBirthplace = null с TestBirthplace != null");
                 return false;
             }
             if ((this.birthplace.City == p.birthplace.City) &&

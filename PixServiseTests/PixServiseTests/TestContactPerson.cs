@@ -13,6 +13,16 @@ namespace PixServiseTests
     {
         public ContactPersonDto contactPerson;
         public List<TestContact> contacts;
+        public Array conts
+        {
+            get
+            {
+                if (contacts != null)
+                    return contacts.ToArray();
+                else
+                    return null;
+            }
+        }
 
         public TestContactPerson(ContactPersonDto c)
         {
@@ -26,14 +36,6 @@ namespace PixServiseTests
                 }
             }
         }
-
-        //static private SqlDataReader GetContactPerson(string patientId)
-        //{
-        //    SqlConnection connection = Global.GetSqlConnection();
-        //    string findPatient = "SELECT TOP(1) * FROM mm_Person2Person WHERE IdPerson = '" + patientId + "'";
-        //    SqlCommand person = new SqlCommand(findPatient, connection);
-        //    return person.ExecuteReader();
-        //}
 
         static public TestContactPerson BuildTestContactPersonFromDataBase (string idPerson)
         {
@@ -76,20 +78,9 @@ namespace PixServiseTests
                     Global.errors3.Add("Несовпадение IdRelationType TestContactPerson");
                 if (this.contactPerson.MiddleName != b.contactPerson.MiddleName)
                     Global.errors3.Add("Несовпадение MiddleName TestContactPerson");
-                if (Global.EqualsArrayLists(this.contacts.ToArray(), b.contacts.ToArray()))
-                    Global.errors3.Add("Несовпадение contats TestContactPerson");
+                if (Global.GetLength(this.conts) != Global.GetLength(b.conts))
+                    Global.errors3.Add("Несовпадение длины contacts TestContactPerson");
             }
-        }
-
-        public bool CheckContactPersonInDataBase(string patientId)
-        {
-            TestContactPerson c = TestContactPerson.BuildTestContactPersonFromDataBase(patientId);
-            if (this != c)
-            {
-                this.FindMismatch(c);
-                return false;
-            }
-            return true;
         }
 
         public override bool Equals(Object obj)
@@ -97,7 +88,6 @@ namespace PixServiseTests
             TestContactPerson p = obj as TestContactPerson;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestContactPerson с другим типом");
                 return false;
             }
             if ((this == null) && (p == null))
@@ -106,7 +96,6 @@ namespace PixServiseTests
                 return true;
             if ((this.contactPerson == null) || (p.contactPerson == null))
             {
-                Global.errors3.Add("Сравнение TestContactPerson = null с TestContactPerson != null");
                 return false;
             }
             if ((this.contactPerson.FamilyName == p.contactPerson.FamilyName) &&
@@ -114,7 +103,7 @@ namespace PixServiseTests
                 (this.contactPerson.IdPersonMis == p.contactPerson.IdPersonMis) &&
                 (this.contactPerson.IdRelationType == p.contactPerson.IdRelationType) &&
                 (this.contactPerson.MiddleName == p.contactPerson.MiddleName) &&
-                (Global.IsEqual(this.contacts.ToArray(), p.contacts.ToArray())))
+                (Global.IsEqual(this.conts, p.conts)))
             {
                 return true;
             }

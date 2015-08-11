@@ -12,23 +12,11 @@ namespace PixServiseTests
     class TestContact
     {
         public ContactDto contact;
-        //static private string _connectionPath =
-        //    "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
-        //private ArrayList _errors;
 
         public TestContact(ContactDto c)
         {
             contact = c;
-            //_errors = errors;
         }
-
-        //static private SqlDataReader GetContact(string patientId)
-        //{
-        //    SqlConnection connection = Global.GetSqlConnection();
-        //    string findPatient = "SELECT * FROM Contact WHERE IdPerson = '" + patientId + "'";
-        //    SqlCommand person = new SqlCommand(findPatient, connection);
-        //    return person.ExecuteReader();
-        //}
 
         static public List<TestContact> BuildContactsFromDataBaseData(string idPerson)
         {
@@ -39,7 +27,6 @@ namespace PixServiseTests
                 SqlCommand person = new SqlCommand(findPatient, connection);
                 using (SqlDataReader contactReader = person.ExecuteReader())
                 {
-                    // bool a = documentReader.Read();
                     while (contactReader.Read())
                     {
                         ContactDto cont = new ContactDto();
@@ -64,33 +51,17 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение IdContactType TestContact");
         }
 
-        public bool CheckContactInDataBase(string patientId)
-        {
-            List<TestContact> conts = BuildContactsFromDataBaseData(patientId);
-            foreach (TestContact contact in conts)
-            {
-                if (this != contact)
-                {
-                    this.FindMismatch(contact);
-                    return false;
-                }
-            }
-            return true;
-        }
-
         public override bool Equals(Object obj)
         {
             TestContact p = obj as TestContact;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestContact с другим типом");
                 return false;
             }
             if (this.contact == p.contact)
                 return true;
             if ((this.contact == null) || (p.contact == null))
             {
-                Global.errors3.Add("Сравнение TestContact = null с TestContact != null");
                 return false;
             }
             if ((this.contact.ContactValue == p.contact.ContactValue) &&
