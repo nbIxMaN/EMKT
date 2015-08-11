@@ -605,7 +605,5 @@ namespace PixServiseTests.MedRecords_Tests
             else
                 Assert.Fail(Global.errors);
         }
-
-
     }
 }
