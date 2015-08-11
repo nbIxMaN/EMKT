@@ -20,7 +20,7 @@ namespace PixServiseTests
         {
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                string findDI = "SELECT * FROM DeathInfo WHERE IdDeathInfo = (SELECT MAX(IdDeathInfo) FROM DeathInfo WHERE IdStep = '" + IdStep + "')";
+                string findDI = "SELECT TOP(1) * FROM DeathInfo WHERE IdDeathInfo = (SELECT MAX(IdDeathInfo) FROM DeathInfo WHERE IdStep = '" + IdStep + "')";
                 SqlCommand DIcommand = new SqlCommand(findDI, connection);
                 using (SqlDataReader DIReader = DIcommand.ExecuteReader())
                 {

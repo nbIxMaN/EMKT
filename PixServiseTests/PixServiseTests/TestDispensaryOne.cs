@@ -54,7 +54,7 @@ namespace PixServiseTests
                     {
                         using (SqlConnection connection = Global.GetSqlConnection())
                         {
-                            string findDO = "SELECT * FROM DispensaryStage1, DispensaryStage1HealthGroup WHERE DispensaryStage1.idDispensaryStage1 = (SELECT MAX(idDispensaryStage1) FROM DispensaryStage1 WHERE IdDispensaryStage1 = '" + i.idMedDocument + ") AND DispensaryStage1.idDispensaryStage1 = DispensaryStage1HealthGroup.idDispensaryStage1";
+                            string findDO = "SELECT TOP(1) * FROM DispensaryStage1, DispensaryStage1HealthGroup WHERE DispensaryStage1.idDispensaryStage1 = (SELECT MAX(idDispensaryStage1) FROM DispensaryStage1 WHERE IdDispensaryStage1 = '" + i.idMedDocument + ") AND DispensaryStage1.idDispensaryStage1 = DispensaryStage1HealthGroup.idDispensaryStage1";
                             SqlCommand DOcommand = new SqlCommand(findDO, connection);
                             using (SqlDataReader DOReader = DOcommand.ExecuteReader())
                             {
