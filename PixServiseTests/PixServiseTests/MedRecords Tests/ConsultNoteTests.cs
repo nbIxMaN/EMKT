@@ -128,6 +128,7 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
+        [Test]
         public void UpdateAmbCaseWithMaxConsultNote()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
@@ -200,7 +201,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CloseAmbCaseWithConsultNote()
+        public void CloseAmbCaseWithMinConsultNote()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -225,7 +226,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void CloseAmbCaseWithMinConsultNote()
+        public void CloseAmbCaseWithMaxConsultNote()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
@@ -239,9 +240,34 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinConsultNote()
+                    MedRecordData.consultNote
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void CloseStatCaseWithMinConsultNote()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
+                client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat = (new SetData()).MinCaseStatSetForClose();
+                caseStat.MedRecords = new MedRecord[]
+                {
+                   (new SetData()).MinConsultNote()
+                };
+                client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();

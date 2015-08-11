@@ -210,8 +210,9 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDischargeSummary()
@@ -234,8 +235,9 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
                     MedRecordData.dischargeSummary
@@ -258,8 +260,9 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDischargeSummary()
@@ -282,8 +285,9 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
                     MedRecordData.dischargeSummary
