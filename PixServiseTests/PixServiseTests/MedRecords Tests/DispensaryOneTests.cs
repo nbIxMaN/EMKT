@@ -26,6 +26,7 @@ namespace PixServiseTests
                 caseDisp.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDispensaryOne(),
+                    MedRecordData.dispensaryOne
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
