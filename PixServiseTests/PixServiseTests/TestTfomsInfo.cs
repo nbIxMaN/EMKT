@@ -20,7 +20,7 @@ namespace PixServiseTests
         {
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                string findTFI = "SELECT * FROM TfomsInfo WHERE IdStep = '" + idStep + "'";
+                string findTFI = "SELECT * FROM TfomsInfo WHERE IdTfomsInfo = (SELECT MAX(IdTfomsInfo) FROM TfomsInfo WHERE IdStep = '" + idStep + "')";
                 SqlCommand TFIcommand = new SqlCommand(findTFI, connection);
                 using (SqlDataReader TFIReader = TFIcommand.ExecuteReader())
                 {
