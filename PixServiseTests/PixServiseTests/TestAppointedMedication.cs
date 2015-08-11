@@ -36,7 +36,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findAM = "SELECT * FROM PrescribedMedication, RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdAnatomicTherapeuticChemicalClassification = RAnatomicTherapeuticChemicalClassification.IdAnatomicTherapeuticChemicalClassification";
+                    string findAM = "SELECT * FROM PrescribedMedication, nsi.RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdRAnatomicTherapeuticChemicalClassification = nsi.RAnatomicTherapeuticChemicalClassification.IdRAnatomicTherapeuticChemicalClassification";
                     SqlCommand AMcommand = new SqlCommand(findAM, connection);
                     using (SqlDataReader AMReader = AMcommand.ExecuteReader())
                     {
@@ -64,6 +64,8 @@ namespace PixServiseTests
                             TestAppointedMedication ta = new TestAppointedMedication(a);
                             if (AMReader["CourseDose"].ToString() != "")
                                 ta.courseDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["CourseDose"].ToString());
+                            else
+                                ta.courseDose = null;
                             if (AMReader["DayDose"].ToString() != "")
                                 ta.dayDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["DayDose"].ToString());
                             if (AMReader["SingleDose"].ToString() != "")
@@ -133,7 +135,6 @@ namespace PixServiseTests
             (this.document.MedicineUseWay == p.document.MedicineUseWay)&&
             (this.document.Number == p.document.Number)&&
             (Global.IsEqual(this.oneTimeDose, p.oneTimeDose)) &&
-            (this.document.OneTimeDose.Value == p.document.OneTimeDose.Value) &&
             (this.document.Seria == p.document.Seria)&&
             Global.IsEqual(this.doctor, p.doctor))
             {
