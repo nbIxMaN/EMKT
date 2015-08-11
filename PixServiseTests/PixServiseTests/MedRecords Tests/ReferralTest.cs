@@ -60,7 +60,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CreateAmbCaseMinSick()
+        public void CreateAmbCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -72,7 +72,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -83,7 +83,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CreateAmbCaseFullSick()
+        public void CreateAmbCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -95,7 +95,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -106,7 +106,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void UpdateAmbCaseMinSick()
+        public void UpdateAmbCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -119,7 +119,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -130,7 +130,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void UpdateAmbCaseFullSick()
+        public void UpdateAmbCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -143,7 +143,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -154,7 +154,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CloseAmbCaseMinSick()
+        public void CloseAmbCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -167,7 +167,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -178,7 +178,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CloseAmbCaseFullSick()
+        public void CloseAmbCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -191,7 +191,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -203,7 +203,7 @@ namespace PixServiseTests.MedRecords_Tests
 
         //--------------------------- StatCase
         [Test]
-        public void AddStatCaseMinSick()
+        public void AddStatCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -215,7 +215,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -226,7 +226,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void AddStatCaseFullSick()
+        public void AddStatCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -238,7 +238,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -249,7 +249,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CreateStatCaseMinSick()
+        public void CreateStatCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -261,7 +261,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -272,7 +272,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CreateStatCaseFullSick()
+        public void CreateStatCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -284,7 +284,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -295,7 +295,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void UpdateStatCaseMinSick()
+        public void UpdateStatCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -308,7 +308,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -319,7 +319,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void UpdateStatCaseFullSick()
+        public void UpdateStatCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -332,7 +332,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -343,7 +343,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CloseStatCaseMinSick()
+        public void CloseStatCaseMinRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -356,7 +356,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinSickList()
+                    (new SetData()).MinRefferal()
                 };
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -367,7 +367,7 @@ namespace PixServiseTests.MedRecords_Tests
         }
 
         [Test]
-        public void CloseStatCaseFullSick()
+        public void CloseStatCaseFullRef()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
@@ -380,7 +380,7 @@ namespace PixServiseTests.MedRecords_Tests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.sickList
+                    MedRecordData.referral
                 };
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
