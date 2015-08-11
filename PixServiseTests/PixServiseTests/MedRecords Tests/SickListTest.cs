@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
+using PixServiseTests.PixServise;
+using System.Reflection;
+using System.Data;
+using System.Data.SqlClient;
+using System.Collections;
+using PixServiseTests.EMKServise;
 
 namespace PixServiseTests.MedRecords_Tests
 {
-    class SickListTest
+    [TestFixture]
+    public class SickListTest: Data
     {
     }
 }

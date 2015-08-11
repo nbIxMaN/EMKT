@@ -755,5 +755,13 @@ namespace PixServiseTests
 
             SetStatCase();
         }
+
+        [TearDown]
+        public void Clear()
+        {
+            Global.errors3.Clear();
+            Global.errors2.Clear();
+            Global.errors1.Clear();
+        }
     }
 }
