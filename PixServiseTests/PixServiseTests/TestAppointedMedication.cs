@@ -12,19 +12,20 @@ namespace PixServiseTests
     {
         AppointedMedication document;
         TestDoctor doctor;
+        TestQuantity courseDose;
+        TestQuantity dayDose;
+        TestQuantity oneTimeDose;
         public TestAppointedMedication(AppointedMedication a, string idLpu = "")
         {
             if (a != null)
             {
                 document = a;
-                //!!!ПЛОХОЙ КОД - ТАК ДЕЛАТЬ НЕЛЬЗЯ
-                if (a.CourseDose == null)
-                    a.CourseDose = new Quantity();
-                if (a.DayDose == null)
-                    a.DayDose = new Quantity();
-                if (a.OneTimeDose == null)
-                    a.OneTimeDose = new Quantity();
-                //
+                if (a.CourseDose != null)
+                    courseDose = new TestQuantity(a.CourseDose);
+                if (a.DayDose != null)
+                    dayDose = new TestQuantity(a.DayDose);
+                if (a.OneTimeDose != null)
+                    oneTimeDose = new TestQuantity(a.OneTimeDose);
                 doctor = new TestDoctor(a.Doctor, idLpu);
             }
         }
@@ -35,7 +36,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findAM = "SELECT * FROM PrescribedMedication, nsi.RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdRAnatomicTherapeuticChemicalClassification = nsi.RAnatomicTherapeuticChemicalClassification.IdRAnatomicTherapeuticChemicalClassification";
+                    string findAM = "SELECT * FROM PrescribedMedication, RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdAnatomicTherapeuticChemicalClassification = RAnatomicTherapeuticChemicalClassification.IdAnatomicTherapeuticChemicalClassification";
                     SqlCommand AMcommand = new SqlCommand(findAM, connection);
                     using (SqlDataReader AMReader = AMcommand.ExecuteReader())
                     {
@@ -60,72 +61,13 @@ namespace PixServiseTests
                                 a.DaysCount = Convert.ToUInt16(AMReader["TreatmentDays"]);
                             if (AMReader["MedecineName"].ToString() != "")
                                 a.MedicineName = AMReader["MedecineName"].ToString();
-                            //!!!ПРОДОЛЖЕНИЕ ПЛОХОГО КОДА!!!
-                            a.OneTimeDose = new Quantity();
-                            a.CourseDose = new Quantity();
-                            a.DayDose = new Quantity();
-                            //
-                            if (AMReader["CourseDose"].ToString() != "")
-                            {
-                                int id = Convert.ToInt32(AMReader["CourseDose"]);
-                                using (SqlConnection connection2 = Global.GetSqlConnection())
-                                {
-                                    string findDose = "SELECT * FROM MedicationQuantity WHERE IdMedicationQuantity = '" + id + "'";
-                                    SqlCommand DoseCommand = new SqlCommand(findDose, connection2);
-                                    using (SqlDataReader DoseReader = DoseCommand.ExecuteReader())
-                                    {
-                                        while (DoseReader.Read())
-                                        {
-                                            //a.CourseDose = new Quantity();
-                                            if (DoseReader["Quantity"].ToString() != "")
-                                                a.CourseDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
-                                            if (DoseReader["IdUnitClassifier"].ToString() != "")
-                                                a.CourseDose.IdUnit = Convert.ToInt32(DoseReader["IdUnitClassifier"]);
-                                        }
-                                    }
-                                }
-                            }
-                            if (AMReader["DayDose"].ToString() != "")
-                            {
-                                int id = Convert.ToInt32(AMReader["DayDose"]);
-                                using (SqlConnection connection2 = Global.GetSqlConnection())
-                                {
-                                    string findDose = "SELECT * FROM MedicationQuantity WHERE IdMedicationQuantity = '" + id + "'";
-                                    SqlCommand DoseCommand = new SqlCommand(findDose, connection2);
-                                    using (SqlDataReader DoseReader = DoseCommand.ExecuteReader())
-                                    {
-                                        while (DoseReader.Read())
-                                        {
-                                            //a.DayDose = new Quantity();
-                                            if (DoseReader["Quantity"].ToString() != "")
-                                                a.DayDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
-                                            if (DoseReader["IdUnitClassifier"].ToString() != "")
-                                                a.DayDose.IdUnit = Convert.ToInt32(DoseReader["IdUnitClassifier"]);
-                                        }
-                                    }
-                                }
-                            }
-                            if (AMReader["SingleDose"].ToString() != "")
-                            {
-                                int id = Convert.ToInt32(AMReader["SingleDose"]);
-                                using (SqlConnection connection2 = Global.GetSqlConnection())
-                                {
-                                    string findDose = "SELECT * FROM MedicationQuantity WHERE IdMedicationQuantity = '" + id + "'";
-                                    SqlCommand DoseCommand = new SqlCommand(findDose, connection2);
-                                    using (SqlDataReader DoseReader = DoseCommand.ExecuteReader())
-                                    {
-                                        while (DoseReader.Read())
-                                        {
-                                            //a.OneTimeDose = new Quantity();
-                                            if (DoseReader["Quantity"].ToString() != "")
-                                                a.OneTimeDose.Value = Convert.ToDecimal(DoseReader["Quantity"]);
-                                            if (DoseReader["IdUnitClassifier"].ToString() != "")
-                                                a.OneTimeDose.IdUnit = Convert.ToInt32(DoseReader["IdUnitClassifier"]);
-                                        }
-                                    }
-                                }
-                            }
                             TestAppointedMedication ta = new TestAppointedMedication(a);
+                            if (AMReader["CourseDose"].ToString() != "")
+                                ta.courseDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["CourseDose"].ToString());
+                            if (AMReader["DayDose"].ToString() != "")
+                                ta.dayDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["DayDose"].ToString());
+                            if (AMReader["SingleDose"].ToString() != "")
+                                ta.oneTimeDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["SingleDose"].ToString());
                             if (AMReader["IdDoctor"].ToString() != "")
                                 ta.doctor = TestDoctor.BuildTestDoctorFromDataBase(AMReader["IdDoctor"].ToString());
                             amList.Add(ta);
@@ -138,18 +80,14 @@ namespace PixServiseTests
             else
                 return amList;
         }
-        public void FindMismatch(TestAppointedMedication ta)
+        private void FindMismatch(TestAppointedMedication ta)
         {
             if (this.document.AnatomicTherapeuticChemicalClassification != ta.document.AnatomicTherapeuticChemicalClassification)
                 Global.errors3.Add("несовпадение AnatomicTherapeuticChemicalClassification TestAppointedMedication");
-            if (this.document.CourseDose.IdUnit != ta.document.CourseDose.IdUnit)
-                Global.errors3.Add("несовпадение CourseDose.IdUnit TestAppointedMedication");
-            if (this.document.CourseDose.Value != ta.document.CourseDose.Value)
-                Global.errors3.Add("несовпадение CourseDose.Value TestAppointedMedication");
-            if (this.document.DayDose.IdUnit != ta.document.DayDose.IdUnit)
-                Global.errors3.Add("несовпадение DayDose.IdUnit TestAppointedMedication");
-            if (this.document.DayDose.Value != ta.document.DayDose.Value)
-                Global.errors3.Add("несовпадение DayDose.Value TestAppointedMedication");
+            if (Global.GetLength(this.courseDose) != Global.GetLength(ta.courseDose))
+                Global.errors3.Add("несовпадение длины CourseDose TestAppointedMedication");
+            if (Global.GetLength(this.dayDose) != Global.GetLength(ta.dayDose))
+                Global.errors3.Add("несовпадение длины DayDose TestAppointedMedication");
             if (this.document.DaysCount != ta.document.DaysCount)
                 Global.errors3.Add("несовпадение DaysCount TestAppointedMedication");
             if (this.document.IssuedDate != ta.document.IssuedDate)
@@ -164,10 +102,8 @@ namespace PixServiseTests
                 Global.errors3.Add("несовпадение MedicineUseWay TestAppointedMedication");
             if (this.document.Number != ta.document.Number)
                 Global.errors3.Add("несовпадение Number TestAppointedMedication");
-            if (this.document.OneTimeDose.IdUnit != ta.document.OneTimeDose.IdUnit)
-                Global.errors3.Add("несовпадение OneTimeDose.IdUnit TestAppointedMedication");
-            if (this.document.OneTimeDose.Value != ta.document.OneTimeDose.Value)
-                Global.errors3.Add("несовпадение OneTimeDose.Value TestAppointedMedication");
+            if (Global.GetLength(this.oneTimeDose) != Global.GetLength(ta.oneTimeDose))
+                Global.errors3.Add("несовпадение длины OneTimeDose TestAppointedMedication");
             if (this.document.Seria != ta.document.Seria)
                 Global.errors3.Add("несовпадение Seria TestAppointedMedication");
             if (Global.GetLength(this.doctor) != Global.GetLength(ta.doctor))
@@ -187,10 +123,8 @@ namespace PixServiseTests
                 return false;
             }
             if ((this.document.AnatomicTherapeuticChemicalClassification == p.document.AnatomicTherapeuticChemicalClassification)&&
-            (this.document.CourseDose.IdUnit == p.document.CourseDose.IdUnit) &&
-            (this.document.CourseDose.Value == p.document.CourseDose.Value) &&
-            (this.document.DayDose.IdUnit == p.document.DayDose.IdUnit) &&
-            (this.document.DayDose.Value == p.document.DayDose.Value) &&
+            (Global.IsEqual(this.courseDose, p.courseDose)) &&
+            (Global.IsEqual(this.dayDose, p.dayDose)) &&
             (this.document.DaysCount == p.document.DaysCount)&&
             (this.document.IssuedDate == p.document.IssuedDate)&&
             (this.document.MedicineIssueType == p.document.MedicineIssueType)&&
@@ -198,7 +132,7 @@ namespace PixServiseTests
             (this.document.MedicineType == p.document.MedicineType)&&
             (this.document.MedicineUseWay == p.document.MedicineUseWay)&&
             (this.document.Number == p.document.Number)&&
-            (this.document.OneTimeDose.IdUnit == p.document.OneTimeDose.IdUnit) &&
+            (Global.IsEqual(this.oneTimeDose, p.oneTimeDose)) &&
             (this.document.OneTimeDose.Value == p.document.OneTimeDose.Value) &&
             (this.document.Seria == p.document.Seria)&&
             Global.IsEqual(this.doctor, p.doctor))

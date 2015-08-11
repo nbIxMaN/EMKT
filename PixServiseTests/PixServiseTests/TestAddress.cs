@@ -113,33 +113,17 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение StringAddress TestAddress");
         }
 
-        public bool CheckAddressInDataBase(string patientId)
-        {
-            List<TestAddress> a = BuildAdressesFromDataBaseData (patientId);
-            foreach (TestAddress address in a)
-            {
-                if (this != address)
-                {
-                    this.FindMismatch(address);
-                    return false;
-                }
-            }
-            return true;
-        }
-
         public override bool Equals(Object obj)
         {
             TestAddress p = obj as TestAddress;
             if ((object)p == null)
             {
-                Global.errors3.Add("Сравнение TestAddress с другим типом");
                 return false;
             }
             if (this.address == p.address)
                 return true;
             if ((this.address == null) || (p.address == null))
             {
-                Global.errors3.Add("Сравнение TestAddress = null с TestAddress != null");
                 return false;
             }
             if ((this.address.Appartment == p.address.Appartment) &&

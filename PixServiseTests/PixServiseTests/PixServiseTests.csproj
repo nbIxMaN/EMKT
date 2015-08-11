@@ -128,6 +128,7 @@
     <Compile Include="TestPerson.cs" />
     <Compile Include="TestPixServiceClient.cs" />
     <Compile Include="TestPrivilege.cs" />
+    <Compile Include="TestQuantity.cs" />
     <Compile Include="TestRecommendation.cs" />
     <Compile Include="TestReferral.cs" />
     <Compile Include="TestReferralTuple.cs" />
