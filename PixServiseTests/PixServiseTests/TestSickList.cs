@@ -20,7 +20,7 @@ namespace PixServiseTests
             if (r != null)
             {
                 sickList = r;
-                attachment = new TestAttachment(r.Attachment);
+                attachment = new TestAttachment(r.Attachment, "input");
                 doctor = new TestDoctor(r.Author, idLpu);
                 guardian = new TestGuardian(r.SickListInfo.Caregiver);
             }

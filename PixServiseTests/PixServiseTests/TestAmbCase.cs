@@ -136,8 +136,8 @@ namespace PixServiseTests
                     }
                     TestAmbCase ambcase = new TestAmbCase(guid, ca);
                     ambcase.caseBase = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idlpu, mis, patientId);
-                    ambcase.ambSteps = TestAmbStep.BuildAmbTestStepsFromDataBase(caseId, ambcase.caseBase.caseBase.IdLpu);
-                    List<TestStepBase> st = TestStepBase.BuildTestStepsFromDataBase(caseId, ambcase.caseBase.caseBase.IdLpu);
+                    ambcase.ambSteps = TestAmbStep.BuildAmbTestStepsFromDataBase(caseId, ca.IdLpu);
+                    List<TestStepBase> st = TestStepBase.BuildTestStepsFromDataBase(caseId, ca.IdLpu);
                     if (st != null)
                     {
                         foreach (TestStepBase i in st)

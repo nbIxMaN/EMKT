@@ -341,7 +341,8 @@ namespace PixServiseTests
                 RelatedID = "relatedId02890",
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    Data = File.ReadAllBytes("C:\\Users\\Александр\\Desktop\\11.txt"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                     MimeType = "text/html"

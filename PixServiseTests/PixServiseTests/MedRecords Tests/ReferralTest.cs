@@ -26,7 +26,8 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinRefferal()
+                    //(new SetData()).MinRefferal()
+                    MedRecordData.referral
                 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }

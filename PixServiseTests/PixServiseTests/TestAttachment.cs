@@ -19,7 +19,8 @@ namespace PixServiseTests
         public string IdMedDocumentType;
         public string MIMEType;
         public string path;
-        public TestAttachment(MedDocument.DocumentAttachment at, string p = "input.pdf")
+        static private int n = 0;
+        public TestAttachment(MedDocument.DocumentAttachment at, string p)
         {
             if (at != null)
             {
@@ -27,7 +28,8 @@ namespace PixServiseTests
                 if (at.Data != null)
                 {
                     path = p;
-                    File.WriteAllBytes(path, at.Data);
+                    File.WriteAllBytes(path + n.ToString() + ".txt", at.Data);
+                    ++n;
                 }
             }
         }
@@ -71,9 +73,9 @@ namespace PixServiseTests
                             TestAttachment t = null;
                             //!!!ПЛОХОЙ КОД
                             if ((at.MimeType == null) && (at.Hash == null) && (at.Url == null) && (at.Data == null))
-                                t = new TestAttachment(null);
+                                t = new TestAttachment(null, "");
                             else
-                                t = new TestAttachment(at, "output.pdf");
+                                t = new TestAttachment(at, "output");
                             //
                             if (docsReader["IdMedDocument"].ToString() != "")
                                 t.idMedDocument = docsReader["IdMedDocument"].ToString();
