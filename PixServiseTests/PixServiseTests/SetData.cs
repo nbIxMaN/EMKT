@@ -138,9 +138,9 @@ namespace PixServiseTests
         {
             AppointedMedication apMed = new AppointedMedication
             {
-                IssuedDate = MedRecordData.appointedMedication.IssuedDate,
+                //IssuedDate = MedRecordData.appointedMedication.IssuedDate,
                 MedicineName = MedRecordData.appointedMedication.MedicineName,
-                AnatomicTherapeuticChemicalClassification = MedRecordData.appointedMedication.AnatomicTherapeuticChemicalClassification,
+                //AnatomicTherapeuticChemicalClassification = MedRecordData.appointedMedication.AnatomicTherapeuticChemicalClassification,
                
                 Doctor = MinDoctorSet(),
             };
@@ -466,20 +466,6 @@ namespace PixServiseTests
 
         public CaseAmb FullCaseAmbSetForCreate()
         {
-            /*CaseAmb caseAmb = MinCaseAmbSetForCreate();
-            
-            caseAmb.IdCaseAidType = CaseAmbData.caseAmb.IdCaseAidType;
-            caseAmb.IdCasePurpose = CaseAmbData.caseAmb.IdCasePurpose;
-            caseAmb.IsActive = CaseAmbData.caseAmb.IsActive;
-
-            caseAmb.DoctorInCharge = DoctorData.doctorInCharge;
-            caseAmb.Author = DoctorData.author;
-            caseAmb.Authenticator = DoctorData.authenticator;
-            caseAmb.LegalAuthenticator = DoctorData.legalAuthenticator;
-            caseAmb.Steps = new StepAmb[]{CaseAmbData.step};
-            caseAmb.Guardian = DoctorData.guardian;
-
-            return caseAmb;*/
             CaseAmb caseAmb = CaseAmbData.caseAmb;
 
             caseAmb.CloseDate = new DateTime();
@@ -630,6 +616,31 @@ namespace PixServiseTests
         public CaseStat FullCaseStatSet()
         {
             return CaseStatData.caseStat;
+        }
+
+        public CaseAmb FullCaseDispSet()
+        {
+            return CaseDispData.caseDisp;
+        }
+
+        public CaseAmb FullCaseDispSetForCreate()
+        {
+            CaseAmb caseAmb = CaseDispData.caseDisp;
+
+            caseAmb.CloseDate = new DateTime();
+            caseAmb.IdCaseResult = new byte();
+            caseAmb.Comment = null;
+            caseAmb.IdAmbResult = new byte();
+
+            return caseAmb;
+        }
+
+        public CaseAmb FullCaseDispSetForClose()
+        {
+            CaseAmb caseAmb = CaseDispData.caseDisp;
+            caseAmb.IdCaseType = new byte();
+            caseAmb.Steps = null;
+            return caseAmb;
         }
     }
 }

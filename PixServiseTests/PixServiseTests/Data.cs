@@ -146,7 +146,7 @@ namespace PixServiseTests
                      IdPaymentType = 1,
                      PaymentState = 1,
                      Quantity = 1,
-                     //Tariff = new Decimal(1000),
+                     Tariff = new Decimal(1000),
                  },
 
             };

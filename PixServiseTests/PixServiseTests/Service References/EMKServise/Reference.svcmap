@@ -22,6 +22,7 @@
     <MetadataSource Address="http://192.168.8.93:2222/iemk/EMKService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="EMKService13.xsd" MetadataType="Schema" ID="31094292-1e0b-432c-b5e1-e83ee178c9a5" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd13" />
     <MetadataFile FileName="EMKService.xsd" MetadataType="Schema" ID="afd636e8-1696-4eea-b43d-7f90233413ea" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd12" />
     <MetadataFile FileName="EmkService.wsdl" MetadataType="Wsdl" ID="57e8f70b-05ad-47a7-8bdb-3d9ac7a6530c" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?wsdl" />
     <MetadataFile FileName="EMKService1.xsd" MetadataType="Schema" ID="07ad8cc5-88a0-4e6c-a93b-6b2af3019364" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd11" />

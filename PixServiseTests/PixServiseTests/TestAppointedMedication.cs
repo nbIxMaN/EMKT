@@ -36,7 +36,7 @@ namespace PixServiseTests
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findAM = "SELECT * FROM PrescribedMedication, nsi.RAnatomicTherapeuticChemicalClassification WHERE PrescribedMedication.IdStep = '" + idStep + "' AND PrescribedMedication.IdRAnatomicTherapeuticChemicalClassification = nsi.RAnatomicTherapeuticChemicalClassification.IdRAnatomicTherapeuticChemicalClassification";
+                    string findAM = "SELECT * FROM PrescribedMedication WHERE PrescribedMedication.IdStep = '" + idStep + "'";
                     SqlCommand AMcommand = new SqlCommand(findAM, connection);
                     using (SqlDataReader AMReader = AMcommand.ExecuteReader())
                     {
@@ -53,8 +53,20 @@ namespace PixServiseTests
                                 a.IssuedDate = Convert.ToDateTime(AMReader["MedicineIssueTypeDate"]);
                             if (AMReader["IdRMedicineType"].ToString() != "")
                                 a.MedicineType = Convert.ToUInt16(AMReader["IdRMedicineType"]);
-                            if (AMReader["code"].ToString() != "")
-                                a.AnatomicTherapeuticChemicalClassification = Convert.ToString(AMReader["code"]);
+                            if (AMReader["IdRAnatomicTherapeuticChemicalClassification"].ToString() != "")
+                                using(SqlConnection connection2 = Global.GetSqlConnection())
+                                {
+                                    string findCode = "SELECT * FROM nsi.RAnatomicTherapeuticChemicalClassification WHERE IdRAnatomicTherapeuticChemicalClassification = '" + AMReader["IdRAnatomicTherapeuticChemicalClassification"].ToString() + "'";
+                                    SqlCommand codeCommand = new SqlCommand(findCode, connection2);
+                                    using (SqlDataReader codeReader = codeCommand.ExecuteReader())
+                                    {
+                                        while (codeReader.Read())
+                                        {
+                                            if (codeReader["code"].ToString() != "")
+                                                a.AnatomicTherapeuticChemicalClassification = Convert.ToString(codeReader["code"]);
+                                        }
+                                    }
+                                }
                             if (AMReader["IdRMedicineUseWay"].ToString() != "")
                                 a.MedicineUseWay = Convert.ToByte(AMReader["IdRMedicineUseWay"]);
                             if (AMReader["TreatmentDays"].ToString() != "")

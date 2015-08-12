@@ -56,6 +56,8 @@ namespace PixServiseTests
                             s.PaymentInfo.PaymentState = Convert.ToByte(serviceReader["IdRPaymentStatus"]);
                         if (serviceReader["Quantity"].ToString() != "")
                             s.PaymentInfo.Quantity = Convert.ToInt32(serviceReader["Quantity"]);
+                        if (serviceReader["Tariff"].ToString() != "")
+                            s.PaymentInfo.Tariff = Convert.ToDecimal(serviceReader["Tariff"]);
                         TestService ts = new TestService(s);
                         if ((serviceReader["IdPersonRole"].ToString() != "") && (serviceReader["IdCase"].ToString() != ""))
                             ts.doctor = TestParticipant.BuildTestParticipantFromDataBase(serviceReader["IdCase"].ToString(), serviceReader["IdDoctor"].ToString(), Convert.ToByte(serviceReader["IdPersonRole"]));
@@ -84,8 +86,8 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение PaymentState TestService");
             if (this.document.PaymentInfo.Quantity != s.document.PaymentInfo.Quantity)
                 Global.errors3.Add("Несовпадение Quantity TestService");
-            //if (this.document.PaymentInfo.Tariff != s.document.PaymentInfo.Tariff)
-            //    Global.errors3.Add("Несовпадение Tariff TestService");
+            if (this.document.PaymentInfo.Tariff != s.document.PaymentInfo.Tariff)
+                Global.errors3.Add("Несовпадение Tariff TestService");
             if (this.document.ServiceName != s.document.ServiceName)
                 Global.errors3.Add("Несовпадение ServiceName TestService");
             if (Global.GetLength(this.doctor) != Global.GetLength(s.doctor))
@@ -112,7 +114,7 @@ namespace PixServiseTests
             (this.document.PaymentInfo.IdPaymentType == p.document.PaymentInfo.IdPaymentType) &&
             (this.document.PaymentInfo.PaymentState == p.document.PaymentInfo.PaymentState) &&
             (this.document.PaymentInfo.Quantity == p.document.PaymentInfo.Quantity) &&
-            //(this.document.PaymentInfo.Tariff == p.document.PaymentInfo.Tariff) &&
+            (this.document.PaymentInfo.Tariff == p.document.PaymentInfo.Tariff) &&
             (this.document.ServiceName == p.document.ServiceName) &&
             Global.IsEqual(this.doctor, p.doctor))
             {

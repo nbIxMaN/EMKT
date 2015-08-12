@@ -1450,16 +1450,16 @@ namespace PixServiseTests.EMKServise {
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.MedDocument))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DischargeSummary))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Referral))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ConsultNote))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.LaboratoryReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.SickList))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DispensaryBase))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DispensaryOne))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Referral))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.LaboratoryReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ConsultNote))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.SickList))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DeathInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Service))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.TfomsInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.AppointedMedication))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.TfomsInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Service))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DeathInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Diagnosis))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ClinicMainDiagnosis))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.AnatomopathologicalClinicMainDiagnosis))]
@@ -1675,12 +1675,12 @@ namespace PixServiseTests.EMKServise {
     [System.Runtime.Serialization.DataContractAttribute(Name="MedDocument", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DischargeSummary))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Referral))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ConsultNote))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.LaboratoryReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.SickList))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DispensaryBase))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DispensaryOne))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.Referral))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.LaboratoryReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ConsultNote))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.SickList))]
     public partial class MedDocument : PixServiseTests.EMKServise.MedRecord {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1849,6 +1849,146 @@ namespace PixServiseTests.EMKServise {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Referral", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
+    [System.SerializableAttribute()]
+    public partial class Referral : PixServiseTests.EMKServise.MedDocument {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PixServiseTests.EMKServise.ReferralInfo ReferralInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PixServiseTests.EMKServise.MedicalStaff DepartmentHeadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdSourceLpuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdTargetLpuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReferralIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelatedIDField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PixServiseTests.EMKServise.ReferralInfo ReferralInfo {
+            get {
+                return this.ReferralInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReferralInfoField, value) != true)) {
+                    this.ReferralInfoField = value;
+                    this.RaisePropertyChanged("ReferralInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public PixServiseTests.EMKServise.MedicalStaff DepartmentHead {
+            get {
+                return this.DepartmentHeadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentHeadField, value) != true)) {
+                    this.DepartmentHeadField = value;
+                    this.RaisePropertyChanged("DepartmentHead");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public string IdSourceLpu {
+            get {
+                return this.IdSourceLpuField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdSourceLpuField, value) != true)) {
+                    this.IdSourceLpuField = value;
+                    this.RaisePropertyChanged("IdSourceLpu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string IdTargetLpu {
+            get {
+                return this.IdTargetLpuField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdTargetLpuField, value) != true)) {
+                    this.IdTargetLpuField = value;
+                    this.RaisePropertyChanged("IdTargetLpu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public string ReferralID {
+            get {
+                return this.ReferralIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReferralIDField, value) != true)) {
+                    this.ReferralIDField = value;
+                    this.RaisePropertyChanged("ReferralID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public string RelatedID {
+            get {
+                return this.RelatedIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelatedIDField, value) != true)) {
+                    this.RelatedIDField = value;
+                    this.RaisePropertyChanged("RelatedID");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ConsultNote", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
+    [System.SerializableAttribute()]
+    public partial class ConsultNote : PixServiseTests.EMKServise.MedDocument {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LaboratoryReport", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
+    [System.SerializableAttribute()]
+    public partial class LaboratoryReport : PixServiseTests.EMKServise.MedDocument {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SickList", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
+    [System.SerializableAttribute()]
+    public partial class SickList : PixServiseTests.EMKServise.MedDocument {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PixServiseTests.EMKServise.SickListInfo SickListInfoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PixServiseTests.EMKServise.SickListInfo SickListInfo {
+            get {
+                return this.SickListInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SickListInfoField, value) != true)) {
+                    this.SickListInfoField = value;
+                    this.RaisePropertyChanged("SickListInfo");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DispensaryBase", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.DispensaryOne))]
@@ -2001,327 +2141,6 @@ namespace PixServiseTests.EMKServise {
                 if ((object.ReferenceEquals(this.RecommendationsField, value) != true)) {
                     this.RecommendationsField = value;
                     this.RaisePropertyChanged("Recommendations");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Referral", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class Referral : PixServiseTests.EMKServise.MedDocument {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.ReferralInfo ReferralInfoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.MedicalStaff DepartmentHeadField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdSourceLpuField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdTargetLpuField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ReferralIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RelatedIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.ReferralInfo ReferralInfo {
-            get {
-                return this.ReferralInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReferralInfoField, value) != true)) {
-                    this.ReferralInfoField = value;
-                    this.RaisePropertyChanged("ReferralInfo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public PixServiseTests.EMKServise.MedicalStaff DepartmentHead {
-            get {
-                return this.DepartmentHeadField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DepartmentHeadField, value) != true)) {
-                    this.DepartmentHeadField = value;
-                    this.RaisePropertyChanged("DepartmentHead");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public string IdSourceLpu {
-            get {
-                return this.IdSourceLpuField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdSourceLpuField, value) != true)) {
-                    this.IdSourceLpuField = value;
-                    this.RaisePropertyChanged("IdSourceLpu");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public string IdTargetLpu {
-            get {
-                return this.IdTargetLpuField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdTargetLpuField, value) != true)) {
-                    this.IdTargetLpuField = value;
-                    this.RaisePropertyChanged("IdTargetLpu");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public string ReferralID {
-            get {
-                return this.ReferralIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReferralIDField, value) != true)) {
-                    this.ReferralIDField = value;
-                    this.RaisePropertyChanged("ReferralID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-        public string RelatedID {
-            get {
-                return this.RelatedIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RelatedIDField, value) != true)) {
-                    this.RelatedIDField = value;
-                    this.RaisePropertyChanged("RelatedID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LaboratoryReport", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class LaboratoryReport : PixServiseTests.EMKServise.MedDocument {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ConsultNote", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class ConsultNote : PixServiseTests.EMKServise.MedDocument {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SickList", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class SickList : PixServiseTests.EMKServise.MedDocument {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.SickListInfo SickListInfoField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.SickListInfo SickListInfo {
-            get {
-                return this.SickListInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SickListInfoField, value) != true)) {
-                    this.SickListInfoField = value;
-                    this.RaisePropertyChanged("SickListInfo");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DeathInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
-    [System.SerializableAttribute()]
-    public partial class DeathInfo : PixServiseTests.EMKServise.MedRecord {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MkbCodeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MkbCode {
-            get {
-                return this.MkbCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MkbCodeField, value) != true)) {
-                    this.MkbCodeField = value;
-                    this.RaisePropertyChanged("MkbCode");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Service", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
-    [System.SerializableAttribute()]
-    public partial class Service : PixServiseTests.EMKServise.MedRecord {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateEndField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateStartField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdServiceTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.PaymentInfo PaymentInfoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.Participant PerformerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ServiceNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateEnd {
-            get {
-                return this.DateEndField;
-            }
-            set {
-                if ((this.DateEndField.Equals(value) != true)) {
-                    this.DateEndField = value;
-                    this.RaisePropertyChanged("DateEnd");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateStart {
-            get {
-                return this.DateStartField;
-            }
-            set {
-                if ((this.DateStartField.Equals(value) != true)) {
-                    this.DateStartField = value;
-                    this.RaisePropertyChanged("DateStart");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IdServiceType {
-            get {
-                return this.IdServiceTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdServiceTypeField, value) != true)) {
-                    this.IdServiceTypeField = value;
-                    this.RaisePropertyChanged("IdServiceType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.PaymentInfo PaymentInfo {
-            get {
-                return this.PaymentInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PaymentInfoField, value) != true)) {
-                    this.PaymentInfoField = value;
-                    this.RaisePropertyChanged("PaymentInfo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.Participant Performer {
-            get {
-                return this.PerformerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PerformerField, value) != true)) {
-                    this.PerformerField = value;
-                    this.RaisePropertyChanged("Performer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ServiceName {
-            get {
-                return this.ServiceNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ServiceNameField, value) != true)) {
-                    this.ServiceNameField = value;
-                    this.RaisePropertyChanged("ServiceName");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TfomsInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
-    [System.SerializableAttribute()]
-    public partial class TfomsInfo : PixServiseTests.EMKServise.MedRecord {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdTfomsTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal TariffField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Count {
-            get {
-                return this.CountField;
-            }
-            set {
-                if ((this.CountField.Equals(value) != true)) {
-                    this.CountField = value;
-                    this.RaisePropertyChanged("Count");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdTfomsType {
-            get {
-                return this.IdTfomsTypeField;
-            }
-            set {
-                if ((this.IdTfomsTypeField.Equals(value) != true)) {
-                    this.IdTfomsTypeField = value;
-                    this.RaisePropertyChanged("IdTfomsType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Tariff {
-            get {
-                return this.TariffField;
-            }
-            set {
-                if ((this.TariffField.Equals(value) != true)) {
-                    this.TariffField = value;
-                    this.RaisePropertyChanged("Tariff");
                 }
             }
         }
@@ -2544,6 +2363,187 @@ namespace PixServiseTests.EMKServise {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TfomsInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
+    [System.SerializableAttribute()]
+    public partial class TfomsInfo : PixServiseTests.EMKServise.MedRecord {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdTfomsTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TariffField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Count {
+            get {
+                return this.CountField;
+            }
+            set {
+                if ((this.CountField.Equals(value) != true)) {
+                    this.CountField = value;
+                    this.RaisePropertyChanged("Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdTfomsType {
+            get {
+                return this.IdTfomsTypeField;
+            }
+            set {
+                if ((this.IdTfomsTypeField.Equals(value) != true)) {
+                    this.IdTfomsTypeField = value;
+                    this.RaisePropertyChanged("IdTfomsType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Tariff {
+            get {
+                return this.TariffField;
+            }
+            set {
+                if ((this.TariffField.Equals(value) != true)) {
+                    this.TariffField = value;
+                    this.RaisePropertyChanged("Tariff");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Service", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
+    [System.SerializableAttribute()]
+    public partial class Service : PixServiseTests.EMKServise.MedRecord {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateEndField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateStartField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdServiceTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PixServiseTests.EMKServise.PaymentInfo PaymentInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PixServiseTests.EMKServise.Participant PerformerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ServiceNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateEnd {
+            get {
+                return this.DateEndField;
+            }
+            set {
+                if ((this.DateEndField.Equals(value) != true)) {
+                    this.DateEndField = value;
+                    this.RaisePropertyChanged("DateEnd");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateStart {
+            get {
+                return this.DateStartField;
+            }
+            set {
+                if ((this.DateStartField.Equals(value) != true)) {
+                    this.DateStartField = value;
+                    this.RaisePropertyChanged("DateStart");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdServiceType {
+            get {
+                return this.IdServiceTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdServiceTypeField, value) != true)) {
+                    this.IdServiceTypeField = value;
+                    this.RaisePropertyChanged("IdServiceType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PixServiseTests.EMKServise.PaymentInfo PaymentInfo {
+            get {
+                return this.PaymentInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaymentInfoField, value) != true)) {
+                    this.PaymentInfoField = value;
+                    this.RaisePropertyChanged("PaymentInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PixServiseTests.EMKServise.Participant Performer {
+            get {
+                return this.PerformerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PerformerField, value) != true)) {
+                    this.PerformerField = value;
+                    this.RaisePropertyChanged("Performer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ServiceName {
+            get {
+                return this.ServiceNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ServiceNameField, value) != true)) {
+                    this.ServiceNameField = value;
+                    this.RaisePropertyChanged("ServiceName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DeathInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
+    [System.SerializableAttribute()]
+    public partial class DeathInfo : PixServiseTests.EMKServise.MedRecord {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MkbCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MkbCode {
+            get {
+                return this.MkbCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MkbCodeField, value) != true)) {
+                    this.MkbCodeField = value;
+                    this.RaisePropertyChanged("MkbCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Diagnosis", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.Diag")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ClinicMainDiagnosis))]
@@ -2612,205 +2612,6 @@ namespace PixServiseTests.EMKServise {
     [System.Runtime.Serialization.DataContractAttribute(Name="AnatomopathologicalClinicMainDiagnosis", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.Diag")]
     [System.SerializableAttribute()]
     public partial class AnatomopathologicalClinicMainDiagnosis : PixServiseTests.EMKServise.ClinicMainDiagnosis {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HealthGroup", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class HealthGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.MedicalStaff DoctorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.HealthGroupInfo HealthGroupInfoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.MedicalStaff Doctor {
-            get {
-                return this.DoctorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DoctorField, value) != true)) {
-                    this.DoctorField = value;
-                    this.RaisePropertyChanged("Doctor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.HealthGroupInfo HealthGroupInfo {
-            get {
-                return this.HealthGroupInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HealthGroupInfoField, value) != true)) {
-                    this.HealthGroupInfoField = value;
-                    this.RaisePropertyChanged("HealthGroupInfo");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Recommendation", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class Recommendation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PixServiseTests.EMKServise.MedicalStaff DoctorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TextField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Date {
-            get {
-                return this.DateField;
-            }
-            set {
-                if ((this.DateField.Equals(value) != true)) {
-                    this.DateField = value;
-                    this.RaisePropertyChanged("Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PixServiseTests.EMKServise.MedicalStaff Doctor {
-            get {
-                return this.DoctorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DoctorField, value) != true)) {
-                    this.DoctorField = value;
-                    this.RaisePropertyChanged("Doctor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Text {
-            get {
-                return this.TextField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TextField, value) != true)) {
-                    this.TextField = value;
-                    this.RaisePropertyChanged("Text");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HealthGroupInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
-    [System.SerializableAttribute()]
-    public partial class HealthGroupInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte IdHealthGroupField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte IdHealthGroup {
-            get {
-                return this.IdHealthGroupField;
-            }
-            set {
-                if ((this.IdHealthGroupField.Equals(value) != true)) {
-                    this.IdHealthGroupField = value;
-                    this.RaisePropertyChanged("IdHealthGroup");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public System.DateTime Date {
-            get {
-                return this.DateField;
-            }
-            set {
-                if ((this.DateField.Equals(value) != true)) {
-                    this.DateField = value;
-                    this.RaisePropertyChanged("Date");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3081,27 +2882,18 @@ namespace PixServiseTests.EMKServise {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PaymentInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HealthGroup", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
     [System.SerializableAttribute()]
-    public partial class PaymentInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class HealthGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte HealthCareUnitField;
+        private PixServiseTests.EMKServise.MedicalStaff DoctorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<byte> IdPaymentTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte PaymentStateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QuantityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal TariffField;
+        private PixServiseTests.EMKServise.HealthGroupInfo HealthGroupInfoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3114,66 +2906,165 @@ namespace PixServiseTests.EMKServise {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte HealthCareUnit {
+        public PixServiseTests.EMKServise.MedicalStaff Doctor {
             get {
-                return this.HealthCareUnitField;
+                return this.DoctorField;
             }
             set {
-                if ((this.HealthCareUnitField.Equals(value) != true)) {
-                    this.HealthCareUnitField = value;
-                    this.RaisePropertyChanged("HealthCareUnit");
+                if ((object.ReferenceEquals(this.DoctorField, value) != true)) {
+                    this.DoctorField = value;
+                    this.RaisePropertyChanged("Doctor");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<byte> IdPaymentType {
+        public PixServiseTests.EMKServise.HealthGroupInfo HealthGroupInfo {
             get {
-                return this.IdPaymentTypeField;
+                return this.HealthGroupInfoField;
             }
             set {
-                if ((this.IdPaymentTypeField.Equals(value) != true)) {
-                    this.IdPaymentTypeField = value;
-                    this.RaisePropertyChanged("IdPaymentType");
+                if ((object.ReferenceEquals(this.HealthGroupInfoField, value) != true)) {
+                    this.HealthGroupInfoField = value;
+                    this.RaisePropertyChanged("HealthGroupInfo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Recommendation", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
+    [System.SerializableAttribute()]
+    public partial class Recommendation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PixServiseTests.EMKServise.MedicalStaff DoctorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte PaymentState {
+        public PixServiseTests.EMKServise.MedicalStaff Doctor {
             get {
-                return this.PaymentStateField;
+                return this.DoctorField;
             }
             set {
-                if ((this.PaymentStateField.Equals(value) != true)) {
-                    this.PaymentStateField = value;
-                    this.RaisePropertyChanged("PaymentState");
+                if ((object.ReferenceEquals(this.DoctorField, value) != true)) {
+                    this.DoctorField = value;
+                    this.RaisePropertyChanged("Doctor");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Quantity {
+        public string Text {
             get {
-                return this.QuantityField;
+                return this.TextField;
             }
             set {
-                if ((this.QuantityField.Equals(value) != true)) {
-                    this.QuantityField = value;
-                    this.RaisePropertyChanged("Quantity");
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Tariff {
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HealthGroupInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.MedDoc")]
+    [System.SerializableAttribute()]
+    public partial class HealthGroupInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte IdHealthGroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
-                return this.TariffField;
+                return this.extensionDataField;
             }
             set {
-                if ((this.TariffField.Equals(value) != true)) {
-                    this.TariffField = value;
-                    this.RaisePropertyChanged("Tariff");
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte IdHealthGroup {
+            get {
+                return this.IdHealthGroupField;
+            }
+            set {
+                if ((this.IdHealthGroupField.Equals(value) != true)) {
+                    this.IdHealthGroupField = value;
+                    this.RaisePropertyChanged("IdHealthGroup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
                 }
             }
         }
@@ -3235,6 +3126,115 @@ namespace PixServiseTests.EMKServise {
                 if ((this.ValueField.Equals(value) != true)) {
                     this.ValueField = value;
                     this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PaymentInfo", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec")]
+    [System.SerializableAttribute()]
+    public partial class PaymentInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte HealthCareUnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte IdPaymentTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte PaymentStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TariffField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte HealthCareUnit {
+            get {
+                return this.HealthCareUnitField;
+            }
+            set {
+                if ((this.HealthCareUnitField.Equals(value) != true)) {
+                    this.HealthCareUnitField = value;
+                    this.RaisePropertyChanged("HealthCareUnit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte IdPaymentType {
+            get {
+                return this.IdPaymentTypeField;
+            }
+            set {
+                if ((this.IdPaymentTypeField.Equals(value) != true)) {
+                    this.IdPaymentTypeField = value;
+                    this.RaisePropertyChanged("IdPaymentType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte PaymentState {
+            get {
+                return this.PaymentStateField;
+            }
+            set {
+                if ((this.PaymentStateField.Equals(value) != true)) {
+                    this.PaymentStateField = value;
+                    this.RaisePropertyChanged("PaymentState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Tariff {
+            get {
+                return this.TariffField;
+            }
+            set {
+                if ((this.TariffField.Equals(value) != true)) {
+                    this.TariffField = value;
+                    this.RaisePropertyChanged("Tariff");
                 }
             }
         }
@@ -4405,7 +4405,7 @@ namespace PixServiseTests.EMKServise {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MedRecordDto", Namespace="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MedRecordDto", Namespace="http://schemas.datacontract.org/2004/07/MKService.Data.Dto")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PixServiseTests.EMKServise.ReferralDto))]
     public partial class MedRecordDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -4460,8 +4460,8 @@ namespace PixServiseTests.EMKServise {
         System.Threading.Tasks.Task<PixServiseTests.EMKServise.VersionInfo> GetVersionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/AddCase", ReplyAction="http://tempuri.org/IEmkService/AddCaseResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/AddCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/AddCaseListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
+        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/AddCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         void AddCase(string guid, PixServiseTests.EMKServise.CaseBase caseDto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/AddCase", ReplyAction="http://tempuri.org/IEmkService/AddCaseResponse")]
@@ -4476,8 +4476,8 @@ namespace PixServiseTests.EMKServise {
         System.Threading.Tasks.Task CreateCaseAsync(string guid, PixServiseTests.EMKServise.CaseBase createCaseDto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/CloseCase", ReplyAction="http://tempuri.org/IEmkService/CloseCaseResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/CloseCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/CloseCaseListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
+        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/CloseCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         void CloseCase(string guid, PixServiseTests.EMKServise.CaseBase caseDto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/CloseCase", ReplyAction="http://tempuri.org/IEmkService/CloseCaseResponse")]
@@ -4492,32 +4492,32 @@ namespace PixServiseTests.EMKServise {
         System.Threading.Tasks.Task UpdateCaseAsync(string guid, PixServiseTests.EMKServise.CaseBase caseDto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/AddMedRecord", ReplyAction="http://tempuri.org/IEmkService/AddMedRecordResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/AddMedRecordListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/AddMedRecordRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
+        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/AddMedRecordListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         void AddMedRecord(string guid, string idLpu, string idPatientMis, string idCaseMis, PixServiseTests.EMKServise.MedRecord medRecord);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/AddMedRecord", ReplyAction="http://tempuri.org/IEmkService/AddMedRecordResponse")]
         System.Threading.Tasks.Task AddMedRecordAsync(string guid, string idLpu, string idPatientMis, string idCaseMis, PixServiseTests.EMKServise.MedRecord medRecord);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/AddStepToCase", ReplyAction="http://tempuri.org/IEmkService/AddStepToCaseResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/AddStepToCaseListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/AddStepToCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
+        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/AddStepToCaseListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         void AddStepToCase(string guid, string idLpu, string idPatientMis, string idCaseMis, PixServiseTests.EMKServise.StepBase step);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/AddStepToCase", ReplyAction="http://tempuri.org/IEmkService/AddStepToCaseResponse")]
         System.Threading.Tasks.Task AddStepToCaseAsync(string guid, string idLpu, string idPatientMis, string idCaseMis, PixServiseTests.EMKServise.StepBase step);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/GetReferralList", ReplyAction="http://tempuri.org/IEmkService/GetReferralListResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/GetReferralListRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/GetReferralListListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
+        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/GetReferralListRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         PixServiseTests.EMKServise.ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/GetReferralList", ReplyAction="http://tempuri.org/IEmkService/GetReferralListResponse")]
         System.Threading.Tasks.Task<PixServiseTests.EMKServise.ReferralTupleDto[]> GetReferralListAsync(string guid, string idLpu, byte idReferralType, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/CancelCase", ReplyAction="http://tempuri.org/IEmkService/CancelCaseResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/CancelCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault[]), Action="http://tempuri.org/IEmkService/CancelCaseListOf_RequestFaultFault", Name="ArrayOfRequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
+        [System.ServiceModel.FaultContractAttribute(typeof(PixServiseTests.EMKServise.RequestFault), Action="http://tempuri.org/IEmkService/CancelCaseRequestFaultFault", Name="RequestFault", Namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common")]
         void CancelCase(string guid, string idLpu, string idPatientMis, string idCaseMis);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmkService/CancelCase", ReplyAction="http://tempuri.org/IEmkService/CancelCaseResponse")]

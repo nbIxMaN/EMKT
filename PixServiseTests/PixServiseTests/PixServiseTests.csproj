@@ -163,6 +163,9 @@
     <None Include="Service References\EMKServise\EMKService12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\EMKServise\EMKService13.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\EMKServise\EMKService2.xsd">
       <SubType>Designer</SubType>
     </None>

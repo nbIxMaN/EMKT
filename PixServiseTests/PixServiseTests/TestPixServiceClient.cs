@@ -26,7 +26,10 @@ namespace PixServiseTests
                 p = new TestPatient(guid, idlpu, patient);
                 TestPatient a = TestPatient.BuildPatientFromDataBaseData(guid, idlpu, patient.IdPatientMIS);
                 if (!p.CheckPatientInDataBase())
+                {
+                    Global.errors1.AddRange(Global.errors2);
                     Global.errors1.Add("Не совпадение значений объектов");
+                }
             }
             catch (System.ServiceModel.FaultException<PixServiseTests.PixServise.RequestFault> we)
             {

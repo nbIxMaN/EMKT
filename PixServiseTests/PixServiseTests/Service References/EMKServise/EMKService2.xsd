@@ -32,32 +32,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DischargeSummary" nillable="true" type="tns:DischargeSummary" />
-  <xs:complexType name="DispensaryOne">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:DispensaryBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="IsGuested" type="xs:boolean" />
-          <xs:element minOccurs="0" name="HasExtraResearchRefferal" type="xs:boolean" />
-          <xs:element minOccurs="0" name="IsUnderObservation" type="xs:boolean" />
-          <xs:element minOccurs="0" name="HasExpertCareRefferal" type="xs:boolean" />
-          <xs:element minOccurs="0" name="HasPrescribeCure" type="xs:boolean" />
-          <xs:element minOccurs="0" name="HasHealthResortRefferal" type="xs:boolean" />
-          <xs:element minOccurs="0" name="HasSecondStageRefferal" type="xs:boolean" />
-          <xs:element minOccurs="0" name="HealthGroup" nillable="true" type="tns:HealthGroup" />
-          <xs:element minOccurs="0" name="Recommendations" nillable="true" type="tns:ArrayOfRecommendation" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="DispensaryOne" nillable="true" type="tns:DispensaryOne" />
-  <xs:complexType name="DispensaryBase">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:MedDocument">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="DispensaryBase" nillable="true" type="tns:DispensaryBase" />
   <xs:complexType name="Referral">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MedDocument">
@@ -84,14 +58,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
-  <xs:complexType name="LaboratoryReport">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:MedDocument">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="LaboratoryReport" nillable="true" type="tns:LaboratoryReport" />
   <xs:complexType name="ConsultNote">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MedDocument">
@@ -100,6 +66,14 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ConsultNote" nillable="true" type="tns:ConsultNote" />
+  <xs:complexType name="LaboratoryReport">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LaboratoryReport" nillable="true" type="tns:LaboratoryReport" />
   <xs:complexType name="SickList">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MedDocument">
@@ -122,6 +96,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SickListInfo" nillable="true" type="tns:SickListInfo" />
+  <xs:complexType name="DispensaryOne">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DispensaryBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsGuested" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasExtraResearchRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsUnderObservation" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasExpertCareRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasPrescribeCure" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasHealthResortRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasSecondStageRefferal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HealthGroup" nillable="true" type="tns:HealthGroup" />
+          <xs:element minOccurs="0" name="Recommendations" nillable="true" type="tns:ArrayOfRecommendation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DispensaryOne" nillable="true" type="tns:DispensaryOne" />
+  <xs:complexType name="DispensaryBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DispensaryBase" nillable="true" type="tns:DispensaryBase" />
   <xs:complexType name="HealthGroup">
     <xs:sequence>
       <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Doctor" nillable="true" type="q5:MedicalStaff" />
