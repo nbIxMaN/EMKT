@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,18 @@ namespace PixServiseTests
         public MedDocument.DocumentAttachment attachment;
         public string IdMedDocumentType;
         public string MIMEType;
-        public TestAttachment(MedDocument.DocumentAttachment at)
+        public string path;
+        public TestAttachment(MedDocument.DocumentAttachment at, string p = "input.pdf")
         {
             if (at != null)
+            {
                 attachment = at;
+                if (at.Data != null)
+                {
+                    path = p;
+                    File.WriteAllBytes(path, at.Data);
+                }
+            }
         }
 
         static public List<TestAttachment> BuildTestAttacmentFromDataBase(string idStep, string idMedDocumentType)
@@ -64,7 +73,7 @@ namespace PixServiseTests
                             if ((at.MimeType == null) && (at.Hash == null) && (at.Url == null) && (at.Data == null))
                                 t = new TestAttachment(null);
                             else
-                                t = new TestAttachment(at);
+                                t = new TestAttachment(at, "output.pdf");
                             //
                             if (docsReader["IdMedDocument"].ToString() != "")
                                 t.idMedDocument = docsReader["IdMedDocument"].ToString();
@@ -108,7 +117,7 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if (this.attachment.Data.SequenceEqual(p.attachment.Data) &&
+            if ((((this.path == null) && (p.path == null)) || ((this.path != null) && (p.path != null) && (Global.Equals(new FileInfo(this.path).Length, new FileInfo(p.path).Length)))) &&
                 this.attachment.Hash.SequenceEqual(p.attachment.Hash) &&
                 (this.attachment.Url == p.attachment.Url))
             {

@@ -68,7 +68,7 @@ namespace PixServiseTests
     [TestFixture]
     public abstract class Data
     {
-        static public void SetDocument()
+        static public void SetDocument(string path = "")
         {
             DocumentData.Passport = new IdentityDocument
             {
@@ -304,7 +304,6 @@ namespace PixServiseTests
                 HasSecondStageRefferal = false,
                 Attachment = new MedDocument.DocumentAttachment
                 {
-
                     Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
