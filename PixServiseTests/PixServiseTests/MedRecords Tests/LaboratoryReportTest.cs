@@ -62,7 +62,8 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinLaboratoryReport()
+                    //(new SetData()).MinLaboratoryReport()
+                    MedRecordData.LaboratoryReport
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }

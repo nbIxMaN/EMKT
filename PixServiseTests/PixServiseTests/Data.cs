@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
+using System.IO;
 
 namespace PixServiseTests
 {
@@ -74,7 +75,7 @@ namespace PixServiseTests
             {
                 IdDocumentType = 14,
                 DocS = "2007",
-                DocN = "395732",
+                DocN = "395731",
                 ProviderName = "УФМС",
                 ExpiredDate = Convert.ToDateTime("19.02.2020"),
                 IssuedDate = Convert.ToDateTime("03.09.2007"),
@@ -400,14 +401,15 @@ namespace PixServiseTests
 
             MedRecordData.LaboratoryReport = new LaboratoryReport
             {
-                CreationDate = new DateTime(2010, 02, 02),
+                CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    Data = File.ReadAllBytes("C:\\Users\\User\\Desktop\\uuu.txt"),
                     Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/html"
+                    MimeType = "text/plain"
                 },
                 Author = SetDoctor(),
             };
@@ -537,8 +539,8 @@ namespace PixServiseTests
 
             CaseAmbData.step = new StepAmb
             {
-                DateStart = new DateTime(2010, 10, 10),
-                DateEnd = new DateTime(2010, 10, 14),
+                DateStart = new DateTime(2012, 10, 10),
+                DateEnd = new DateTime(2012, 10, 14),
                 IdStepMis = "Step " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
                 IdVisitPlace = 1,
@@ -552,7 +554,7 @@ namespace PixServiseTests
 
             CaseAmbData.otherStep = new StepAmb
             {
-                DateStart = new DateTime(2010, 09, 07),
+                DateStart = new DateTime(2012, 09, 07),
                 DateEnd = new DateTime(2013, 10, 14),
                 IdStepMis = "OtherStep " + DateTime.Now.ToString(),
                 IdPaymentType = 2,
@@ -567,8 +569,8 @@ namespace PixServiseTests
 
             CaseAmbData.caseAmb = new CaseAmb
             {
-                OpenDate = new DateTime(2010, 10, 10),
-                CloseDate = new DateTime(2010, 10, 14),
+                OpenDate = new DateTime(2012, 10, 10),
+                CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
                 IdCaseMis = "Case " + DateTime.Now.ToString(),
                 IdPaymentType = 1,

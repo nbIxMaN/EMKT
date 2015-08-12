@@ -18,6 +18,15 @@ namespace PixServiseTests
             patient.GivenName = PatientData.Patient.GivenName;
             patient.Sex = PatientData.Patient.Sex;
             patient.BirthDate = PatientData.Patient.BirthDate;
+            PixServise.DocumentDto d = new PixServise.DocumentDto();
+            d.DocN = DocumentData.Passport.DocN;
+            d.IdDocumentType = DocumentData.Passport.IdDocumentType;
+            d.ProviderName = DocumentData.Passport.ProviderName;
+            d.DocS = DocumentData.Passport.DocS;
+            patient.Documents = new PixServise.DocumentDto []
+            {
+                d
+            };
 
             return patient;
         }
