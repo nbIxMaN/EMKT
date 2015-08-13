@@ -26,6 +26,7 @@ namespace PixServiseTests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                caseAmb.Comment = "23123123123123123123";
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")

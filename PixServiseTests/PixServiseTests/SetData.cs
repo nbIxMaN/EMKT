@@ -172,6 +172,22 @@ namespace PixServiseTests
             return diag;
         }
 
+        public ClinicMainDiagnosis MinClinicMainDiagnosis()
+        {
+            ClinicMainDiagnosis diag = new ClinicMainDiagnosis
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    DiagnosedDate = MedRecordData.clinicMainDiagnosis.DiagnosisInfo.DiagnosedDate,
+                    IdDiagnosisType = MedRecordData.clinicMainDiagnosis.DiagnosisInfo.IdDiagnosisType,
+                    Comment = MedRecordData.clinicMainDiagnosis.DiagnosisInfo.Comment,
+                    MkbCode = MedRecordData.clinicMainDiagnosis.DiagnosisInfo.MkbCode
+                },
+                Doctor = MinDoctorSet()
+            };
+            return diag;
+        }
+
         public SickList MinSickList()
         {
             SickList sl= new SickList
@@ -314,6 +330,11 @@ namespace PixServiseTests
                MinStepAmbSet()
             };
 
+            caseDisp.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
+            };
+
             return caseDisp;
         }
 
@@ -373,6 +394,11 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
+            caseDisp.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
+            };
+
             return caseDisp;
         }
 
@@ -408,6 +434,11 @@ namespace PixServiseTests
             caseAmb.Steps = new StepAmb[]
             {
                MinStepAmbSet()
+            };
+
+            caseAmb.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
             };
 
             return caseAmb;
@@ -470,6 +501,11 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
+            caseAmb.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
+            };
+
             return caseAmb;
         }
 
@@ -530,6 +566,12 @@ namespace PixServiseTests
             {
                MinStepStatSet()
             };
+
+            caseStat.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
+            };
+
             return caseStat;
         }
 
@@ -558,6 +600,11 @@ namespace PixServiseTests
             caseStat.Authenticator = new Participant
             {
                 Doctor = MinDoctorSet()
+            };
+
+            caseStat.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
             };
 
             return caseStat;
