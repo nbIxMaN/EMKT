@@ -17,20 +17,11 @@ namespace PixServiseTests
         public string IdDoctor;
         public MedDocument.DocumentAttachment attachment;
         public string IdMedDocumentType;
-        public string MIMEType;
-        public string path;
-        static private int n = 0;
-        public TestAttachment(MedDocument.DocumentAttachment at, string p)
+        public TestAttachment(MedDocument.DocumentAttachment at)
         {
-            if (at != null)
+            if ((at != null) && ((at.Data != null) || (at.Hash != null) || (at.MimeType != null) || (at.Url != null)))
             {
                 attachment = at;
-                if (at.Data != null)
-                {
-                    path = p;
-                    File.WriteAllBytes(path + n.ToString() + ".txt", at.Data);
-                    ++n;
-                }
             }
         }
 
@@ -70,13 +61,7 @@ namespace PixServiseTests
                                 at.Url = null;
                             if (docsReader["MIMEType"].ToString() != "")
                                 at.MimeType = docsReader["MIMEType"].ToString();
-                            TestAttachment t = null;
-                            //!!!ПЛОХОЙ КОД
-                            if ((at.MimeType == null) && (at.Hash == null) && (at.Url == null) && (at.Data == null))
-                                t = new TestAttachment(null, "");
-                            else
-                                t = new TestAttachment(at, "output");
-                            //
+                            TestAttachment t = new TestAttachment(at);
                             if (docsReader["IdMedDocument"].ToString() != "")
                                 t.idMedDocument = docsReader["IdMedDocument"].ToString();
                             if (docsReader["DocHead"].ToString() != "")
@@ -85,8 +70,6 @@ namespace PixServiseTests
                                 t.CreationDate = Convert.ToDateTime(docsReader["CreationDate"]);
                             if (docsReader["IdDoctor"].ToString() != "")
                                 t.IdDoctor = docsReader["IdDoctor"].ToString();
-                            if (docsReader["IdMedDocumentType"].ToString() != "")
-                                t.IdMedDocumentType = docsReader["IdMedDocumentType"].ToString();
                             taList.Add(t);
                         }
                     }
@@ -99,12 +82,10 @@ namespace PixServiseTests
         }
         private void FindMismatch(TestAttachment at)
         {
-            if (!(this.attachment.Data.SequenceEqual(at.attachment.Data)))
-                Global.errors3.Add("несовпадение Data TestAttachment");
-            if (!(this.attachment.Hash.SequenceEqual(at.attachment.Hash)))
-                Global.errors3.Add("несовпадение Hash TestAttachment");
             if (this.attachment.Url != at.attachment.Url)
                 Global.errors3.Add("несовпадение Url TestAttachment");
+            if (this.attachment.MimeType != at.attachment.MimeType)
+                Global.errors3.Add("несовпадение MimeType TestAttachment");
         }
         public override bool Equals(Object obj)
         {
@@ -119,9 +100,8 @@ namespace PixServiseTests
             {
                 return false;
             }
-            if ((((this.path == null) && (p.path == null)) || ((this.path != null) && (p.path != null) && (Global.Equals(new FileInfo(this.path).Length, new FileInfo(p.path).Length)))) &&
-                this.attachment.Hash.SequenceEqual(p.attachment.Hash) &&
-                (this.attachment.Url == p.attachment.Url))
+            if ((this.attachment.Url == p.attachment.Url) &&
+                (this.attachment.MimeType == p.attachment.MimeType))
             {
                 return true;
             }

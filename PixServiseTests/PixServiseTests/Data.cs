@@ -3,6 +3,8 @@ using NUnit.Framework;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
 using System.IO;
+using System.Diagnostics;
+using System.Text;
 
 namespace PixServiseTests
 {
@@ -303,13 +305,14 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = new MedDocument.DocumentAttachment
-                {
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/html"
-                },
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text"),
+                //Attachment = new MedDocument.DocumentAttachment
+                //{
+                //    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                //    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                //    Url = new Uri("https://www.google.ru"),
+                //    MimeType = "text/html"
+                //},
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
@@ -406,9 +409,9 @@ namespace PixServiseTests
                 Header = "Header",
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    //Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Data = File.ReadAllBytes("C:\\Users\\User\\Desktop\\uuu.txt"),
+                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Data = File.ReadAllBytes("C:\\Users\\User\\Desktop\\uuu.txt"),
                     Url = new Uri("https://www.google.ru"),
                     MimeType = "text/plain"
                 },
@@ -512,6 +515,36 @@ namespace PixServiseTests
             };
 
             return guardian;
+        }
+
+        private static MedDocument.DocumentAttachment SetAttachment(string path, string url, string mimeType)
+        {
+            MedDocument.DocumentAttachment a = new MedDocument.DocumentAttachment
+            {
+                Data = File.ReadAllBytes(path),
+                //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                Url = new Uri(url),
+                MimeType = mimeType
+            };
+            var process = new Process();
+            process.StartInfo.FileName = "cpverify.exe";
+            process.StartInfo.Arguments = "-mk " + path;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.UseShellExecute = false;
+            var sb = new StringBuilder();
+            process.Start();
+            while (!process.StandardOutput.EndOfStream)
+            {
+                sb.Append(process.StandardOutput.ReadLine());
+            }
+            string str = sb.ToString();
+            var res = new byte[str.Length / 2];//проверим что их чётное количество? :)
+            for (var i = 0; i < str.Length; i += 2)
+            {
+                res[i / 2] = byte.Parse(str.Substring(i, 2), System.Globalization.NumberStyles.HexNumber);//или byte.TryParse для избежания эксепшинов
+            }
+            a.Hash = res;
+            return a;
         }
 
         private void SetAmbCase()

@@ -85,6 +85,11 @@
     <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="MethodTests.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\EMKServise\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -258,6 +263,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpverify\cpverify.exe" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

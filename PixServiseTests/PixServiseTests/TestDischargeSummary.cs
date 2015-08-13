@@ -19,7 +19,7 @@ namespace PixServiseTests
             if (r != null)
             {
                 dischargeSummary = r;
-                attachment = new TestAttachment(r.Attachment, "input");
+                attachment = new TestAttachment(r.Attachment);
                 doctor = new TestDoctor(r.Author, idLpu);
             }
         }

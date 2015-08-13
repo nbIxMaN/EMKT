@@ -31,7 +31,7 @@ namespace PixServiseTests
             if (r != null)
             {
                 dispansaryOne = r;
-                attachment = new TestAttachment(r.Attachment, "input");
+                attachment = new TestAttachment(r.Attachment);
                 doctor = new TestDoctor(r.Author, idLpu);
                 hdDoctor = new TestDoctor(r.HealthGroup.Doctor, idLpu);
                 if (r.Recommendations != null)
@@ -54,7 +54,7 @@ namespace PixServiseTests
                     {
                         using (SqlConnection connection = Global.GetSqlConnection())
                         {
-                            string findDO = "SELECT TOP(1) * FROM DispensaryStage1, DispensaryStage1HealthGroup WHERE DispensaryStage1.idDispensaryStage1 = (SELECT MAX(idDispensaryStage1) FROM DispensaryStage1 WHERE IdDispensaryStage1 = '" + i.idMedDocument + "') AND DispensaryStage1.idDispensaryStage1 = DispensaryStage1HealthGroup.idDispensaryStage1";
+                            string findDO = "SELECT TOP(1) * FROM DispensaryStage1, DispensaryStage1HealthGroup WHERE DispensaryStage1.idDispensaryStage1 = (SELECT MAX(idDispensaryStage1) FROM DispensaryStage1 WHERE IdMedDocument = '" + i.idMedDocument + "') AND DispensaryStage1.idDispensaryStage1 = DispensaryStage1HealthGroup.idDispensaryStage1";
                             SqlCommand DOcommand = new SqlCommand(findDO, connection);
                             using (SqlDataReader DOReader = DOcommand.ExecuteReader())
                             {

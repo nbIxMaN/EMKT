@@ -18,7 +18,7 @@ namespace PixServiseTests
         public TestReferral(Referral r, string idLpu = "")
         {
             referral = r;
-            attachment = new TestAttachment(r.Attachment, "input");
+            attachment = new TestAttachment(r.Attachment);
             doctor = new TestDoctor(r.Author, idLpu);
             departmentHead = new TestDoctor(r.DepartmentHead, idLpu);
         }
