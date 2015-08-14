@@ -21,8 +21,10 @@ namespace PixServiseTests
             {
                 sickList = r;
                 attachment = new TestAttachment(r.Attachment);
-                doctor = new TestDoctor(r.Author, idLpu);
-                guardian = new TestGuardian(r.SickListInfo.Caregiver);
+                if (r.Author != null)
+                    doctor = new TestDoctor(r.Author, idLpu);
+                if (r.SickListInfo.Caregiver != null)
+                    guardian = new TestGuardian(r.SickListInfo.Caregiver);
             }
         }
         static public List<TestSickList> BuildSickListFromDataBaseData(string idStep, string patientId)
@@ -80,8 +82,6 @@ namespace PixServiseTests
                 Global.errors3.Add("Несовпадение CreationDate TestSickList");
             if (this.sickList.Header != r.sickList.Header)
                 Global.errors3.Add("Несовпадение Header TestSickList");
-            if (this.sickList.SickListInfo.Caregiver != r.sickList.SickListInfo.Caregiver)
-                Global.errors3.Add("Несовпадение Caregiver TestSickList");
             if (this.sickList.SickListInfo.DateEnd != r.sickList.SickListInfo.DateEnd)
                 Global.errors3.Add("Несовпадение DateEnd TestSickList");
             if (this.sickList.SickListInfo.DateStart != r.sickList.SickListInfo.DateStart)
@@ -116,7 +116,6 @@ namespace PixServiseTests
             }
             if ((this.sickList.CreationDate == p.sickList.CreationDate)&&
             (this.sickList.Header == p.sickList.Header)&&
-            (this.sickList.SickListInfo.Caregiver == p.sickList.SickListInfo.Caregiver)&&
             (this.sickList.SickListInfo.DateEnd == p.sickList.SickListInfo.DateEnd)&&
             (this.sickList.SickListInfo.DateStart == p.sickList.SickListInfo.DateStart)&&
             (this.sickList.SickListInfo.DisabilityDocReason == p.sickList.SickListInfo.DisabilityDocReason)&&

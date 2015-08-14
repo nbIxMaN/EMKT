@@ -305,14 +305,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text"),
-                //Attachment = new MedDocument.DocumentAttachment
-                //{
-                //    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                //    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                //    Url = new Uri("https://www.google.ru"),
-                //    MimeType = "text/html"
-                //},
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
@@ -342,14 +335,7 @@ namespace PixServiseTests
                 IdTargetLpu = "1.2.643.5.1.13.3.25.78.118",
                 ReferralID = "referralId2890",
                 RelatedID = "relatedId02890",
-                Attachment = new MedDocument.DocumentAttachment
-                {
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    //Data = File.ReadAllBytes("C:\\Users\\Александр\\Desktop\\11.txt"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/html"
-                },
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
                 ReferralInfo = new ReferralInfo
                 {
@@ -367,14 +353,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2010, 02, 02),
                 Header = "Header",
-                Attachment = new MedDocument.DocumentAttachment
-                {
-
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/html"
-                },
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
                 SickListInfo = new SickListInfo
                 {
@@ -392,14 +371,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2010, 02, 02),
                 Header = "Header",
-                Attachment = new MedDocument.DocumentAttachment
-                {
-
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Url = new Uri("https://www.google.ru"),
-                    MimeType = "application/pdf",
-                },
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
             };
 
@@ -407,14 +379,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                Attachment = new MedDocument.DocumentAttachment
-                {
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    //Data = File.ReadAllBytes("C:\\Users\\User\\Desktop\\uuu.txt"),
-                    Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/plain"
-                },
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
             };
 
@@ -422,13 +387,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2010, 02, 02),
                 Header = "Header",
-                Attachment = new MedDocument.DocumentAttachment
-                {
-                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/html"
-                },
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
             };
         }
@@ -499,7 +458,7 @@ namespace PixServiseTests
                 {
                     Sex = 1,
                     Birthdate = new DateTime(1973, 01, 07),
-                    IdPersonMis = "123123123",
+                    IdPersonMis = DateTime.Now.ToString(),
                     Documents = new IdentityDocument[]
                     {
                         DocumentData.Passport,
