@@ -24,31 +24,6 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.DoctorInCharge = new MedicalStaff
-                {
-                    Person = new PersonWithIdentity
-                    {
-                        HumanName = new HumanName
-                        {
-                            GivenName = "Михаил",
-                            MiddleName = "Александрович",
-                            FamilyName = "Протченков"
-                        },
-                        IdPersonMis = "123123123123123123123",
-                        Documents = new IdentityDocument[]
-                        {
-                            new IdentityDocument
-                            {
-                                DocN = "16530018028",
-                                IdDocumentType = 223,
-                                ProviderName = "ПФР"
-                            }
-                        }
-                    },
-                    IdLpu = "1.2.643.5.1.13.3.25.78.230",
-                    IdSpeciality = 27,
-                    IdPosition = 8
-                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -68,10 +43,6 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.MedRecords = new MedRecord[]
-                {
-                    MedRecordData.referral
-                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")

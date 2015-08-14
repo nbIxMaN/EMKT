@@ -144,13 +144,13 @@ namespace PixServiseTests
                     Doctor = SetDoctor(),
                 },
                 PaymentInfo = new PaymentInfo
-                 {
-                     HealthCareUnit = 1,
-                     IdPaymentType = 1,
-                     PaymentState = 1,
-                     Quantity = 1,
-                     Tariff = new Decimal(1000),
-                 },
+                {
+                    HealthCareUnit = 1,
+                    IdPaymentType = 1,
+                    PaymentState = 1,
+                    Quantity = 1,
+                    Tariff = new Decimal(1000),
+                },
 
             };
 
@@ -166,7 +166,7 @@ namespace PixServiseTests
                 AnatomicTherapeuticChemicalClassification = "A",
                 DaysCount = 5,
                 IssuedDate = new DateTime(2010, 03, 06),
-                MedicineIssueType = "PRE", 
+                MedicineIssueType = "PRE",
                 MedicineName = "Валерьянка",
                 MedicineType = 136,
                 MedicineUseWay = 1,
@@ -215,23 +215,23 @@ namespace PixServiseTests
             };
 
             MedRecordData.clinicMainDiagnosis = new ClinicMainDiagnosis
-             {
-                 DiagnosisInfo = new DiagnosisInfo
-                 {
-                     IdDiseaseType = 1,
-                     DiagnosedDate = new DateTime(2010, 02, 02),
-                     IdDiagnosisType = 1,
-                     Comment = "Комментарий",
-                     DiagnosisChangeReason = 2,
-                     DiagnosisStage = 1,
-                     IdDispensaryState = 8,
-                     IdTraumaType = 1,
-                     MESImplementationFeature = 10,
-                     MedicalStandard = 211010,
-                     MkbCode = "A00",
-                 },
-                 Doctor = SetDoctor(),
-                 Complications = new Diagnosis[]
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    IdDiseaseType = 1,
+                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    IdDiagnosisType = 1,
+                    Comment = "Комментарий",
+                    DiagnosisChangeReason = 2,
+                    DiagnosisStage = 1,
+                    IdDispensaryState = 8,
+                    IdTraumaType = 1,
+                    MESImplementationFeature = 10,
+                    MedicalStandard = 211010,
+                    MkbCode = "A00",
+                },
+                Doctor = SetDoctor(),
+                Complications = new Diagnosis[]
                  {
                      new  Diagnosis
                      {
@@ -252,7 +252,7 @@ namespace PixServiseTests
                         Doctor = SetDoctor(),
                      }
                  }
-             };
+            };
 
             MedRecordData.anatomopathologicalClinicMainDiagnosis = new AnatomopathologicalClinicMainDiagnosis
             {
@@ -344,8 +344,8 @@ namespace PixServiseTests
                 RelatedID = "relatedId02890",
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    //Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                    Data = File.ReadAllBytes("C:\\Users\\Александр\\Desktop\\11.txt"),
+                    Data = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                    //Data = File.ReadAllBytes("C:\\Users\\Александр\\Desktop\\11.txt"),
                     Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
                     Url = new Uri("https://www.google.ru"),
                     MimeType = "text/html"
@@ -730,7 +730,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2010, 10, 10),
                 CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "Case "+DateTime.Now.ToString(),
+                IdCaseMis = "Case " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -781,9 +781,9 @@ namespace PixServiseTests
             };
 
             SetDocument();
-        
+
             DoctorData.otherDoctor = SetOtherDoctor();
-            
+
             SetMedRecord();
 
             SetAmbCase();

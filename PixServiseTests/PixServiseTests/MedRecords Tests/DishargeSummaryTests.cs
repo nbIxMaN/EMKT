@@ -25,7 +25,8 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDischargeSummary()
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -48,7 +49,8 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    MedRecordData.dischargeSummary,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -71,7 +73,8 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDischargeSummary()
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -94,7 +97,8 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    MedRecordData.dischargeSummary,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -118,7 +122,8 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDischargeSummary()
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -142,7 +147,8 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    MedRecordData.dischargeSummary,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -166,7 +172,8 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDischargeSummary()
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -190,7 +197,8 @@ namespace PixServiseTests
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    MedRecordData.dischargeSummary,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -215,7 +223,8 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDischargeSummary()
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -240,7 +249,8 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 caseAmb.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    MedRecordData.dischargeSummary,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
@@ -265,7 +275,8 @@ namespace PixServiseTests
                 caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDischargeSummary()
+                    (new SetData()).MinDischargeSummary(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -290,7 +301,8 @@ namespace PixServiseTests
                 caseStat = (new SetData()).MinCaseStatSetForClose();
                 caseStat.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dischargeSummary
+                    MedRecordData.dischargeSummary,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -340,14 +352,6 @@ namespace PixServiseTests
                 Assert.Pass();
             else
                 Assert.Fail(Global.errors);
-        }
-
-        [TearDown]
-        public void Clear()
-        {
-            Global.errors3.Clear();
-            Global.errors2.Clear();
-            Global.errors1.Clear();
         }
     }
 }
