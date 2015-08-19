@@ -51,7 +51,7 @@ namespace PixServiseTests
         }
 
         [Test]
-        public void AddAmbCaseWithServicetMin()
+        public void AddAmbCaseWithServiceMin()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
