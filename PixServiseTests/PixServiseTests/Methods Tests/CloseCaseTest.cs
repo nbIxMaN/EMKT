@@ -51,7 +51,6 @@ namespace PixServiseTests.Methods_Tests
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinTfomsInfo(),
-                    MedRecordData.deathInfo,
                     (new SetData()).MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,
