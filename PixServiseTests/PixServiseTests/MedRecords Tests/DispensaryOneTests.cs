@@ -74,7 +74,6 @@ namespace PixServiseTests
                 caseDisp.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDispensaryOne(),
-                    MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
@@ -110,6 +109,35 @@ namespace PixServiseTests
         }
 
         [Test]
+        public void UpdateDispCaseWithOutMinDispanseryOne()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinClinicMainDiagnosis()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinDispensaryOne(),
+                    (new SetData()).MinClinicMainDiagnosis()
+                };
+                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
         public void UpdateDispCaseWithMinDispanseryOne()
         {
             using (TestPixServiceClient c = new TestPixServiceClient())
@@ -129,6 +157,35 @@ namespace PixServiseTests
                 caseDisp.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDispensaryOne(),
+                    (new SetData()).MinClinicMainDiagnosis()
+                };
+                client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void UpdateDispCaseWithOutMaxDispanseryOne()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    (new SetData()).MinClinicMainDiagnosis()
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);

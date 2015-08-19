@@ -239,7 +239,7 @@ namespace PixServiseTests
                         if (pcn != null)
                             cn = new TestConsultNote(pcn, ca.IdLpu);
                         DispensaryOne d = i as DispensaryOne;
-                        if ((d != null) && (ca.IdCaseType == TestAmbCase.dispanseryId))
+                        if (d != null)
                             d1 = new TestDispensaryOne(d, ca.IdLpu);
                     }
                     if (Global.GetLength(this.medRecords) != 0)
