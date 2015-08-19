@@ -388,23 +388,26 @@ namespace PixServiseTests
 
         public void DeletePatient()
         {
-            SqlConnection connection = Global.GetSqlConnection();
-            string findIdPersonString =
-                "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + patient.IdPatientMIS + "'";
-            SqlCommand command = new SqlCommand(findIdPersonString, connection);
-            SqlDataReader MISreader = command.ExecuteReader();
-            string patientId = GetPatientId(GUID, IDLPU, patient.IdPatientMIS);
-            while ((MISreader.Read()) && (patientId != null))
+            using (SqlConnection connection = Global.GetSqlConnection())
             {
-                    string command2 = "EXEC dbo.Delete_Patient @IdPatientMIS = '" + patient.IdPatientMIS + "'";
-                    SqlConnection connection2 = Global.GetSqlConnection();
-                    var SqlComm = new SqlCommand(command2, connection2);
-                    SqlComm.ExecuteNonQuery();
-                    connection2.Close();
-                    patientId = GetPatientId(GUID, IDLPU, patient.IdPatientMIS);
+                string findIdPersonString =
+                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + patient.IdPatientMIS + "'";
+                SqlCommand command = new SqlCommand(findIdPersonString, connection);
+                using (SqlDataReader MISreader = command.ExecuteReader())
+                {
+                    string patientId = GetPatientId(GUID, IDLPU, patient.IdPatientMIS);
+                    while ((MISreader.Read()) && (patientId != null))
+                    {
+                        string command2 = "EXEC dbo.Delete_Patient @IdPatientMIS = '" + patient.IdPatientMIS + "'";
+                        using (SqlConnection connection2 = Global.GetSqlConnection())
+                        {
+                            var SqlComm = new SqlCommand(command2, connection2);
+                            SqlComm.ExecuteNonQuery();
+                        }
+                        patientId = GetPatientId(GUID, IDLPU, patient.IdPatientMIS);
+                    }
+                }
             }
-            MISreader.Close();
-            connection.Close();
         }
         public override bool Equals(Object obj)
         {

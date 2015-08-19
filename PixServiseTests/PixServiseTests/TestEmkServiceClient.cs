@@ -1,6 +1,7 @@
 ﻿using PixServiseTests.EMKServise;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +24,55 @@ namespace PixServiseTests
                 }
             }
         }
+
+        private void DeletePerson(string GUID, string IDLPU, string idMis)
+        {
+            using (SqlConnection connection = Global.GetSqlConnection())
+            {
+                string findIdPersonString =
+                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + idMis + "'";
+                SqlCommand command = new SqlCommand(findIdPersonString, connection);
+                using (SqlDataReader MISreader = command.ExecuteReader())
+                {
+                    string patientId = TestPerson.GetPersonId(GUID, IDLPU, idMis);
+                    while ((MISreader.Read()) && (patientId != null))
+                    {
+                        string command2 = "EXEC dbo.Delete_Patient @IdPatientMIS = '" + idMis + "'";
+                        using (SqlConnection connection2 = Global.GetSqlConnection())
+                        {
+                            var SqlComm = new SqlCommand(command2, connection2);
+                            SqlComm.ExecuteNonQuery();
+                        }
+                        patientId = TestPerson.GetPersonId(GUID, IDLPU, idMis);
+                    }
+                }
+            }
+        }
+
         private void CaseWork(string guid, CaseBase c, string method)
         {
             try
             {
+                //if (c.DoctorInCharge != null)
+                //{
+                //    DeletePerson(guid, c.IdLpu, c.DoctorInCharge.Person.IdPersonMis);
+                //}
+                //if (c.Authenticator.Doctor != null)
+                //{
+                //    DeletePerson(guid, c.IdLpu, c.Authenticator.Doctor.Person.IdPersonMis);
+                //}
+                //if (c.Author.Doctor != null)
+                //{
+                //    DeletePerson(guid, c.IdLpu, c.Author.Doctor.Person.IdPersonMis);
+                //}
+                //if (c.LegalAuthenticator != null)
+                //{
+                //    DeletePerson(guid, c.IdLpu, c.LegalAuthenticator.Doctor.Person.IdPersonMis);
+                //}
+                //if (c.Guardian != null)
+                //{
+                //    DeletePerson(guid, c.IdLpu, c.Guardian.Person.IdPersonMis);
+                //}
                 CaseAmb ca = c as CaseAmb;
                 if ((object)ca != null)
                 {
@@ -154,8 +200,11 @@ namespace PixServiseTests
             {
                 client.AddMedRecord(guid, idLpu, idPatientMis, idCaseMis, mr);
                 TestMasterCase tmc = TestMasterCase.BuildTestMasterCase(guid, idLpu, idPatientMis, idCaseMis);
-                if (!tmc.CheckDocumentInCase(mr, idLpu))
-                    Global.errors1.Add("Не добавлен");
+                if (Global.IsEqual(tmc, null))
+                    Global.errors1.Add("Case " + idCaseMis + " не найден в базе данных");
+                else
+                    if (!tmc.CheckDocumentInCase(mr, idLpu))
+                        Global.errors1.Add("Не добавлен");
             }
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
             {

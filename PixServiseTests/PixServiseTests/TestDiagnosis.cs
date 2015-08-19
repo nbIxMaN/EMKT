@@ -23,14 +23,18 @@ namespace PixServiseTests
                 doctor = new TestDoctor(d.Doctor, idLpu);
             }
         }
-        static public List<TestDiagnosis> BuildDiagnosisFromDataBaseDate(string IdStep)
+        static public List<TestDiagnosis> BuildDiagnosisFromDataBaseDate(string IdStep, string IdParentDiagnosis = "")
         {
             List<TestDiagnosis> tdList = new List<TestDiagnosis>();
             if (IdStep != "")
             {
                 using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    string findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "'";
+                    string findTD = "";
+                    if (IdParentDiagnosis == "")
+                        findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "'";
+                    else
+                        findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "' AND IdParentDiagnosis = '" + IdParentDiagnosis + "'";
                     SqlCommand TDcommand = new SqlCommand(findTD, connection);
                     using (SqlDataReader TDReader = TDcommand.ExecuteReader())
                     {

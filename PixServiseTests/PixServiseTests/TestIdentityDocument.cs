@@ -63,9 +63,12 @@ namespace PixServiseTests
                         while (documentReader.Read())
                         {
                             IdentityDocument doc = new IdentityDocument();
-                            doc.DocN = Convert.ToString(documentReader["DocN"]);
-                            doc.ProviderName = Convert.ToString(documentReader["ProviderName"]);
-                            doc.IdDocumentType = Convert.ToByte(documentReader["IdDocumentType"]);
+                            if (documentReader["DocN"].ToString() != "")
+                                doc.DocN = Convert.ToString(documentReader["DocN"]);
+                            if (documentReader["ProviderName"].ToString() != "")
+                                doc.ProviderName = Convert.ToString(documentReader["ProviderName"]);
+                            if (documentReader["IdDocumentType"].ToString() != "")
+                                doc.IdDocumentType = Convert.ToByte(documentReader["IdDocumentType"]);
                             if (documentReader["DocS"].ToString() != "")
                                 doc.DocS = Convert.ToString(documentReader["DocS"]);
                             else

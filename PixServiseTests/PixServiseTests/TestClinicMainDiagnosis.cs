@@ -63,7 +63,7 @@ namespace PixServiseTests
                         {
                             ClinicMainDiagnosis d = new ClinicMainDiagnosis();
                             TestClinicMainDiagnosis td = new TestClinicMainDiagnosis(d);
-                            td._diagnosis = TestDiagnosis.BuildDiagnosisFromDataBaseDate(idStep);
+                            td._diagnosis = TestDiagnosis.BuildDiagnosisFromDataBaseDate(idStep, TDReader["IdDiagnosis"].ToString());
                             td.diagnosInfo = TestDiagnosisInfo.BuildDiagnosisFromDataBaseDate(TDReader["IdDiagnosis"].ToString());
                             if (TDReader["IdDiagnosedDoctor"].ToString() != "")
                                 td.doctor = TestDoctor.BuildTestDoctorFromDataBase(TDReader["IdDiagnosedDoctor"].ToString());

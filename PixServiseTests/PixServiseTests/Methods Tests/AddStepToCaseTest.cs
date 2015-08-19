@@ -29,7 +29,7 @@ namespace PixServiseTests
 
                 EmkClient.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
-            Assert.IsTrue(Global.errors1.Contains(" - Случай обслуживания закрыт"));
+            Assert.IsTrue(Global.errors1.Contains(" - Случай обслуживания закрыт"), "Случай обслуживания был добавлен");
         }
 
         //------------------------------AmbStep

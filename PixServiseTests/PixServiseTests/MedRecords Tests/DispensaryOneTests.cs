@@ -25,7 +25,8 @@ namespace PixServiseTests
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDispensaryOne()
+                    (new SetData()).MinDispensaryOne(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -48,7 +49,8 @@ namespace PixServiseTests
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dispensaryOne
+                    MedRecordData.dispensaryOne,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -68,10 +70,12 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDispensaryOne()
+                    (new SetData()).MinDispensaryOne(),
+                    MedRecordData.dispensaryOne,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -91,10 +95,11 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dispensaryOne
+                    MedRecordData.dispensaryOne,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -117,13 +122,14 @@ namespace PixServiseTests
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    (new SetData()).MinDispensaryOne()
+                    (new SetData()).MinDispensaryOne(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
                 caseDisp.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDispensaryOne(),
-                    (new SetData()).MinTfomsInfo()
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -146,13 +152,14 @@ namespace PixServiseTests
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dispensaryOne
+                    MedRecordData.dispensaryOne,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
                 caseDisp.MedRecords = new MedRecord[]
                 {
                     MedRecordData.dispensaryOne,
-                    (new SetData()).MinTfomsInfo()
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -172,11 +179,13 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp = (new SetData()).MinCaseDispSetForClose();
                 caseDisp.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinDispensaryOne(),
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }
@@ -196,11 +205,13 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
+                CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp = (new SetData()).MinCaseDispSetForClose();
                 caseDisp.MedRecords = new MedRecord[]
                 {
-                    MedRecordData.dispensaryOne
+                    MedRecordData.dispensaryOne,
+                    (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
             }

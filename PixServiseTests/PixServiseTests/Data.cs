@@ -61,7 +61,9 @@ namespace PixServiseTests
 
     public static class DocumentData
     {
-        public static IdentityDocument Passport { get; set; }
+        public static IdentityDocument PatientPassport { get; set; }
+        public static IdentityDocument DoctorPassport { get; set; }
+        public static IdentityDocument GuardianPassport { get; set; }
         public static IdentityDocument SNILS { get; set; }
         public static IdentityDocument OldOMS { get; set; }
         public static IdentityDocument SingleOMS { get; set; }
@@ -73,11 +75,33 @@ namespace PixServiseTests
     {
         static public void SetDocument(string path = "")
         {
-            DocumentData.Passport = new IdentityDocument
+            DocumentData.PatientPassport = new IdentityDocument
             {
                 IdDocumentType = 14,
                 DocS = "2007",
                 DocN = "395731",
+                ProviderName = "УФМС",
+                ExpiredDate = Convert.ToDateTime("19.02.2020"),
+                IssuedDate = Convert.ToDateTime("03.09.2007"),
+                RegionCode = "128",
+            };
+
+            DocumentData.DoctorPassport = new IdentityDocument
+            {
+                IdDocumentType = 14,
+                DocS = "2005",
+                DocN = "395712",
+                ProviderName = "УФМС",
+                ExpiredDate = Convert.ToDateTime("19.02.2020"),
+                IssuedDate = Convert.ToDateTime("03.09.2007"),
+                RegionCode = "128",
+            };
+
+            DocumentData.GuardianPassport = new IdentityDocument
+            {
+                IdDocumentType = 14,
+                DocS = "2003",
+                DocN = "395700",
                 ProviderName = "УФМС",
                 ExpiredDate = Convert.ToDateTime("19.02.2020"),
                 IssuedDate = Convert.ToDateTime("03.09.2007"),
@@ -89,9 +113,9 @@ namespace PixServiseTests
                 IdDocumentType = 223,
                 DocN = "59165576238",
                 ProviderName = "ПФР",
-                ExpiredDate = Convert.ToDateTime("01.12.2010"),
-                IssuedDate = Convert.ToDateTime("03.09.2006"),
-                RegionCode = "128",
+                //ExpiredDate = Convert.ToDateTime("01.12.2010"),
+                //IssuedDate = Convert.ToDateTime("03.09.2006"),
+                //RegionCode = "128",
             };
 
             DocumentData.OldOMS = new IdentityDocument
@@ -401,12 +425,11 @@ namespace PixServiseTests
                 IdPosition = 74,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "123400010",
+                    IdPersonMis = "123400022",
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
                     Documents = new IdentityDocument[]
                     {
-                        DocumentData.Passport,
                         DocumentData.SNILS
                     },
                     HumanName = new HumanName
@@ -429,12 +452,11 @@ namespace PixServiseTests
                 IdPosition = 69,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "123123123256",
+                    IdPersonMis = "123123123259",
                     Sex = 1,
                     Birthdate = new DateTime(1978, 01, 07),
                     Documents = new IdentityDocument[]
                     {
-                        DocumentData.Passport,
                         DocumentData.SNILS
                     },
                     HumanName = new HumanName
@@ -461,8 +483,8 @@ namespace PixServiseTests
                     IdPersonMis = DateTime.Now.ToString(),
                     Documents = new IdentityDocument[]
                     {
-                        DocumentData.Passport,
-                        DocumentData.SNILS
+                        DocumentData.GuardianPassport,
+                        //DocumentData.SNILS
                     },
                     HumanName = new HumanName
                     {
@@ -565,7 +587,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2012, 10, 10),
                 CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "Case " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseAmb " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -594,7 +616,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2010, 10, 10),
                 CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "Case " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -689,7 +711,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2010, 10, 10),
                 CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "Case " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseStat " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -736,7 +758,7 @@ namespace PixServiseTests
                 GivenName = "Дмитрий",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
-                IdPatientMIS = "123456789010",
+                IdPatientMIS = "18.08.2015",
             };
 
             SetDocument();

@@ -19,10 +19,10 @@ namespace PixServiseTests
             patient.Sex = PatientData.Patient.Sex;
             patient.BirthDate = PatientData.Patient.BirthDate;
             PixServise.DocumentDto d = new PixServise.DocumentDto();
-            d.DocN = DocumentData.Passport.DocN;
-            d.IdDocumentType = DocumentData.Passport.IdDocumentType;
-            d.ProviderName = DocumentData.Passport.ProviderName;
-            d.DocS = DocumentData.Passport.DocS;
+            d.DocN = DocumentData.PatientPassport.DocN;
+            d.IdDocumentType = DocumentData.PatientPassport.IdDocumentType;
+            d.ProviderName = DocumentData.PatientPassport.ProviderName;
+            d.DocS = DocumentData.PatientPassport.DocS;
             patient.Documents = new PixServise.DocumentDto []
             {
                 d
@@ -330,6 +330,11 @@ namespace PixServiseTests
                MinStepAmbSet()
             };
 
+            caseDisp.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
+            };
+
             return caseDisp;
         }
 
@@ -361,6 +366,11 @@ namespace PixServiseTests
                MinStepAmbSet()
             };
 
+            caseDisp.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
+            };
+
             return caseDisp;
         }
 
@@ -387,6 +397,11 @@ namespace PixServiseTests
             caseDisp.Authenticator = new Participant
             {
                 Doctor = MinDoctorSet()
+            };
+
+            caseDisp.MedRecords = new MedRecord[]
+            {
+                MinClinicMainDiagnosis()
             };
 
             return caseDisp;

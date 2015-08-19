@@ -13,6 +13,7 @@ namespace PixServiseTests
         static public ArrayList errors3 = new ArrayList();
         static public ArrayList errors2 = new ArrayList();
         static public ArrayList errors1 = new ArrayList();
+        static public int perem = 0;
         static public string errors
         {
             get
@@ -41,8 +42,16 @@ namespace PixServiseTests
         {
             SqlConnection connection = new SqlConnection(_connectionPath);
             connection.Open();
+            perem += 1;
+            connection.Disposed += disp;
             return connection;
         }
+
+        static void disp(object sender, EventArgs e)
+        {
+            perem -= 1;
+        }
+
         static public bool EqualsArrayLists(Array a, Array b)
         {
             if (a.Length == b.Length)
