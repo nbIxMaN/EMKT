@@ -53,7 +53,7 @@ namespace PixServiseTests
         {
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                string findTD = "SELECT TOP(1) * FROM Diagnosis WHERE IdDiagnosis = (SELECT MAX(IdDiagnosis) FROM Diagnosis WHERE IdStep = '" + idStep + "' AND IdDiagnosisType = '" + TestDiagnosis.IdClinicMainDiagnosis + "')";
+                string findTD = "SELECT TOP(1) * FROM Diagnosis WHERE IdDiagnosis = (SELECT MAX(IdDiagnosis) FROM Diagnosis WHERE IdStep = '" + idStep + "' AND IdDiagnosisType = '" + TestDiagnosis.IdClinicMainDiagnosis + "' AND IdParentDiagnosis is NULL)";
                 SqlCommand TDcommand = new SqlCommand(findTD, connection);
                 using (SqlDataReader TDReader = TDcommand.ExecuteReader())
                 {

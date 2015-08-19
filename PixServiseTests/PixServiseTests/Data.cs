@@ -263,7 +263,7 @@ namespace PixServiseTests
                          {
                             IdDiseaseType = 2,
                             DiagnosedDate = new DateTime(2010, 02, 02),
-                            IdDiagnosisType = 1,
+                            IdDiagnosisType = 2,
                             Comment = "Комментарий",
                             DiagnosisChangeReason = 2,
                             DiagnosisStage = 1,
@@ -303,7 +303,7 @@ namespace PixServiseTests
                          {
                             IdDiseaseType = 2,
                             DiagnosedDate = new DateTime(2010, 02, 02),
-                            IdDiagnosisType = 1,
+                            IdDiagnosisType = 2,
                             Comment = "Комментарий",
                             DiagnosisChangeReason = 2,
                             DiagnosisStage = 1,

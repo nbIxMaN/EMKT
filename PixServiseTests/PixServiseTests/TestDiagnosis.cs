@@ -32,7 +32,7 @@ namespace PixServiseTests
                 {
                     string findTD = "";
                     if (IdParentDiagnosis == "")
-                        findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "'";
+                        findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "' AND IdParentDiagnosis IS NULL";
                     else
                         findTD = "SELECT * FROM Diagnosis WHERE IdStep = '" + IdStep + "' AND IdDiagnosisType <> '" + IdClinicMainDiagnosis + "' AND IdParentDiagnosis = '" + IdParentDiagnosis + "'";
                     SqlCommand TDcommand = new SqlCommand(findTD, connection);
