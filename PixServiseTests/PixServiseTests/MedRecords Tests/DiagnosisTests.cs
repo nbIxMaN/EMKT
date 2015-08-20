@@ -10,7 +10,7 @@ using PixServiseTests.EMKServise;
 namespace PixServiseTests
 {
     [TestFixture]
-    class DianosisTests : Data
+    class DiagnosisTests : Data
     {
         [Test]
         public void AddAmbCaseWithMinDiagnosis()

@@ -82,7 +82,7 @@
     <Compile Include="MedRecords Tests\ConsultNoteTests.cs" />
     <Compile Include="Methods Tests\CloseCaseTest.cs" />
     <Compile Include="Methods Tests\CreateCaseTest.cs" />
-    <Compile Include="MedRecords Tests\DianosisTests.cs" />
+    <Compile Include="MedRecords Tests\DiagnosisTests.cs" />
     <Compile Include="MedRecords Tests\DishargeSummaryTests.cs" />
     <Compile Include="MedRecords Tests\DispensaryOneTests.cs" />
     <Compile Include="Data.cs" />
