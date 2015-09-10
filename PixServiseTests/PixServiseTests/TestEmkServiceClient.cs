@@ -215,10 +215,18 @@ namespace PixServiseTests
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
             }
         }
-        //public ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, DateTime startDate, DateTime endDate)
-        //{
-        //    var a = client.GetReferralList(guid, idLpu, idReferralType, startDate, endDate);
-        //}
+        public ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, DateTime startDate, DateTime endDate)
+        {
+            var a = client.GetReferralList(guid, idLpu, idReferralType, startDate, endDate);
+            return a;
+        }
+        public void CancelCase(string guid, string idLpu, string idPatientMis, string idCaseMis)
+        {
+            client.CancelCase(guid, idLpu, idPatientMis, idCaseMis);
+            TestCaseBase cb = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idLpu, idCaseMis, idPatientMis);
+            if (!cb.isCanceld)
+                Global.errors1.Add("Случай не был отменён");
+        }
         ~TestEmkServiceClient()
         {
             client.Close();

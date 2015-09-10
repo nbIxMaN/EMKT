@@ -71,24 +71,14 @@ namespace PixServiseTests
                                 doc.IdDocumentType = Convert.ToByte(documentReader["IdDocumentType"]);
                             if (documentReader["DocS"].ToString() != "")
                                 doc.DocS = Convert.ToString(documentReader["DocS"]);
-                            else
-                                doc.DocS = null;
                             if (documentReader["IdProvider"].ToString() != "")
                                 doc.IdProvider = Convert.ToInt32(documentReader["IdProvider"]);
-                            else
-                                doc.IdProvider = null;
                             if (documentReader["IssuedDate"].ToString() != "")
                                 doc.IssuedDate = Convert.ToDateTime(documentReader["IssuedDate"]);
-                            else
-                                doc.IssuedDate = null;
                             if (documentReader["ExpiredDate"].ToString() != "")
                                 doc.ExpiredDate = Convert.ToDateTime(documentReader["ExpiredDate"]);
-                            else
-                                doc.ExpiredDate = null;
                             if (documentReader["RegionCode"].ToString() != "")
                                 doc.RegionCode = Convert.ToString(documentReader["RegionCode"]);
-                            else
-                                doc.RegionCode = null;
                             TestIdentityDocument document = new TestIdentityDocument(doc);
                             documents.Add(document);
                         }

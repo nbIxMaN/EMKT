@@ -76,8 +76,6 @@ namespace PixServiseTests
                             TestAppointedMedication ta = new TestAppointedMedication(a);
                             if (AMReader["CourseDose"].ToString() != "")
                                 ta.courseDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["CourseDose"].ToString());
-                            else
-                                ta.courseDose = null;
                             if (AMReader["DayDose"].ToString() != "")
                                 ta.dayDose = TestQuantity.BuildQuantityFromDataBaseData(AMReader["DayDose"].ToString());
                             if (AMReader["SingleDose"].ToString() != "")

@@ -30,8 +30,10 @@ namespace PixServiseTests
                     while (contactReader.Read())
                     {
                         ContactDto cont = new ContactDto();
-                        cont.IdContactType = Convert.ToByte(contactReader["IdContactType"]);
-                        cont.ContactValue = Convert.ToString(contactReader["ContactValue"]);
+                        if (contactReader["IdContactType"].ToString() != "")
+                            cont.IdContactType = Convert.ToByte(contactReader["IdContactType"]);
+                        if (contactReader["ContactValue"].ToString() != "")
+                            cont.ContactValue = Convert.ToString(contactReader["ContactValue"]);
                         TestContact contact = new TestContact(cont);
                         contacts.Add(contact);
                     }

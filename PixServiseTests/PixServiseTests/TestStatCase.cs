@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PixServiseTests
 {
-    class TestStatCase
+    class TestStatCase : TestCaseBase
     {
         private const byte IdDeath = 6;
         public string GUID;
@@ -96,6 +96,9 @@ namespace PixServiseTests
                         ConsultNote cn = i as ConsultNote;
                         if (cn != null)
                             records.Add(new TestConsultNote(cn, cs.IdLpu));
+                        AppointedMedication ap = i as AppointedMedication;
+                        if (ap != null)
+                            records.Add(new TestAppointedMedication(ap, cs.IdLpu));
                     }
                 }
                 if ((cs.IdLpu != null) && (cs.IdPatientMis != null))
@@ -144,58 +147,61 @@ namespace PixServiseTests
                                     ca.RW1Mark = Convert.ToBoolean(caseReader["RW1Mark"]);
                                 if (caseReader["AIDSMark"].ToString() != "")
                                     ca.AIDSMark = Convert.ToBoolean(caseReader["AIDSMark"]);
+                                TestStatCase statcase = new TestStatCase(guid, ca);
+                                statcase.caseBase = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idlpu, mis, patientId);
+                                statcase.statSteps = TestStatStep.BuildStatStepsFromDataBase(caseId, ca.IdLpu);
+                                List<TestStepBase> st = TestStepBase.BuildTestStepsFromDataBase(caseId, ca.IdLpu);
+                                if (st != null)
+                                {
+                                    foreach (TestStepBase i in st)
+                                    {
+                                        if (Global.IsEqual(i.doctor, null))
+                                            statcase.defaultStep = i;
+                                    }
+                                    if (!Global.IsEqual(statcase.defaultStep, null))
+                                    {
+                                        statcase.records = new List<TestMedRecord>();
+                                        List<TestService> serv = TestService.BuildServiseFromDataBaseData(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(serv, null))
+                                            statcase.records.AddRange(serv);
+                                        TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(forms, null))
+                                            statcase.records.Add(forms);
+                                        TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(tdi, null))
+                                            statcase.records.Add(tdi);
+                                        List<TestDiagnosis> td = TestDiagnosis.BuildDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(td, null))
+                                            statcase.records.AddRange(td);
+                                        TestClinicMainDiagnosis acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(acdm, null))
+                                            statcase.records.Add(acdm);
+                                        List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(trl, null))
+                                            statcase.records.AddRange(trl);
+                                        List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(statcase.defaultStep.idStep, patientId);
+                                        if (!Global.IsEqual(tsl, null))
+                                            statcase.records.AddRange(tsl);
+                                        TestDischargeSummary tds = TestDischargeSummary.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(tds, null))
+                                            statcase.records.Add(tds);
+                                        List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(tlr, null))
+                                            statcase.records.AddRange(tlr);
+                                        TestConsultNote tcn = TestConsultNote.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(tcn, null))
+                                            statcase.records.Add(tcn);
+                                        List<TestAppointedMedication> ap = TestAppointedMedication.BuildAppointedMedicationFromDataBaseDate(statcase.defaultStep.idStep);
+                                        if (!Global.IsEqual(ap, null))
+                                            statcase.records.AddRange(ap);
+                                        if (statcase.records.Count == 0)
+                                            statcase.records = null;
+                                    }
+                                }
+                                return statcase;
                             }
                         }
                     }
-                    TestStatCase statcase = new TestStatCase(guid, ca);
-                    statcase.caseBase = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idlpu, mis, patientId);
-                    statcase.statSteps = TestStatStep.BuildStatStepsFromDataBase(caseId, ca.IdLpu);
-                    List<TestStepBase> st = TestStepBase.BuildTestStepsFromDataBase(caseId, ca.IdLpu);
-                    if (st != null)
-                    {
-                        foreach (TestStepBase i in st)
-                        {
-                            if (Global.IsEqual(i.doctor, null))
-                                statcase.defaultStep = i;
-                        }
-                        if (!Global.IsEqual(statcase.defaultStep, null))
-                        {
-                            statcase.records = new List<TestMedRecord>();
-                            List<TestService> serv = TestService.BuildServiseFromDataBaseData(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(serv, null))
-                                statcase.records.AddRange(serv);
-                            TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(forms, null))
-                                statcase.records.Add(forms);
-                            TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(tdi, null))
-                                statcase.records.Add(tdi);
-                            List<TestDiagnosis> td = TestDiagnosis.BuildDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(td, null))
-                                statcase.records.AddRange(td);
-                            TestClinicMainDiagnosis acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(acdm, null))
-                                statcase.records.Add(acdm);
-                            List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(trl, null))
-                                statcase.records.AddRange(trl);
-                            List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(statcase.defaultStep.idStep, patientId);
-                            if (!Global.IsEqual(tsl, null))
-                                statcase.records.AddRange(tsl);
-                            TestDischargeSummary tds = TestDischargeSummary.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(tds, null))
-                                statcase.records.Add(tds);
-                            List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(tlr, null))
-                                statcase.records.AddRange(tlr);
-                            TestConsultNote tcn = TestConsultNote.BuildSickListFromDataBaseData(statcase.defaultStep.idStep);
-                            if (!Global.IsEqual(tcn, null))
-                                statcase.records.Add(tcn);
-                            if (statcase.records.Count == 0)
-                                statcase.records = null;
-                        }
-                    }
-                    return statcase;
                 }
             }
             return null;
@@ -227,6 +233,7 @@ namespace PixServiseTests
                     TestClinicMainDiagnosis cmd = null;
                     TestDischargeSummary ds = null;
                     TestConsultNote cn = null;
+                    TestDeathInfo tdi = null;
                     foreach (object i in cs.MedRecords)
                     {
                         Service ser = i as Service;
@@ -259,6 +266,12 @@ namespace PixServiseTests
                         ConsultNote pcn = i as ConsultNote;
                         if (pcn != null)
                             cn = new TestConsultNote(pcn, cs.IdLpu);
+                        AppointedMedication ap = i as AppointedMedication;
+                        if (ap != null)
+                            newMedRecords.Add(new TestAppointedMedication(ap, cs.IdLpu));
+                        DeathInfo di = i as DeathInfo;
+                        if (di != null)
+                            tdi = new TestDeathInfo(di);
                     }
                     if (Global.GetLength(this.medRecords) != 0)
                     {
@@ -303,6 +316,15 @@ namespace PixServiseTests
                             else
                                 if (!Global.IsEqual(pcn, null))
                                     newMedRecords.Add(pcn);
+                            TestAppointedMedication ap = i as TestAppointedMedication;
+                            if (!Global.IsEqual(ap, null))
+                                newMedRecords.Add(ap);
+                            TestDeathInfo di = i as TestDeathInfo;
+                            if (!Global.IsEqual(tdi, null) && (!Global.IsEqual(di, null)))
+                                newMedRecords.Add(di);
+                            else
+                                if (!Global.IsEqual(tdi, null))
+                                    newMedRecords.Add(tdi);
                         }
                     }
                     else
@@ -315,6 +337,8 @@ namespace PixServiseTests
                             newMedRecords.Add(ds);
                         if (!Global.IsEqual(cn, null))
                             newMedRecords.Add(cn);
+                        if (!Global.IsEqual(tdi, null))
+                            newMedRecords.Add(tdi);
                     }
                     this.records = newMedRecords;
                 }
@@ -349,7 +373,7 @@ namespace PixServiseTests
         {
             string patientId = TestPerson.GetPersonId(GUID, caseBase.caseBase.IdLpu, caseBase.patient.patient.IdPatientMIS);
             TestStatCase ac = TestStatCase.BuildAmbCaseFromDataBaseData(GUID, caseBase.caseBase.IdLpu, caseBase.caseBase.IdCaseMis, patientId);
-            //this.Equals(ac);
+            this.Equals(ac);
             return (this == ac);
         }
         public override bool Equals(Object obj)

@@ -80,6 +80,7 @@
     <Compile Include="Methods Tests\AddStepToCaseTest.cs" />
     <Compile Include="Methods Tests\AddCaseTest.cs" />
     <Compile Include="MedRecords Tests\ConsultNoteTests.cs" />
+    <Compile Include="Methods Tests\CancelCaseTest.cs" />
     <Compile Include="Methods Tests\CloseCaseTest.cs" />
     <Compile Include="Methods Tests\CreateCaseTest.cs" />
     <Compile Include="MedRecords Tests\DiagnosisTests.cs" />
@@ -94,6 +95,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Service References\EMKServise\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MiacStatistics\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -131,6 +137,7 @@
     <Compile Include="TestLaboratoryReport.cs" />
     <Compile Include="TestMasterCase.cs" />
     <Compile Include="TestMedRecord.cs" />
+    <Compile Include="TestMiacClient.cs" />
     <Compile Include="TestParticipant.cs" />
     <Compile Include="TestPatient.cs" />
     <Compile Include="TestPerson.cs" />
@@ -204,6 +211,13 @@
     <None Include="Service References\EMKServise\PixServiseTests.EMKServise.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\MiacStatistics\MiacStatisticService.wsdl" />
+    <None Include="Service References\MiacStatistics\PixServiseTests.MiacStatistics.CaseBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MiacStatistics\PixServiseTests.MiacStatistics.VersionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PixServise\PixService.wsdl" />
     <None Include="Service References\PixServise\PixService.xsd">
       <SubType>Designer</SubType>
@@ -235,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EMKServise\" />
+    <WCFMetadataStorage Include="Service References\MiacStatistics\" />
     <WCFMetadataStorage Include="Service References\PixServise\" />
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +290,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpverify\cpverify.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MiacStatistics\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MiacStatistics\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MiacStatistics\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

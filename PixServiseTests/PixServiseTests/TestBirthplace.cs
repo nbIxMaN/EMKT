@@ -37,9 +37,12 @@ namespace PixServiseTests
                                 BirthPlaceDto birthp = new BirthPlaceDto();
                                 while (addressesReader.Read())
                                 {
-                                    birthp.Country = Convert.ToString(addressesReader["Country"]);
-                                    birthp.Region = Convert.ToString(addressesReader["Region"]);
-                                    birthp.City = Convert.ToString(addressesReader["CityName"]);
+                                    if (addressesReader["Country"].ToString() != "")
+                                        birthp.Country = Convert.ToString(addressesReader["Country"]);
+                                    if (addressesReader["Region"].ToString() != "")
+                                        birthp.Region = Convert.ToString(addressesReader["Region"]);
+                                    if (addressesReader["CityName"].ToString() != "")
+                                        birthp.City = Convert.ToString(addressesReader["CityName"]);
                                 }
                                 return (new TestBirthplace(birthp));
                             }

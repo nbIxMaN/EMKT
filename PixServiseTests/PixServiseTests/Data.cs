@@ -65,6 +65,7 @@ namespace PixServiseTests
         public static IdentityDocument DoctorPassport { get; set; }
         public static IdentityDocument GuardianPassport { get; set; }
         public static IdentityDocument SNILS { get; set; }
+        public static IdentityDocument PatientSNILS { get; set; }
         public static IdentityDocument OldOMS { get; set; }
         public static IdentityDocument SingleOMS { get; set; }
         public static IdentityDocument OtherDoc { get; set; }
@@ -78,14 +79,22 @@ namespace PixServiseTests
             DocumentData.PatientPassport = new IdentityDocument
             {
                 IdDocumentType = 14,
-                DocS = "2007",
+                DocS = "2621",
                 DocN = "395731",
                 ProviderName = "УФМС",
                 ExpiredDate = Convert.ToDateTime("19.02.2020"),
                 IssuedDate = Convert.ToDateTime("03.09.2007"),
                 RegionCode = "128",
             };
-
+            DocumentData.PatientSNILS = new IdentityDocument
+            {
+                IdDocumentType = 223,
+                DocN = "12345678900",
+                ProviderName = "ПФР",
+                //ExpiredDate = Convert.ToDateTime("01.12.2010"),
+                //IssuedDate = Convert.ToDateTime("03.09.2006"),
+                //RegionCode = "128",
+            };
             DocumentData.DoctorPassport = new IdentityDocument
             {
                 IdDocumentType = 14,
@@ -410,7 +419,7 @@ namespace PixServiseTests
             MedRecordData.consultNote = new ConsultNote
             {
                 CreationDate = new DateTime(2010, 02, 02),
-                Header = "Header",
+                Header = "HeaderHeaderHeaderHeaderHeaderHeaderHeaderHeader",
                 Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
             };
@@ -758,7 +767,7 @@ namespace PixServiseTests
                 GivenName = "Дмитрий",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
-                IdPatientMIS = "18.08.2015",
+                IdPatientMIS = "21.08.2015",
             };
 
             SetDocument();

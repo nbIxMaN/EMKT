@@ -60,29 +60,22 @@ namespace PixServiseTests
                         while (documentReader.Read())
                         {
                             DocumentDto doc = new DocumentDto();
-                            doc.DocN = Convert.ToString(documentReader["DocN"]);
-                            doc.ProviderName = Convert.ToString(documentReader["ProviderName"]);
-                            doc.IdDocumentType = Convert.ToByte(documentReader["IdDocumentType"]);
+                            if (documentReader["DocN"].ToString() != "")
+                                doc.DocN = Convert.ToString(documentReader["DocN"]);
+                            if (documentReader["ProviderName"].ToString() != "")
+                                doc.ProviderName = Convert.ToString(documentReader["ProviderName"]);
+                            if (documentReader["IdDocumentType"].ToString() != "")
+                                doc.IdDocumentType = Convert.ToByte(documentReader["IdDocumentType"]);
                             if (documentReader["DocS"].ToString() != "")
                                 doc.DocS = Convert.ToString(documentReader["DocS"]);
-                            else
-                                doc.DocS = null;
                             if (documentReader["IdProvider"].ToString() != "")
                                 doc.IdProvider = Convert.ToString(documentReader["IdProvider"]);
-                            else
-                                doc.IdProvider = null;
                             if (documentReader["IssuedDate"].ToString() != "")
                                 doc.IssuedDate = Convert.ToDateTime(documentReader["IssuedDate"]);
-                            else
-                                doc.IssuedDate = null;
                             if (documentReader["ExpiredDate"].ToString() != "")
                                 doc.ExpiredDate = Convert.ToDateTime(documentReader["ExpiredDate"]);
-                            else
-                                doc.ExpiredDate = null;
                             if (documentReader["RegionCode"].ToString() != "")
                                 doc.RegionCode = Convert.ToString(documentReader["RegionCode"]);
-                            else
-                                doc.RegionCode = null;
                             TestDocument document = new TestDocument(doc);
                             documents.Add(document);
                         }
