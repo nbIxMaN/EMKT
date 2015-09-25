@@ -30,11 +30,11 @@
   <wsdl:message name="IEmkService_AddCase_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCaseResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmkService_AddCase_ListOf_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q1:ArrayOfRequestFault" />
-  </wsdl:message>
   <wsdl:message name="IEmkService_AddCase_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q2:RequestFault" />
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q1:RequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IEmkService_AddCase_ListOf_RequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q2:ArrayOfRequestFault" />
   </wsdl:message>
   <wsdl:message name="IEmkService_CreateCase_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateCase" />
@@ -54,11 +54,11 @@
   <wsdl:message name="IEmkService_CloseCase_OutputMessage">
     <wsdl:part name="parameters" element="tns:CloseCaseResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmkService_CloseCase_ListOf_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q5:ArrayOfRequestFault" />
-  </wsdl:message>
   <wsdl:message name="IEmkService_CloseCase_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q6:RequestFault" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q5:RequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IEmkService_CloseCase_ListOf_RequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q6:ArrayOfRequestFault" />
   </wsdl:message>
   <wsdl:message name="IEmkService_UpdateCase_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCase" />
@@ -66,11 +66,11 @@
   <wsdl:message name="IEmkService_UpdateCase_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCaseResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmkService_UpdateCase_ListOf_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q7:ArrayOfRequestFault" />
-  </wsdl:message>
   <wsdl:message name="IEmkService_UpdateCase_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q8:RequestFault" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q7:RequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IEmkService_UpdateCase_ListOf_RequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q8:ArrayOfRequestFault" />
   </wsdl:message>
   <wsdl:message name="IEmkService_AddMedRecord_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMedRecord" />
@@ -102,11 +102,11 @@
   <wsdl:message name="IEmkService_GetReferralList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetReferralListResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmkService_GetReferralList_ListOf_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q13:ArrayOfRequestFault" />
-  </wsdl:message>
   <wsdl:message name="IEmkService_GetReferralList_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q14:RequestFault" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q13:RequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IEmkService_GetReferralList_ListOf_RequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q14:ArrayOfRequestFault" />
   </wsdl:message>
   <wsdl:message name="IEmkService_CancelCase_InputMessage">
     <wsdl:part name="parameters" element="tns:CancelCase" />
@@ -114,11 +114,11 @@
   <wsdl:message name="IEmkService_CancelCase_OutputMessage">
     <wsdl:part name="parameters" element="tns:CancelCaseResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmkService_CancelCase_ListOf_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q15:ArrayOfRequestFault" />
-  </wsdl:message>
   <wsdl:message name="IEmkService_CancelCase_RequestFaultFault_FaultMessage">
-    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q16:RequestFault" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q15:RequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IEmkService_CancelCase_ListOf_RequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Common" name="detail" element="q16:ArrayOfRequestFault" />
   </wsdl:message>
   <wsdl:portType name="IEmkService">
     <wsdl:operation name="GetVersion">
@@ -128,8 +128,8 @@
     <wsdl:operation name="AddCase">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/AddCase" message="tns:IEmkService_AddCase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmkService/AddCaseResponse" message="tns:IEmkService_AddCase_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/AddCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_AddCase_ListOf_RequestFaultFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/AddCaseRequestFaultFault" name="RequestFaultFault" message="tns:IEmkService_AddCase_RequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/AddCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_AddCase_ListOf_RequestFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateCase">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/CreateCase" message="tns:IEmkService_CreateCase_InputMessage" />
@@ -140,14 +140,14 @@
     <wsdl:operation name="CloseCase">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/CloseCase" message="tns:IEmkService_CloseCase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmkService/CloseCaseResponse" message="tns:IEmkService_CloseCase_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/CloseCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_CloseCase_ListOf_RequestFaultFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/CloseCaseRequestFaultFault" name="RequestFaultFault" message="tns:IEmkService_CloseCase_RequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/CloseCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_CloseCase_ListOf_RequestFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateCase">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/UpdateCase" message="tns:IEmkService_UpdateCase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmkService/UpdateCaseResponse" message="tns:IEmkService_UpdateCase_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/UpdateCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_UpdateCase_ListOf_RequestFaultFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/UpdateCaseRequestFaultFault" name="RequestFaultFault" message="tns:IEmkService_UpdateCase_RequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/UpdateCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_UpdateCase_ListOf_RequestFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddMedRecord">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/AddMedRecord" message="tns:IEmkService_AddMedRecord_InputMessage" />
@@ -164,14 +164,14 @@
     <wsdl:operation name="GetReferralList">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/GetReferralList" message="tns:IEmkService_GetReferralList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmkService/GetReferralListResponse" message="tns:IEmkService_GetReferralList_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/GetReferralListListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_GetReferralList_ListOf_RequestFaultFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/GetReferralListRequestFaultFault" name="RequestFaultFault" message="tns:IEmkService_GetReferralList_RequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/GetReferralListListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_GetReferralList_ListOf_RequestFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CancelCase">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmkService/CancelCase" message="tns:IEmkService_CancelCase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmkService/CancelCaseResponse" message="tns:IEmkService_CancelCase_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/CancelCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_CancelCase_ListOf_RequestFaultFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/CancelCaseRequestFaultFault" name="RequestFaultFault" message="tns:IEmkService_CancelCase_RequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEmkService/CancelCaseListOf_RequestFaultFault" name="ListOf_RequestFaultFault" message="tns:IEmkService_CancelCase_ListOf_RequestFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEmkService" type="tns:IEmkService">
@@ -193,11 +193,11 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ListOf_RequestFaultFault">
-        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
-      </wsdl:fault>
       <wsdl:fault name="RequestFaultFault">
         <soap:fault use="literal" name="RequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ListOf_RequestFaultFault">
+        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateCase">
@@ -223,11 +223,11 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ListOf_RequestFaultFault">
-        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
-      </wsdl:fault>
       <wsdl:fault name="RequestFaultFault">
         <soap:fault use="literal" name="RequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ListOf_RequestFaultFault">
+        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateCase">
@@ -238,11 +238,11 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ListOf_RequestFaultFault">
-        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
-      </wsdl:fault>
       <wsdl:fault name="RequestFaultFault">
         <soap:fault use="literal" name="RequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ListOf_RequestFaultFault">
+        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="AddMedRecord">
@@ -283,11 +283,11 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ListOf_RequestFaultFault">
-        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
-      </wsdl:fault>
       <wsdl:fault name="RequestFaultFault">
         <soap:fault use="literal" name="RequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ListOf_RequestFaultFault">
+        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CancelCase">
@@ -298,11 +298,11 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ListOf_RequestFaultFault">
-        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
-      </wsdl:fault>
       <wsdl:fault name="RequestFaultFault">
         <soap:fault use="literal" name="RequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ListOf_RequestFaultFault">
+        <soap:fault use="literal" name="ListOf_RequestFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

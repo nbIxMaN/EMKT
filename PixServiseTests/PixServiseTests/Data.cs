@@ -23,7 +23,7 @@ namespace PixServiseTests
     public static class CaseDispData
     {
         public static CaseAmb caseDisp { get; set; }
-        public static StepAmb step { get; set; }
+        public static StepAmb stepDisp { get; set; }
     }
 
     public static class CaseStatData
@@ -73,7 +73,7 @@ namespace PixServiseTests
     [TestFixture]
     public abstract class Data
     {
-        static public void SetDocument(string path = "")
+        static public void SetDocument()
         {
             DocumentData.PatientPassport = new IdentityDocument
             {
@@ -158,8 +158,8 @@ namespace PixServiseTests
         {
             MedRecordData.service = new Service
             {
-                DateStart = new DateTime(2010, 11, 1),
-                DateEnd = new DateTime(2010, 11, 10),
+                DateStart = new DateTime(2012, 11, 1),
+                DateEnd = new DateTime(2012, 11, 10),
                 IdServiceType = "A01.01.001.001",
                 ServiceName = "Название услуги",
                 Performer = new Participant
@@ -189,7 +189,7 @@ namespace PixServiseTests
             {
                 AnatomicTherapeuticChemicalClassification = "A",
                 DaysCount = 5,
-                IssuedDate = new DateTime(2010, 03, 06),
+                IssuedDate = new DateTime(2012, 03, 06),
                 MedicineIssueType = "PRE",
                 MedicineName = "Валерьянка",
                 MedicineType = 136,
@@ -216,7 +216,7 @@ namespace PixServiseTests
 
             MedRecordData.deathInfo = new DeathInfo
             {
-                MkbCode = "A00",
+                MkbCode = "M00",
             };
 
             MedRecordData.diagnosis = new Diagnosis
@@ -224,7 +224,7 @@ namespace PixServiseTests
                 DiagnosisInfo = new DiagnosisInfo
                 {
                     IdDiseaseType = 1,
-                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    DiagnosedDate = new DateTime(2012, 02, 02),
                     IdDiagnosisType = 2,
                     Comment = "Комментарий",
                     DiagnosisChangeReason = 2,
@@ -233,7 +233,7 @@ namespace PixServiseTests
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
                     MedicalStandard = 211010,
-                    MkbCode = "A00",
+                    MkbCode = "F00",
                 },
                 Doctor = SetDoctor(),
             };
@@ -243,16 +243,16 @@ namespace PixServiseTests
                 DiagnosisInfo = new DiagnosisInfo
                 {
                     IdDiseaseType = 1,
-                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    DiagnosedDate = new DateTime(2012, 02, 02),
                     IdDiagnosisType = 1,
                     Comment = "Комментарий",
                     DiagnosisChangeReason = 2,
-                    DiagnosisStage = 1,
+                    DiagnosisStage = 3,
                     IdDispensaryState = 8,
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
                     MedicalStandard = 211010,
-                    MkbCode = "A00",
+                    MkbCode = "D00",
                 },
                 Doctor = SetDoctor(),
                 Complications = new Diagnosis[]
@@ -262,16 +262,16 @@ namespace PixServiseTests
                          DiagnosisInfo = new DiagnosisInfo
                          {
                             IdDiseaseType = 2,
-                            DiagnosedDate = new DateTime(2010, 02, 02),
+                            DiagnosedDate = new DateTime(2012, 02, 02),
                             IdDiagnosisType = 2,
                             Comment = "Комментарий",
                             DiagnosisChangeReason = 2,
-                            DiagnosisStage = 1,
+                            DiagnosisStage = 3,
                             IdDispensaryState = 8,
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
                             MedicalStandard = 211010,
-                            MkbCode = "A00",
+                            MkbCode = "C00",
                         },
                         Doctor = SetDoctor(),
                      }
@@ -283,11 +283,11 @@ namespace PixServiseTests
                 DiagnosisInfo = new DiagnosisInfo
                 {
                     IdDiseaseType = 1,
-                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    DiagnosedDate = new DateTime(2012, 02, 02),
                     IdDiagnosisType = 1,
                     Comment = "Комментарий",
                     DiagnosisChangeReason = 2,
-                    DiagnosisStage = 1,
+                    DiagnosisStage = 4,
                     IdDispensaryState = 8,
                     IdTraumaType = 1,
                     MESImplementationFeature = 10,
@@ -302,16 +302,16 @@ namespace PixServiseTests
                          DiagnosisInfo = new DiagnosisInfo
                          {
                             IdDiseaseType = 2,
-                            DiagnosedDate = new DateTime(2010, 02, 02),
+                            DiagnosedDate = new DateTime(2012, 02, 02),
                             IdDiagnosisType = 2,
                             Comment = "Комментарий",
                             DiagnosisChangeReason = 2,
-                            DiagnosisStage = 1,
+                            DiagnosisStage = 4,
                             IdDispensaryState = 8,
                             IdTraumaType = 1,
                             MESImplementationFeature = 10,
                             MedicalStandard = 211010,
-                            MkbCode = "A00",
+                            MkbCode = "B00",
                         },
                         Doctor = SetDoctor(),
                      }
@@ -320,7 +320,7 @@ namespace PixServiseTests
 
             MedRecordData.dispensaryOne = new DispensaryOne
             {
-                CreationDate = new DateTime(2010, 02, 02),
+                CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
                 IsGuested = true,
                 HasExpertCareRefferal = true,
@@ -345,7 +345,7 @@ namespace PixServiseTests
                     new Recommendation
                     {
                          Doctor = SetDoctor(),
-                         Date = new DateTime(2010,02,04),
+                         Date = new DateTime(2012,02,04),
                          Text = "Текст рекомендации",
                     }
                 }
@@ -353,7 +353,7 @@ namespace PixServiseTests
 
             MedRecordData.referral = new Referral
             {
-                CreationDate = new DateTime(2010, 02, 02),
+                CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
                 IdSourceLpu = "1.2.643.5.1.13.3.25.78.118",
                 IdTargetLpu = "1.2.643.5.1.13.3.25.78.118",
@@ -366,7 +366,7 @@ namespace PixServiseTests
                     Reason = "Потому что",
                     IdReferralMis = "idReferralMis2983",
                     IdReferralType = 1,
-                    IssuedDateTime = new DateTime(2010, 02, 05),
+                    IssuedDateTime = new DateTime(2012, 02, 05),
                     HospitalizationOrder = 2,
                     MkbCode = "A00.0",
                 },
@@ -375,15 +375,15 @@ namespace PixServiseTests
 
             MedRecordData.sickList = new SickList
             {
-                CreationDate = new DateTime(2010, 02, 02),
+                CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
                 Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
                 SickListInfo = new SickListInfo
                 {
                     Number = "341234567890",
-                    DateStart = new DateTime(2010, 02, 02),
-                    DateEnd = new DateTime(2010, 02, 22),
+                    DateStart = new DateTime(2012, 02, 02),
+                    DateEnd = new DateTime(2012, 02, 22),
                     DisabilityDocState = 1,
                     DisabilityDocReason = 1,
                     IsPatientTaker = false,
@@ -393,7 +393,7 @@ namespace PixServiseTests
 
             MedRecordData.dischargeSummary = new DischargeSummary
             {
-                CreationDate = new DateTime(2010, 02, 02),
+                CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
                 Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
@@ -409,7 +409,7 @@ namespace PixServiseTests
 
             MedRecordData.consultNote = new ConsultNote
             {
-                CreationDate = new DateTime(2010, 02, 02),
+                CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
                 Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
                 Author = SetDoctor(),
@@ -613,8 +613,8 @@ namespace PixServiseTests
             };
             CaseDispData.caseDisp = new CaseAmb
             {
-                OpenDate = new DateTime(2010, 10, 10),
-                CloseDate = new DateTime(2010, 10, 14),
+                OpenDate = new DateTime(2012, 10, 10),
+                CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
                 IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
@@ -668,8 +668,8 @@ namespace PixServiseTests
 
             CaseStatData.step = new StepStat
             {
-                DateStart = new DateTime(2010, 10, 10),
-                DateEnd = new DateTime(2010, 10, 14),
+                DateStart = new DateTime(2012, 10, 10),
+                DateEnd = new DateTime(2012, 10, 14),
                 IdStepMis = "Step " + DateTime.Now.ToString(),
                 IdPaymentType = 1,
                 Comment = "Comment",
@@ -688,8 +688,8 @@ namespace PixServiseTests
 
             CaseStatData.otherStep = new StepStat
             {
-                DateStart = new DateTime(2010, 09, 09),
-                DateEnd = new DateTime(2011, 10, 14),
+                DateStart = new DateTime(2012, 09, 09),
+                DateEnd = new DateTime(2012, 10, 14),
                 IdStepMis = "OtherStep " + DateTime.Now.ToString(),
                 IdPaymentType = 2,
                 Comment = "OtherComment",
@@ -708,8 +708,8 @@ namespace PixServiseTests
 
             CaseStatData.caseStat = new CaseStat
             {
-                OpenDate = new DateTime(2010, 10, 10),
-                CloseDate = new DateTime(2010, 10, 14),
+                OpenDate = new DateTime(2012, 10, 10),
+                CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
                 IdCaseMis = "CaseStat " + DateTime.Now.ToString(),
                 IdPaymentType = 1,

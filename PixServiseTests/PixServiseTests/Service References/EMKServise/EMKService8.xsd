@@ -2,16 +2,6 @@
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.Diag" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec.Diag" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" />
   <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" />
-  <xs:complexType name="ClinicMainDiagnosis">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:Diagnosis">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Complications" nillable="true" type="tns:ArrayOfDiagnosis" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ClinicMainDiagnosis" nillable="true" type="tns:ClinicMainDiagnosis" />
   <xs:complexType name="Diagnosis">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" base="q1:MedRecord">
@@ -39,6 +29,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DiagnosisInfo" nillable="true" type="tns:DiagnosisInfo" />
+  <xs:complexType name="ClinicMainDiagnosis">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Diagnosis">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Complications" nillable="true" type="tns:ArrayOfDiagnosis" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClinicMainDiagnosis" nillable="true" type="tns:ClinicMainDiagnosis" />
+  <xs:complexType name="ArrayOfDiagnosis">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Diagnosis" nillable="true" type="tns:Diagnosis" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDiagnosis" nillable="true" type="tns:ArrayOfDiagnosis" />
   <xs:complexType name="AnatomopathologicalClinicMainDiagnosis">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:ClinicMainDiagnosis">
@@ -47,10 +53,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AnatomopathologicalClinicMainDiagnosis" nillable="true" type="tns:AnatomopathologicalClinicMainDiagnosis" />
-  <xs:complexType name="ArrayOfDiagnosis">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Diagnosis" nillable="true" type="tns:Diagnosis" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDiagnosis" nillable="true" type="tns:ArrayOfDiagnosis" />
 </xs:schema>

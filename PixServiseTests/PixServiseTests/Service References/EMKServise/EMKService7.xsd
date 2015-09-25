@@ -11,6 +11,16 @@
     <xs:sequence />
   </xs:complexType>
   <xs:element name="MedRecord" nillable="true" type="tns:MedRecord" />
+  <xs:complexType name="DeathInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeathInfo" nillable="true" type="tns:DeathInfo" />
   <xs:complexType name="AppointedMedication">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MedRecord">
@@ -70,14 +80,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PaymentInfo" nillable="true" type="tns:PaymentInfo" />
-  <xs:complexType name="DeathInfo">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:MedRecord">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="DeathInfo" nillable="true" type="tns:DeathInfo" />
 </xs:schema>
