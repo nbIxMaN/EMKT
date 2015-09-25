@@ -81,6 +81,9 @@ namespace PixServiseTests
                             TestDispensaryOne d1 = TestDispensaryOne.BuildSickListFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(d1, null))
                                 mcase.records.Add(d1);
+                            List<TestAppointedMedication> ap = TestAppointedMedication.BuildAppointedMedicationFromDataBaseDate(mcase.defaultStep.idStep);
+                            if (!Global.IsEqual(ap, null))
+                                mcase.records.AddRange(ap);
                         }
                     }
                     return mcase;
@@ -128,6 +131,9 @@ namespace PixServiseTests
             DispensaryOne d1 = i as DispensaryOne;
             if ((d1 != null) && (caseBase.idCaseType == dispensaryId))
                 doc = new TestDispensaryOne(d1, idLpu);
+            AppointedMedication ap = i as AppointedMedication;
+            if (ap != null)
+                doc = new TestAppointedMedication(ap, idLpu);
             if (Global.IsEqual(doc, null))
             {
                 Global.errors1.Add("Документ не найден");

@@ -45,20 +45,14 @@ namespace PixServiseTests
                                 if (ata != null)
                                     at.Data = ata;
                             }
-                            else
-                                at.Data = null;
                             if (docsReader["AttachmentHash"].ToString() != "")
                             {
                                 byte[] ath = docsReader["AttachmentHash"] as byte[];
                                 if (ath != null)
                                     at.Hash = ath;
                             }
-                            else
-                                at.Hash = null;
                             if (docsReader["AttachmentURL"].ToString() != "")
                                 at.Url = new Uri(Convert.ToString(docsReader["AttachmentURL"]));
-                            else
-                                at.Url = null;
                             if (docsReader["MIMEType"].ToString() != "")
                                 at.MimeType = docsReader["MIMEType"].ToString();
                             TestAttachment t = new TestAttachment(at);

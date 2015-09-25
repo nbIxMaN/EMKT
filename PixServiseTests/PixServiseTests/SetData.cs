@@ -23,9 +23,13 @@ namespace PixServiseTests
             d.IdDocumentType = DocumentData.PatientPassport.IdDocumentType;
             d.ProviderName = DocumentData.PatientPassport.ProviderName;
             d.DocS = DocumentData.PatientPassport.DocS;
+            PixServise.DocumentDto s = new PixServise.DocumentDto();
+            s.DocN = DocumentData.PatientSNILS.DocN;
+            s.IdDocumentType = DocumentData.PatientSNILS.IdDocumentType;
+            s.ProviderName = DocumentData.PatientSNILS.ProviderName;
             patient.Documents = new PixServise.DocumentDto []
             {
-                d
+                s
             };
 
             return patient;
@@ -462,7 +466,6 @@ namespace PixServiseTests
             caseAmb.IdLpu = CaseAmbData.caseAmb.IdLpu;
             caseAmb.IdPatientMis = CaseAmbData.caseAmb.IdPatientMis;
             caseAmb.IdCaseType = CaseAmbData.caseAmb.IdCaseType;
-
             caseAmb.Author = new Participant
             {
                 Doctor = MinDoctorSet()

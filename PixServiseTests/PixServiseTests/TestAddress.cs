@@ -52,32 +52,22 @@ namespace PixServiseTests
                                     while (addressesReader.Read())
                                     {
                                         AddressDto address = new AddressDto();
-                                        address.IdAddressType = Convert.ToByte(addressesIdReader["IdAddressType"]);
-                                        address.StringAddress = Convert.ToString(addressesReader["StringAddress"]);
+                                        if (addressesIdReader["IdAddressType"].ToString() != "")
+                                            address.IdAddressType = Convert.ToByte(addressesIdReader["IdAddressType"]);
+                                        if (addressesReader["StringAddress"].ToString() != "")
+                                            address.StringAddress = Convert.ToString(addressesReader["StringAddress"]);
                                         if (addressesReader["IdKladrCity"].ToString() != "")
                                             address.City = Convert.ToString(addressesReader["IdKladrCity"]);
-                                        else
-                                            address.City = null;
                                         if (addressesReader["IdKladrStreet"].ToString() != "")
                                             address.Street = Convert.ToString(addressesReader["IdKladrStreet"]);
-                                        else
-                                            address.Street = null;
                                         if (addressesReader["Building"].ToString() != "")
                                             address.Building = Convert.ToString(addressesReader["Building"]);
-                                        else
-                                            address.Building = null;
                                         if (addressesReader["Appartment"].ToString() != "")
                                             address.Appartment = Convert.ToString(addressesReader["Appartment"]);
-                                        else
-                                            address.Appartment = null;
                                         if (addressesReader["PostalCode"].ToString() != "")
                                             address.PostalCode = Convert.ToInt32(addressesReader["PostalCode"]);
-                                        else
-                                            address.PostalCode = null;
                                         if (addressesReader["GeoData"].ToString() != "")
                                             address.GeoData = Convert.ToString(addressesReader["GeoData"]);
-                                        else
-                                            address.GeoData = null;
                                         TestAddress a = new TestAddress(address);
                                         addresses.Add(a);
                                     }

@@ -20,7 +20,8 @@ namespace PixServiseTests
         public TestParticipant authenticator;
         public TestParticipant legalAuthenticator;
         public int idCaseType;
-
+        public bool isCanceld;
+        public TestCaseBase(){}
         public TestCaseBase(string guid, CaseBase cb)
         {
             GUID = guid.ToLower();
@@ -64,30 +65,34 @@ namespace PixServiseTests
 
         static public string GetCaseId(string guid, string idlpu, string mis, string patientId)
         {
-            string caseId = "";
-            string findIdCaseString = "";
-            using (SqlConnection connection = Global.GetSqlConnection())
+            if (patientId.ToString() != "")
             {
-                string InstId = Global.GetIdInstitution(idlpu);
-                if (mis != "")
-                    findIdCaseString =
-                    "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
-                else
-                    findIdCaseString =
-                    "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseType = '" + masterCaseId + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
-                SqlCommand command = new SqlCommand(findIdCaseString, connection);
-                using (SqlDataReader IdCaseReader = command.ExecuteReader())
+                string caseId = "";
+                string findIdCaseString = "";
+                using (SqlConnection connection = Global.GetSqlConnection())
                 {
-                    while (IdCaseReader.Read())
+                    string InstId = Global.GetIdInstitution(idlpu);
+                    if (mis != "")
+                        findIdCaseString =
+                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
+                    else
+                        findIdCaseString =
+                        "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = (SELECT MAX(IdCase) FROM \"Case\" WHERE IdCaseType = '" + masterCaseId + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "' AND IdPerson = '" + patientId + "')";
+                    SqlCommand command = new SqlCommand(findIdCaseString, connection);
+                    using (SqlDataReader IdCaseReader = command.ExecuteReader())
                     {
-                        caseId = IdCaseReader["IdCase"].ToString();
+                        while (IdCaseReader.Read())
+                        {
+                            caseId = IdCaseReader["IdCase"].ToString();
+                        }
                     }
                 }
+                if (caseId != "")
+                    return caseId;
+                else
+                    return null;
             }
-            if (caseId != "")
-                return caseId;
-            else
-                return null;
+            return null;
         }
 
         static public TestCaseBase BuildBaseCaseFromDataBaseData(string guid, string idlpu, string mis, string idPerson)
@@ -100,6 +105,7 @@ namespace PixServiseTests
                     string IdDoctor = "";
                     string IdGuardian = "";
                     int idCaseT = 0;
+                    bool isCanceld = false;
                     CaseBase p = new CaseBase();
                     string findCase = "SELECT TOP(1) * FROM \"Case\" WHERE IdCase = '" + caseId + "'";
                     SqlCommand caseCommand = new SqlCommand(findCase, connection);
@@ -145,6 +151,7 @@ namespace PixServiseTests
                                 IdGuardian = Convert.ToString(caseReader["IDGuardian"]);
                             if (caseReader["IdCaseType"].ToString() != "")
                                 idCaseT = Convert.ToInt32(caseReader["IdCaseType"]);
+                            isCanceld = Convert.ToBoolean(caseReader["IsCancelled"]);
                         }
                     }
                     findCase = "SELECT * FROM mm_AccessRole2Case WHERE IdCase = '" + caseId + "'";
@@ -171,6 +178,7 @@ namespace PixServiseTests
                     p.IdLpu = idlpu;
                     TestCaseBase cb = new TestCaseBase(guid, p);
                     cb.idCaseType = idCaseT;
+                    cb.isCanceld = isCanceld;
                     if (IdDoctor != "")
                         cb.doctorInCharge = TestDoctor.BuildTestDoctorFromDataBase(IdDoctor);
                     else

@@ -48,9 +48,10 @@ namespace PixServiseTests
                     while (cpReader.Read())
                     {
                         ContactPersonDto contactPerson = new ContactPersonDto();
-                        contactPerson.IdRelationType = Convert.ToByte(cpReader["IdRealationType"]);
-                        string idPersonRelated = Convert.ToString(cpReader["IdPersonRelated"]);
-                        TestPatient personRelated = TestPatient.BuildPatientFromDataBaseData(patientId: idPersonRelated);
+                        if (cpReader["IdRealationType"].ToString() != "")
+                            contactPerson.IdRelationType = Convert.ToByte(cpReader["IdRealationType"]);
+                        if (cpReader["IdPersonRelated"].ToString() != "");
+                            TestPatient personRelated = TestPatient.BuildPatientFromDataBaseData(patientId: cpReader["IdPersonRelated"].ToString());
                         contactPerson.FamilyName = personRelated.patient.FamilyName;
                         contactPerson.GivenName = personRelated.patient.GivenName;
                         contactPerson.IdPersonMis = personRelated.patient.IdPatientMIS;

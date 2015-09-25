@@ -655,6 +655,103 @@ namespace PixServiseTests.Methods_Tests
                 Assert.Fail(Global.errors);
         }
 
+        [Test]
+        public void AddStatMedRecTfomfsInfo_nonexistentCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
+                //EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                EmkClient.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, MedRecordData.tfomsInfo, "nonexistentCase");
+            }
+            Assert.IsTrue(Global.errors1.Contains(" - Случай обслуживания не найден"), "MedRecord был добавлен");
+        }
+
+        [Test]
+        public void AddAmbMedAppointedMedication_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                EmkClient.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, MedRecordData.appointedMedication, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddStatMedAppointedMedication_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                EmkClient.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, MedRecordData.appointedMedication, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddAmbMedAppointedMedication_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+                EmkClient.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdPatientMis, MedRecordData.appointedMedication, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddStatMedAppointedMedication_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseStat = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                EmkClient.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, MedRecordData.appointedMedication, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         [TearDown]
         public void Clear()
         {

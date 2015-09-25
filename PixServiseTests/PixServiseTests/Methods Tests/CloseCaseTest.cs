@@ -103,6 +103,7 @@ namespace PixServiseTests.Methods_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 CaseStat CaseStatClose = (new SetData()).FullCaseStatSetForClose();
+                //CaseStatClose.Guardian = null;
                 CaseStatClose.MedRecords = new MedRecord[]
                 {
                     (new SetData()).MinService(),

@@ -391,7 +391,7 @@ namespace PixServiseTests
             using (SqlConnection connection = Global.GetSqlConnection())
             {
                 string findIdPersonString =
-                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + patient.IdPatientMIS + "'";
+                    "SELECT * FROM ExternalId WHERE IdPersonMIS = '" + patient.IdPatientMIS + "'";
                 SqlCommand command = new SqlCommand(findIdPersonString, connection);
                 using (SqlDataReader MISreader = command.ExecuteReader())
                 {
