@@ -53,26 +53,6 @@ namespace PixServiseTests
         {
             try
             {
-                //if (c.DoctorInCharge != null)
-                //{
-                //    DeletePerson(guid, c.IdLpu, c.DoctorInCharge.Person.IdPersonMis);
-                //}
-                //if (c.Authenticator.Doctor != null)
-                //{
-                //    DeletePerson(guid, c.IdLpu, c.Authenticator.Doctor.Person.IdPersonMis);
-                //}
-                //if (c.Author.Doctor != null)
-                //{
-                //    DeletePerson(guid, c.IdLpu, c.Author.Doctor.Person.IdPersonMis);
-                //}
-                //if (c.LegalAuthenticator != null)
-                //{
-                //    DeletePerson(guid, c.IdLpu, c.LegalAuthenticator.Doctor.Person.IdPersonMis);
-                //}
-                //if (c.Guardian != null)
-                //{
-                //    DeletePerson(guid, c.IdLpu, c.Guardian.Person.IdPersonMis);
-                //}
                 CaseAmb ca = c as CaseAmb;
                 if ((object)ca != null)
                 {
@@ -215,17 +195,37 @@ namespace PixServiseTests
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
             }
         }
-        public ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, DateTime startDate, DateTime endDate)
-        {
-            var a = client.GetReferralList(guid, idLpu, idReferralType, startDate, endDate);
-            return a;
-        }
+        //public ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, DateTime startDate, DateTime endDate)
+        //{
+        //    List<TestReferralTuple> list = new List<TestReferralTuple>();
+        //    var a = client.GetReferralList(guid, idLpu, idReferralType, startDate, endDate);
+        //    if (a != null)
+        //    {
+        //        foreach (var i in a)
+        //        {
+        //            list.Add(new TestReferralTuple(i));
+        //        }
+        //    }
+        //    Global.IsEqual(a, TestReferralTuple.BuildTestReferralTuple(idReferralType, startDate, endDate));
+        //    return a;
+        //}
         public void CancelCase(string guid, string idLpu, string idPatientMis, string idCaseMis)
         {
-            client.CancelCase(guid, idLpu, idPatientMis, idCaseMis);
-            TestCaseBase cb = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idLpu, idCaseMis, idPatientMis);
-            if (!cb.isCanceld)
-                Global.errors1.Add("Случай не был отменён");
+            try
+            {
+                client.CancelCase(guid, idLpu, idPatientMis, idCaseMis);
+                TestCaseBase cb = TestCaseBase.BuildBaseCaseFromDataBaseData(guid, idLpu, idCaseMis, TestPerson.GetPersonId(guid, idLpu, idPatientMis));
+                if (!cb.isCanceld)
+                    Global.errors1.Add("Случай не был отменён");
+            }
+            catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
+            {
+                getErrors(e.Detail);
+            }
+            catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
+            {
+                Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
+            }
         }
         ~TestEmkServiceClient()
         {

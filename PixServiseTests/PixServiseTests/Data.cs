@@ -18,12 +18,16 @@ namespace PixServiseTests
         public static CaseAmb caseAmb { get; set; }
         public static StepAmb step { get; set; }
         public static StepAmb otherStep { get; set; }
+        public static StepAmb stepWithSnils { get; set; }
+        public static StepAmb stepWithoutSnils { get; set; }
     }
 
     public static class CaseDispData
     {
         public static CaseAmb caseDisp { get; set; }
         public static StepAmb step { get; set; }
+        public static CaseAmb caseDispWithoutSnils { get; set; }
+        public static CaseAmb caseDispWithSnils { get; set; }
     }
 
     public static class CaseStatData
@@ -36,10 +40,18 @@ namespace PixServiseTests
     public static class DoctorData
     {
         public static MedicalStaff doctorInCharge { get; set; }
+        public static MedicalStaff doctorInChargeWithSnils { get; set; }
+        public static MedicalStaff doctorInChargeWithoutSnils { get; set; }
         public static MedicalStaff otherDoctor { get; set; }
         public static Participant authenticator { get; set; }
         public static Participant author { get; set; }
         public static Participant legalAuthenticator { get; set; }
+        public static Participant authenticatorWithSnils { get; set; }
+        public static Participant authorWithSnils { get; set; }
+        public static Participant legalAuthenticatorWithSnils { get; set; }
+        public static Participant authenticatorWithoutSnils { get; set; }
+        public static Participant authorWithoutSnils { get; set; }
+        public static Participant legalAuthenticatorWithoutSnils { get; set; }
         public static Guardian guardian { get; set; }
     }
     public static class MedRecordData
@@ -50,7 +62,11 @@ namespace PixServiseTests
         public static DeathInfo deathInfo { get; set; }
         public static Diagnosis diagnosis { get; set; }
         public static ClinicMainDiagnosis clinicMainDiagnosis { get; set; }
+        public static ClinicMainDiagnosis clinicMainDiagnosisWithSnils { get; set; }
+        public static ClinicMainDiagnosis clinicMainDiagnosisWithOutSnils { get; set; }
         public static DispensaryOne dispensaryOne { get; set; }
+        public static DispensaryOne dispensaryOneWithSnils { get; set; }
+        public static DispensaryOne dispensaryOneWithoutSnils { get; set; }
         public static Referral referral { get; set; }
         public static SickList sickList { get; set; }
         public static DischargeSummary dischargeSummary { get; set; }
@@ -89,7 +105,7 @@ namespace PixServiseTests
             DocumentData.PatientSNILS = new IdentityDocument
             {
                 IdDocumentType = 223,
-                DocN = "12345678900",
+                DocN = "11111111145",
                 ProviderName = "ПФР",
                 //ExpiredDate = Convert.ToDateTime("01.12.2010"),
                 //IssuedDate = Convert.ToDateTime("03.09.2006"),
@@ -287,6 +303,85 @@ namespace PixServiseTests
                  }
             };
 
+            MedRecordData.clinicMainDiagnosisWithSnils = new ClinicMainDiagnosis
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    IdDiseaseType = 1,
+                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    IdDiagnosisType = 1,
+                    Comment = "Комментарий",
+                    DiagnosisChangeReason = 2,
+                    DiagnosisStage = 1,
+                    IdDispensaryState = 8,
+                    IdTraumaType = 1,
+                    MESImplementationFeature = 10,
+                    MedicalStandard = 211010,
+                    MkbCode = "A00",
+                },
+                Doctor = SetDoctorWithSNILS(),
+                Complications = new Diagnosis[]
+                 {
+                     new  Diagnosis
+                     {
+                         DiagnosisInfo = new DiagnosisInfo
+                         {
+                            IdDiseaseType = 2,
+                            DiagnosedDate = new DateTime(2010, 02, 02),
+                            IdDiagnosisType = 2,
+                            Comment = "Комментарий",
+                            DiagnosisChangeReason = 2,
+                            DiagnosisStage = 1,
+                            IdDispensaryState = 8,
+                            IdTraumaType = 1,
+                            MESImplementationFeature = 10,
+                            MedicalStandard = 211010,
+                            MkbCode = "A00",
+                        },
+                        Doctor = SetDoctorWithSNILS(),
+                     }
+                 }
+            };
+            MedRecordData.clinicMainDiagnosisWithOutSnils = new ClinicMainDiagnosis
+            {
+                DiagnosisInfo = new DiagnosisInfo
+                {
+                    IdDiseaseType = 1,
+                    DiagnosedDate = new DateTime(2010, 02, 02),
+                    IdDiagnosisType = 1,
+                    Comment = "Комментарий",
+                    DiagnosisChangeReason = 2,
+                    DiagnosisStage = 1,
+                    IdDispensaryState = 8,
+                    IdTraumaType = 1,
+                    MESImplementationFeature = 10,
+                    MedicalStandard = 211010,
+                    MkbCode = "A00",
+                },
+                Doctor = SetDoctorWithoutSNILS(),
+                Complications = new Diagnosis[]
+                 {
+                     new  Diagnosis
+                     {
+                         DiagnosisInfo = new DiagnosisInfo
+                         {
+                            IdDiseaseType = 2,
+                            DiagnosedDate = new DateTime(2010, 02, 02),
+                            IdDiagnosisType = 2,
+                            Comment = "Комментарий",
+                            DiagnosisChangeReason = 2,
+                            DiagnosisStage = 1,
+                            IdDispensaryState = 8,
+                            IdTraumaType = 1,
+                            MESImplementationFeature = 10,
+                            MedicalStandard = 211010,
+                            MkbCode = "A00",
+                        },
+                        Doctor = SetDoctorWithoutSNILS(),
+                     }
+                 }
+            };
+
             MedRecordData.anatomopathologicalClinicMainDiagnosis = new AnatomopathologicalClinicMainDiagnosis
             {
                 DiagnosisInfo = new DiagnosisInfo
@@ -338,7 +433,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
@@ -354,6 +449,71 @@ namespace PixServiseTests
                     new Recommendation
                     {
                          Doctor = SetDoctor(),
+                         Date = new DateTime(2010,02,04),
+                         Text = "Текст рекомендации",
+                    }
+                }
+            };
+
+            MedRecordData.dispensaryOneWithSnils = new DispensaryOne
+            {
+                CreationDate = new DateTime(2010, 02, 02),
+                Header = "Header",
+                IsGuested = true,
+                HasExpertCareRefferal = true,
+                IsUnderObservation = true,
+                HasExtraResearchRefferal = false,
+                HasPrescribeCure = true,
+                HasHealthResortRefferal = false,
+                HasSecondStageRefferal = false,
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Author = SetDoctorWithSNILS(),
+                HealthGroup = new HealthGroup
+                {
+                    Doctor = SetDoctorWithSNILS(),
+                    HealthGroupInfo = new HealthGroupInfo
+                    {
+                        Date = new DateTime(2010, 02, 03),
+                        IdHealthGroup = 1,
+                    }
+                },
+                Recommendations = new Recommendation[]
+                {
+                    new Recommendation
+                    {
+                         Doctor = SetDoctorWithSNILS(),
+                         Date = new DateTime(2010,02,04),
+                         Text = "Текст рекомендации",
+                    }
+                }
+            };
+            MedRecordData.dispensaryOneWithoutSnils = new DispensaryOne
+            {
+                CreationDate = new DateTime(2010, 02, 02),
+                Header = "Header",
+                IsGuested = true,
+                HasExpertCareRefferal = true,
+                IsUnderObservation = true,
+                HasExtraResearchRefferal = false,
+                HasPrescribeCure = true,
+                HasHealthResortRefferal = false,
+                HasSecondStageRefferal = false,
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Author = SetDoctorWithoutSNILS(),
+                HealthGroup = new HealthGroup
+                {
+                    Doctor = SetDoctorWithoutSNILS(),
+                    HealthGroupInfo = new HealthGroupInfo
+                    {
+                        Date = new DateTime(2010, 02, 03),
+                        IdHealthGroup = 1,
+                    }
+                },
+                Recommendations = new Recommendation[]
+                {
+                    new Recommendation
+                    {
+                         Doctor = SetDoctorWithoutSNILS(),
                          Date = new DateTime(2010,02,04),
                          Text = "Текст рекомендации",
                     }
@@ -404,7 +564,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2010, 02, 02),
                 Header = "Header",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
 
@@ -420,9 +580,58 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2010, 02, 02),
                 Header = "HeaderHeaderHeaderHeaderHeaderHeaderHeaderHeader",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
+        }
+
+        private static MedicalStaff SetDoctorWithoutSNILS()
+        {
+            MedicalStaff doctor = new MedicalStaff
+            {
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdSpeciality = 29,
+                IdPosition = 74,
+                Person = new PersonWithIdentity
+                {
+                    IdPersonMis = "1234testTEST",
+                    Sex = 1,
+                    Birthdate = new DateTime(1974, 01, 07),
+                    HumanName = new HumanName
+                    {
+                        FamilyName = "Иванов",
+                        GivenName = "Дмитрий",
+                        MiddleName = "Александрович",
+                    },
+                }
+            };
+            return doctor;
+        }
+        private static MedicalStaff SetDoctorWithSNILS()
+        {
+            MedicalStaff doctor = new MedicalStaff
+            {
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdSpeciality = 29,
+                IdPosition = 74,
+                Person = new PersonWithIdentity
+                {
+                    IdPersonMis = "1234testTEST",
+                    Sex = 1,
+                    Birthdate = new DateTime(1974, 01, 07),
+                    Documents = new IdentityDocument[]
+                    {
+                        DocumentData.SNILS,
+                    },
+                    HumanName = new HumanName
+                    {
+                        FamilyName = "Иванов",
+                        GivenName = "Дмитрий",
+                        MiddleName = "Александрович",
+                    },
+                }
+            };
+            return doctor;
         }
 
         private static MedicalStaff SetDoctor()
@@ -507,15 +716,16 @@ namespace PixServiseTests
             return guardian;
         }
 
-        private static MedDocument.DocumentAttachment SetAttachment(string path, string url, string mimeType)
+        public static MedDocument.DocumentAttachment SetAttachment(string path, string url, string mimeType)
         {
             MedDocument.DocumentAttachment a = new MedDocument.DocumentAttachment
             {
                 Data = File.ReadAllBytes(path),
                 //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
-                Url = new Uri(url),
+                //Url = new Uri(url),
                 MimeType = mimeType
             };
+            var s = Convert.ToBase64String(a.Data);
             var process = new Process();
             process.StartInfo.FileName = "cpverify.exe";
             process.StartInfo.Arguments = "-mk " + path;
@@ -559,6 +769,46 @@ namespace PixServiseTests
                 Doctor = SetDoctor(),
             };
 
+            DoctorData.doctorInChargeWithSnils = SetDoctorWithSNILS();
+
+            DoctorData.authorWithSnils = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctorWithSNILS(),
+            };
+
+            DoctorData.authenticatorWithSnils = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctorWithSNILS(),
+            };
+
+            DoctorData.legalAuthenticatorWithSnils = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctorWithSNILS(),
+            };
+
+            DoctorData.doctorInChargeWithoutSnils = SetDoctorWithoutSNILS();
+
+            DoctorData.authorWithoutSnils = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctorWithoutSNILS(),
+            };
+
+            DoctorData.authenticatorWithoutSnils = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctorWithoutSNILS(),
+            };
+
+            DoctorData.legalAuthenticatorWithoutSnils = new Participant
+            {
+                IdRole = 1,
+                Doctor = SetDoctorWithoutSNILS(),
+            };
+
             DoctorData.guardian = SetGuardian();
 
             CaseAmbData.step = new StepAmb
@@ -574,6 +824,34 @@ namespace PixServiseTests
                 //MedRecords
 
                 Doctor = SetDoctor(),
+            };
+            CaseAmbData.stepWithSnils = new StepAmb
+            {
+                DateStart = new DateTime(2012, 10, 10),
+                DateEnd = new DateTime(2012, 10, 14),
+                IdStepMis = "Step " + DateTime.Now.ToString(),
+                IdPaymentType = 1,
+                IdVisitPlace = 1,
+                IdVisitPurpose = 1,
+                Comment = "Comment",
+
+                //MedRecords
+
+                Doctor = SetDoctorWithSNILS(),
+            };
+            CaseAmbData.stepWithoutSnils = new StepAmb
+            {
+                DateStart = new DateTime(2012, 10, 10),
+                DateEnd = new DateTime(2012, 10, 14),
+                IdStepMis = "Step " + DateTime.Now.ToString(),
+                IdPaymentType = 1,
+                IdVisitPlace = 1,
+                IdVisitPurpose = 1,
+                Comment = "Comment",
+
+                //MedRecords
+
+                Doctor = SetDoctorWithoutSNILS(),
             };
 
             CaseAmbData.otherStep = new StepAmb
@@ -646,6 +924,64 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
+                Steps = new StepAmb[] { CaseAmbData.step }
+                //MedRecords
+            };
+            CaseDispData.caseDispWithoutSnils = new CaseAmb
+            {
+                OpenDate = new DateTime(2010, 10, 10),
+                CloseDate = new DateTime(2010, 10, 14),
+                HistoryNumber = "1000121",
+                IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
+                IdPaymentType = 1,
+                Confidentiality = 1,
+                DoctorConfidentiality = 1,
+                CuratorConfidentiality = 1,
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdCaseResult = 1,
+                Comment = "КОММЕНТ",
+                IdPatientMis = PatientData.Patient.IdPatientMIS,
+                IdCaseType = 4,
+
+                IdCaseAidType = 1,
+                IdAmbResult = 1,
+                IdCasePurpose = 1,
+                IsActive = true,
+
+                Guardian = DoctorData.guardian,
+                DoctorInCharge = DoctorData.doctorInChargeWithoutSnils,
+                Authenticator = DoctorData.authenticatorWithoutSnils,
+                Author = DoctorData.authorWithoutSnils,
+                LegalAuthenticator = DoctorData.legalAuthenticatorWithoutSnils,
+                Steps = new StepAmb[] { CaseAmbData.step }
+                //MedRecords
+            };
+            CaseDispData.caseDispWithSnils = new CaseAmb
+            {
+                OpenDate = new DateTime(2010, 10, 10),
+                CloseDate = new DateTime(2010, 10, 14),
+                HistoryNumber = "1000121",
+                IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
+                IdPaymentType = 1,
+                Confidentiality = 1,
+                DoctorConfidentiality = 1,
+                CuratorConfidentiality = 1,
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdCaseResult = 1,
+                Comment = "КОММЕНТ",
+                IdPatientMis = PatientData.Patient.IdPatientMIS,
+                IdCaseType = 4,
+
+                IdCaseAidType = 1,
+                IdAmbResult = 1,
+                IdCasePurpose = 1,
+                IsActive = true,
+
+                Guardian = DoctorData.guardian,
+                DoctorInCharge = DoctorData.doctorInChargeWithSnils,
+                Authenticator = DoctorData.authenticatorWithSnils,
+                Author = DoctorData.authorWithSnils,
+                LegalAuthenticator = DoctorData.legalAuthenticatorWithSnils,
                 Steps = new StepAmb[] { CaseAmbData.step }
                 //MedRecords
             };

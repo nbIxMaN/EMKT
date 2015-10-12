@@ -7,6 +7,7 @@
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" base="q1:MedRecord">
         <xs:sequence>
           <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdDocumentMis" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:MedDocument.DocumentAttachment" />
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Author" nillable="true" type="q2:MedicalStaff" />
           <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />
@@ -24,40 +25,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MedDocument.DocumentAttachment" nillable="true" type="tns:MedDocument.DocumentAttachment" />
-  <xs:complexType name="DischargeSummary">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:MedDocument">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="DischargeSummary" nillable="true" type="tns:DischargeSummary" />
-  <xs:complexType name="Referral">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:MedDocument">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
-          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="DepartmentHead" nillable="true" type="q3:MedicalStaff" />
-          <xs:element minOccurs="0" name="IdSourceLpu" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="IdTargetLpu" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ReferralID" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="RelatedID" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Referral" nillable="true" type="tns:Referral" />
-  <xs:complexType name="ReferralInfo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdReferralMis" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdReferralType" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="IssuedDateTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="HospitalizationOrder" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
   <xs:complexType name="ConsultNote">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MedDocument">
@@ -66,6 +33,14 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ConsultNote" nillable="true" type="tns:ConsultNote" />
+  <xs:complexType name="DischargeSummary">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DischargeSummary" nillable="true" type="tns:DischargeSummary" />
   <xs:complexType name="LaboratoryReport">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MedDocument">
@@ -88,7 +63,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DateStart" type="xs:dateTime" />
-      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Caregiver" nillable="true" type="q4:Guardian" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Caregiver" nillable="true" type="q3:Guardian" />
       <xs:element minOccurs="0" name="DateEnd" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DisabilityDocReason" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="DisabilityDocState" type="xs:unsignedByte" />
@@ -122,6 +97,32 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DispensaryBase" nillable="true" type="tns:DispensaryBase" />
+  <xs:complexType name="Referral">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="DepartmentHead" nillable="true" type="q4:MedicalStaff" />
+          <xs:element minOccurs="0" name="IdSourceLpu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdTargetLpu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferralID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RelatedID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Referral" nillable="true" type="tns:Referral" />
+  <xs:complexType name="ReferralInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdReferralMis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdReferralType" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IssuedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HospitalizationOrder" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
   <xs:complexType name="HealthGroup">
     <xs:sequence>
       <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Doctor" nillable="true" type="q5:MedicalStaff" />

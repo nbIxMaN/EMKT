@@ -57,6 +57,7 @@ namespace PixServiseTests
                 }
             };
             client.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.UpdatePatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -443,7 +444,7 @@ namespace PixServiseTests
             contact2.ContactValue = "89525959544";
             patient.Contacts = new ContactDto[] { contact, contact2 };
             PixServise.JobDto job = new PixServise.JobDto();
-            job.OgrnCode = "0100000000000";
+            job.OgrnCode = "0100000000000"; // некорректный код
             job.CompanyName = "OOO 'МИГ'";
             job.Sphere = "Я";
             job.Position = "Я";
@@ -626,7 +627,7 @@ namespace PixServiseTests
         public void MiacTest()
         {
             TestMiacClient c = new TestMiacClient();
-            c.GetCasesByPeriod("5C04E58B-07C0-421C-804A-CD774685AEA2", new DateTime(2010, 10, 10), new DateTime(2010, 10, 14));
+            c.GetCasesByPeriod("5C04E58B-07C0-421C-804A-CD774685AEA2", new DateTime(2014, 06, 01), new DateTime(2014, 06, 10));
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -664,6 +665,422 @@ namespace PixServiseTests
         //    else
         //        Assert.Fail(Global.errors);
         //}
+        //[Test]
+        //public void aaaa()
+        //{
+        //    TestEmkServiceClient c = new TestEmkServiceClient();
+        //    c.GetReferralList("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", 1,
+        //        new DateTime(2010, 02, 01), new DateTime(2010, 02, 03));
+        //}
+        private LaboratoryReport GetOnkomarkers()
+        {
+            return new LaboratoryReport()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 04),
+                Attachment = Data.SetAttachment("Ифа.Онкомаркеры.pdf", null, "application/pdf"),
+                Header = "Лабораторное исследование Онкомаркеры"
+            };
+        }
+        private LaboratoryReport GetGemotology()
+        {
+            return new LaboratoryReport()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 02),
+                Attachment = Data.SetAttachment("Гематология.pdf", null, "application/pdf"),
+                Header = "Лабораторное исследование Гематология"
+            };
+        }
+        private LaboratoryReport GetBlood()
+        {
+            return new LaboratoryReport()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 05),
+                Attachment = Data.SetAttachment("Общийанализкрови.pdf", null, "application/pdf"),
+                Header = "Лабораторное исследование Общий анализ крови"
+            };
+        }
+        private DischargeSummary GetEpic()
+        {
+            return new DischargeSummary()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 03),
+                Attachment = Data.SetAttachment("эпикриз.html", null, "text/html"),
+                Header = "Эпикриз"
+            };
+        }
+
+        private ConsultNote GetConsult()
+        {
+            return new ConsultNote()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 08),
+                Attachment = Data.SetAttachment("консультация.pdf", null, "application/pdf"),
+                Header = "Консультация"
+            };
+        }
+
+        [Test]
+        public void TTT()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto p = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.3.64", p);
+            }
+            using (TestEmkServiceClient c = new TestEmkServiceClient())
+            {
+                CaseAmb Case = (new SetData()).MinCaseAmbSet();
+                Case.IdLpu = "1.2.643.5.1.13.3.25.3.64";
+                c.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", Case);
+            }
+        }
+        [Test]
+        public void _AddCaseForFedUploader()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                patient.MiddleName = "Викторович";
+                patient.GivenName = "Евгений";
+                patient.FamilyName = "Эторцев";
+                patient.IdPatientMIS = "ForUploaderMIS4";
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.3.64", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                caseAmb.IdLpu = "1.2.643.5.1.13.3.25.3.64";
+                caseAmb.IdPatientMis = "ForUploaderMIS4";
+                caseAmb.Authenticator.Doctor = new MedicalStaff()
+                {
+                    Person = new PersonWithIdentity()
+                    {
+                        IdPersonMis = "DoctorForUpload2",
+                        Birthdate = new DateTime(1987, 06, 11),
+                        HumanName = new HumanName()
+                        {
+                            FamilyName = "Александров",
+                            MiddleName = "Игнатьевич",
+                            GivenName = "Борис"
+                        },
+                        Sex = 1
+                    },
+                    IdPosition = 74,
+                    IdSpeciality = 29
+                };
+                caseAmb.Author = caseAmb.Authenticator;
+                caseAmb.DoctorInCharge = caseAmb.Authenticator.Doctor;
+                var x = MedRecordData.clinicMainDiagnosis;
+                x.Doctor = caseAmb.DoctorInCharge;
+                caseAmb.MedRecords = new MedRecord[]
+                {
+                    //set.MinService(),
+                    //set.MinTfomsInfo(),
+                    //set.MinDiagnosis(),
+                    //set.MinClinicMainDiagnosis(),
+                    x,
+                    //MedRecordData.diagnosis
+                    //set.MinRefferal(),
+                    //set.MinSickList(),
+                    //set.MinDischargeSummary(),
+                    //set.MinLaboratoryReport(),
+                    //set.MinConsultNote()
+                };
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void _HashTest()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto p = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", p);
+            }
+            using (TestEmkServiceClient c = new TestEmkServiceClient())
+            {
+                CaseAmb p = (new SetData()).FullCaseAmbSet();
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                var x = GetConsult();
+                x.Attachment.Hash = new byte[] { 1, 2, 3, 4, 5 };
+                p.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    //GetEpic(),
+                    //GetConsult()
+                    x
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new MedRecord[]
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers(),
+                    MedRecordData.appointedMedication,
+                    MedRecordData.service
+                };
+                c.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+                string caseMis = p.IdCaseMis;
+                p = (new SetData()).FullCaseAmbSet();
+                p.IdCaseMis = caseMis;
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                p.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    //GetConsult()
+                    x
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new MedRecord[]
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers()
+                };
+                c.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void _AddAmbCase()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto p = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", p);
+            }
+            using (TestEmkServiceClient c = new TestEmkServiceClient())
+            {
+                CaseAmb p = (new SetData()).FullCaseAmbSet();
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                p.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    //GetEpic(),
+                    GetConsult()
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new MedRecord[]
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers(),
+                    MedRecordData.appointedMedication,
+                    MedRecordData.service
+                };
+                c.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+                string caseMis = p.IdCaseMis;
+                p = (new SetData()).FullCaseAmbSet();
+                p.IdCaseMis = caseMis;
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                p.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    GetConsult()
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new MedRecord[]
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers()
+                };
+                c.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void _UpdateAmbCase()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto p = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", p);
+            }
+            using (TestEmkServiceClient c = new TestEmkServiceClient())
+            {
+                CaseAmb p = (new SetData()).FullCaseAmbSet();
+                p.Guardian = null;
+                p.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis
+                };
+                c.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+                string caseMis = p.IdCaseMis;
+                p = (new SetData()).FullCaseAmbSet();
+                p.IdCaseMis = caseMis;
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                p.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    GetConsult()
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new MedRecord[]
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers()
+                };
+                c.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void _CreateStatCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).FullCaseStatSetForCreate();
+                caseStat.Guardian = null;
+                caseStat.OpenDate = new DateTime(2014, 06, 01);
+                SetData set = new SetData();
+                StepStat stepStat = (new SetData()).MinStepStatSet();
+                caseStat.Steps = new StepStat[]
+                {
+                    stepStat
+                };
+                caseStat.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                caseStat.Steps[0].DateEnd = new DateTime(2014, 06, 04);
+                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                StepStat s = CaseStatData.otherStep;
+                s.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.appointedMedication,
+                    MedRecordData.service
+                };
+                s.DateStart = new DateTime(2014, 06, 05);
+                s.DateEnd = new DateTime(2014, 06, 10);
+                EmkClient.AddStepToCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat.IdLpu, caseStat.IdPatientMis, caseStat.IdCaseMis, s);
+                caseStat = (new SetData()).FullCaseStatSetForClose();
+                caseStat.Guardian = null;
+                caseStat.CloseDate = new DateTime(2014, 06, 10);
+                caseStat.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    GetEpic()
+                };
+                EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        private DispensaryOne GetDispanseryOne()
+        {
+            var d = MedRecordData.dispensaryOne;
+            d.Attachment = null;
+            d.CreationDate = new DateTime(2014, 06, 04);
+            return d;
+        }
+        
+        [Test]
+        public void AddDicpCase()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).FullCaseDispSet();
+                caseDisp.Guardian = null;
+                caseDisp.OpenDate = new DateTime(2014, 06, 01);
+                caseDisp.CloseDate = new DateTime(2014, 06, 10);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    GetDispanseryOne(),
+                    MedRecordData.clinicMainDiagnosis
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void TestDoc()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient client = new TestEmkServiceClient())
+            {
+                CaseAmb caseDisp = (new SetData()).FullCaseDispSetWithDoctorWithoutSNILS();
+                caseDisp.Guardian = null;
+                caseDisp.OpenDate = new DateTime(2014, 06, 01);
+                caseDisp.CloseDate = new DateTime(2014, 06, 10);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.dispensaryOneWithoutSnils,
+                    MedRecordData.clinicMainDiagnosisWithOutSnils
+                };
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+                caseDisp = (new SetData()).FullCaseDispSetWithDoctorWithSNILS();
+                caseDisp.Guardian = null;
+                caseDisp.OpenDate = new DateTime(2014, 06, 01);
+                caseDisp.CloseDate = new DateTime(2014, 06, 10);
+                caseDisp.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.dispensaryOneWithSnils,
+                    MedRecordData.clinicMainDiagnosisWithSnils
+                };
+                caseDisp.IdCaseMis = System.DateTime.Now.ToString();
+                client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
         [TearDown]
         public void Clear()
         {

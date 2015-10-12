@@ -38,6 +38,10 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.4.1.10311.0\lib\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
@@ -60,7 +64,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -88,7 +94,9 @@
     <Compile Include="MedRecords Tests\DispensaryOneTests.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Methods Tests\mqProxyTest.cs" />
     <Compile Include="MethodTests.cs" />
+    <Compile Include="TestMqProxyClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +108,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\MiacStatistics\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\mqProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -146,6 +159,7 @@
     <Compile Include="TestQuantity.cs" />
     <Compile Include="TestRecommendation.cs" />
     <Compile Include="TestReferral.cs" />
+    <Compile Include="TestReferralTuple.cs" />
     <Compile Include="TestService.cs" />
     <Compile Include="TestSickList.cs" />
     <Compile Include="TestStatCase.cs" />
@@ -218,6 +232,13 @@
     <None Include="Service References\MiacStatistics\PixServiseTests.MiacStatistics.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\mqProxy\MQProxy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\mqProxy\MQProxy1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\mqProxy\MqService.wsdl" />
     <None Include="Service References\PixServise\PixService.wsdl" />
     <None Include="Service References\PixServise\PixService.xsd">
       <SubType>Designer</SubType>
@@ -250,6 +271,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EMKServise\" />
     <WCFMetadataStorage Include="Service References\MiacStatistics\" />
+    <WCFMetadataStorage Include="Service References\mqProxy\" />
     <WCFMetadataStorage Include="Service References\PixServise\" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +321,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\MiacStatistics\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\mqProxy\MQProxy.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\mqProxy\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\mqProxy\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\mqProxy\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

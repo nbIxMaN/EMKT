@@ -97,6 +97,7 @@ namespace PixServiseTests
 
         static public TestCaseBase BuildBaseCaseFromDataBaseData(string guid, string idlpu, string mis, string idPerson)
         {
+            //idPerson = TestPerson.GetPersonId(guid, idlpu, idPerson);
             string caseId = GetCaseId(guid, idlpu, mis, idPerson);
             if (caseId != null)
             {

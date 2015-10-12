@@ -24,6 +24,10 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                caseAmb.MedRecords = new MedRecord[]
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -88,6 +92,8 @@ namespace PixServiseTests
                     set.MinTfomsInfo(),
                     set.MinDiagnosis(),
                     set.MinClinicMainDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.diagnosis,
                     set.MinRefferal(),
                     set.MinSickList(),
                     set.MinDischargeSummary(),

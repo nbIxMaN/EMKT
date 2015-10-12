@@ -17,12 +17,13 @@ namespace PixServiseTests
             patient.FamilyName = PatientData.Patient.FamilyName;
             patient.GivenName = PatientData.Patient.GivenName;
             patient.Sex = PatientData.Patient.Sex;
-            patient.BirthDate = PatientData.Patient.BirthDate;
-            PixServise.DocumentDto d = new PixServise.DocumentDto();
-            d.DocN = DocumentData.PatientPassport.DocN;
-            d.IdDocumentType = DocumentData.PatientPassport.IdDocumentType;
-            d.ProviderName = DocumentData.PatientPassport.ProviderName;
-            d.DocS = DocumentData.PatientPassport.DocS;
+            patient.BirthDate = new DateTime(2010, 10, 10);
+            patient.IdBloodType = 1;
+            //PixServise.DocumentDto d = new PixServise.DocumentDto();
+            //d.DocN = DocumentData.PatientPassport.DocN;
+            //d.IdDocumentType = DocumentData.PatientPassport.IdDocumentType;
+            //d.ProviderName = DocumentData.PatientPassport.ProviderName;
+            //d.DocS = DocumentData.PatientPassport.DocS;
             PixServise.DocumentDto s = new PixServise.DocumentDto();
             s.DocN = DocumentData.PatientSNILS.DocN;
             s.IdDocumentType = DocumentData.PatientSNILS.IdDocumentType;
@@ -213,16 +214,29 @@ namespace PixServiseTests
         {
             MedicalStaff doctor = new MedicalStaff
             {
-                IdSpeciality = DoctorData.otherDoctor.IdSpeciality,
-                IdPosition = DoctorData.otherDoctor.IdPosition,
+                //IdSpeciality = DoctorData.otherDoctor.IdSpeciality,
+                //IdPosition = DoctorData.otherDoctor.IdPosition,
+                //Person = new PersonWithIdentity
+                //{
+                //    IdPersonMis = DoctorData.otherDoctor.Person.IdPersonMis,
+                //    HumanName = new HumanName
+                //    {
+                //        FamilyName = DoctorData.otherDoctor.Person.HumanName.FamilyName,
+                //        GivenName = DoctorData.otherDoctor.Person.HumanName.GivenName,
+                //    }
+                //}
+                IdSpeciality = 27,
+                IdPosition = 72,
+                IdLpu = "1.2.643.5.1.13.3.25.78.118",
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = DoctorData.otherDoctor.Person.IdPersonMis,
+                    IdPersonMis = "NOSNILSDOCTOR",
                     HumanName = new HumanName
                     {
-                        FamilyName = DoctorData.otherDoctor.Person.HumanName.FamilyName,
-                        GivenName = DoctorData.otherDoctor.Person.HumanName.GivenName,
-                    }
+                        FamilyName = "Игрович",
+                        GivenName = "Борис",
+                        MiddleName = "Петрович",
+                    },
                 }
             };
 
@@ -669,6 +683,8 @@ namespace PixServiseTests
         {
             CaseStat caseStat = CaseStatData.caseStat;
             caseStat.Steps = null;
+            caseStat.HospResult = 1;
+            caseStat.IdCaseResult = 1;
             return caseStat;
         }
 
@@ -686,7 +702,14 @@ namespace PixServiseTests
         {
             return CaseDispData.caseDisp;
         }
-
+        public CaseAmb FullCaseDispSetWithDoctorWithoutSNILS()
+        {
+            return CaseDispData.caseDispWithoutSnils;
+        }
+        public CaseAmb FullCaseDispSetWithDoctorWithSNILS()
+        {
+            return CaseDispData.caseDispWithSnils;
+        }
         public CaseAmb FullCaseDispSetForCreate()
         {
             CaseAmb caseAmb = CaseDispData.caseDisp;

@@ -22,6 +22,28 @@ namespace PixServiseTests
             doctor = new TestDoctor(r.Author, idLpu);
             departmentHead = new TestDoctor(r.DepartmentHead, idLpu);
         }
+
+        //public TestReferral(ReferralDto r)
+        //{
+        //    referral = new Referral
+        //    {
+        //        ReferralInfo = new ReferralInfo
+        //        {
+        //            IdReferralType = Convert.ToByte(r.IdReferralType),
+        //            IdReferralMis = r.IdReferralMis,
+        //            IssuedDateTime = r.IssuedDateTime,
+        //            //r.IdUrgencyType;
+        //            MkbCode = r.MkbCode,
+        //            Reason = r.Reason
+        //        },
+        //        IdSourceLpu = r.IdSourceLpu,
+        //        IdTargetLpu = r.IdTargetLpu,
+        //        //r.IdLPU;
+        //    };
+        //    attachment = new TestAttachment(new MedDocument.DocumentAttachment());
+        //    doctor = TestDoctor.BuildTestDoctorFromDataBase(r.IdDoctorRef);
+        //    departmentHead = TestDoctor.BuildTestDoctorFromDataBase(r.IdRefDepartmentHead);
+        //}
         static public List<TestReferral> BuildReferralFromDataBaseData(string idStep)
         {
             List<TestReferral> trl = new List<TestReferral>();

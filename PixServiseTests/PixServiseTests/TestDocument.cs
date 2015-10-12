@@ -42,6 +42,7 @@ namespace PixServiseTests
         public TestDocument(DocumentDto d)
         {
             document = d;
+            document.DocN = document.DocN.Replace("-", "");
             if (document.IssuedDate == DateTime.MinValue)
                 document.IssuedDate = null;
         }
