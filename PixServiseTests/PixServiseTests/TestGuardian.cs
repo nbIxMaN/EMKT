@@ -80,7 +80,7 @@ namespace PixServiseTests
             }
             if ((this.guardian.IdRelationType == p.guardian.IdRelationType) &&
                 (this.guardian.UnderlyingDocument == p.guardian.UnderlyingDocument) &&
-                Global.IsEqual(guardian.Person, p.person))
+                Global.IsEqual(this.person, p.person))
             {
                 return true;
             }

@@ -134,7 +134,6 @@
     <Compile Include="TestClinicMainDiagnosis.cs" />
     <Compile Include="TestConsultNote.cs" />
     <Compile Include="TestContact.cs" />
-    <Compile Include="TestContactPerson.cs" />
     <Compile Include="TestDeathInfo.cs" />
     <Compile Include="TestDiagnosis.cs" />
     <Compile Include="TestDiagnosisInfo.cs" />

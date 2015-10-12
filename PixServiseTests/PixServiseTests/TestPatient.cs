@@ -48,7 +48,6 @@ namespace PixServiseTests
             }
         }
         public TestJob job;
-        public TestContactPerson contactPerson;
         public TestPrivilege privilege;
         public TestBirthplace birthplace;
 
@@ -88,8 +87,6 @@ namespace PixServiseTests
             }
             if (p.Job != null)
                 job = new TestJob(p.Job);
-            if (p.ContactPerson != null)
-                contactPerson = new TestContactPerson(p.ContactPerson);
             if (p.Privilege != null)
                 privilege = new TestPrivilege(p.Privilege);
             if (p.BirthPlace != null)
@@ -230,7 +227,6 @@ namespace PixServiseTests
                             patient.addreses = TestAddress.BuildAdressesFromDataBaseData(patientId);
                             patient.contacts = TestContact.BuildContactsFromDataBaseData(patientId);
                             patient.job = TestJob.BuildTestJobFromDataBase(patientId);
-                            patient.contactPerson = TestContactPerson.BuildTestContactPersonFromDataBase(patientId);
                             patient.privilege = TestPrivilege.BuildTestPrivilegeFromDataBase(patientId);
                             patient.birthplace = TestBirthplace.BuildBirthplaceFromDataBaseData(patientId);
                             return patient;
@@ -275,8 +271,6 @@ namespace PixServiseTests
                 Global.errors2.Add("несовпадение длины job TestPatient");
             if (Global.GetLength(this.privilege) != Global.GetLength(b.privilege))
                 Global.errors2.Add("несовпадение длины privilege TestPatient");
-            if (Global.GetLength(this.contactPerson) != Global.GetLength(b.contactPerson))
-                Global.errors2.Add("несовпадение длины contactPerson TestPatient");
             if (Global.GetLength(this.birthplace) != Global.GetLength(b.birthplace))
                 Global.errors2.Add("несовпадение длины birthplace TestPatient");
             
@@ -369,8 +363,6 @@ namespace PixServiseTests
                     else
                         this.contacts.Add(tc);
                 }
-            if (b.ContactPerson != null)
-                this.contactPerson = new TestContactPerson(b.ContactPerson);
             if (b.Job != null)
                 this.job = new TestJob(b.Job);
             if (b.Privilege != null)
@@ -418,7 +410,6 @@ namespace PixServiseTests
             }
             if ((Global.IsEqual(this.adds, p.adds)) &&
                 (this.patient.BirthDate == p.patient.BirthDate) &&
-                (Global.IsEqual(this.contactPerson, p.contactPerson)) &&
                 (Global.IsEqual(this.conts, p.conts)) &&
                 (this.patient.DeathTime == p.patient.DeathTime) &&
                 (Global.IsEqual(this.docs, p.docs)) &&

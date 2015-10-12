@@ -12,6 +12,7 @@ namespace PixServiseTests
     {
         public PersonWithIdentity person;
         public TestHumanName name;
+        public int idrealationtype;
         public List<TestIdentityDocument> documents;
         public Array docs
         {

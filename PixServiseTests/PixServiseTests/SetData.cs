@@ -454,6 +454,10 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
+            // это врменно
+            caseAmb.Guardian = DoctorData.guardian;
+            // это врменно
+
             caseAmb.Steps = new StepAmb[]
             {
                MinStepAmbSet()

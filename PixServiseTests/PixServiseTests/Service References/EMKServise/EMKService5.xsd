@@ -46,12 +46,14 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="DocN" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DocS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ExpiredDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdDocumentType" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="IdProvider" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IssuedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ProviderName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="IdentityDocument" nillable="true" type="tns:IdentityDocument" />
