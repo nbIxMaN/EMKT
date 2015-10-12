@@ -1168,6 +1168,9 @@ namespace PixServiseTests.EMKServise {
         private string DocSField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ExpiredDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1184,6 +1187,9 @@ namespace PixServiseTests.EMKServise {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RegionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> StartDateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1217,6 +1223,19 @@ namespace PixServiseTests.EMKServise {
                 if ((object.ReferenceEquals(this.DocSField, value) != true)) {
                     this.DocSField = value;
                     this.RaisePropertyChanged("DocS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DocumentName {
+            get {
+                return this.DocumentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentNameField, value) != true)) {
+                    this.DocumentNameField = value;
+                    this.RaisePropertyChanged("DocumentName");
                 }
             }
         }
@@ -1295,6 +1314,19 @@ namespace PixServiseTests.EMKServise {
                 if ((object.ReferenceEquals(this.RegionCodeField, value) != true)) {
                     this.RegionCodeField = value;
                     this.RaisePropertyChanged("RegionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
                 }
             }
         }
@@ -1687,6 +1719,9 @@ namespace PixServiseTests.EMKServise {
         private System.DateTime CreationDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdDocumentMisField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PixServiseTests.EMKServise.MedDocument.DocumentAttachment AttachmentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1708,7 +1743,20 @@ namespace PixServiseTests.EMKServise {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdDocumentMis {
+            get {
+                return this.IdDocumentMisField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdDocumentMisField, value) != true)) {
+                    this.IdDocumentMisField = value;
+                    this.RaisePropertyChanged("IdDocumentMis");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
         public PixServiseTests.EMKServise.MedDocument.DocumentAttachment Attachment {
             get {
                 return this.AttachmentField;
@@ -1721,7 +1769,7 @@ namespace PixServiseTests.EMKServise {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public PixServiseTests.EMKServise.MedicalStaff Author {
             get {
                 return this.AuthorField;
@@ -1734,7 +1782,7 @@ namespace PixServiseTests.EMKServise {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
         public string Header {
             get {
                 return this.HeaderField;

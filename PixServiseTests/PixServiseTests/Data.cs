@@ -89,7 +89,7 @@ namespace PixServiseTests
             DocumentData.PatientSNILS = new IdentityDocument
             {
                 IdDocumentType = 223,
-                DocN = "12345678900",
+                DocN = "12345678909",
                 ProviderName = "ПФР",
                 //ExpiredDate = Convert.ToDateTime("01.12.2010"),
                 //IssuedDate = Convert.ToDateTime("03.09.2006"),
@@ -554,11 +554,11 @@ namespace PixServiseTests
                 Doctor = SetDoctor(),
             };
 
-            DoctorData.legalAuthenticator = new Participant
-            {
-                IdRole = 1,
-                Doctor = SetDoctor(),
-            };
+            //DoctorData.legalAuthenticator = new Participant
+            //{
+            //    IdRole = 1,
+            //    Doctor = SetDoctor(),
+            //};
 
             DoctorData.guardian = SetGuardian();
 
@@ -764,8 +764,8 @@ namespace PixServiseTests
         {
             PatientData.Patient = new PatientDto
             {
-                FamilyName = "Жукин",
-                GivenName = "Дмитрий",
+                FamilyName = "Дудкин",
+                GivenName = "Алёша",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
                 IdPatientMIS = "21.08.2015",
