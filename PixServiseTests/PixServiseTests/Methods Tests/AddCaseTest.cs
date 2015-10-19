@@ -60,6 +60,40 @@ namespace PixServiseTests
         }
 
         [Test]
+        public void _AddCaseForMiac()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                patient.IdPatientMIS = "56c46538-cff7-4991-9777-2cc7eca05f21";
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.186", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                caseStat.IdLpu = "1.2.643.5.1.13.3.25.78.186";
+                caseStat.IdPatientMis = "56c46538-cff7-4991-9777-2cc7eca05f21";
+                caseStat.IdCaseMis = "158903";
+                caseStat.OpenDate = new DateTime(2015, 10, 12);
+                caseStat.CloseDate = new DateTime(2015, 10, 13);
+                caseStat.HistoryNumber = "23030";
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat.Steps = new StepStat[]
+                {(new SetData()).MinStepStatSet()};
+                caseStat.Steps[0].MedRecords = new MedRecord[]
+                {
+                    MedRecordData.appointedMedication
+                };
+                EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
         public void AddMinDispCase()
         {
             using (TestPixServiceClient PixClient = new TestPixServiceClient())

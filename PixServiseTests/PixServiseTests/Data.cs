@@ -127,11 +127,11 @@ namespace PixServiseTests
             DocumentData.GuardianPassport = new IdentityDocument
             {
                 IdDocumentType = 14,
-                DocS = "2003",
-                DocN = "395700",
+                DocS = "2000",
+                DocN = "395710",
                 ProviderName = "УФМС",
-                ExpiredDate = Convert.ToDateTime("19.02.2020"),
-                IssuedDate = Convert.ToDateTime("03.09.2007"),
+                ExpiredDate = Convert.ToDateTime("09.01.2021"),
+                IssuedDate = Convert.ToDateTime("13.01.2000"),
                 RegionCode = "128",
             };
 
@@ -699,7 +699,7 @@ namespace PixServiseTests
                 Person = new PersonWithIdentity
                 {
                     Sex = 1,
-                    Birthdate = new DateTime(1973, 01, 07),
+                    Birthdate = new DateTime(1980, 11, 17),
                     IdPersonMis = DateTime.Now.ToString(),
                     Documents = new List<IdentityDocument> 
                     {
@@ -708,9 +708,9 @@ namespace PixServiseTests
                     },
                     HumanName = new HumanName
                     {
-                        FamilyName = "Лукин",
-                        GivenName = "Василий",
-                        MiddleName = "Андреевич",
+                        FamilyName = "Жданник",
+                        GivenName = "Игорь",
+                        MiddleName = "Михаилович",
                     }
                 }
             };
