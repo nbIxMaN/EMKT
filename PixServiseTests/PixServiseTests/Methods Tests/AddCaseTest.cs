@@ -48,9 +48,8 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.PrehospitalDefects = new List<byte>() { 1, 2 };
+                //caseStat.PrehospitalDefects = new List<byte>() { 1, 2 };
                
-                //caseStat.PrehospitalDefects = new byte[] { 1, 2 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
