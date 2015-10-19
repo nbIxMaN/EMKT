@@ -77,9 +77,9 @@ namespace PixServiseTests
                 caseStat.CloseDate = new DateTime(2015, 10, 13);
                 caseStat.HistoryNumber = "23030";
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List <StepStat>
                 {(new SetData()).MinStepStatSet()};
-                caseStat.Steps[0].MedRecords = new MedRecord[]
+                caseStat.Steps[0].MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };

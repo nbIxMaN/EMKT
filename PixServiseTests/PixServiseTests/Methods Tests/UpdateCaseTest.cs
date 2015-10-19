@@ -173,6 +173,7 @@ namespace PixServiseTests
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
                 EmkClient.CloseCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
 
+                caseAmb = (new SetData()).MinCaseAmbSet();
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
             if (Global.errors == "")
@@ -221,7 +222,7 @@ namespace PixServiseTests
                     MedRecordData.referral,
                     set.MinLaboratoryReport(),
                 };
-                caseAmb.Steps = new List<StepAmb>
+                caseAmbUpdate.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
