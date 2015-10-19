@@ -12,7 +12,7 @@
 //    class TestMiacClient : IDisposable
 //    {
 //        private MiacStatisticServiceClient client = new MiacStatisticServiceClient();
-//        private bool disposed = false; 
+//        private bool disposed = false;
 //        //public void getErrors(object obj)
 //        //{
 //        //    Array errors = obj as Array;
@@ -41,9 +41,9 @@
 //            else
 //                return null;
 //        }
-//        private EMKServise.IdentityDocument[] ConvertDocuments(IdentityDocument[] d)
+//        private List<EMKServise.IdentityDocument> ConvertDocuments(List<IdentityDocument> d)
 //        {
-//            if (((object)d != null) && (d.Length != 0))
+//            if (((object)d != null) && (d.Count != 0))
 //            {
 //                List<EMKServise.IdentityDocument> ld = new List<EMKServise.IdentityDocument>();
 //                foreach (IdentityDocument c in d)
@@ -65,19 +65,19 @@
 //                        ed.RegionCode = c.RegionCode;
 //                    ld.Add(ed);
 //                }
-//                return ld.ToArray();
+//                return ld;
 //            }
 //            else
 //                return null;
 //        }
 //        private EMKServise.PersonWithIdentity ConvertPersonWithIdentity(PersonWithIdentity c)
 //        {
-//            if((object)c != null)
+//            if ((object)c != null)
 //            {
 //                EMKServise.PersonWithIdentity ep = new EMKServise.PersonWithIdentity();
 //                if (c.Birthdate != DateTime.MinValue)
 //                    ep.Birthdate = c.Birthdate;
-//                ep.Documents = ConvertDocuments(c.Documents);
+//                ep.Documents = ConvertDocuments(c.Documents.ToList<IdentityDocument>());
 //                ep.HumanName = ConvertHumanName(c.HumanName);
 //                if (c.IdPersonMis != "")
 //                    ep.IdPersonMis = c.IdPersonMis;
@@ -88,7 +88,7 @@
 //                return null;
 //        }
 
-//        private EMKServise.MedicalStaff ConvertMedicalStaff (MedicalStaff c)
+//        private EMKServise.MedicalStaff ConvertMedicalStaff(MedicalStaff c)
 //        {
 //            if ((object)c != null)
 //            {
@@ -125,7 +125,7 @@
 //                ed.IdRelationType = c.IdRelationType;
 //                ed.Person = ConvertPersonWithIdentity(c.Person);
 //                if (c.UnderlyingDocument != "")
-//                    ed.UnderlyingDocument= c.UnderlyingDocument;
+//                    ed.UnderlyingDocument = c.UnderlyingDocument;
 //                return ed;
 //            }
 //            else
@@ -227,7 +227,7 @@
 //                return null;
 //        }
 
-//        private EMKServise.Recommendation[] ConvertRecommendation(Recommendation[] c)
+//        private List<EMKServise.Recommendation> ConvertRecommendation(Recommendation[] c)
 //        {
 //            if (((object)c != null) && (c.Length != 0))
 //            {
@@ -236,13 +236,13 @@
 //                {
 //                    EMKServise.Recommendation er = new EMKServise.Recommendation();
 //                    if (i.Date != DateTime.MinValue)
-//                        er.Date= i.Date;
+//                        er.Date = i.Date;
 //                    er.Doctor = ConvertMedicalStaff(i.Doctor);
 //                    if (i.Text != "")
 //                        er.Text = i.Text;
 //                    l.Add(er);
 //                }
-//                return l.ToArray();
+//                return l;
 //            }
 //            else
 //                return null;
@@ -294,7 +294,23 @@
 //                return null;
 //        }
 
-//        private EMKServise.MedRecord[] ConvertMedRecords(MedRecord[] c)
+//        private List<EMKServise.Diagnosis> ConvertDiagnosis(Diagnosis[] c)
+//        {
+//            List<EMKServise.Diagnosis> lmr = new List<EMKServise.Diagnosis>();
+//            foreach (Diagnosis i in c)
+//            {
+//                EMKServise.Diagnosis ecmd = new EMKServise.Diagnosis();
+//                ecmd.DiagnosisInfo = ConvertDiagnosisInfo(i.DiagnosisInfo);
+//                ecmd.Doctor = ConvertMedicalStaff(i.Doctor);
+//                lmr.Add(ecmd);
+//            }
+//            if (lmr.Count == 0)
+//                return null;
+//            else
+//                return lmr;
+//        }
+
+//        private List<EMKServise.MedRecord> ConvertMedRecords(MedRecord[] c)
 //        {
 //            if (((object)c != null) && (c.Length != 0))
 //            {
@@ -363,7 +379,7 @@
 //                    if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
 //                    {
 //                        EMKServise.ClinicMainDiagnosis ecmd = new EMKServise.ClinicMainDiagnosis();
-//                        ecmd.Complications = (EMKServise.Diagnosis[])ConvertMedRecords(cmd.Complications);
+//                        ecmd.Complications = ConvertDiagnosis(cmd.Complications);
 //                        ecmd.DiagnosisInfo = ConvertDiagnosisInfo(cmd.DiagnosisInfo);
 //                        ecmd.Doctor = ConvertMedicalStaff(cmd.Doctor);
 //                        lmr.Add(ecmd);
@@ -479,7 +495,7 @@
 //                        lmr.Add(ed1);
 //                    }
 //                }
-//                return lmr.ToArray();
+//                return lmr;
 //            }
 //            else
 //                return null;
@@ -627,7 +643,7 @@
 //                eca.MedRecords = ConvertMedRecords(cs.MedRecords);
 //                if (cs.OpenDate != DateTime.MinValue)
 //                    eca.OpenDate = cs.OpenDate;
-//                eca.PrehospitalDefects = cs.PrehospitalDefects;
+//                eca.PrehospitalDefects = cs.PrehospitalDefects.ToList<byte>();
 //                eca.RW1Mark = cs.RW1Mark;
 //                eca.Steps = (EMKServise.StepStat[])ConvertSteps(cs.Steps);
 //                return eca;
@@ -718,7 +734,7 @@
 //                    Global.errors1.AddRange(Global.errors2);
 //            }
 //        }
-        
+
 //        ~TestMiacClient()
 //        {
 //            client.Close();
