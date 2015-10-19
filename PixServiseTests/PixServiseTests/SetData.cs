@@ -343,12 +343,12 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseDisp.Steps = new StepAmb[]
+            caseDisp.Steps = new List<StepAmb>
             {
                MinStepAmbSet()
             };
 
-            caseDisp.MedRecords = new MedRecord[]
+            caseDisp.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -379,12 +379,12 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseDisp.Steps = new StepAmb[]
+            caseDisp.Steps = new List<StepAmb>
             {
                MinStepAmbSet()
             };
 
-            caseDisp.MedRecords = new MedRecord[]
+            caseDisp.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -417,7 +417,7 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseDisp.MedRecords = new MedRecord[]
+            caseDisp.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -455,15 +455,15 @@ namespace PixServiseTests
             };
 
             // это врменно
-            caseAmb.Guardian = DoctorData.guardian;
+           // caseAmb.Guardian = DoctorData.guardian;
             // это врменно
 
-            caseAmb.Steps = new StepAmb[]
+            caseAmb.Steps = new List<StepAmb>
             {
                MinStepAmbSet()
             };
 
-            caseAmb.MedRecords = new MedRecord[]
+            caseAmb.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -494,7 +494,7 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseAmb.Steps = new StepAmb[]
+            caseAmb.Steps = new List<StepAmb>
             {
                MinStepAmbSet()
             };
@@ -527,7 +527,7 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseAmb.MedRecords = new MedRecord[]
+            caseAmb.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -588,12 +588,12 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseStat.Steps = new StepStat[]
+            caseStat.Steps = new List<StepStat>
             {
                MinStepStatSet()
             };
 
-            caseStat.MedRecords = new MedRecord[]
+            caseStat.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -628,7 +628,7 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseStat.MedRecords = new MedRecord[]
+            caseStat.MedRecords = new List<MedRecord>
             {
                 MinClinicMainDiagnosis()
             };
@@ -663,7 +663,7 @@ namespace PixServiseTests
                 Doctor = MinDoctorSet()
             };
 
-            caseStat.Steps = new StepStat[]
+            caseStat.Steps = new List<StepStat>
             {
                MinStepStatSet()
             };

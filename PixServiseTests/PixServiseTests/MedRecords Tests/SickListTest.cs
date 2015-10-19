@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
 using PixServiseTests.EMKServise;
+using System.Collections.Generic;
 
 namespace PixServiseTests.MedRecords_Tests
 {
@@ -24,7 +25,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -48,7 +49,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -72,7 +73,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList()
                 };
@@ -95,7 +96,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList
                 };
@@ -119,7 +120,7 @@ namespace PixServiseTests.MedRecords_Tests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -144,7 +145,7 @@ namespace PixServiseTests.MedRecords_Tests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -170,7 +171,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb = (new SetData()).MinCaseAmbSetForClose();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -196,7 +197,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 caseAmb= (new SetData()).MinCaseAmbSetForClose();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -221,7 +222,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -245,7 +246,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -269,7 +270,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList()
                 };
@@ -292,7 +293,7 @@ namespace PixServiseTests.MedRecords_Tests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList
                 };
@@ -316,7 +317,7 @@ namespace PixServiseTests.MedRecords_Tests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -341,7 +342,7 @@ namespace PixServiseTests.MedRecords_Tests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -367,7 +368,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat = (new SetData()).MinCaseStatSetForClose();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinSickList(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -393,7 +394,7 @@ namespace PixServiseTests.MedRecords_Tests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat = (new SetData()).MinCaseStatSetForClose();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.sickList,
                     (new SetData()).MinClinicMainDiagnosis()

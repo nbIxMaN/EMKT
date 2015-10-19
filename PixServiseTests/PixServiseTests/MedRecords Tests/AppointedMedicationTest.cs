@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
 using PixServiseTests.EMKServise;
+using System.Collections.Generic;
 
 namespace PixServiseTests
 {
@@ -24,18 +25,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     MedRecordData.appointedMedication,
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication,
                 };
 
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -58,18 +59,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     (new SetData()).MinAppointedMedication()
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinAppointedMedication()
                 };
 
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -92,18 +93,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     MedRecordData.appointedMedication,
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
 
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -126,18 +127,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     (new SetData()).MinAppointedMedication()
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinAppointedMedication()
                 };
 
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -161,18 +162,18 @@ namespace PixServiseTests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     MedRecordData.appointedMedication,
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
 
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -196,18 +197,18 @@ namespace PixServiseTests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     (new SetData()).MinAppointedMedication()
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinAppointedMedication()
                 };
 
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -232,7 +233,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
@@ -258,7 +259,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new  SetData()).MinAppointedMedication()
                 };
@@ -283,18 +284,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     MedRecordData.appointedMedication,
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication,
                 };
 
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -317,18 +318,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     (new SetData()).MinAppointedMedication()
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinAppointedMedication()
                 };
 
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -351,18 +352,18 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     MedRecordData.appointedMedication,
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
 
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -385,23 +386,23 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     MedRecordData.appointedMedication,
                 };
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     (new SetData()).MinAppointedMedication()
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinAppointedMedication()
                 };
 
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -425,18 +426,18 @@ namespace PixServiseTests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
                     (new SetData()).MinAppointedMedication()
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
 
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -461,12 +462,12 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinAppointedMedication()
                 };
 
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -491,7 +492,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
@@ -517,7 +518,7 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     (new  SetData()).MinAppointedMedication()
                 };

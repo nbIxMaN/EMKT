@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Collections;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
+using System.Collections.Generic;
 
 namespace PixServiseTests.Methods_Tests
 {
@@ -47,7 +48,7 @@ namespace PixServiseTests.Methods_Tests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
                 CaseAmb CaseAmbClose = (new SetData()).FullCaseAmbSetForClose();
-                CaseAmbClose.MedRecords = new MedRecord[]
+                CaseAmbClose.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinTfomsInfo(),
@@ -104,7 +105,7 @@ namespace PixServiseTests.Methods_Tests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 CaseStat CaseStatClose = (new SetData()).FullCaseStatSetForClose();
                 //CaseStatClose.Guardian = null;
-                CaseStatClose.MedRecords = new MedRecord[]
+                CaseStatClose.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinTfomsInfo(),

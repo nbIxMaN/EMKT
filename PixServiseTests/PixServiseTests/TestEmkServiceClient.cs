@@ -25,30 +25,6 @@ namespace PixServiseTests
             }
         }
 
-        private void DeletePerson(string GUID, string IDLPU, string idMis)
-        {
-            using (SqlConnection connection = Global.GetSqlConnection())
-            {
-                string findIdPersonString =
-                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + idMis + "'";
-                SqlCommand command = new SqlCommand(findIdPersonString, connection);
-                using (SqlDataReader MISreader = command.ExecuteReader())
-                {
-                    string patientId = TestPerson.GetPersonId(GUID, IDLPU, idMis);
-                    while ((MISreader.Read()) && (patientId != null))
-                    {
-                        string command2 = "EXEC dbo.Delete_Patient @IdPatientMIS = '" + idMis + "'";
-                        using (SqlConnection connection2 = Global.GetSqlConnection())
-                        {
-                            var SqlComm = new SqlCommand(command2, connection2);
-                            SqlComm.ExecuteNonQuery();
-                        }
-                        patientId = TestPerson.GetPersonId(GUID, IDLPU, idMis);
-                    }
-                }
-            }
-        }
-
         private void CaseWork(string guid, CaseBase c, string method)
         {
             try

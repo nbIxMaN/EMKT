@@ -22,7 +22,7 @@ namespace PixServiseTests.Methods_Tests
                 c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
             }
             CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-            caseAmb.MedRecords = new MedRecord[]
+            caseAmb.MedRecords = new List<MedRecord>
             {
                     MedRecordData.consultNote,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -51,7 +51,7 @@ namespace PixServiseTests.Methods_Tests
                 c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
             }
             CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-            caseAmb.MedRecords = new MedRecord[]
+            caseAmb.MedRecords = new List<MedRecord>
             {
                     MedRecordData.dischargeSummary,
                     (new SetData()).MinClinicMainDiagnosis()

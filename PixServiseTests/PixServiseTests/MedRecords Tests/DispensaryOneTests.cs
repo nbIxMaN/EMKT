@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
 using PixServiseTests.EMKServise;
+using System.Collections.Generic;
 
 namespace PixServiseTests
 {
@@ -23,7 +24,7 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinDispensaryOne(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -47,7 +48,7 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -71,7 +72,7 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinDispensaryOne(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -95,7 +96,7 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -119,12 +120,12 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinDispensaryOne(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -148,13 +149,13 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinDispensaryOne(),
                     (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinDispensaryOne(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -178,12 +179,12 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -207,13 +208,13 @@ namespace PixServiseTests
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSet();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
                 };
                 client.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()
@@ -239,7 +240,7 @@ namespace PixServiseTests
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
                 caseDisp = (new SetData()).MinCaseDispSetForClose();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinDispensaryOne(),
                     (new SetData()).MinClinicMainDiagnosis()
@@ -265,7 +266,7 @@ namespace PixServiseTests
                 CaseAmb caseDisp = (new SetData()).MinCaseDispSetForCreate();
                 client.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseDisp);
                 caseDisp = (new SetData()).MinCaseDispSetForClose();
-                caseDisp.MedRecords = new MedRecord[]
+                caseDisp.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.dispensaryOne,
                     (new SetData()).MinClinicMainDiagnosis()

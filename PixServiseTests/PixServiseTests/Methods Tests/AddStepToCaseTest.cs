@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Collections;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
+using System.Collections.Generic;
 
 namespace PixServiseTests
 {
@@ -69,7 +70,7 @@ namespace PixServiseTests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
 
                 StepAmb stepAmb = CaseAmbData.otherStep;            
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinAppointedMedication(),
@@ -124,7 +125,7 @@ namespace PixServiseTests
 
                 StepAmb stepAmb = CaseAmbData.otherStep;
                 stepAmb.IdStepMis = CaseAmbData.step.IdStepMis;
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinAppointedMedication(),
@@ -180,7 +181,7 @@ namespace PixServiseTests
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
 
                 StepStat stepStat = CaseStatData.otherStep;
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinAppointedMedication(),
@@ -235,7 +236,7 @@ namespace PixServiseTests
 
                 StepStat stepStat = CaseStatData.otherStep;
                 stepStat.IdStepMis = CaseStatData.step.IdStepMis;
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
                     (new SetData()).MinAppointedMedication(),

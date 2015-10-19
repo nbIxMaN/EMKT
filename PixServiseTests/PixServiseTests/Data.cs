@@ -5,6 +5,7 @@ using PixServiseTests.EMKServise;
 using System.IO;
 using System.Diagnostics;
 using System.Text;
+using System.Collections.Generic;
 
 namespace PixServiseTests
 {
@@ -281,7 +282,7 @@ namespace PixServiseTests
                     MkbCode = "D00",
                 },
                 Doctor = SetDoctor(),
-                Complications = new Diagnosis[]
+                Complications = new List<Diagnosis>
                  {
                      new  Diagnosis
                      {
@@ -321,7 +322,7 @@ namespace PixServiseTests
                     MkbCode = "A00",
                 },
                 Doctor = SetDoctorWithSNILS(),
-                Complications = new Diagnosis[]
+                Complications = new List<Diagnosis>
                  {
                      new  Diagnosis
                      {
@@ -360,7 +361,7 @@ namespace PixServiseTests
                     MkbCode = "A00",
                 },
                 Doctor = SetDoctorWithoutSNILS(),
-                Complications = new Diagnosis[]
+                Complications = new List<Diagnosis>
                  {
                      new  Diagnosis
                      {
@@ -400,7 +401,7 @@ namespace PixServiseTests
                     MkbCode = "A00",
                 },
                 Doctor = SetDoctor(),
-                Complications = new Diagnosis[]
+                Complications = new List<Diagnosis>
                  {
                      new  Diagnosis
                      {
@@ -434,7 +435,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
@@ -445,7 +446,7 @@ namespace PixServiseTests
                         IdHealthGroup = 1,
                     }
                 },
-                Recommendations = new Recommendation[] 
+                Recommendations = new List<Recommendation> 
                 { 
                     new Recommendation
                     {
@@ -467,7 +468,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctorWithSNILS(),
                 HealthGroup = new HealthGroup
                 {
@@ -478,7 +479,7 @@ namespace PixServiseTests
                         IdHealthGroup = 1,
                     }
                 },
-                Recommendations = new Recommendation[]
+                Recommendations = new List<Recommendation> 
                 {
                     new Recommendation
                     {
@@ -499,7 +500,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctorWithoutSNILS(),
                 HealthGroup = new HealthGroup
                 {
@@ -510,7 +511,7 @@ namespace PixServiseTests
                         IdHealthGroup = 1,
                     }
                 },
-                Recommendations = new Recommendation[]
+                Recommendations = new List<Recommendation> 
                 {
                     new Recommendation
                     {
@@ -565,7 +566,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
 
@@ -620,7 +621,7 @@ namespace PixServiseTests
                     IdPersonMis = "1234testTEST",
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
-                    Documents = new IdentityDocument[]
+                    Documents = new List<IdentityDocument> 
                     {
                         DocumentData.SNILS,
                     },
@@ -647,7 +648,7 @@ namespace PixServiseTests
                     IdPersonMis = "123400022",
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
-                    Documents = new IdentityDocument[]
+                    Documents = new List<IdentityDocument>
                     {
                         DocumentData.SNILS
                     },
@@ -674,7 +675,7 @@ namespace PixServiseTests
                     IdPersonMis = "123123123259",
                     Sex = 1,
                     Birthdate = new DateTime(1978, 01, 07),
-                    Documents = new IdentityDocument[]
+                    Documents = new List<IdentityDocument> 
                     {
                         DocumentData.SNILS
                     },
@@ -700,7 +701,7 @@ namespace PixServiseTests
                     Sex = 1,
                     Birthdate = new DateTime(1973, 01, 07),
                     IdPersonMis = DateTime.Now.ToString(),
-                    Documents = new IdentityDocument[]
+                    Documents = new List<IdentityDocument> 
                     {
                         DocumentData.GuardianPassport,
                         //DocumentData.SNILS
@@ -896,7 +897,7 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
-                Steps = new StepAmb[] { CaseAmbData.step }
+                Steps = new List<StepAmb> { CaseAmbData.step }
                 //MedRecords
             };
             CaseDispData.caseDisp = new CaseAmb
@@ -925,7 +926,7 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
-                Steps = new StepAmb[] { CaseAmbData.step }
+                Steps = new List<StepAmb> { CaseAmbData.step }
                 //MedRecords
             };
             CaseDispData.caseDispWithoutSnils = new CaseAmb
@@ -954,7 +955,7 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticatorWithoutSnils,
                 Author = DoctorData.authorWithoutSnils,
                 LegalAuthenticator = DoctorData.legalAuthenticatorWithoutSnils,
-                Steps = new StepAmb[] { CaseAmbData.step }
+                Steps = new List<StepAmb> { CaseAmbData.step }
                 //MedRecords
             };
             CaseDispData.caseDispWithSnils = new CaseAmb
@@ -983,7 +984,7 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticatorWithSnils,
                 Author = DoctorData.authorWithSnils,
                 LegalAuthenticator = DoctorData.legalAuthenticatorWithSnils,
-                Steps = new StepAmb[] { CaseAmbData.step }
+                Steps = new List<StepAmb> { CaseAmbData.step }
                 //MedRecords
             };
         }
@@ -1083,14 +1084,14 @@ namespace PixServiseTests
                 RW1Mark = true,
                 AIDSMark = true,
 
-                //PrehospitalDefects = new byte[] { 1, 2 },
+                PrehospitalDefects = new List<byte>() { 1, 2 },
 
                 Guardian = DoctorData.guardian,
                 DoctorInCharge = DoctorData.doctorInCharge,
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
-                Steps = new StepStat[] { CaseStatData.step },
+                Steps = new List <StepStat> { CaseStatData.step },
                 //MedRecords
             };
         }

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Collections;
 using PixServiseTests.PixServise;
 using PixServiseTests.EMKServise;
+using System.Collections.Generic;
 
 
 namespace PixServiseTests
@@ -24,7 +25,7 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.clinicMainDiagnosis,
                 };
@@ -47,6 +48,9 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                caseStat.PrehospitalDefects = new List<byte>() { 1, 2 };
+               
+                //caseStat.PrehospitalDefects = new byte[] { 1, 2 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -86,7 +90,7 @@ namespace PixServiseTests
             {
                 CaseAmb caseAmb = (new SetData()).FullCaseAmbSet();
                 SetData set = new SetData();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     set.MinService(),
                     set.MinTfomsInfo(),
@@ -101,7 +105,7 @@ namespace PixServiseTests
                     set.MinConsultNote()
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     set.MinService(),
                     set.MinAppointedMedication(),
@@ -110,7 +114,7 @@ namespace PixServiseTests
                     MedRecordData.referral,
                     set.MinLaboratoryReport(),
                 };
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
@@ -135,7 +139,7 @@ namespace PixServiseTests
             {
                 CaseStat caseStat = (new SetData()).FullCaseStatSet();
                 SetData set = new SetData();
-                caseStat.MedRecords = new MedRecord[]
+                caseStat.MedRecords = new List<MedRecord>
                 {
                     set.MinService(),
                     set.MinTfomsInfo(),
@@ -150,7 +154,7 @@ namespace PixServiseTests
                     set.MinConsultNote()
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
-                stepStat.MedRecords = new MedRecord[]
+                stepStat.MedRecords = new List<MedRecord>
                 {
                     set.MinService(),
                     set.MinAppointedMedication(),
@@ -159,7 +163,7 @@ namespace PixServiseTests
                     MedRecordData.referral,
                     set.MinLaboratoryReport(),
                 };
-                caseStat.Steps = new StepStat[]
+                caseStat.Steps = new List<StepStat>
                 {
                     stepStat
                 };
@@ -183,7 +187,7 @@ namespace PixServiseTests
             {
                 CaseAmb caseAmb = (new SetData()).FullCaseDispSet();
                 SetData set = new SetData();
-                caseAmb.MedRecords = new MedRecord[]
+                caseAmb.MedRecords = new List<MedRecord>
                 {
                     set.MinService(),
                     set.MinTfomsInfo(),
@@ -193,7 +197,7 @@ namespace PixServiseTests
                     set.MinLaboratoryReport(),
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new MedRecord[]
+                stepAmb.MedRecords = new List<MedRecord>
                 {
                     set.MinService(),
                     set.MinAppointedMedication(),
@@ -202,7 +206,7 @@ namespace PixServiseTests
                     MedRecordData.referral,
                     set.MinLaboratoryReport(),
                 };
-                caseAmb.Steps = new StepAmb[]
+                caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
                 };
