@@ -643,10 +643,10 @@ namespace PixServiseTests.MiacStatistics {
         private bool IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.StepAmb> StepsField;
+        private PixServiseTests.MiacStatistics.StepAmb[] StepsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecordsField;
+        private PixServiseTests.MiacStatistics.MedRecord[] MedRecordsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public byte IdCasePurpose {
@@ -701,7 +701,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.StepAmb> Steps {
+        public PixServiseTests.MiacStatistics.StepAmb[] Steps {
             get {
                 return this.StepsField;
             }
@@ -714,7 +714,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecords {
+        public PixServiseTests.MiacStatistics.MedRecord[] MedRecords {
             get {
                 return this.MedRecordsField;
             }
@@ -755,13 +755,13 @@ namespace PixServiseTests.MiacStatistics {
         private byte IdTransportInternField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.StepStat> StepsField;
+        private PixServiseTests.MiacStatistics.StepStat[] StepsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte HospResultField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecordsField;
+        private PixServiseTests.MiacStatistics.MedRecord[] MedRecordsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte IdHospChannelField;
@@ -773,7 +773,7 @@ namespace PixServiseTests.MiacStatistics {
         private bool AIDSMarkField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<byte> PrehospitalDefectsField;
+        private byte[] PrehospitalDefectsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string DeliveryCode {
@@ -867,7 +867,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.StepStat> Steps {
+        public PixServiseTests.MiacStatistics.StepStat[] Steps {
             get {
                 return this.StepsField;
             }
@@ -893,7 +893,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=9)]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecords {
+        public PixServiseTests.MiacStatistics.MedRecord[] MedRecords {
             get {
                 return this.MedRecordsField;
             }
@@ -945,7 +945,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=13)]
-        public System.Collections.Generic.List<byte> PrehospitalDefects {
+        public byte[] PrehospitalDefects {
             get {
                 return this.PrehospitalDefectsField;
             }
@@ -965,10 +965,10 @@ namespace PixServiseTests.MiacStatistics {
     public partial class PersonWithIdentity : PixServiseTests.MiacStatistics.Person {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.IdentityDocument> DocumentsField;
+        private PixServiseTests.MiacStatistics.IdentityDocument[] DocumentsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.IdentityDocument> Documents {
+        public PixServiseTests.MiacStatistics.IdentityDocument[] Documents {
             get {
                 return this.DocumentsField;
             }
@@ -1322,7 +1322,7 @@ namespace PixServiseTests.MiacStatistics {
         private byte IdVisitPurposeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecordsField;
+        private PixServiseTests.MiacStatistics.MedRecord[] MedRecordsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public byte IdVisitPlace {
@@ -1351,7 +1351,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecords {
+        public PixServiseTests.MiacStatistics.MedRecord[] MedRecords {
             get {
                 return this.MedRecordsField;
             }
@@ -1563,7 +1563,7 @@ namespace PixServiseTests.MiacStatistics {
         private ushort DaySpendField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecordsField;
+        private PixServiseTests.MiacStatistics.MedRecord[] MedRecordsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string HospitalDepartmentName {
@@ -1657,7 +1657,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.MedRecord> MedRecords {
+        public PixServiseTests.MiacStatistics.MedRecord[] MedRecords {
             get {
                 return this.MedRecordsField;
             }
@@ -2115,10 +2115,10 @@ namespace PixServiseTests.MiacStatistics {
     public partial class ClinicMainDiagnosis : PixServiseTests.MiacStatistics.Diagnosis {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.Diagnosis> ComplicationsField;
+        private PixServiseTests.MiacStatistics.Diagnosis[] ComplicationsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.Diagnosis> Complications {
+        public PixServiseTests.MiacStatistics.Diagnosis[] Complications {
             get {
                 return this.ComplicationsField;
             }
@@ -2391,7 +2391,7 @@ namespace PixServiseTests.MiacStatistics {
         private PixServiseTests.MiacStatistics.HealthGroup HealthGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PixServiseTests.MiacStatistics.Recommendation> RecommendationsField;
+        private PixServiseTests.MiacStatistics.Recommendation[] RecommendationsField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsGuested {
@@ -2498,7 +2498,7 @@ namespace PixServiseTests.MiacStatistics {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=8)]
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.Recommendation> Recommendations {
+        public PixServiseTests.MiacStatistics.Recommendation[] Recommendations {
             get {
                 return this.RecommendationsField;
             }
@@ -3465,16 +3465,16 @@ namespace PixServiseTests.MiacStatistics {
         System.Threading.Tasks.Task<PixServiseTests.MiacStatistics.VersionInfo> GetVersionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacStatisticService/GetCasesByPeriod", ReplyAction="http://tempuri.org/IMiacStatisticService/GetCasesByPeriodResponse")]
-        System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase> GetCasesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate);
+        PixServiseTests.MiacStatistics.CaseBase[] GetCasesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacStatisticService/GetCasesByPeriod", ReplyAction="http://tempuri.org/IMiacStatisticService/GetCasesByPeriodResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase>> GetCasesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate);
+        System.Threading.Tasks.Task<PixServiseTests.MiacStatistics.CaseBase[]> GetCasesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacStatisticService/GetCaseChangesByPeriod", ReplyAction="http://tempuri.org/IMiacStatisticService/GetCaseChangesByPeriodResponse")]
-        System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase> GetCaseChangesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate);
+        PixServiseTests.MiacStatistics.CaseBase[] GetCaseChangesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacStatisticService/GetCaseChangesByPeriod", ReplyAction="http://tempuri.org/IMiacStatisticService/GetCaseChangesByPeriodResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase>> GetCaseChangesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate);
+        System.Threading.Tasks.Task<PixServiseTests.MiacStatistics.CaseBase[]> GetCaseChangesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3512,19 +3512,19 @@ namespace PixServiseTests.MiacStatistics {
             return base.Channel.GetVersionAsync();
         }
         
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase> GetCasesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate) {
+        public PixServiseTests.MiacStatistics.CaseBase[] GetCasesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetCasesByPeriod(guid, startDate, endDate);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase>> GetCasesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate) {
+        public System.Threading.Tasks.Task<PixServiseTests.MiacStatistics.CaseBase[]> GetCasesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetCasesByPeriodAsync(guid, startDate, endDate);
         }
         
-        public System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase> GetCaseChangesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate) {
+        public PixServiseTests.MiacStatistics.CaseBase[] GetCaseChangesByPeriod(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate) {
             return base.Channel.GetCaseChangesByPeriod(guid, startDate, endDate, lastRequestDate);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<PixServiseTests.MiacStatistics.CaseBase>> GetCaseChangesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate) {
+        public System.Threading.Tasks.Task<PixServiseTests.MiacStatistics.CaseBase[]> GetCaseChangesByPeriodAsync(string guid, System.DateTime startDate, System.DateTime endDate, System.DateTime lastRequestDate) {
             return base.Channel.GetCaseChangesByPeriodAsync(guid, startDate, endDate, lastRequestDate);
         }
     }
