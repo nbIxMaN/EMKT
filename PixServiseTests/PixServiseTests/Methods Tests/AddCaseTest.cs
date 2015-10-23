@@ -129,7 +129,6 @@ namespace PixServiseTests
                     set.MinTfomsInfo(),
                     set.MinDiagnosis(),
                     set.MinClinicMainDiagnosis(),
-                    MedRecordData.clinicMainDiagnosis,
                     MedRecordData.diagnosis,
                     set.MinRefferal(),
                     set.MinSickList(),
@@ -178,10 +177,9 @@ namespace PixServiseTests
                     set.MinTfomsInfo(),
                     MedRecordData.deathInfo,
                     set.MinDiagnosis(),
-                    MedRecordData.clinicMainDiagnosis,
                     MedRecordData.anatomopathologicalClinicMainDiagnosis,
-                    MedRecordData.referral,   
-                    MedRecordData.sickList,
+                    set.MinRefferal(),   
+                    set.MinSickList(),
                     set.MinDischargeSummary(),
                     set.MinLaboratoryReport(),
                     set.MinConsultNote()
@@ -193,7 +191,7 @@ namespace PixServiseTests
                     set.MinAppointedMedication(),
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
+                    set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
                 caseStat.Steps = new List<StepStat>
@@ -236,7 +234,7 @@ namespace PixServiseTests
                     set.MinAppointedMedication(),
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
+                    set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
                 caseAmb.Steps = new List<StepAmb>

@@ -98,6 +98,7 @@ namespace PixServiseTests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
@@ -206,8 +207,8 @@ namespace PixServiseTests
                     set.MinTfomsInfo(),
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
-                    MedRecordData.sickList,
+                    set.MinRefferal(),
+                    set.MinSickList(),
                     set.MinDischargeSummary(),
                     set.MinLaboratoryReport(),
                     set.MinConsultNote()
@@ -219,7 +220,7 @@ namespace PixServiseTests
                     set.MinAppointedMedication(),
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
+                    set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
                 caseAmbUpdate.Steps = new List<StepAmb>
