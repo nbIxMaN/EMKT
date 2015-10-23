@@ -271,7 +271,7 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
-                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
 
                 caseStat = (new SetData()).MinCaseStatSetForClose();
@@ -285,10 +285,9 @@ namespace PixServiseTests
                     set.MinTfomsInfo(),
                     MedRecordData.deathInfo,
                     set.MinDiagnosis(),
-                    MedRecordData.clinicMainDiagnosis,
                     MedRecordData.anatomopathologicalClinicMainDiagnosis,
-                    MedRecordData.referral,   
-                    MedRecordData.sickList,
+                    set.MinRefferal(),   
+                    set.MinSickList(),
                     set.MinDischargeSummary(),
                     set.MinLaboratoryReport(),
                     set.MinConsultNote()
@@ -299,8 +298,7 @@ namespace PixServiseTests
                     set.MinService(),
                     set.MinAppointedMedication(),
                     set.MinDiagnosis(),
-                    MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
+                    set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
                 caseStat.Steps = new List<StepStat>
