@@ -136,7 +136,7 @@ namespace PixServiseTests
                     stepStat
                 };
                 EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                EmkClient.CancelCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdCaseMis, caseStat.IdPatientMis);
+                EmkClient.CancelCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseStat.IdPatientMis, caseStat.IdCaseMis);
             }
             if (Global.errors == "")
                 Assert.Pass();
