@@ -22,10 +22,12 @@
     <MetadataSource Address="http://192.168.8.93:2222/iemk/mqproxy.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MQProxy.xsd" MetadataType="Schema" ID="f2ff7ff6-2ab3-441e-9347-c47a7be1956e" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd1" />
+    <MetadataFile FileName="MQProxy2.xsd" MetadataType="Schema" ID="305da0e1-9568-45d5-93cf-0907abb1f574" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd2" />
+    <MetadataFile FileName="MQProxy21.xsd" MetadataType="Schema" ID="6e559622-ead8-4556-b00c-02cefc5f7304" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd3" />
     <MetadataFile FileName="MQProxy1.xsd" MetadataType="Schema" ID="d8667872-bdd3-429c-9b65-e549d7b21553" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd0" />
-    <MetadataFile FileName="MQProxy.disco" MetadataType="Disco" ID="4596a221-df51-431d-b1ce-7aeeedc32510" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?disco" />
+    <MetadataFile FileName="MQProxy.xsd" MetadataType="Schema" ID="f2ff7ff6-2ab3-441e-9347-c47a7be1956e" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd1" />
     <MetadataFile FileName="MqService.wsdl" MetadataType="Wsdl" ID="5977360e-6eeb-4422-992b-28d0e6a58fca" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?wsdl" />
+    <MetadataFile FileName="MQProxy.disco" MetadataType="Disco" ID="4596a221-df51-431d-b1ce-7aeeedc32510" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/MQProxy.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

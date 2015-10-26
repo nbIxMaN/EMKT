@@ -36,6 +36,53 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+        [Test]
+        public void AddMinAmbCaseWithTrueKey()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                caseAmb.MedRecords = new List<MedRecord>
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.TrueMedRecordDataWithKey
+                };
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddMinAmbCaseWithWrongKey()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                caseAmb.MedRecords = new List<MedRecord>
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.TrueMedRecordDataWithKey
+                };
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
 
         [Test]
         public void AddMinStatCase()
@@ -48,7 +95,7 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                //caseStat.PrehospitalDefects = new List<byte>() { 1, 2 };
+                caseStat.PrehospitalDefects = new List<byte>() { 1, 2 };
                
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
@@ -57,7 +104,118 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+        private LaboratoryReport GetOnkomarkers()
+        {
+            return new LaboratoryReport()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 04),
+                Attachment = Data.SetAttachment("Ифа.Онкомаркеры.pdf", null, "application/pdf"),
+                Header = "Лабораторное исследование Онкомаркеры"
+            };
+        }
+        private LaboratoryReport GetGemotology()
+        {
+            return new LaboratoryReport()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 02),
+                Attachment = Data.SetAttachment("Гематология.pdf", null, "application/pdf"),
+                Header = "Лабораторное исследование Гематология"
+            };
+        }
+        private LaboratoryReport GetBlood()
+        {
+            return new LaboratoryReport()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 05),
+                Attachment = Data.SetAttachment("Общийанализкрови.pdf", null, "application/pdf"),
+                Header = "Лабораторное исследование Общий анализ крови"
+            };
+        }
+        private DischargeSummary GetEpic()
+        {
+            return new DischargeSummary()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 03),
+                Attachment = Data.SetAttachment("эпикриз.html", null, "text/html"),
+                Header = "Эпикриз"
+            };
+        }
 
+        private ConsultNote GetConsult()
+        {
+            return new ConsultNote()
+            {
+                Author = DoctorData.doctorInCharge,
+                CreationDate = new DateTime(2014, 06, 08),
+                Attachment = Data.SetAttachment("консультация.pdf", null, "application/pdf"),
+                Header = "Консультация"
+            };
+        }
+        [Test]
+        public void _HashTest()
+        {
+            using (TestPixServiceClient c = new TestPixServiceClient())
+            {
+                PatientDto p = (new SetData()).PatientSet();
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", p);
+            }
+            using (TestEmkServiceClient c = new TestEmkServiceClient())
+            {
+                CaseAmb p = (new SetData()).FullCaseAmbSet();
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                var x = GetConsult();
+                x.Attachment.Hash = new byte[] { 1, 2, 3, 4, 5 };
+                p.MedRecords = new List<MedRecord>
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    //GetEpic(),
+                    //GetConsult()
+                    x
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new List<MedRecord>
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers(),
+                    MedRecordData.appointedMedication,
+                    MedRecordData.service
+                };
+                c.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+                string caseMis = p.IdCaseMis;
+                p = (new SetData()).FullCaseAmbSet();
+                p.IdCaseMis = caseMis;
+                p.Guardian = null;
+                p.OpenDate = new DateTime(2014, 06, 01);
+                p.CloseDate = new DateTime(2014, 06, 10);
+                p.MedRecords = new List<MedRecord>
+                {
+                    MedRecordData.clinicMainDiagnosis,
+                    //GetConsult()
+                    x
+                };
+                p.Steps[0].DateStart = new DateTime(2014, 06, 01);
+                p.Steps[0].DateEnd = new DateTime(2014, 06, 10);
+                p.Steps[0].MedRecords = new List<MedRecord>
+                {
+                    GetGemotology(),
+                    GetBlood(),
+                    GetOnkomarkers()
+                };
+                c.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", p);
+            }
+            if (Global.errors == "")
+                Assert.Fail("Кейс с левым хешом был добавлен");
+            else
+                Assert.Pass();
+        }
         [Test]
         public void _AddCaseForMiac()
         {
@@ -69,13 +227,27 @@ namespace PixServiseTests
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
-                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                CaseStat caseStat = (new SetData()).FullCaseStatSet();
                 caseStat.IdLpu = "1.2.643.5.1.13.3.25.78.186";
                 caseStat.IdPatientMis = "56c46538-cff7-4991-9777-2cc7eca05f21";
                 caseStat.IdCaseMis = "158903";
                 caseStat.OpenDate = new DateTime(2015, 10, 12);
                 caseStat.CloseDate = new DateTime(2015, 10, 13);
                 caseStat.HistoryNumber = "23030";
+                caseStat.MedRecords = new List<MedRecord>
+                {
+                    MedRecordData.service,
+                    MedRecordData.tfomsInfo,
+                    MedRecordData.deathInfo,
+                    MedRecordData.diagnosis,
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                    MedRecordData.referral,
+                    MedRecordData.sickList,
+                    MedRecordData.dischargeSummary,
+                    MedRecordData.LaboratoryReport,
+                    MedRecordData.consultNote
+                };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat.Steps = new List <StepStat>
                 {(new SetData()).MinStepStatSet()};

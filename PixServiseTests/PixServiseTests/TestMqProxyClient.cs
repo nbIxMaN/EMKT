@@ -26,9 +26,9 @@ namespace PixServiseTests
             }
         }
 
-        public byte[] GetResultDocument(string idLpu, string idCaseMis, int documentType)
+        public byte[] GetResultDocument(string GUID, string idLpu, string idCaseMis, int documentType)
         {
-            byte[] a = client.GetResultDocument(idLpu, idCaseMis, documentType);
+            ResultDocument a = client.GetResultDocument(GUID, idLpu, idCaseMis, documentType);
             byte[] b = {};
             using (SqlConnection connection = Global.GetSqlConnection())
             {
@@ -47,9 +47,9 @@ namespace PixServiseTests
                     }
                 }
             }
-            if (!a.SequenceEqual(b))
+            if (!a.Data.SequenceEqual(b))
                 Global.errors1.Add("Несовпадение базового и возвращенного документов");
-            return a;
+            return a.Data;
         }
 
         ~TestMqProxyClient()

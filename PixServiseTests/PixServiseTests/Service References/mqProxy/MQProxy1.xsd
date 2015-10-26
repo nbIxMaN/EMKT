@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService.Core" />
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/N3.WebService.FhirProxy" />
+  <xs:element name="GetVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WebService.Core" minOccurs="0" name="GetVersionResult" nillable="true" type="q1:VersionInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetResultDocument">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="idLpu" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="idCaseMis" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="documentType" type="xs:int" />
@@ -12,7 +27,7 @@
   <xs:element name="GetResultDocumentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetResultDocumentResult" nillable="true" type="xs:base64Binary" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/N3.WebService.FhirProxy" minOccurs="0" name="GetResultDocumentResult" nillable="true" type="q2:ResultDocument" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

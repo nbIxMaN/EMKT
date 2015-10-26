@@ -38,11 +38,27 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CryptoPro.Sharpei.Base, Version=1.4.0.10, Culture=neutral, PublicKeyToken=473b8c5086e795f5, processorArchitecture=MSIL">
+      <HintPath>..\packages\N3.Encription.1.0.1\lib\CryptoPro.Sharpei.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CryptoPro.Sharpei.ServiceModel, Version=1.4.0.1, Culture=neutral, PublicKeyToken=473b8c5086e795f5, processorArchitecture=MSIL">
+      <HintPath>..\packages\N3.Encription.1.0.1\lib\CryptoPro.Sharpei.ServiceModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CryptoPro.Sharpei.Xml, Version=1.4.0.10, Culture=neutral, PublicKeyToken=473b8c5086e795f5, processorArchitecture=MSIL">
+      <HintPath>..\packages\N3.Encription.1.0.1\lib\CryptoPro.Sharpei.Xml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.4.1.10311.0\lib\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="N3.Encryption, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\N3.Encription.1.0.1\lib\N3.Encryption.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -80,6 +96,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="MedDocumentData.cs" />
     <Compile Include="MedRecords Tests\ReferralTest.cs" />
     <Compile Include="MedRecords Tests\SickListTest.cs" />
     <Compile Include="Methods Tests\AddMedRecordTest.cs" />
@@ -237,7 +254,19 @@
     <None Include="Service References\mqProxy\MQProxy1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\mqProxy\MQProxy2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\mqProxy\MQProxy21.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\mqProxy\MqService.wsdl" />
+    <None Include="Service References\mqProxy\PixServiseTests.mqProxy.ResultDocument.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\mqProxy\PixServiseTests.mqProxy.VersionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PixServise\PixService.wsdl" />
     <None Include="Service References\PixServise\PixService.xsd">
       <SubType>Designer</SubType>

@@ -4,20 +4,46 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService.Core" />
+      <xsd:import schemaLocation="http://192.168.8.93:2222/iemk/MQProxy.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/N3.WebService.FhirProxy" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IServiceSupport_GetVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSupport_GetVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="IMqService_GetResultDocument_InputMessage">
     <wsdl:part name="parameters" element="tns:GetResultDocument" />
   </wsdl:message>
   <wsdl:message name="IMqService_GetResultDocument_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetResultDocumentResponse" />
   </wsdl:message>
+  <wsdl:portType name="IServiceSupport">
+    <wsdl:operation name="GetVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSupport/GetVersion" message="tns:IServiceSupport_GetVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSupport/GetVersionResponse" message="tns:IServiceSupport_GetVersion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IMqService">
     <wsdl:operation name="GetResultDocument">
       <wsdl:input wsaw:Action="http://tempuri.org/IMqService/GetResultDocument" message="tns:IMqService_GetResultDocument_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMqService/GetResultDocumentResponse" message="tns:IMqService_GetResultDocument_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceSupport" type="tns:IServiceSupport">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://tempuri.org/IServiceSupport/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IMqService" type="tns:IMqService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetResultDocument">
@@ -31,6 +57,9 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MqService">
+    <wsdl:port name="BasicHttpBinding_IServiceSupport" binding="tns:BasicHttpBinding_IServiceSupport">
+      <soap:address location="http://192.168.8.93:2222/iemk/MQProxy.svc" />
+    </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IMqService" binding="tns:BasicHttpBinding_IMqService">
       <soap:address location="http://192.168.8.93:2222/iemk/MQProxy.svc" />
     </wsdl:port>

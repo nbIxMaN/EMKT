@@ -9,17 +9,220 @@
 //------------------------------------------------------------------------------
 
 namespace PixServiseTests.mqProxy {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VersionInfo", Namespace="http://schemas.datacontract.org/2004/07/WebService.Core")]
+    [System.SerializableAttribute()]
+    public partial class VersionInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DatabaseVersionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ServiceVersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DatabaseVersion {
+            get {
+                return this.DatabaseVersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatabaseVersionField, value) != true)) {
+                    this.DatabaseVersionField = value;
+                    this.RaisePropertyChanged("DatabaseVersion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ServiceVersion {
+            get {
+                return this.ServiceVersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ServiceVersionField, value) != true)) {
+                    this.ServiceVersionField = value;
+                    this.RaisePropertyChanged("ServiceVersion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResultDocument", Namespace="http://schemas.datacontract.org/2004/07/N3.WebService.FhirProxy")]
+    [System.SerializableAttribute()]
+    public partial class ResultDocument : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreationDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HeaderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MIMETypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreationDate {
+            get {
+                return this.CreationDateField;
+            }
+            set {
+                if ((this.CreationDateField.Equals(value) != true)) {
+                    this.CreationDateField = value;
+                    this.RaisePropertyChanged("CreationDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Header {
+            get {
+                return this.HeaderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HeaderField, value) != true)) {
+                    this.HeaderField = value;
+                    this.RaisePropertyChanged("Header");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MIMEType {
+            get {
+                return this.MIMETypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MIMETypeField, value) != true)) {
+                    this.MIMETypeField = value;
+                    this.RaisePropertyChanged("MIMEType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="mqProxy.IServiceSupport")]
+    public interface IServiceSupport {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSupport/GetVersion", ReplyAction="http://tempuri.org/IServiceSupport/GetVersionResponse")]
+        PixServiseTests.mqProxy.VersionInfo GetVersion();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSupport/GetVersion", ReplyAction="http://tempuri.org/IServiceSupport/GetVersionResponse")]
+        System.Threading.Tasks.Task<PixServiseTests.mqProxy.VersionInfo> GetVersionAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IServiceSupportChannel : PixServiseTests.mqProxy.IServiceSupport, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ServiceSupportClient : System.ServiceModel.ClientBase<PixServiseTests.mqProxy.IServiceSupport>, PixServiseTests.mqProxy.IServiceSupport {
+        
+        public ServiceSupportClient() {
+        }
+        
+        public ServiceSupportClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ServiceSupportClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ServiceSupportClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ServiceSupportClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public PixServiseTests.mqProxy.VersionInfo GetVersion() {
+            return base.Channel.GetVersion();
+        }
+        
+        public System.Threading.Tasks.Task<PixServiseTests.mqProxy.VersionInfo> GetVersionAsync() {
+            return base.Channel.GetVersionAsync();
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="mqProxy.IMqService")]
     public interface IMqService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMqService/GetResultDocument", ReplyAction="http://tempuri.org/IMqService/GetResultDocumentResponse")]
-        byte[] GetResultDocument(string idLpu, string idCaseMis, int documentType);
+        PixServiseTests.mqProxy.ResultDocument GetResultDocument(string guid, string idLpu, string idCaseMis, int documentType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMqService/GetResultDocument", ReplyAction="http://tempuri.org/IMqService/GetResultDocumentResponse")]
-        System.Threading.Tasks.Task<byte[]> GetResultDocumentAsync(string idLpu, string idCaseMis, int documentType);
+        System.Threading.Tasks.Task<PixServiseTests.mqProxy.ResultDocument> GetResultDocumentAsync(string guid, string idLpu, string idCaseMis, int documentType);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +252,12 @@ namespace PixServiseTests.mqProxy {
                 base(binding, remoteAddress) {
         }
         
-        public byte[] GetResultDocument(string idLpu, string idCaseMis, int documentType) {
-            return base.Channel.GetResultDocument(idLpu, idCaseMis, documentType);
+        public PixServiseTests.mqProxy.ResultDocument GetResultDocument(string guid, string idLpu, string idCaseMis, int documentType) {
+            return base.Channel.GetResultDocument(guid, idLpu, idCaseMis, documentType);
         }
         
-        public System.Threading.Tasks.Task<byte[]> GetResultDocumentAsync(string idLpu, string idCaseMis, int documentType) {
-            return base.Channel.GetResultDocumentAsync(idLpu, idCaseMis, documentType);
+        public System.Threading.Tasks.Task<PixServiseTests.mqProxy.ResultDocument> GetResultDocumentAsync(string guid, string idLpu, string idCaseMis, int documentType) {
+            return base.Channel.GetResultDocumentAsync(guid, idLpu, idCaseMis, documentType);
         }
     }
 }

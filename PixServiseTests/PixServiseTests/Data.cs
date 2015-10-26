@@ -75,6 +75,8 @@ namespace PixServiseTests
         public static LaboratoryReport LaboratoryReport { get; set; }
         public static ConsultNote consultNote { get; set; }
         public static AnatomopathologicalClinicMainDiagnosis anatomopathologicalClinicMainDiagnosis { get; set; }
+        public static LaboratoryReport TrueMedRecordDataWithKey { get; internal set; }
+        public static LaboratoryReport WrongMedRecordDataWithKey { get; internal set; }
     }
 
     public static class DocumentData
@@ -223,11 +225,11 @@ namespace PixServiseTests
                 MedicineUseWay = 1,
                 Number = "324465",
                 Seria = "3242309",
-                CourseDose = new Quantity
-                {
-                    IdUnit = 1,
-                    Value = 20,
-                },
+                //CourseDose = new Quantity
+                //{
+                //    IdUnit = 1,
+                //    Value = 20,
+                //},
                 DayDose = new Quantity
                 {
                     IdUnit = 16,
@@ -424,6 +426,32 @@ namespace PixServiseTests
                  }
             };
 
+            MedRecordData.TrueMedRecordDataWithKey = new LaboratoryReport
+            {
+                Attachment = new MedDocument.DocumentAttachment
+                {
+                    Data = Encoding.UTF8.GetBytes(Convert.ToBase64String(Encoding.UTF8.GetBytes(new MedDocumentData().TrueXMLstring))),
+                    Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
+                    MimeType = "text/xml"
+                },
+                CreationDate = new DateTime(2012, 02, 02),
+                Header = "Header",
+                Author = SetDoctor(),
+            };
+
+            MedRecordData.WrongMedRecordDataWithKey = new LaboratoryReport
+            {
+                Attachment = new MedDocument.DocumentAttachment
+                {
+                    Data = Encoding.UTF8.GetBytes(Convert.ToBase64String(Encoding.UTF8.GetBytes(new MedDocumentData().TrueXMLstring))),
+                    Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
+                    MimeType = "text/xml"
+                },
+                CreationDate = new DateTime(2012, 02, 02),
+                Header = "Header",
+                Author = SetDoctor(),
+            };
+
             MedRecordData.dispensaryOne = new DispensaryOne
             {
                 CreationDate = new DateTime(2012, 02, 02),
@@ -435,7 +463,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
@@ -468,7 +496,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctorWithSNILS(),
                 HealthGroup = new HealthGroup
                 {
@@ -500,7 +528,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctorWithoutSNILS(),
                 HealthGroup = new HealthGroup
                 {
@@ -530,7 +558,7 @@ namespace PixServiseTests
                 IdTargetLpu = "1.2.643.5.1.13.3.25.78.118",
                 ReferralID = "referralId2890",
                 RelatedID = "relatedId02890",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 ReferralInfo = new ReferralInfo
                 {
@@ -548,7 +576,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 SickListInfo = new SickListInfo
                 {
@@ -566,7 +594,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
 
@@ -574,7 +602,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
 
@@ -582,7 +610,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                Attachment = SetAttachment("empty.txt", "https://www.google.ru", "text/plain"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
         }
