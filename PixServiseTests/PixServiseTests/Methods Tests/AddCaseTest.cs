@@ -241,7 +241,7 @@ namespace PixServiseTests
                     MedRecordData.deathInfo,
                     MedRecordData.diagnosis,
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                   // MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.referral,
                     MedRecordData.sickList,
                     MedRecordData.dischargeSummary,
