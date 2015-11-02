@@ -222,17 +222,17 @@ namespace PixServiseTests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                patient.IdPatientMIS = "56c46538-cff7-4991-9777-2cc7eca05f21";
+                patient.IdPatientMIS = "cc9d190e-7632-44a7-852f-f3fec14793ca";
                 PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.186", patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).FullCaseStatSet();
                 caseStat.IdLpu = "1.2.643.5.1.13.3.25.78.186";
-                caseStat.IdPatientMis = "56c46538-cff7-4991-9777-2cc7eca05f21";
-                caseStat.IdCaseMis = "158903";
-                caseStat.OpenDate = new DateTime(2015, 10, 12);
-                caseStat.CloseDate = new DateTime(2015, 10, 13);
+                caseStat.IdPatientMis = "cc9d190e-7632-44a7-852f-f3fec14793ca";
+                caseStat.IdCaseMis = "3776";
+                caseStat.OpenDate = new DateTime(2014, 12, 10);
+                caseStat.CloseDate = new DateTime(2015, 12, 15);
                 caseStat.HistoryNumber = "23030";
                 caseStat.MedRecords = new List<MedRecord>
                 {
@@ -241,7 +241,7 @@ namespace PixServiseTests
                     MedRecordData.deathInfo,
                     MedRecordData.diagnosis,
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                    //MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.referral,
                     MedRecordData.sickList,
                     MedRecordData.dischargeSummary,
@@ -255,6 +255,29 @@ namespace PixServiseTests
                 {
                     MedRecordData.appointedMedication
                 };
+                caseStat.DoctorInCharge = new MedicalStaff
+                {
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                    IdSpeciality = 30,
+                    IdPosition = 75,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = "unknown",
+                        Sex = 2,
+                        Birthdate = new DateTime(1975, 02, 08),
+                        Documents = new List<IdentityDocument>
+                    {
+                        DocumentData.SNILS,
+                    },
+                        HumanName = new HumanName
+                        {
+                            FamilyName = "unknown",
+                            GivenName = "unknown",
+                            MiddleName = "unknown",
+                        },
+                    }
+                };
+                caseStat.DoctorInCharge.Person.Documents[0].DocN = "11111111448";
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
 
             }

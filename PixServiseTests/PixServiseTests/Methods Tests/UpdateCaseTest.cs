@@ -52,26 +52,26 @@ namespace PixServiseTests
                 SetData set = new SetData();
                 caseAmb.MedRecords = new List<MedRecord>
                 {
-                    set.MinService(),
-                    set.MinTfomsInfo(),
-                    set.MinDiagnosis(),
+                    MedRecordData.service,
+                    MedRecordData.tfomsInfo,
+                    MedRecordData.diagnosis,
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,
                     MedRecordData.sickList,
-                    set.MinDischargeSummary(),
-                    set.MinLaboratoryReport(),
-                    set.MinConsultNote()
+                    MedRecordData.dischargeSummary,
+                    MedRecordData.LaboratoryReport,
+                    MedRecordData.consultNote
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                stepAmb.MedRecords = new List<MedRecord>
-                {
-                    set.MinService(),
-                    set.MinAppointedMedication(),
-                    set.MinDiagnosis(),
-                    MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
-                    set.MinLaboratoryReport(),
-                };
+                //stepAmb.MedRecords = new List<MedRecord>
+                //{
+                //    set.MinService(),
+                //    set.MinAppointedMedication(),
+                //    set.MinDiagnosis(),
+                //    MedRecordData.clinicMainDiagnosis,
+                //    MedRecordData.referral,
+                //    set.MinLaboratoryReport(),
+                //};
                 caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
@@ -99,6 +99,29 @@ namespace PixServiseTests
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
                 caseStat = (new SetData()).MinCaseStatSet();
+                caseStat.DoctorInCharge = new MedicalStaff
+                {
+                    IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                    IdSpeciality = 31,
+                    IdPosition = 76,
+                    Person = new PersonWithIdentity
+                    {
+                        IdPersonMis = "unknown1",
+                        Sex = 2,
+                        Birthdate = new DateTime(1976, 03, 09),
+                        Documents = new List<IdentityDocument>
+                    {
+                        DocumentData.SNILS,
+                    },
+                        HumanName = new HumanName
+                        {
+                            FamilyName = "unknown1",
+                            GivenName = "unknown1",
+                            MiddleName = "unknown1",
+                        },
+                    }
+                };
+                caseStat.DoctorInCharge.Person.Documents[0].DocN = "11111111549";
                 EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
             }
             if (Global.errors == "")
