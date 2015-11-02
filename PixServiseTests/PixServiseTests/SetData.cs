@@ -225,9 +225,12 @@ namespace PixServiseTests
                 //        GivenName = DoctorData.otherDoctor.Person.HumanName.GivenName,
                 //    }
                 //}
+
+                //"Organization/ab0dba1c-f83f-4605-b436-5da807187466"
+                //"1.2.643.5.1.13.3.25.78.118"
                 IdSpeciality = 27,
                 IdPosition = 72,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = "Organization/ab0dba1c-f83f-4605-b436-5da807187466",
                 Person = new PersonWithIdentity
                 {
                     IdPersonMis = "NOSNILSDOCTOR",

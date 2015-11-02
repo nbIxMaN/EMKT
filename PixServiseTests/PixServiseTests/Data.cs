@@ -93,11 +93,13 @@ namespace PixServiseTests
 
     [TestFixture]
     public abstract class Data
-    {
-        //выбор oid или guid происходит здесь!!
-        public static string idlpu = guid;
+    {   //выбор oid или guid происходит здесь!!
         private static string oid = "urn:oid:1.2.643.5.1.13.3.25.78.118";
-        private static string guid = "Organization/ab0dba1c-f83f-4605-b436-5da807187466"; 
+        private static string guid = "ab0dba1c-f83f-4605-b436-5da807187466";
+        
+        public static string idlpu = guid;
+
+
 
         static public void SetDocument()
         {
@@ -431,12 +433,12 @@ namespace PixServiseTests
                  }
             };
 
-            var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")));
+            //var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")));
             MedRecordData.TrueMedRecordDataWithKey = new LaboratoryReport
             {
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    Data = Encoding.UTF8.GetBytes(data),
+                    //  Data = Encoding.UTF8.GetBytes(data),
                     Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
                     MimeType = "text/xml"
                 },
@@ -449,7 +451,7 @@ namespace PixServiseTests
             {
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    Data = Encoding.UTF8.GetBytes(data),
+                    // Data = Encoding.UTF8.GetBytes(data),
                     Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
                     MimeType = "text/xml"
                 },
@@ -1125,7 +1127,7 @@ namespace PixServiseTests
                 Authenticator = DoctorData.authenticator,
                 Author = DoctorData.author,
                 LegalAuthenticator = DoctorData.legalAuthenticator,
-                Steps = new List <StepStat> { CaseStatData.step },
+                Steps = new List<StepStat> { CaseStatData.step },
                 //MedRecords
             };
         }
@@ -1139,7 +1141,7 @@ namespace PixServiseTests
                 GivenName = "Алёша",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
-                IdPatientMIS = "21.08.2015",
+                IdPatientMIS = "02.11.2015",
             };
 
             SetDocument();

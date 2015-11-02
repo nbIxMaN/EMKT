@@ -220,12 +220,14 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="DocN" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="DocS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ExpiredDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="IdDocumentType" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="IdProvider" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IssuedDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ProviderName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="IdentityDocument" nillable="true" type="tns:IdentityDocument" />
@@ -453,6 +455,7 @@
           <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" base="q1:MedRecord">
             <xs:sequence>
               <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="IdDocumentMis" nillable="true" type="xs:string" />
               <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:MedDocument.DocumentAttachment" />
               <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Author" nillable="true" type="q2:MedicalStaff" />
               <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />

@@ -444,12 +444,23 @@ namespace PixServiseTests
                 Assert.Fail(Global.errors);
         }
 
-        [TearDown]
-        public void Clear()
+        [Test]
+        public void Test()
         {
-            Global.errors3.Clear();
-            Global.errors2.Clear();
-            Global.errors1.Clear();
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
         }
     }
 }
