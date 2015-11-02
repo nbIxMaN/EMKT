@@ -94,6 +94,11 @@ namespace PixServiseTests
     [TestFixture]
     public abstract class Data
     {
+        //выбор oid или guid происходит здесь!!
+        public static string idlpu = guid;
+        private static string oid = "urn:oid:1.2.643.5.1.13.3.25.78.118";
+        private static string guid = "Organization/ab0dba1c-f83f-4605-b436-5da807187466"; 
+
         static public void SetDocument()
         {
             DocumentData.PatientPassport = new IdentityDocument
@@ -555,8 +560,8 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                IdSourceLpu = "1.2.643.5.1.13.3.25.78.118",
-                IdTargetLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdSourceLpu = idlpu,
+                IdTargetLpu = idlpu,
                 ReferralID = "referralId2890",
                 RelatedID = "relatedId02890",
                 //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
@@ -620,7 +625,7 @@ namespace PixServiseTests
         {
             MedicalStaff doctor = new MedicalStaff
             {
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdSpeciality = 29,
                 IdPosition = 74,
                 Person = new PersonWithIdentity
@@ -642,7 +647,7 @@ namespace PixServiseTests
         {
             MedicalStaff doctor = new MedicalStaff
             {
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdSpeciality = 29,
                 IdPosition = 74,
                 Person = new PersonWithIdentity
@@ -669,7 +674,7 @@ namespace PixServiseTests
         {
             MedicalStaff doctor = new MedicalStaff
             {
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdSpeciality = 29,
                 IdPosition = 74,
                 Person = new PersonWithIdentity
@@ -696,7 +701,7 @@ namespace PixServiseTests
         {
             MedicalStaff doctor = new MedicalStaff
             {
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdSpeciality = 4,
                 IdPosition = 69,
                 Person = new PersonWithIdentity
@@ -910,7 +915,7 @@ namespace PixServiseTests
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
                 CuratorConfidentiality = 1,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdCaseResult = 1,
                 Comment = "КОММЕНТ",
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
@@ -939,7 +944,7 @@ namespace PixServiseTests
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
                 CuratorConfidentiality = 1,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdCaseResult = 1,
                 Comment = "КОММЕНТ",
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
@@ -968,7 +973,7 @@ namespace PixServiseTests
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
                 CuratorConfidentiality = 1,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdCaseResult = 1,
                 Comment = "КОММЕНТ",
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
@@ -997,7 +1002,7 @@ namespace PixServiseTests
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
                 CuratorConfidentiality = 1,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdCaseResult = 1,
                 Comment = "КОММЕНТ",
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
@@ -1092,7 +1097,7 @@ namespace PixServiseTests
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
                 CuratorConfidentiality = 1,
-                IdLpu = "1.2.643.5.1.13.3.25.78.118",
+                IdLpu = idlpu,
                 IdCaseResult = 1,
                 Comment = "КОММЕНТ",
                 IdPatientMis = PatientData.Patient.IdPatientMIS,
