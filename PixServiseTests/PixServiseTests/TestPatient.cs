@@ -113,13 +113,13 @@ namespace PixServiseTests
                         "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "'";
                 }
                 SqlCommand command = new SqlCommand(findIdPersonString, connection);
-                using (SqlDataReader IdPerson = command.ExecuteReader())
-                {
-                    while (IdPerson.Read())
-                    {
-                        patientId = IdPerson["IdPerson"].ToString();
-                    }
-                }
+                //using (SqlDataReader IdPerson = command.ExecuteReader())
+                //{
+                //    while (IdPerson.Read())
+                //    {
+                //        patientId = IdPerson["IdPerson"].ToString();
+                //    }
+                //}
             }
             if (patientId != "")
                 return patientId;

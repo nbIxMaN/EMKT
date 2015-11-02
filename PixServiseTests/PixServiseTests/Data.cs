@@ -94,12 +94,10 @@ namespace PixServiseTests
     [TestFixture]
     public abstract class Data
     {   //выбор oid или guid происходит здесь!!
-        private static string oid = "urn:oid:1.2.643.5.1.13.3.25.78.118";
-        private static string guid = "ab0dba1c-f83f-4605-b436-5da807187466";
+        private static string oid = "1.2.643.5.1.13.3.25.78.118";
+        private static string guid = "df8ccddcac7246c9be0e075fb9fac5c2";
         
         public static string idlpu = guid;
-
-
 
         static public void SetDocument()
         {
