@@ -19,7 +19,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 PatientDto patient = (new SetData()).PatientSet();
                 patient.IdPatientMIS = "TestForMq";
-                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
             }
             CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
             caseAmb.MedRecords = new List<MedRecord>
@@ -35,7 +35,7 @@ namespace PixServiseTests.Methods_Tests
             }
             using (TestMqProxyClient client = new TestMqProxyClient())
             {
-                client.GetResultDocument("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdCaseMis, 3);
+                client.GetResultDocument("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseAmb.IdCaseMis, 3);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -48,7 +48,7 @@ namespace PixServiseTests.Methods_Tests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+                c.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
             }
             CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
             caseAmb.MedRecords = new List<MedRecord>
@@ -62,7 +62,7 @@ namespace PixServiseTests.Methods_Tests
             }
             using (TestMqProxyClient client = new TestMqProxyClient())
             {
-                client.GetResultDocument("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", caseAmb.IdCaseMis, 1);
+                client.GetResultDocument("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseAmb.IdCaseMis, 1);
             }
             if (Global.errors == "")
                 Assert.Pass();

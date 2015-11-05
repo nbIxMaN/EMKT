@@ -1139,7 +1139,7 @@ namespace PixServiseTests
                 GivenName = "Алёша",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
-                IdPatientMIS = "02.11.2015",
+                IdPatientMIS = "03.11.2015 19 06",
             };
 
             SetDocument();

@@ -227,10 +227,10 @@ namespace PixServiseTests
                 //}
 
                 //"Organization/ab0dba1c-f83f-4605-b436-5da807187466"
-                //"1.2.643.5.1.13.3.25.78.118"
+                //Data.idlpu
                 IdSpeciality = 27,
                 IdPosition = 72,
-                IdLpu = "Organization/ab0dba1c-f83f-4605-b436-5da807187466",
+                IdLpu = "df8ccddcac7246c9be0e075fb9fac5c2",
                 Person = new PersonWithIdentity
                 {
                     IdPersonMis = "NOSNILSDOCTOR",
