@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EMKService.Data.ReferralList" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EMKService.Data.ReferralList" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://demo-iemk20.zdrav.netrika.ru/EMKService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" />
+  <xs:complexType name="ArrayOfReferralTupleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReferralTupleDto" nillable="true" type="tns:ReferralTupleDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReferralTupleDto" nillable="true" type="tns:ArrayOfReferralTupleDto" />
+  <xs:complexType name="ReferralTupleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Patient" nillable="true" type="tns:PatientMinDto" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" minOccurs="0" name="Referrals" nillable="true" type="q1:ArrayOfReferralDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReferralTupleDto" nillable="true" type="tns:ReferralTupleDto" />
+  <xs:complexType name="PatientMinDto">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" minOccurs="0" name="Addresses" nillable="true" type="q2:ArrayOfAddressDto" />
+      <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" minOccurs="0" name="Documents" nillable="true" type="q3:ArrayOfDocumentDto" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPrivilegeType" type="xs:unsignedByte" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" minOccurs="0" name="Job" nillable="true" type="q4:JobDto" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientMinDto" nillable="true" type="tns:PatientMinDto" />
+</xs:schema>

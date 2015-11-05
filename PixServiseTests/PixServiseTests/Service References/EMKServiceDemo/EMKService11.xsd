@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://demo-iemk20.zdrav.netrika.ru/EMKService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" />
+  <xs:complexType name="ArrayOfMedRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MedRecord" nillable="true" type="tns:MedRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMedRecord" nillable="true" type="tns:ArrayOfMedRecord" />
+  <xs:complexType name="MedRecord">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MedRecord" nillable="true" type="tns:MedRecord" />
+  <xs:complexType name="DeathInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MkbCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeathInfo" nillable="true" type="tns:DeathInfo" />
+  <xs:complexType name="AppointedMedication">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AnatomicTherapeuticChemicalClassification" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="CourseDose" nillable="true" type="q1:Quantity" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="DayDose" nillable="true" type="q2:Quantity" />
+          <xs:element minOccurs="0" name="DaysCount" type="xs:unsignedShort" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Doctor" nillable="true" type="q3:MedicalStaff" />
+          <xs:element minOccurs="0" name="IssuedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MedicineIssueType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MedicineName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MedicineType" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" name="MedicineUseWay" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="OneTimeDose" nillable="true" type="q4:Quantity" />
+          <xs:element minOccurs="0" name="Seria" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppointedMedication" nillable="true" type="tns:AppointedMedication" />
+  <xs:complexType name="TfomsInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Count" type="xs:int" />
+          <xs:element minOccurs="0" name="IdTfomsType" type="xs:int" />
+          <xs:element minOccurs="0" name="Tariff" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TfomsInfo" nillable="true" type="tns:TfomsInfo" />
+  <xs:complexType name="Service">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DateEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DateStart" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdServiceType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentInfo" nillable="true" type="tns:PaymentInfo" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Performer" nillable="true" type="q5:Participant" />
+          <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Service" nillable="true" type="tns:Service" />
+  <xs:complexType name="PaymentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HealthCareUnit" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IdPaymentType" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="PaymentState" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+      <xs:element minOccurs="0" name="Tariff" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentInfo" nillable="true" type="tns:PaymentInfo" />
+</xs:schema>
