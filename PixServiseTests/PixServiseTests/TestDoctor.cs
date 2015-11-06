@@ -41,20 +41,20 @@ namespace PixServiseTests
                             MedicalStaff ms = new MedicalStaff();
                             ms.IdPosition = Convert.ToUInt16(doctorReader["IdPosition"]);
                             ms.IdSpeciality = Convert.ToUInt16(doctorReader["Code"]);
-                            string idlpu = Convert.ToString(doctorReader["IdLpu"]);
-                            string findIdInstitutionalString =
-                                "SELECT TOP(1) * FROM Institution WHERE IdInstitution = '" + idlpu + "'";
-                            using (SqlConnection connection2 = Global.GetSqlConnection())
-                            {
-                                SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection2);
-                                using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-                                {
-                                    while (IdInstitutional.Read())
-                                    {
-                                        ms.IdLpu = IdInstitutional["IdFedNsi"].ToString();
-                                    }
-                                }
-                            }
+                            ms.IdLpu = Convert.ToString(doctorReader["IdLpu"]);
+                            //string findIdInstitutionalString =
+                            //    "SELECT TOP(1) * FROM Institution WHERE IdInstitution = '" + idlpu + "'";
+                            //using (SqlConnection connection2 = Global.GetSqlConnection())
+                            //{
+                            //    SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection2);
+                            //    using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
+                            //    {
+                            //        while (IdInstitutional.Read())
+                            //        {
+                            //            ms.IdLpu = IdInstitutional["IdFedNsi"].ToString();
+                            //        }
+                            //    }
+                            //}
                             TestDoctor p = new TestDoctor(ms);
                             p.person = TestPerson.BuildPersonFromDataBaseData(IdPerson);
                             return p;

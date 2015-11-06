@@ -14,10 +14,19 @@ namespace PixServiseTests
         private bool disposed = false; 
         public void getErrors(object obj)
         {
-            Array errors = obj as Array;
-            if (errors != null)
+            List<RequestFault> errorsList = obj as List<RequestFault>;
+            Array errorsArray = obj as Array;
+            if (errorsList != null)
             {
-                foreach(RequestFault i in errors)
+                foreach(RequestFault i in errorsList)
+                {
+                    Global.errors1.Add(i.PropertyName + " - " + i.Message);
+                    getErrors(i.Errors);
+                }
+            }
+            if (errorsArray != null)
+            {
+                foreach (RequestFault i in errorsArray)
                 {
                     Global.errors1.Add(i.PropertyName + " - " + i.Message);
                     getErrors(i.Errors);
@@ -92,6 +101,10 @@ namespace PixServiseTests
                     }
                 }
             }
+            catch (System.ServiceModel.FaultException<List<PixServiseTests.EMKServise.RequestFault>> e)
+            {
+                getErrors(e.Detail);
+            }
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
             {
                 getErrors(e.Detail);
@@ -99,7 +112,12 @@ namespace PixServiseTests
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
             {
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
+                getErrors(e.Detail.Errors);
             }
+            //catch (Exception e)
+            //{
+
+            //}
         }
 
         public void AddCase(string guid, CaseBase c)
@@ -141,6 +159,10 @@ namespace PixServiseTests
                         Global.errors1.AddRange(Global.errors2);
                 }
             }
+            catch (System.ServiceModel.FaultException<List<PixServiseTests.EMKServise.RequestFault>> e)
+            {
+                getErrors(e.Detail);
+            }
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
             {
                 getErrors(e.Detail);
@@ -148,6 +170,7 @@ namespace PixServiseTests
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
             {
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
+                getErrors(e.Detail.Errors);
             }
         }
         public void AddMedRecord(string guid, string idLpu, string idPatientMis, MedRecord mr, string idCaseMis = "")
@@ -162,6 +185,10 @@ namespace PixServiseTests
                     if (!tmc.CheckDocumentInCase(mr, idLpu))
                         Global.errors1.Add("Не добавлен");
             }
+            catch (System.ServiceModel.FaultException<List<PixServiseTests.EMKServise.RequestFault>> e)
+            {
+                getErrors(e.Detail);
+            }
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
             {
                 getErrors(e.Detail);
@@ -169,6 +196,7 @@ namespace PixServiseTests
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
             {
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
+                getErrors(e.Detail.Errors);
             }
         }
         //public ReferralTupleDto[] GetReferralList(string guid, string idLpu, byte idReferralType, DateTime startDate, DateTime endDate)
@@ -194,6 +222,10 @@ namespace PixServiseTests
                 if (!cb.isCanceld)
                     Global.errors1.Add("Случай не был отменён");
             }
+            catch (System.ServiceModel.FaultException<List<PixServiseTests.EMKServise.RequestFault>> e)
+            {
+                getErrors(e.Detail);
+            }
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault[]> e)
             {
                 getErrors(e.Detail);
@@ -201,6 +233,7 @@ namespace PixServiseTests
             catch (System.ServiceModel.FaultException<PixServiseTests.EMKServise.RequestFault> e)
             {
                 Global.errors1.Add(e.Detail.PropertyName + " - " + e.Detail.Message);
+                getErrors(e.Detail.Errors);
             }
         }
         ~TestEmkServiceClient()

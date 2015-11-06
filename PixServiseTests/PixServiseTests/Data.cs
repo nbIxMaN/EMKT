@@ -95,7 +95,7 @@ namespace PixServiseTests
     public abstract class Data
     {   //выбор oid или guid происходит здесь!!
         private static string oid = "1.2.643.5.1.13.3.25.78.118";
-        private static string guid = "df8ccddcac7246c9be0e075fb9fac5c2";
+        private static string guid = "df8ccddc-ac72-46c9-be0e-075fb9fac5c2";
         
         public static string idlpu = guid;
 
@@ -431,12 +431,12 @@ namespace PixServiseTests
                  }
             };
 
-            //var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")));
+            var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")));
             MedRecordData.TrueMedRecordDataWithKey = new LaboratoryReport
             {
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    //  Data = Encoding.UTF8.GetBytes(data),
+                    Data = Encoding.UTF8.GetBytes(data),
                     Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
                     MimeType = "text/xml"
                 },
@@ -449,7 +449,7 @@ namespace PixServiseTests
             {
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    // Data = Encoding.UTF8.GetBytes(data),
+                    Data = Encoding.UTF8.GetBytes(data),
                     Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
                     MimeType = "text/xml"
                 },
@@ -469,7 +469,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 HealthGroup = new HealthGroup
                 {
@@ -502,7 +502,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctorWithSNILS(),
                 HealthGroup = new HealthGroup
                 {
@@ -534,7 +534,7 @@ namespace PixServiseTests
                 HasPrescribeCure = true,
                 HasHealthResortRefferal = false,
                 HasSecondStageRefferal = false,
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctorWithoutSNILS(),
                 HealthGroup = new HealthGroup
                 {
@@ -564,7 +564,7 @@ namespace PixServiseTests
                 IdTargetLpu = idlpu,
                 ReferralID = "referralId2890",
                 RelatedID = "relatedId02890",
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 ReferralInfo = new ReferralInfo
                 {
@@ -582,7 +582,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
                 SickListInfo = new SickListInfo
                 {
@@ -600,7 +600,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
 
@@ -608,7 +608,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
 
@@ -616,7 +616,7 @@ namespace PixServiseTests
             {
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
-                //Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
+                Attachment = SetAttachment("empty.pdf", "https://www.google.ru", "application/pdf"),
                 Author = SetDoctor(),
             };
         }

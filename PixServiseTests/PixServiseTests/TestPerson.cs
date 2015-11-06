@@ -47,9 +47,9 @@ namespace PixServiseTests
             string findIdPersonString = "";
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                string InstId = Global.GetIdInstitution(idlpu);
+                //string InstId = Global.GetIdInstitution(idlpu);
                 findIdPersonString =
-                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "'";
+                    "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + idlpu + "' AND SystemGuid = '" + guid.ToLower() + "'";
                 SqlCommand command = new SqlCommand(findIdPersonString, connection);
                 using (SqlDataReader IdPerson = command.ExecuteReader())
                 {

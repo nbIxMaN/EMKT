@@ -97,29 +97,31 @@ namespace PixServiseTests
         {
             string patientId = "";
             string findIdPersonString = "";
-            string findIdInstitutionalString =
-                "SELECT TOP(1) IdInstitution FROM Institution WHERE IdFedNsi = '" + idlpu + "'";
+            findIdPersonString =
+                        "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + idlpu + "' AND SystemGuid = '" + guid.ToLower() + "'";
+            //string findIdInstitutionalString =
+            //    "SELECT TOP(1) IdInstitution FROM Institution WHERE IdFedNsi = '" + idlpu + "'";
             using (SqlConnection connection = Global.GetSqlConnection())
             {
-                SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
-                using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-                {
-                    string InstId = "";
-                    while (IdInstitutional.Read())
-                    {
-                        InstId = IdInstitutional["IdInstitution"].ToString();
-                    }
-                    findIdPersonString =
-                        "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "'";
-                }
-                SqlCommand command = new SqlCommand(findIdPersonString, connection);
-                //using (SqlDataReader IdPerson = command.ExecuteReader())
-                //{
-                //    while (IdPerson.Read())
+                //    SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
+                //    using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
                 //    {
-                //        patientId = IdPerson["IdPerson"].ToString();
+                //        string InstId = "";
+                //        while (IdInstitutional.Read())
+                //        {
+                //            InstId = IdInstitutional["IdInstitution"].ToString();
+                //        }
+                //        findIdPersonString =
+                //            "SELECT TOP(1) * FROM ExternalId WHERE IdPersonMIS = '" + mis + "' AND IdLpu = '" + InstId + "' AND SystemGuid = '" + guid.ToLower() + "'";
                 //    }
-                //}
+                SqlCommand command = new SqlCommand(findIdPersonString, connection);
+                using (SqlDataReader IdPerson = command.ExecuteReader())
+                {
+                    while (IdPerson.Read())
+                    {
+                        patientId = IdPerson["IdPerson"].ToString();
+                    }
+                }
             }
             if (patientId != "")
                 return patientId;
@@ -142,20 +144,20 @@ namespace PixServiseTests
                     {
                         guid = Convert.ToString(patientFromDataBase["SystemGuid"]);
                         mis = Convert.ToString(patientFromDataBase["IdPersonMIS"]);
-                        string lpu = Convert.ToString(patientFromDataBase["IdLpu"]);
-                        string findIdInstitutionalString =
-                            "SELECT TOP(1) IdFedNsi FROM Institution WHERE IdInstitution = '" + lpu + "'";
-                        using (SqlConnection connection2 = Global.GetSqlConnection())
-                        {
-                            SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection2);
-                            using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-                            {
-                                while (IdInstitutional.Read())
-                                {
-                                    idlpu = Convert.ToString(IdInstitutional["IdFedNsi"]);
-                                }
-                            }
-                        }
+                        idlpu = Convert.ToString(patientFromDataBase["IdLpu"]);
+                        //string findIdInstitutionalString =
+                        //    "SELECT TOP(1) IdFedNsi FROM Institution WHERE IdInstitution = '" + lpu + "'";
+                        //using (SqlConnection connection2 = Global.GetSqlConnection())
+                        //{
+                        //    SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection2);
+                        //    using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
+                        //    {
+                        //        while (IdInstitutional.Read())
+                        //        {
+                        //            idlpu = Convert.ToString(IdInstitutional["IdFedNsi"]);
+                        //        }
+                        //    }
+                        //}
                     }
                 }
             }

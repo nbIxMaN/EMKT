@@ -216,75 +216,75 @@ namespace PixServiseTests
             else
                 Assert.Pass();
         }
-        [Test]
-        public void _AddCaseForMiac()
-        {
-            using (TestPixServiceClient PixClient = new TestPixServiceClient())
-            {
-                PatientDto patient = (new SetData()).PatientSet();
-                patient.IdPatientMIS = "cc9d190e-7632-44a7-852f-f3fec14793ca";
-                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.186", patient);
-            }
-            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
-            {
-                CaseStat caseStat = (new SetData()).FullCaseStatSet();
-                caseStat.IdLpu = "1.2.643.5.1.13.3.25.78.186";
-                caseStat.IdPatientMis = "cc9d190e-7632-44a7-852f-f3fec14793ca";
-                caseStat.IdCaseMis = "3776";
-                caseStat.OpenDate = new DateTime(2014, 12, 10);
-                caseStat.CloseDate = new DateTime(2015, 12, 15);
-                caseStat.HistoryNumber = "23030";
-                caseStat.MedRecords = new List<MedRecord>
-                {
-                    MedRecordData.service,
-                    MedRecordData.tfomsInfo,
-                    MedRecordData.deathInfo,
-                    MedRecordData.diagnosis,
-                    MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.referral,
-                    MedRecordData.sickList,
-                    MedRecordData.dischargeSummary,
-                    MedRecordData.LaboratoryReport,
-                    MedRecordData.consultNote
-                };
-                EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                caseStat.Steps = new List <StepStat>
-                {(new SetData()).MinStepStatSet()};
-                caseStat.Steps[0].MedRecords = new List<MedRecord>
-                {
-                    MedRecordData.appointedMedication
-                };
-                caseStat.DoctorInCharge = new MedicalStaff
-                {
-                    IdLpu = Data.idlpu,
-                    IdSpeciality = 30,
-                    IdPosition = 75,
-                    Person = new PersonWithIdentity
-                    {
-                        IdPersonMis = "unknown",
-                        Sex = 2,
-                        Birthdate = new DateTime(1975, 02, 08),
-                        Documents = new List<IdentityDocument>
-                    {
-                        DocumentData.SNILS,
-                    },
-                        HumanName = new HumanName
-                        {
-                            FamilyName = "unknown",
-                            GivenName = "unknown",
-                            MiddleName = "unknown",
-                        },
-                    }
-                };
-                caseStat.DoctorInCharge.Person.Documents[0].DocN = "11111111448";
-                EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+        //[Test]
+        //public void _AddCaseForMiac()
+        //{
+        //    using (TestPixServiceClient PixClient = new TestPixServiceClient())
+        //    {
+        //        PatientDto patient = (new SetData()).PatientSet();
+        //        patient.IdPatientMIS = "cc9d190e-7632-44a7-852f-f3fec14793ca";
+        //        PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.186", patient);
+        //    }
+        //    using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+        //    {
+        //        CaseStat caseStat = (new SetData()).FullCaseStatSet();
+        //        caseStat.IdLpu = "1.2.643.5.1.13.3.25.78.186";
+        //        caseStat.IdPatientMis = "cc9d190e-7632-44a7-852f-f3fec14793ca";
+        //        caseStat.IdCaseMis = "3776";
+        //        caseStat.OpenDate = new DateTime(2014, 12, 10);
+        //        caseStat.CloseDate = new DateTime(2015, 12, 15);
+        //        caseStat.HistoryNumber = "23030";
+        //        caseStat.MedRecords = new List<MedRecord>
+        //        {
+        //            MedRecordData.service,
+        //            MedRecordData.tfomsInfo,
+        //            MedRecordData.deathInfo,
+        //            MedRecordData.diagnosis,
+        //            MedRecordData.clinicMainDiagnosis,
+        //            MedRecordData.referral,
+        //            MedRecordData.sickList,
+        //            MedRecordData.dischargeSummary,
+        //            MedRecordData.LaboratoryReport,
+        //            MedRecordData.consultNote
+        //        };
+        //        EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+        //        caseStat.Steps = new List <StepStat>
+        //        {(new SetData()).MinStepStatSet()};
+        //        caseStat.Steps[0].MedRecords = new List<MedRecord>
+        //        {
+        //            MedRecordData.appointedMedication
+        //        };
+        //        caseStat.DoctorInCharge = new MedicalStaff
+        //        {
+        //            IdLpu = Data.idlpu,
+        //            IdSpeciality = 30,
+        //            IdPosition = 75,
+        //            Person = new PersonWithIdentity
+        //            {
+        //                IdPersonMis = "unknown",
+        //                Sex = 2,
+        //                Birthdate = new DateTime(1975, 02, 08),
+        //                Documents = new List<IdentityDocument>
+        //            {
+        //                DocumentData.SNILS,
+        //            },
+        //                HumanName = new HumanName
+        //                {
+        //                    FamilyName = "unknown",
+        //                    GivenName = "unknown",
+        //                    MiddleName = "unknown",
+        //                },
+        //            }
+        //        };
+        //        caseStat.DoctorInCharge.Person.Documents[0].DocN = "11111111448";
+        //        EmkClient.UpdateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
 
-            }
-            if (Global.errors == "")
-                Assert.Pass();
-            else
-                Assert.Fail(Global.errors);
-        }
+        //    }
+        //    if (Global.errors == "")
+        //        Assert.Pass();
+        //    else
+        //        Assert.Fail(Global.errors);
+        //}
 
         [Test]
         public void AddMinDispCase()
