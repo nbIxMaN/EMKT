@@ -128,45 +128,53 @@ namespace PixServiseTests
         }
         static public string GetIdInstitution(string idLpu)
         {
-            return idLpu;
-            //if (idLpu != "")
-            //{
-            //    string findIdInstitutionalString =
-            //        "SELECT TOP(1) IdInstitution FROM Institution WHERE IdFedNsi = '" + idLpu + "'";
-            //    using (SqlConnection connection = Global.GetSqlConnection())
-            //    {
-            //        SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
-            //        using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-            //        {
-            //            while (IdInstitutional.Read())
-            //            {
-            //                return (IdInstitutional["IdInstitution"].ToString());
-            //            }
-            //        }
-            //    }
-            //}
-            //return "";
+            if (Data.type == Type.guid)
+                return idLpu;
+            else
+            {
+                if (idLpu != "")
+                {
+                    string findIdInstitutionalString =
+                        "SELECT TOP(1) IdInstitution FROM Institution WHERE IdFedNsi = '" + idLpu + "'";
+                    using (SqlConnection connection = Global.GetSqlConnection())
+                    {
+                        SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
+                        using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
+                        {
+                            while (IdInstitutional.Read())
+                            {
+                                return (IdInstitutional["IdInstitution"].ToString());
+                            }
+                        }
+                    }
+                }
+                return "";
+            }
         }
         static public string GetIdIdLpu(string idInst)
         {
-            return idInst;
-            //if (idInst != "")
-            //{
-            //    string findIdInstitutionalString =
-            //        "SELECT TOP(1) * FROM Institution WHERE IdInstitution = '" + idInst + "'";
-            //    using (SqlConnection connection = Global.GetSqlConnection())
-            //    {
-            //        SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
-            //        using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
-            //        {
-            //            while (IdInstitutional.Read())
-            //            {
-            //                return (IdInstitutional["IdFedNsi"].ToString());
-            //            }
-            //        }
-            //    }
-            //}
-            //return "";
+            if (Data.type == Type.guid)
+                return idInst;
+            else
+            {
+                if (idInst != "")
+                {
+                    string findIdInstitutionalString =
+                        "SELECT TOP(1) * FROM Institution WHERE IdInstitution = '" + idInst + "'";
+                    using (SqlConnection connection = Global.GetSqlConnection())
+                    {
+                        SqlCommand IdInstitution = new SqlCommand(findIdInstitutionalString, connection);
+                        using (SqlDataReader IdInstitutional = IdInstitution.ExecuteReader())
+                        {
+                            while (IdInstitutional.Read())
+                            {
+                                return (IdInstitutional["IdFedNsi"].ToString());
+                            }
+                        }
+                    }
+                }
+                return "";
+            }
         }
     }
 }

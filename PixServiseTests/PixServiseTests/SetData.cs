@@ -230,7 +230,7 @@ namespace PixServiseTests
                 //Data.idlpu
                 IdSpeciality = 27,
                 IdPosition = 72,
-                IdLpu = "df8ccddc-ac72-46c9-be0e-075fb9fac5c2",
+                IdLpu = Data.idlpu,
                 Person = new PersonWithIdentity
                 {
                     IdPersonMis = "NOSNILSDOCTOR",

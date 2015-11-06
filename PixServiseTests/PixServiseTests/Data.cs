@@ -10,6 +10,7 @@ using N3.EMK.Infrastructure.Helpers;
 
 namespace PixServiseTests
 {
+    public enum Type { guid, oid };
     public static class PatientData
     {
         public static PatientDto Patient { get; set; }
@@ -99,6 +100,7 @@ namespace PixServiseTests
         private static string guid = "df8ccddc-ac72-46c9-be0e-075fb9fac5c2";
         
         public static string idlpu = guid;
+        public static Type type = Type.guid;
 
         static public void SetDocument()
         {
