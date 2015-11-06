@@ -10,152 +10,173 @@ using N3.EMK.Domain.Helpers;
 
 namespace N3.EMK.Infrastructure.Helpers
 {
-	public class SignatureHelper : ISignatureHelper {
-		public string SignXmlDSig(string xml) {
-			var cspParams = new CspParameters { KeyContainerName = "XML_DSIG_RSA_KEY" };
-			var key = new RSACryptoServiceProvider(cspParams);
-			var blob = key.ExportCspBlob(true);
-			var cert = new X509Certificate2(blob);
-			var doc = new XmlDocument();
+    public class SignatureHelper : ISignatureHelper
+    {
+        #region Public Methods
 
-			doc.LoadXml(xml);
+        public string SignXmlDSig(string xml)
+        {
+            var cspParams = new CspParameters { KeyContainerName = "XML_DSIG_RSA_KEY" };
+            var key = new RSACryptoServiceProvider(cspParams);
+            var blob = key.ExportCspBlob(true);
+            var cert = new X509Certificate2(blob);
+            var doc = new XmlDocument();
 
-			var signedXml = new SignedXml(doc) { SigningKey = cert.PrivateKey };
+            doc.LoadXml(xml);
 
-			var reference = new Reference { Uri = "" };
+            var signedXml = new SignedXml(doc) { SigningKey = cert.PrivateKey };
 
-			var env = new XmlDsigEnvelopedSignatureTransform();
-			reference.AddTransform(env);
+            var reference = new Reference { Uri = "" };
 
-			signedXml.AddReference(reference);
+            var env = new XmlDsigEnvelopedSignatureTransform();
+            reference.AddTransform(env);
 
-			var keyInfo = new KeyInfo();
-			keyInfo.AddClause(new RSAKeyValue(cert.PublicKey.Key as RSACryptoServiceProvider));
-			signedXml.KeyInfo = keyInfo;
+            signedXml.AddReference(reference);
 
-			signedXml.ComputeSignature();
+            var keyInfo = new KeyInfo();
+            keyInfo.AddClause(new RSAKeyValue(cert.PublicKey.Key as RSACryptoServiceProvider));
+            signedXml.KeyInfo = keyInfo;
 
-			var xmlDigitalSignature = signedXml.GetXml();
+            signedXml.ComputeSignature();
 
-			doc
-				.With(x => x.DocumentElement)
-				.Do(x => x.AppendChild(doc.ImportNode(xmlDigitalSignature, true)));
+            var xmlDigitalSignature = signedXml.GetXml();
 
-			if (doc.FirstChild is XmlDeclaration)
-				doc.RemoveChild(doc.FirstChild);
+            doc
+                .With(x => x.DocumentElement)
+                .Do(x => x.AppendChild(doc.ImportNode(xmlDigitalSignature, true)));
 
-			return doc.InnerXml;
-		}
+            if (doc.FirstChild is XmlDeclaration)
+                doc.RemoveChild(doc.FirstChild);
 
-		public bool VerifySmlDSig(string xml) {
-			var xmlDocument = new XmlDocument();
-			xmlDocument.LoadXml(xml);
+            return doc.InnerXml;
+        }
 
-			var signedXml = new SignedXml(xmlDocument);
+        public bool VerifySmlDSig(string xml)
+        {
+            var xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(xml);
 
-			var nodeList = xmlDocument.GetElementsByTagName("Signature");
-			signedXml.LoadXml((XmlElement)nodeList[0]);
+            var signedXml = new SignedXml(xmlDocument);
 
-			return signedXml.CheckSignature();
-		}
+            var nodeList = xmlDocument.GetElementsByTagName("Signature");
+            signedXml.LoadXml((XmlElement)nodeList[0]);
 
-		public string SignN3Rsa(string data) {
-			var cspParams = new CspParameters { KeyContainerName = "XML_DSIG_RSA_KEY" };
-			var key = new RSACryptoServiceProvider(cspParams);
-			var cspBlob = key.ExportCspBlob(false);
-			var base64Blob = Convert.ToBase64String(cspBlob);
+            return signedXml.CheckSignature();
+        }
 
-			var rsaFormatter = new RSAPKCS1SignatureFormatter(key);
-			rsaFormatter.SetHashAlgorithm("MD5");
+        public string SignN3Rsa(string data)
+        {
+            var cspParams = new CspParameters { KeyContainerName = "XML_DSIG_RSA_KEY" };
+            var key = new RSACryptoServiceProvider(cspParams);
+            var cspBlob = key.ExportCspBlob(false);
+            var base64Blob = Convert.ToBase64String(cspBlob);
 
-			var hash = Md5Helper.GetMd5Hash(data);
-			var base64Hash = Convert.ToBase64String(hash);
-			var sign = rsaFormatter.CreateSignature(hash);
-			var base64Sign = Convert.ToBase64String(sign);
+            var rsaFormatter = new RSAPKCS1SignatureFormatter(key);
+            rsaFormatter.SetHashAlgorithm("MD5");
 
-			var signData = new SignData {
-				Data = data,
-				PublicKey = base64Blob,
-				Hash = base64Hash,
-				Sign = base64Sign
-			};
+            var hash = Md5Helper.GetMd5Hash(data);
+            var base64Hash = Convert.ToBase64String(hash);
+            var sign = rsaFormatter.CreateSignature(hash);
+            var base64Sign = Convert.ToBase64String(sign);
 
-			return new SerializationHelper<SignData>().Serialize(signData);
-		}
+            var signData = new SignData
+            {
+                Data = data,
+                PublicKey = base64Blob,
+                Hash = base64Hash,
+                Sign = base64Sign
+            };
 
-		public bool VerifyN3Rsa(string signedData) {
-			var signData = new  SerializationHelper<SignData>().Deserialize(signedData);
-			var cspBlob = Convert.FromBase64String(signData.PublicKey);
-			var hash = Md5Helper.GetMd5Hash(signData.Data);
-			var sign = Convert.FromBase64String(signData.Sign);
+            return new SerializationHelper<SignData>().Serialize(signData);
+        }
 
-			var key = new RSACryptoServiceProvider();
-			key.ImportCspBlob(cspBlob);
+        public bool VerifyN3Rsa(string signedData)
+        {
+            var signData = new SerializationHelper<SignData>().Deserialize(signedData);
+            var cspBlob = Convert.FromBase64String(signData.PublicKey);
+            var hash = Md5Helper.GetMd5Hash(signData.Data);
+            var sign = Convert.FromBase64String(signData.Sign);
 
-			var rsaDeformatter = new RSAPKCS1SignatureDeformatter(key);
-			rsaDeformatter.SetHashAlgorithm("MD5");
+            var key = new RSACryptoServiceProvider();
+            key.ImportCspBlob(cspBlob);
 
-			return rsaDeformatter.VerifySignature(hash, sign);
-		}
-		//INFO: метод для тестирования
-		public string SignN3Gost(string data) {
-			var storeCurrentUser = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-			storeCurrentUser.Open(OpenFlags.ReadOnly);
-		
-			var coll = storeCurrentUser.Certificates
-				.Find(X509FindType.FindByThumbprint, "4d 19 79 84 52 9a 80 4a c4 86 3a 82 6a 8d ab 85 3f 95 e5 01", false)[0];
-			//b8 be f8 22 e8 63 2a 74 d4 2e 58 df 91 9c 2f e3 75 ea e1 e4 просрочен
-			//4d 19 79 84 52 9a 80 4a c4 86 3a 82 6a 8d ab 85 3f 95 e5 01
-			var gost = (Gost3410CryptoServiceProvider)coll.PrivateKey;
+            var rsaDeformatter = new RSAPKCS1SignatureDeformatter(key);
+            rsaDeformatter.SetHashAlgorithm("MD5");
 
-			var base64Blob = Convert.ToBase64String(coll.Export(X509ContentType.Cert));
+            return rsaDeformatter.VerifySignature(hash, sign);
+        }
 
-			var gostSignatureFormatter = new GostSignatureFormatter(gost);
-			gostSignatureFormatter.SetHashAlgorithm("Gost3411");
+        //INFO: метод для тестирования
+        public string SignN3Gost(string data, string mimeType)
+        {
+            var storeCurrentUser = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            storeCurrentUser.Open(OpenFlags.ReadOnly);
 
-			var hash = Md5Helper.GetGost3411Hash(data);
-			var base64Hash = Convert.ToBase64String(hash);
-			var sign = gostSignatureFormatter.CreateSignature(hash);
-			var base64Sign = Convert.ToBase64String(sign);
+            var coll = storeCurrentUser.Certificates
+                                       .Find(X509FindType.FindByThumbprint, "4d 19 79 84 52 9a 80 4a c4 86 3a 82 6a 8d ab 85 3f 95 e5 01", false)[0];
+            //b8 be f8 22 e8 63 2a 74 d4 2e 58 df 91 9c 2f e3 75 ea e1 e4 просрочен
+            //4d 19 79 84 52 9a 80 4a c4 86 3a 82 6a 8d ab 85 3f 95 e5 01
+            var gost = (Gost3410CryptoServiceProvider)coll.PrivateKey;
 
-			var signData = new SignData {
-				Data = data,
-				PublicKey = base64Blob,
-				Hash = base64Hash,
-				Sign = base64Sign
-			};
+            var base64Blob = Convert.ToBase64String(coll.Export(X509ContentType.Cert));
 
-			return new SerializationHelper<SignData>().Serialize(signData);
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="signedData"></param>
-		/// <param name="chainValidate">Проверять цепочку сертификатов на отозванные сертификаты</param>
-		/// <returns></returns>
-		public bool VerifyN3Gost(string signedData, bool chainValidate = false) {
-			var x509 = new X509Certificate2();
+            var gostSignatureFormatter = new GostSignatureFormatter(gost);
+            gostSignatureFormatter.SetHashAlgorithm("Gost3411");
 
-			var signData = new SerializationHelper<SignData>().Deserialize(signedData);
-			var cspBlob = Convert.FromBase64String(signData.PublicKey);
-			x509.Import(cspBlob);
-			if (chainValidate) {
-				var chain = new X509Chain();
-				chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
-				chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
-				chain.ChainPolicy.VerificationFlags = X509VerificationFlags.NoFlag;
-				var verify = chain.Build(x509);
-				if (!verify) return false;
-			}
+            var hash = Md5Helper.GetGost3411Hash(data);
+            var base64Hash = Convert.ToBase64String(hash);
+            var sign = gostSignatureFormatter.CreateSignature(hash);
+            var base64Sign = Convert.ToBase64String(sign);
 
-			var hash = Md5Helper.GetGost3411Hash(signData.Data);
-			var sign = Convert.FromBase64String(signData.Sign);
+            var signData = new SignData
+            {
+                Data = data,
+                MIMEType = mimeType,
+                PublicKey = base64Blob,
+                Hash = base64Hash,
+                Sign = base64Sign
+            };
+
+            return new SerializationHelper<SignData>().Serialize(signData);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="signedData"></param>
+        /// <param name="chainValidate">Проверять цепочку сертификатов на отозванные сертификаты</param>
+        /// <returns></returns>
+        public bool VerifyN3Gost(string signedData, bool chainValidate = false)
+        {
+            var x509 = new X509Certificate2();
+
+            var signData = new SerializationHelper<SignData>().Deserialize(signedData);
+            var cspBlob = Convert.FromBase64String(signData.PublicKey);
+            x509.Import(cspBlob);
+            if (chainValidate)
+            {
+                var chain = new X509Chain
+                {
+                    ChainPolicy =
+                                {
+                                    RevocationFlag = X509RevocationFlag.EntireChain,
+                                    RevocationMode = X509RevocationMode.Online,
+                                    VerificationFlags = X509VerificationFlags.NoFlag
+                                }
+                };
+                var verify = chain.Build(x509);
+                if (!verify) return false;
+            }
+
+            var hash = Md5Helper.GetGost3411Hash(signData.Data);
+            var sign = Convert.FromBase64String(signData.Sign);
 
 
-			var rsaDeformatter = new GostSignatureDeformatter(x509.PublicKey.Key);
-			rsaDeformatter.SetHashAlgorithm("Gost3411");
+            var rsaDeformatter = new GostSignatureDeformatter(x509.PublicKey.Key);
+            rsaDeformatter.SetHashAlgorithm("Gost3411");
 
-			return rsaDeformatter.VerifySignature(hash, sign);
-		}
-	}
+            return rsaDeformatter.VerifySignature(hash, sign);
+        }
+
+        #endregion
+    }
 }

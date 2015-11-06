@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService.Core" />
-  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Case" />
-  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" />
-  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Step" />
-  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/EMKService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/EMKService.Data.ReferralList" />
+  <xs:import schemaLocation="" namespace="http://schemas.datacontract.org/2004/07/WebService.Core" />
+  <xs:import schemaLocation="" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Case" />
+  <xs:import schemaLocation="" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.MedRec" />
+  <xs:import schemaLocation="" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Dto.Step" />
+  <xs:import schemaLocation="" namespace="http://schemas.datacontract.org/2004/07/EMKService.Data.ReferralList" />
   <xs:element name="GetVersion">
     <xs:complexType>
       <xs:sequence />

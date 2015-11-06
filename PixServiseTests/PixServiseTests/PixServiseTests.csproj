@@ -87,6 +87,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -115,6 +116,7 @@
     <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Methods Tests\mqProxyTest.cs" />
+    <Compile Include="Methods Tests\PatientTests.cs" />
     <Compile Include="MethodTests.cs" />
     <Compile Include="SerializationHelper.cs" />
     <Compile Include="Service References\EMKServiceDemo\Reference.cs">
@@ -257,47 +259,37 @@
     <None Include="Service References\EMKServiceDemo\PixServiseTests.EMKServiceDemo.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\EMKServise\EmkService.wsdl" />
-    <None Include="Service References\EMKServise\EMKService.xsd">
+    <None Include="Service References\EMKServise\Arrays1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService1.xsd">
+    <None Include="Service References\EMKServise\EMKService.Data.Dto1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService10.xsd">
+    <None Include="Service References\EMKServise\EMKService.Data.ReferralList1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService11.xsd">
+    <None Include="Service References\EMKServise\MKService.Data.Dto1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService12.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.Case1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService13.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.Common1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService2.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.Diag1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService3.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.MedDoc1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService4.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService5.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.Step1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServise\EMKService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServise\EMKService8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServise\EMKService9.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EMKServise\PixServiseTests.EMKServise.ReferralTupleDto.datasource">
@@ -305,6 +297,16 @@
     </None>
     <None Include="Service References\EMKServise\PixServiseTests.EMKServise.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EMKServise\service1.wsdl" />
+    <None Include="Service References\EMKServise\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\service21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMKServise\WebService.Core1.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MiacStatistics\MiacStatisticService.wsdl" />
     <None Include="Service References\MiacStatistics\PixServiseTests.MiacStatistics.CaseBase.datasource">
@@ -408,9 +410,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\EMKServise\EMKService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EMKServise\configuration91.svcinfo" />

@@ -587,6 +587,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
+                //var x = N3.EMK.Infrastructure.Helpers.Md5Helper.VerifyGost3411Hash(MedRecordData.consultNote.Attachment.Data, MedRecordData.consultNote.Attachment.Hash);
                 EmkClient.AddMedRecord("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseStat.IdPatientMis, MedRecordData.consultNote, caseStat.IdCaseMis);
             }
             if (Global.errors == "")

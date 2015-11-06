@@ -431,13 +431,13 @@ namespace PixServiseTests
                  }
             };
 
-            var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")));
+            var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")), "application/pdf");
             MedRecordData.TrueMedRecordDataWithKey = new LaboratoryReport
             {
                 Attachment = new MedDocument.DocumentAttachment
                 {
                     Data = Encoding.UTF8.GetBytes(data),
-                    Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
+                    Hash = N3.EMK.Infrastructure.Helpers.Md5Helper.GetGost3411Hash(data),
                     MimeType = "text/xml"
                 },
                 CreationDate = new DateTime(2012, 02, 02),
@@ -756,30 +756,11 @@ namespace PixServiseTests
         {
             MedDocument.DocumentAttachment a = new MedDocument.DocumentAttachment
             {
-                Data = File.ReadAllBytes(path),
-                //Hash = Convert.FromBase64String("SGVsbG8sIFdvcmxk"),
+                Data = Encoding.UTF8.GetBytes(Convert.ToBase64String(File.ReadAllBytes(path))),
                 //Url = new Uri(url),
                 MimeType = mimeType
             };
-            var s = Convert.ToBase64String(a.Data);
-            var process = new Process();
-            process.StartInfo.FileName = "cpverify.exe";
-            process.StartInfo.Arguments = "-mk " + path;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.UseShellExecute = false;
-            var sb = new StringBuilder();
-            process.Start();
-            while (!process.StandardOutput.EndOfStream)
-            {
-                sb.Append(process.StandardOutput.ReadLine());
-            }
-            string str = sb.ToString();
-            var res = new byte[str.Length / 2];//проверим что их чётное количество? :)
-            for (var i = 0; i < str.Length; i += 2)
-            {
-                res[i / 2] = byte.Parse(str.Substring(i, 2), System.Globalization.NumberStyles.HexNumber);//или byte.TryParse для избежания эксепшинов
-            }
-            a.Hash = res;
+            a.Hash = N3.EMK.Infrastructure.Helpers.Md5Helper.GetGost3411Hash(a.Data);
             return a;
         }
 
