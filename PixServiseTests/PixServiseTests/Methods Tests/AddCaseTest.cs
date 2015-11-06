@@ -74,12 +74,12 @@ namespace PixServiseTests
                 caseAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.TrueMedRecordDataWithKey
+                    MedRecordData.WrongMedRecordDataWithKey
                 };
                 EmkClient.AddCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
             }
-            if (Global.errors == "")
-                Assert.Pass();
+            if (Global.errors.Contains("Data - Поле заполнено некорректно"))
+                Assert.Pass(Global.errors);
             else
                 Assert.Fail(Global.errors);
         }

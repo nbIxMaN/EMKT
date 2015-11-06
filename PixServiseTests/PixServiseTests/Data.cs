@@ -6,6 +6,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Text;
 using System.Collections.Generic;
+using N3.EMK.Infrastructure.Helpers;
 
 namespace PixServiseTests
 {
@@ -432,6 +433,7 @@ namespace PixServiseTests
             };
 
             var data = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("empty.pdf")), "application/pdf");
+            var wrongdata = data.Remove(data.IndexOf("<Sign>") + 6, 1);
             MedRecordData.TrueMedRecordDataWithKey = new LaboratoryReport
             {
                 Attachment = new MedDocument.DocumentAttachment
@@ -449,8 +451,9 @@ namespace PixServiseTests
             {
                 Attachment = new MedDocument.DocumentAttachment
                 {
-                    Data = Encoding.UTF8.GetBytes(data),
-                    Hash = Encoding.UTF8.GetBytes(new MedDocumentData().hash),
+                    Data = Encoding.UTF8.GetBytes(wrongdata),
+                    Hash = Md5Helper.GetGost3411Hash(wrongdata),
+                    Url = new Uri("https://www.google.ru"),
                     MimeType = "text/xml"
                 },
                 CreationDate = new DateTime(2012, 02, 02),
