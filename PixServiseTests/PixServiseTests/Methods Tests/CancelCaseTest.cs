@@ -19,13 +19,13 @@ namespace PixServiseTests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
+                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-                EmkClient.CancelCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis);
+                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                EmkClient.CancelCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -39,13 +39,13 @@ namespace PixServiseTests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
+                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                EmkClient.CancelCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis);
+                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                EmkClient.CancelCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -59,7 +59,7 @@ namespace PixServiseTests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
+                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
@@ -89,8 +89,8 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseAmb);
-                EmkClient.CancelCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis);
+                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                EmkClient.CancelCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis);
             }
 
             if (Global.errors == "")
@@ -105,7 +105,7 @@ namespace PixServiseTests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, patient);
+                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
@@ -135,8 +135,8 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                EmkClient.CreateCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", caseStat);
-                EmkClient.CancelCase("D500E893-166B-4724-9C78-D0DBE1F1C48D", Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis);
+                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                EmkClient.CancelCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis);
             }
             if (Global.errors == "")
                 Assert.Pass();

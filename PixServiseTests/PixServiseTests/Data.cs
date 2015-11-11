@@ -96,11 +96,11 @@ namespace PixServiseTests
     [TestFixture]
     public abstract class Data
     {   //выбор oid или guid происходит здесь!!
-        private static string oid = "1.2.643.5.1.13.3.25.78.118";
+        private static string oid = "1.2.643.5.1.13.3.25.78.230";
         private static string guid = "df8ccddc-ac72-46c9-be0e-075fb9fac5c2";
         
-        public static string idlpu = guid;
-        public static Type type = Type.guid;
+        public static string idlpu = oid;
+        public static Type type = Type.oid;
 
         static public void SetDocument()
         {
@@ -684,7 +684,7 @@ namespace PixServiseTests
                 IdPosition = 74,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "123400022",
+                    IdPersonMis = "Doctor" + DateTime.Now.ToString(),
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
                     Documents = new List<IdentityDocument>
@@ -1125,7 +1125,7 @@ namespace PixServiseTests
                 GivenName = "Алёша",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
-                IdPatientMIS = "03.11.2015 19 06",
+                IdPatientMIS = "PatientMIS" + DateTime.Now.ToString(),
             };
 
             SetDocument();

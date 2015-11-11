@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.8.93:2222/iemk/PixService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PixService.xsd" MetadataType="Schema" ID="05b898d4-aa0d-4138-b755-2c947aee750c" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd1" />
-    <MetadataFile FileName="PixService1.xsd" MetadataType="Schema" ID="dc094a80-4697-4a6a-815f-d799bd396e36" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd2" />
-    <MetadataFile FileName="PixService2.xsd" MetadataType="Schema" ID="c9d0489d-203a-4076-9405-0d33452eabf3" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd3" />
-    <MetadataFile FileName="PixService3.xsd" MetadataType="Schema" ID="8f14d403-ef50-4e21-95a4-1e3b5c5b52d9" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd4" />
-    <MetadataFile FileName="PixService4.xsd" MetadataType="Schema" ID="4afb3662-296a-4005-8dc6-60cd654b94b0" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd5" />
-    <MetadataFile FileName="PixService.disco" MetadataType="Disco" ID="69a234b0-e78f-4ea0-bae8-72ce58657aad" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?disco" />
-    <MetadataFile FileName="PixService.wsdl" MetadataType="Wsdl" ID="994757d3-4129-4871-b142-b6750ef9ebff" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?wsdl" />
-    <MetadataFile FileName="PixService5.xsd" MetadataType="Schema" ID="753c38e4-e150-44bf-ae1f-81effcc1c1dd" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PixService1.wsdl" MetadataType="Wsdl" ID="d326e03e-e6db-40f2-9ffc-b86d280c9999" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?wsdl" />
+    <MetadataFile FileName="PixService6.xsd" MetadataType="Schema" ID="34a046ec-b4df-4d63-bd18-07d52d655d83" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PixService61.xsd" MetadataType="Schema" ID="854576cf-f3bb-41b4-8553-6154d6028e62" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PixService62.xsd" MetadataType="Schema" ID="042b111e-f8ee-4898-a14c-b5b843f4853e" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PixService63.xsd" MetadataType="Schema" ID="51e84c04-d44a-4030-ac12-7a5874327a7f" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PixService1.disco" MetadataType="Disco" ID="d2bf3419-16f0-46bb-b25f-fdfedf77b308" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?disco" />
+    <MetadataFile FileName="PixService64.xsd" MetadataType="Schema" ID="d49216e6-f5ac-419a-b883-f3d131da6058" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PixService65.xsd" MetadataType="Schema" ID="c71e27ff-8414-4855-b93f-b7c4541a2a28" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

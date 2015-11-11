@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="/PZVDvzURoidxe25DwCLG1ZKgdg=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="gpv9OCS6HJeBk8gUw6UXbPbeFVo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IEmkService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IEmkService" contract="EMKServise.IEmkService" bindingType="basicHttpBinding" address="http://192.168.8.93:2222/iemk/EMKService.svc" bindingConfiguration="BasicHttpBinding_IEmkService">
+    <endpoint name="BasicHttpBinding_IEmkService" contract="EMKServise.IEmkService" bindingType="basicHttpBinding" address="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc" bindingConfiguration="BasicHttpBinding_IEmkService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.8.93:2222/iemk/EMKService.svc</serializedValue>
+          <serializedValue>http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -259,37 +259,37 @@
     <None Include="Service References\EMKServiceDemo\PixServiseTests.EMKServiceDemo.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\EMKServise\Arrays1.xsd">
+    <None Include="Service References\EMKServise\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService.Data.Dto1.xsd">
+    <None Include="Service References\EMKServise\EMKService.Data.Dto.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\EMKService.Data.ReferralList1.xsd">
+    <None Include="Service References\EMKServise\EMKService.Data.ReferralList.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\MKService.Data.Dto1.xsd">
+    <None Include="Service References\EMKServise\MKService.Data.Dto.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto.Case1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.Case.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto.Common1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.Common.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.Diag1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.Diag.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.MedDoc1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.MedDoc.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.MedRec.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto.Step1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.Step.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\N3.EMK.Dto1.xsd">
+    <None Include="Service References\EMKServise\N3.EMK.Dto.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EMKServise\PixServiseTests.EMKServise.ReferralTupleDto.datasource">
@@ -298,14 +298,14 @@
     <None Include="Service References\EMKServise\PixServiseTests.EMKServise.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\EMKServise\service1.wsdl" />
-    <None Include="Service References\EMKServise\service2.xsd">
+    <None Include="Service References\EMKServise\service.wsdl" />
+    <None Include="Service References\EMKServise\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\service21.xsd">
+    <None Include="Service References\EMKServise\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EMKServise\WebService.Core1.xsd">
+    <None Include="Service References\EMKServise\WebService.Core.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MiacStatistics\MiacStatisticService.wsdl" />
@@ -359,23 +359,23 @@
     <None Include="Service References\PixServiceDemo\PixServiseTests.PixServiceDemo.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PixServise\PixService.wsdl" />
-    <None Include="Service References\PixServise\PixService.xsd">
+    <None Include="Service References\PixServise\PixService1.wsdl" />
+    <None Include="Service References\PixServise\PixService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PixServise\PixService1.xsd">
+    <None Include="Service References\PixServise\PixService61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PixServise\PixService2.xsd">
+    <None Include="Service References\PixServise\PixService62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PixServise\PixService3.xsd">
+    <None Include="Service References\PixServise\PixService63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PixServise\PixService4.xsd">
+    <None Include="Service References\PixServise\PixService64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PixServise\PixService5.xsd">
+    <None Include="Service References\PixServise\PixService65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PixServise\PixServiseTests.PixServise.PatientDto.datasource">
@@ -395,9 +395,6 @@
     <WCFMetadataStorage Include="Service References\mqProxy\" />
     <WCFMetadataStorage Include="Service References\PixServiceDemo\" />
     <WCFMetadataStorage Include="Service References\PixServise\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PixServise\PixService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\PixServise\configuration91.svcinfo" />
@@ -488,6 +485,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PixServise\PixService1.disco" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

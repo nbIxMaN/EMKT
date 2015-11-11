@@ -36,8 +36,10 @@ namespace PixServiseTests
                     return 1;
             }
         }
+        //static private string _connectionPath =
+        //    "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
         static private string _connectionPath =
-            "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
+            "Data Source = 212.116.96.50; Initial Catalog = EMKDBv3; Persist Security Info=True;User ID = a.pihtin; Password=demoalex";
         static public SqlConnection GetSqlConnection()
         {
             SqlConnection connection = new SqlConnection(_connectionPath);

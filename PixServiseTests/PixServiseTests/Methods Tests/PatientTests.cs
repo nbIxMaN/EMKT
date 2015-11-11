@@ -41,8 +41,8 @@ namespace PixServiseTests
             cont2.IdContactType = 1;
             cont2.ContactValue = "89519435455";
             patient.Contacts = new ContactDto[] { cont, cont2 };
-            client.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
-            client.UpdatePatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto patient2 = new PatientDto();
             PixServise.DocumentDto document2 = new PixServise.DocumentDto();
             document2.IdDocumentType = 14;
@@ -60,7 +60,7 @@ namespace PixServiseTests
             cont3.ContactValue = "89519435456";
             patient2.Contacts = new ContactDto[] { cont3 };
             patient2.IdPatientMIS = patient.IdPatientMIS;
-            client.UpdatePatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient2);
+            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient2);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -79,8 +79,8 @@ namespace PixServiseTests
             patient.IdPatientMIS = "123456789010";
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Павел";
-            client.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
-            var patents = client.GetPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
+            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            var patents = client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -100,8 +100,8 @@ namespace PixServiseTests
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Павел";
             forSearch.GivenName = "Петров";
-            client.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
-            var patents = client.GetPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
+            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            var patents = client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -123,7 +123,7 @@ namespace PixServiseTests
             document.DocN = "123456";
             document.ProviderName = "УФМС";
             patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Жукин";
             forSearch.GivenName = "Дмитрий";
@@ -134,7 +134,7 @@ namespace PixServiseTests
             forSearchD.DocS = "1234";
             forSearchD.DocN = "123456";
             forSearch.Documents = new PixServise.DocumentDto[] { document };
-            client.GetPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Reg);
+            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -155,10 +155,10 @@ namespace PixServiseTests
             document.DocN = "123-456-789 45";
             document.ProviderName = "Снилс";
             patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto find = new PatientDto();
             find.IdPatientMIS = "1123123123";
-            client.GetPatient("D500E893-166B-4724-9C78-D0DBE1F1C48D", "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
+            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else

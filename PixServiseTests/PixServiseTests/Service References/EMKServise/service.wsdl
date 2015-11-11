@@ -308,7 +308,7 @@
   </wsdl:binding>
   <wsdl:service name="EmkService">
     <wsdl:port name="BasicHttpBinding_IEmkService" binding="tns:BasicHttpBinding_IEmkService">
-      <soap:address location="http://192.168.8.93:2222/iemk/EMKService.svc" />
+      <soap:address location="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

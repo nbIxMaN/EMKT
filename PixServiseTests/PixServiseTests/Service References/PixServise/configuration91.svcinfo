@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Z/rYNWeYpEeMEWDAJfQ+T3CNT8Q=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="nvV8/d+kj61/pmKJ3rtaWXVMqwE=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IPixService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IPixService" contract="PixServise.IPixService" bindingType="basicHttpBinding" address="http://192.168.8.93:2222/iemk/PixService.svc" bindingConfiguration="BasicHttpBinding_IPixService">
+    <endpoint name="BasicHttpBinding_IPixService" contract="PixServise.IPixService" bindingType="basicHttpBinding" address="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc" bindingConfiguration="BasicHttpBinding_IPixService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.8.93:2222/iemk/PixService.svc</serializedValue>
+          <serializedValue>http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
