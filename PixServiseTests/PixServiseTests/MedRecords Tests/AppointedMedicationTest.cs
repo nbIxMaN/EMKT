@@ -20,7 +20,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -40,7 +40,7 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.AddCase(Data.globalGuid, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -54,7 +54,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -74,7 +74,7 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.AddCase(Data.globalGuid, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -88,7 +88,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -108,7 +108,7 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.CreateCase(Data.globalGuid, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -122,7 +122,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -142,7 +142,7 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.CreateCase(Data.globalGuid, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -156,12 +156,12 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.AddCase(Data.globalGuid, caseAmb);
                 caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
@@ -177,7 +177,7 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                client.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.UpdateCase(Data.globalGuid, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -191,12 +191,12 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.AddCase(Data.globalGuid, caseAmb);
                 caseAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
@@ -212,7 +212,7 @@ namespace PixServiseTests
                 {
                     stepAmb
                 };
-                client.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.UpdateCase(Data.globalGuid, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -226,19 +226,19 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.CreateCase(Data.globalGuid, caseAmb);
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
 
-                client.AddStepToCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
+                client.AddStepToCase(Data.globalGuid, Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -252,19 +252,19 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.CreateCase(Data.globalGuid, caseAmb);
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new  SetData()).MinAppointedMedication()
                 };
 
-                client.AddStepToCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
+                client.AddStepToCase(Data.globalGuid, Data.idlpu, caseAmb.IdPatientMis, caseAmb.IdCaseMis, stepAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -279,7 +279,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -299,7 +299,7 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.AddCase(Data.globalGuid, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -313,7 +313,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -333,7 +333,7 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.AddCase(Data.globalGuid, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -347,7 +347,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -367,7 +367,7 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.CreateCase(Data.globalGuid, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -381,7 +381,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -406,7 +406,7 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.CreateCase(Data.globalGuid, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -420,12 +420,12 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.AddCase(Data.globalGuid, caseStat);
                 caseStat.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinClinicMainDiagnosis(),
@@ -441,7 +441,7 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                client.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.UpdateCase(Data.globalGuid, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -455,12 +455,12 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.AddCase(Data.globalGuid, caseStat);
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>
                 {
@@ -471,7 +471,7 @@ namespace PixServiseTests
                 {
                     stepStat
                 };
-                client.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.UpdateCase(Data.globalGuid, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -485,19 +485,19 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.CreateCase(Data.globalGuid, caseStat);
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>
                 {
                     MedRecordData.appointedMedication
                 };
 
-                client.AddStepToCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
+                client.AddStepToCase(Data.globalGuid, Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -511,19 +511,19 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                client.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                client.CreateCase(Data.globalGuid, caseStat);
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>
                 {
                     (new  SetData()).MinAppointedMedication()
                 };
 
-                client.AddStepToCase("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
+                client.AddStepToCase(Data.globalGuid, Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
             }
             if (Global.errors == "")
                 Assert.Pass();

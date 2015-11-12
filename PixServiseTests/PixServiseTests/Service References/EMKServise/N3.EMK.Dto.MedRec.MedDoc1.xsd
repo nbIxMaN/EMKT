@@ -22,6 +22,7 @@
       <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Url" nillable="true" type="xs:anyURI" />
+      <xs:element minOccurs="0" name="IsSigned" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MedDocument.DocumentAttachment" nillable="true" type="tns:MedDocument.DocumentAttachment" />
@@ -123,6 +124,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReferralInfo" nillable="true" type="tns:ReferralInfo" />
+  <xs:complexType name="Form027U">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MedDocument">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Form027U" nillable="true" type="tns:Form027U" />
   <xs:complexType name="HealthGroup">
     <xs:sequence>
       <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/N3.EMK.Dto" minOccurs="0" name="Doctor" nillable="true" type="q5:MedicalStaff" />

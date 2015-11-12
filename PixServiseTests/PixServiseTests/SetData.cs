@@ -17,7 +17,7 @@ namespace PixServiseTests
             patient.FamilyName = PatientData.Patient.FamilyName;
             patient.GivenName = PatientData.Patient.GivenName;
             patient.Sex = PatientData.Patient.Sex;
-            patient.BirthDate = new DateTime(2010, 10, 10);
+            patient.BirthDate = new DateTime(1990, 10, 10);
             patient.IdBloodType = 1;
             //PixServise.DocumentDto d = new PixServise.DocumentDto();
             //d.DocN = DocumentData.PatientPassport.DocN;
@@ -28,10 +28,7 @@ namespace PixServiseTests
             s.DocN = DocumentData.PatientSNILS.DocN;
             s.IdDocumentType = DocumentData.PatientSNILS.IdDocumentType;
             s.ProviderName = DocumentData.PatientSNILS.ProviderName;
-            patient.Documents = new PixServise.DocumentDto []
-            {
-                s
-            };
+            patient.Documents = new PixServise.DocumentDto[] { s };
 
             return patient;
         }
@@ -155,7 +152,7 @@ namespace PixServiseTests
                 //IssuedDate = MedRecordData.appointedMedication.IssuedDate,
                 MedicineName = MedRecordData.appointedMedication.MedicineName,
                 //AnatomicTherapeuticChemicalClassification = MedRecordData.appointedMedication.AnatomicTherapeuticChemicalClassification,
-               
+
                 Doctor = MinDoctorSet(),
             };
             return apMed;
@@ -195,7 +192,7 @@ namespace PixServiseTests
 
         public SickList MinSickList()
         {
-            SickList sl= new SickList
+            SickList sl = new SickList
             {
                 CreationDate = MedRecordData.sickList.CreationDate,
                 Header = MedRecordData.sickList.Header,
@@ -456,10 +453,6 @@ namespace PixServiseTests
             {
                 Doctor = MinDoctorSet()
             };
-
-            // это врменно
-           // caseAmb.Guardian = DoctorData.guardian;
-            // это врменно
 
             caseAmb.Steps = new List<StepAmb>
             {

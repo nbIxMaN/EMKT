@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService.Core" />
-  <xs:import schemaLocation="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" />
-  <xs:import schemaLocation="http://demo-iemk20.zdrav.netrika.ru:2225/PixService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Domain.Enums" />
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService.Core" />
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EMKService.Data.Dto" />
+  <xs:import schemaLocation="http://192.168.8.93:2222/iemk/PixService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/N3.EMK.Domain.Enums" />
   <xs:element name="GetVersion">
     <xs:complexType>
       <xs:sequence />

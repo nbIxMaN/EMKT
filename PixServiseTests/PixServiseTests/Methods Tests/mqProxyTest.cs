@@ -19,7 +19,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 PatientDto patient = (new SetData()).PatientSet();
                 patient.IdPatientMIS = "TestForMq";
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
             caseAmb.MedRecords = new List<MedRecord>
@@ -31,11 +31,11 @@ namespace PixServiseTests.Methods_Tests
             caseAmb.IdPatientMis = "TestForMq";
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.AddCase(Data.globalGuid, caseAmb);
             }
             using (TestMqProxyClient client = new TestMqProxyClient())
             {
-                client.GetResultDocument("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseAmb.IdCaseMis, 3);
+                client.GetResultDocument(Data.globalGuid, Data.idlpu, caseAmb.IdCaseMis, 3);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -48,7 +48,7 @@ namespace PixServiseTests.Methods_Tests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                c.AddPatient(Data.globalGuid, Data.idlpu, patient);
             }
             CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
             caseAmb.MedRecords = new List<MedRecord>
@@ -58,11 +58,11 @@ namespace PixServiseTests.Methods_Tests
             };
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                client.AddCase(Data.globalGuid, caseAmb);
             }
             using (TestMqProxyClient client = new TestMqProxyClient())
             {
-                client.GetResultDocument("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, caseAmb.IdCaseMis, 1);
+                client.GetResultDocument(Data.globalGuid, Data.idlpu, caseAmb.IdCaseMis, 1);
             }
             if (Global.errors == "")
                 Assert.Pass();
