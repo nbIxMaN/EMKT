@@ -151,7 +151,6 @@ namespace PixServiseTests
                     MedRecordData.deathInfo,
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.referral,   
                     MedRecordData.sickList,
                     set.MinDischargeSummary(),
@@ -246,10 +245,7 @@ namespace PixServiseTests
                     set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
-                caseAmbUpdate.Steps = new List<StepAmb>
-                {
-                    stepAmb
-                };
+                caseAmbUpdate.Steps = new List<StepAmb> { stepAmb };
 
                 EmkClient.UpdateCase(Data.globalGuid, caseAmbUpdate);
             }
@@ -324,10 +320,7 @@ namespace PixServiseTests
                     set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
-                caseStat.Steps = new List<StepStat>
-                {
-                    stepStat
-                };
+                caseStat.Steps = new List<StepStat> { stepStat };
 
                 EmkClient.UpdateCase(Data.globalGuid, caseStatUpdate);
             }

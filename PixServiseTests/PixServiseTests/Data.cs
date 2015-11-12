@@ -100,7 +100,8 @@ namespace PixServiseTests
         // "5c04e58b-07c0-421c-804a-cd774685aea2" демо
      
         //выбор oid или guid происходит здесь!!
-        private static string oid = "1.2.643.5.1.13.3.25.78.230";
+        private static string oid = "1.2.643.5.1.13.3.25.78.118"; //тест
+        //  "1.2.643.5.1.13.3.25.78.230" демо
         private static string guid = "df8ccddc-ac72-46c9-be0e-075fb9fac5c2";
         
         public static string idlpu = guid;
