@@ -117,7 +117,6 @@
     <Compile Include="Global.cs" />
     <Compile Include="Methods Tests\mqProxyTest.cs" />
     <Compile Include="Methods Tests\PatientTests.cs" />
-    <Compile Include="MethodTests.cs" />
     <Compile Include="SerializationHelper.cs" />
     <Compile Include="Service References\EMKServiceDemo\Reference.cs">
       <AutoGen>True</AutoGen>
