@@ -14,6 +14,7 @@ namespace PixServiseTests
         static public ArrayList errors2 = new ArrayList();
         static public ArrayList errors1 = new ArrayList();
         static public int perem = 0;
+        static public string GUID = "5c04e58b-07c0-421c-804a-cd774685aea2";
         static public string errors
         {
             get
@@ -39,7 +40,7 @@ namespace PixServiseTests
         //static private string _connectionPath =
         //    "Data Source=192.168.8.93;Initial Catalog=EMKDBv3;User ID=a.pihtin;Password=stest2";
         static private string _connectionPath =
-            "Data Source = 212.116.96.50; Initial Catalog = EMKDBv3; Persist Security Info=True;User ID = a.pihtin; Password=demoalex";
+            "Data Source=192.168.8.93;Initial Catalog = EMKDBv3; Persist Security Info=True;User ID = a.pihtin; Password=stest2";
         static public SqlConnection GetSqlConnection()
         {
             SqlConnection connection = new SqlConnection(_connectionPath);

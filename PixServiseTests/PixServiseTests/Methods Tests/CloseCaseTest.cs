@@ -20,14 +20,14 @@ namespace PixServiseTests.Methods_Tests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                EmkClient.CreateCase(Global.GUID, caseAmb);
                 CaseAmb CaseAmbClose = (new SetData()).MinCaseAmbSetForClose();
-                EmkClient.CloseCase("5c04e58b-07c0-421c-804a-cd774685aea2", CaseAmbClose);
+                EmkClient.CloseCase(Global.GUID, CaseAmbClose);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -41,12 +41,12 @@ namespace PixServiseTests.Methods_Tests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
-                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                EmkClient.CreateCase(Global.GUID, caseAmb);
                 CaseAmb CaseAmbClose = (new SetData()).FullCaseAmbSetForClose();
                 CaseAmbClose.MedRecords = new List<MedRecord>
                 {
@@ -61,7 +61,7 @@ namespace PixServiseTests.Methods_Tests
                     (new SetData()).MinConsultNote()
                 };
 
-                EmkClient.CloseCase("5c04e58b-07c0-421c-804a-cd774685aea2", CaseAmbClose);
+                EmkClient.CloseCase(Global.GUID, CaseAmbClose);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -76,14 +76,14 @@ namespace PixServiseTests.Methods_Tests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                EmkClient.CreateCase(Global.GUID, caseStat);
                 CaseStat CaseStatClose = (new SetData()).MinCaseStatSetForClose();
-                EmkClient.CloseCase("5c04e58b-07c0-421c-804a-cd774685aea2", CaseStatClose);
+                EmkClient.CloseCase(Global.GUID, CaseStatClose);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -97,12 +97,12 @@ namespace PixServiseTests.Methods_Tests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", Data.idlpu, patient);
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                EmkClient.CreateCase(Global.GUID, caseStat);
                 CaseStat CaseStatClose = (new SetData()).FullCaseStatSetForClose();
                 //CaseStatClose.Guardian = null;
                 CaseStatClose.MedRecords = new List<MedRecord>
@@ -119,7 +119,7 @@ namespace PixServiseTests.Methods_Tests
                     (new SetData()).MinLaboratoryReport(),
                     (new SetData()).MinConsultNote()
                 };
-                EmkClient.CloseCase("5c04e58b-07c0-421c-804a-cd774685aea2", CaseStatClose);
+                EmkClient.CloseCase(Global.GUID, CaseStatClose);
             }
             if (Global.errors == "")
                 Assert.Pass();

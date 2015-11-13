@@ -18,7 +18,7 @@ namespace PixServiseTests
         {
             TestPixServiceClient client = new TestPixServiceClient();
             PatientDto patient = new PatientDto();
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -57,8 +57,8 @@ namespace PixServiseTests
                     IdDocumentType = 223
                 }
             };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -75,9 +75,9 @@ namespace PixServiseTests
             patient.Sex = 1;
             patient.IdPatientMIS = "123456789010";
             patient.Documents = (new SetData()).PatientSet().Documents;
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             //patient.FamilyName = "Сидоров";
-            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -110,8 +110,8 @@ namespace PixServiseTests
             cont2.IdContactType = 1;
             cont2.ContactValue = "89519435455";
             patient.Contacts = new ContactDto[] { cont, cont2 };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto patient2 = new PatientDto();
             PixServise.DocumentDto document2 = new PixServise.DocumentDto();
             document2.IdDocumentType = 14;
@@ -129,7 +129,7 @@ namespace PixServiseTests
             cont3.ContactValue = "89519435456";
             patient2.Contacts = new ContactDto[] { cont3 };
             patient2.IdPatientMIS = patient.IdPatientMIS;
-            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient2);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient2);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -148,8 +148,8 @@ namespace PixServiseTests
             patient.IdPatientMIS = "123456789010";
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Павел";
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            var patents = client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            var patents = client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -169,8 +169,8 @@ namespace PixServiseTests
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Павел";
             forSearch.GivenName = "Петров";
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            var patents = client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            var patents = client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -192,7 +192,7 @@ namespace PixServiseTests
             document.DocN = "123456";
             document.ProviderName = "УФМС";
             patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Жукин";
             forSearch.GivenName = "Дмитрий";
@@ -203,7 +203,7 @@ namespace PixServiseTests
             forSearchD.DocS = "1234";
             forSearchD.DocN = "123456";
             forSearch.Documents = new PixServise.DocumentDto[] { document };
-            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Reg);
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -225,7 +225,7 @@ namespace PixServiseTests
             document.DocN = "113131";
             document.ProviderName = "УФМС";
             patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -248,7 +248,7 @@ namespace PixServiseTests
             address2.StringAddress = "Улица Партизанская 47";
             address2.IdAddressType = 2;
             patient.Addresses = new PixServise.AddressDto[] { address, address2 };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -271,7 +271,7 @@ namespace PixServiseTests
             contact2.IdContactType = 1;
             contact2.ContactValue = "89525959544";
             patient.Contacts = new ContactDto[] { contact, contact2 };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -290,7 +290,7 @@ namespace PixServiseTests
             PixServise.JobDto job = new PixServise.JobDto();
             job.CompanyName = "OOO 'МИГ'";
             patient.Job = job;
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -312,7 +312,7 @@ namespace PixServiseTests
             patient2.BirthDate = new DateTime(1999, 02, 03);
             patient2.Sex = 1;
             patient2.IdPatientMIS = "098765432111";
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient2);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient2);
             ContactPersonDto pers = new ContactPersonDto();
             pers.ContactList = patient2.Contacts;
             pers.FamilyName = patient2.FamilyName;
@@ -321,7 +321,7 @@ namespace PixServiseTests
             pers.IdRelationType = 2;
             pers.MiddleName = patient2.MiddleName;
             patient.ContactPerson = pers;
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -342,7 +342,7 @@ namespace PixServiseTests
             privilege.DateEnd = new DateTime(2020, 01, 02);
             privilege.IdPrivilegeType = 10;
             patient.Privilege = privilege;
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -364,7 +364,7 @@ namespace PixServiseTests
         //    document.DocN = "113131";
         //    document.ProviderName = "УФМС";
         //    patient.Documents = new PixServise.DocumentDto[] { document };
-        //    client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+        //    client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
         //    PatientDto patient2 = new PatientDto();
         //    patient2.FamilyName = "Легенда";
         //    patient2.GivenName = "Легенда";
@@ -377,9 +377,9 @@ namespace PixServiseTests
         //    document2.DocN = "113131";
         //    document2.ProviderName = "УФМС";
         //    patient2.Documents = new PixServise.DocumentDto[] { document2 };
-        //    client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.29.1", patient2);
-        //    TestPatient a = TestPatient.BuildPatientFromDataBaseData("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient.IdPatientMIS);
-        //    TestPatient b = TestPatient.BuildPatientFromDataBaseData("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.29.1", patient2.IdPatientMIS);
+        //    client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.29.1", patient2);
+        //    TestPatient a = TestPatient.BuildPatientFromDataBaseData(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient.IdPatientMIS);
+        //    TestPatient b = TestPatient.BuildPatientFromDataBaseData(Global.GUID, "1.2.643.5.1.13.3.25.29.1", patient2.IdPatientMIS);
         //    if (a.patient.IdGlobal != b.patient.IdGlobal)
         //        Global.errors1.Add("Создан новый пациент");
         //    if (Global.errors == "")
@@ -457,7 +457,7 @@ namespace PixServiseTests
             privilege.DateEnd = new DateTime(2020, 01, 02);
             privilege.IdPrivilegeType = 10;
             patient.Privilege = privilege;
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -478,7 +478,7 @@ namespace PixServiseTests
         //    document.DocN = "123-456-789 45";
         //    document.ProviderName = "Снилс";
         //    patient.Documents = new DocumentDto[] { document };
-        //    client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+        //    client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
         //    PatientDto find = new PatientDto();
         //    find.FamilyName = "Павел";
         //    //find.GivenName = "Легенда";
@@ -487,7 +487,7 @@ namespace PixServiseTests
         //    document2.DocN = "123-456-789 45";
         //    document2.ProviderName = "Снилс";
         //    find.Documents = new DocumentDto[] { document2 };
-        //    client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", find, SourceType.Fed);
+        //    client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", find, SourceType.Fed);
         //    if (Global.errors == "")
         //        Assert.Pass();
         //    else
@@ -513,7 +513,7 @@ namespace PixServiseTests
             find.GivenName = "Легенда";
             find.BirthDate = new DateTime(1983, 01, 07);
             find.Documents = new PixServise.DocumentDto[] { document };
-            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -534,10 +534,10 @@ namespace PixServiseTests
             document.DocN = "123-456-789 45";
             document.ProviderName = "Снилс";
             patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto find = new PatientDto();
             find.IdPatientMIS = "1123123123";
-            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -607,8 +607,8 @@ namespace PixServiseTests
             patient.SocialStatus = "2.4";
             patient.IdPatientMIS = "2312312312399";
             patient.Sex = 1;
-            client.AddPatient("5C04E58B-07C0-421C-804A-CD774685AEA2", "1.2.643.5.1.13.3.25.78.230", patient);
-            client.UpdatePatient("5C04E58B-07C0-421C-804A-CD774685AEA2", "1.2.643.5.1.13.3.25.78.230", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.230", patient);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.230", patient);
             PatientDto patient2 = new PatientDto();
             patient2.Documents = new PixServise.DocumentDto[]
              {
@@ -622,13 +622,13 @@ namespace PixServiseTests
             patient2.FamilyName = "Трескунов";
             patient2.GivenName = "Роман";
             patient2.BirthDate = new DateTime(1976, 07, 19);
-            client.GetPatient("5C04E58B-07C0-421C-804A-CD774685AEA2", "1.2.643.5.1.13.3.25.78.230", patient2, SourceType.Reg);
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.230", patient2, SourceType.Reg);
         }
         [Test]
         public void MiacTest()
         {
             TestMiacClient c = new TestMiacClient();
-            c.GetCasesByPeriod("5C04E58B-07C0-421C-804A-CD774685AEA2", new DateTime(2014, 06, 01), new DateTime(2014, 06, 10));
+            c.GetCasesByPeriod(Global.GUID, new DateTime(2014, 06, 01), new DateTime(2014, 06, 10));
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -640,7 +640,7 @@ namespace PixServiseTests
         //    using (TestPixServiceClient PixClient = new TestPixServiceClient())
         //    {
         //        PatientDto patient = (new SetData()).PatientSet();
-        //        PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+        //        PixClient.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
         //    }
         //    using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
         //    {
@@ -657,8 +657,8 @@ namespace PixServiseTests
         //            MedRecordData.referral,
         //            MedRecordData.referral
         //        };
-        //        EmkClient.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
-        //        EmkClient.GetReferralList("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb.IdLpu, 1, new DateTime(2015, 08, 18), new DateTime(2015, 08, 20));
+        //        EmkClient.AddCase(Global.GUID, caseAmb);
+        //        EmkClient.GetReferralList(Global.GUID, caseAmb.IdLpu, 1, new DateTime(2015, 08, 18), new DateTime(2015, 08, 20));
 
         //    }
         //    if (Global.errors == "")
@@ -670,7 +670,7 @@ namespace PixServiseTests
         //public void aaaa()
         //{
         //    TestEmkServiceClient c = new TestEmkServiceClient();
-        //    c.GetReferralList("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", 1,
+        //    c.GetReferralList(Global.GUID, "1.2.643.5.1.13.3.25.78.118", 1,
         //        new DateTime(2010, 02, 01), new DateTime(2010, 02, 03));
         //}
         private LaboratoryReport GetOnkomarkers()
@@ -731,13 +731,13 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto p = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.3.64", p);
+                c.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.3.64", p);
             }
             using (TestEmkServiceClient c = new TestEmkServiceClient())
             {
                 CaseAmb Case = (new SetData()).MinCaseAmbSet();
                 Case.IdLpu = "1.2.643.5.1.13.3.25.3.64";
-                c.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", Case);
+                c.AddCase(Global.GUID, Case);
             }
         }
         [Test]
@@ -750,7 +750,7 @@ namespace PixServiseTests
                 patient.GivenName = "Евгений";
                 patient.FamilyName = "Эторцев";
                 patient.IdPatientMIS = "ForUploaderMIS4";
-                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.3.64", patient);
+                PixClient.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.3.64", patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
@@ -792,7 +792,7 @@ namespace PixServiseTests
                     //set.MinLaboratoryReport(),
                     //set.MinConsultNote()
                 };
-                EmkClient.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseAmb);
+                EmkClient.AddCase(Global.GUID, caseAmb);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -806,7 +806,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto p = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", p);
+                c.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", p);
             }
             using (TestEmkServiceClient c = new TestEmkServiceClient())
             {
@@ -833,7 +833,7 @@ namespace PixServiseTests
                     MedRecordData.appointedMedication,
                     MedRecordData.service
                 };
-                c.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", p);
+                c.AddCase(Global.GUID, p);
                 string caseMis = p.IdCaseMis;
                 p = (new SetData()).FullCaseAmbSet();
                 p.IdCaseMis = caseMis;
@@ -854,7 +854,7 @@ namespace PixServiseTests
                     GetBlood(),
                     GetOnkomarkers()
                 };
-                c.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", p);
+                c.UpdateCase(Global.GUID, p);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -868,7 +868,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto p = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", p);
+                c.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", p);
             }
             using (TestEmkServiceClient c = new TestEmkServiceClient())
             {
@@ -892,7 +892,7 @@ namespace PixServiseTests
                     MedRecordData.appointedMedication,
                     MedRecordData.service
                 };
-                c.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", p);
+                c.AddCase(Global.GUID, p);
                 string caseMis = p.IdCaseMis;
                 p = (new SetData()).FullCaseAmbSet();
                 p.IdCaseMis = caseMis;
@@ -912,7 +912,7 @@ namespace PixServiseTests
                     GetBlood(),
                     GetOnkomarkers()
                 };
-                c.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", p);
+                c.UpdateCase(Global.GUID, p);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -925,7 +925,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto p = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", p);
+                c.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", p);
             }
             using (TestEmkServiceClient c = new TestEmkServiceClient())
             {
@@ -935,7 +935,7 @@ namespace PixServiseTests
                 {
                     MedRecordData.clinicMainDiagnosis
                 };
-                c.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", p);
+                c.AddCase(Global.GUID, p);
                 string caseMis = p.IdCaseMis;
                 p = (new SetData()).FullCaseAmbSet();
                 p.IdCaseMis = caseMis;
@@ -955,7 +955,7 @@ namespace PixServiseTests
                     GetBlood(),
                     GetOnkomarkers()
                 };
-                c.UpdateCase("5c04e58b-07c0-421c-804a-cd774685aea2", p);
+                c.UpdateCase(Global.GUID, p);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -969,7 +969,7 @@ namespace PixServiseTests
             using (TestPixServiceClient PixClient = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+                PixClient.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             }
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
@@ -984,7 +984,7 @@ namespace PixServiseTests
                 };
                 caseStat.Steps[0].DateStart = new DateTime(2014, 06, 01);
                 caseStat.Steps[0].DateEnd = new DateTime(2014, 06, 04);
-                EmkClient.CreateCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                EmkClient.CreateCase(Global.GUID, caseStat);
                 StepStat s = CaseStatData.otherStep;
                 s.MedRecords = new List<MedRecord>
                 {
@@ -993,7 +993,7 @@ namespace PixServiseTests
                 };
                 s.DateStart = new DateTime(2014, 06, 05);
                 s.DateEnd = new DateTime(2014, 06, 10);
-                EmkClient.AddStepToCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat.IdLpu, caseStat.IdPatientMis, caseStat.IdCaseMis, s);
+                EmkClient.AddStepToCase(Global.GUID, caseStat.IdLpu, caseStat.IdPatientMis, caseStat.IdCaseMis, s);
                 caseStat = (new SetData()).FullCaseStatSetForClose();
                 caseStat.Guardian = null;
                 caseStat.CloseDate = new DateTime(2014, 06, 10);
@@ -1002,7 +1002,7 @@ namespace PixServiseTests
                     MedRecordData.clinicMainDiagnosis,
                     GetEpic()
                 };
-                EmkClient.CloseCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseStat);
+                EmkClient.CloseCase(Global.GUID, caseStat);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -1024,7 +1024,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+                c.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -1037,7 +1037,7 @@ namespace PixServiseTests
                     GetDispanseryOne(),
                     MedRecordData.clinicMainDiagnosis
                 };
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseDisp);
+                client.AddCase(Global.GUID, caseDisp);
             }
             if (Global.errors == "")
                 Assert.Pass();
@@ -1050,7 +1050,7 @@ namespace PixServiseTests
             using (TestPixServiceClient c = new TestPixServiceClient())
             {
                 PatientDto patient = (new SetData()).PatientSet();
-                c.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+                c.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             }
             using (TestEmkServiceClient client = new TestEmkServiceClient())
             {
@@ -1063,7 +1063,7 @@ namespace PixServiseTests
                     MedRecordData.dispensaryOneWithoutSnils,
                     MedRecordData.clinicMainDiagnosisWithOutSnils
                 };
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseDisp);
+                client.AddCase(Global.GUID, caseDisp);
                 caseDisp = (new SetData()).FullCaseDispSetWithDoctorWithSNILS();
                 caseDisp.Guardian = null;
                 caseDisp.OpenDate = new DateTime(2014, 06, 01);
@@ -1074,7 +1074,7 @@ namespace PixServiseTests
                     MedRecordData.clinicMainDiagnosisWithSnils
                 };
                 caseDisp.IdCaseMis = System.DateTime.Now.ToString();
-                client.AddCase("5c04e58b-07c0-421c-804a-cd774685aea2", caseDisp);
+                client.AddCase(Global.GUID, caseDisp);
             }
             if (Global.errors == "")
                 Assert.Pass();

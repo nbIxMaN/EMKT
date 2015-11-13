@@ -21,24 +21,24 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.8.93:2222/iemk/EMKService.svc/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="0d88c519-d9b7-42bf-a8d8-3feaeb04528b" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2a0595be-1e8f-4773-a0dd-38764c687c09" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="81cf5c42-608f-4204-bf6b-ddb5b35b6dab" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="WebService.Core.xsd" MetadataType="Schema" ID="1bae0261-8375-41de-bcf8-401828cd31d2" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.Case.xsd" MetadataType="Schema" ID="217c27ca-16e5-4029-a9bc-111285d0d87f" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.xsd" MetadataType="Schema" ID="dfc4bd4c-0073-4f53-8b80-98ed9cb45d81" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.Step.xsd" MetadataType="Schema" ID="73e48060-759e-486c-a713-76b385eb8776" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.MedRec.xsd" MetadataType="Schema" ID="8ca510b1-fb78-48c1-8a87-a3c702ea922e" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.MedRec.Diag.xsd" MetadataType="Schema" ID="536afd4c-92be-4f35-881e-81c512fbc37b" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.MedRec.MedDoc.xsd" MetadataType="Schema" ID="8868e247-560f-4cbc-a040-f05f612923a3" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="380c9840-64b9-463c-a477-17bf41407ae3" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="N3.EMK.Dto.Common.xsd" MetadataType="Schema" ID="fbceab1a-ae74-462e-84ce-d34b962ffa17" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="EMKService.Data.ReferralList.xsd" MetadataType="Schema" ID="d25cfb1d-9b89-4a4f-9cb7-e676cf37fce6" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="EMKService.Data.Dto.xsd" MetadataType="Schema" ID="f69fb7d4-a1e0-4459-8bfc-c1ec0fe1b9a6" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
-    <MetadataFile FileName="MKService.Data.Dto.xsd" MetadataType="Schema" ID="e4f73278-4aaf-401c-976c-125cb58f1c4d" SourceId="1" SourceUrl="http://demo-iemk20.zdrav.netrika.ru:2225/EMKService.svc/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="c3c9a694-cb0a-4dcf-9bd5-f9de1194c4a2" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="cf52827c-3f64-4452-8c86-d24c5381daa1" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="2c667713-b1b2-44cb-89a3-a093bd3b1a38" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="WebService.Core1.xsd" MetadataType="Schema" ID="ba322683-c1d8-45ce-9f71-2a32bd2f8de9" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto.Case1.xsd" MetadataType="Schema" ID="93266dfc-cd33-467e-961c-6720e0071637" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto1.xsd" MetadataType="Schema" ID="4dad3914-05e7-40d2-a099-9a067deb0ef8" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto.Step1.xsd" MetadataType="Schema" ID="10fea184-d2f1-46f2-bc2c-371c3b45429e" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto.MedRec1.xsd" MetadataType="Schema" ID="3a808d48-526f-4eed-8c9e-89f4859f8de4" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto.MedRec.Diag1.xsd" MetadataType="Schema" ID="d60d46b9-d550-413a-8277-e19a164c08aa" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto.MedRec.MedDoc1.xsd" MetadataType="Schema" ID="b21264f3-d270-4d5f-b9ee-41f993cb434c" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="Arrays1.xsd" MetadataType="Schema" ID="8b16dbea-2b61-4ae2-baa3-ec7afef85a47" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="N3.EMK.Dto.Common1.xsd" MetadataType="Schema" ID="19ab943d-5f30-406a-9fc8-eed9402f5733" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="EMKService.Data.ReferralList1.xsd" MetadataType="Schema" ID="80e561ef-4bd1-46ab-9314-dcdedab52a51" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="EMKService.Data.Dto1.xsd" MetadataType="Schema" ID="595e2fb1-8947-4fe8-83dc-4c7657ca1bca" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
+    <MetadataFile FileName="MKService.Data.Dto1.xsd" MetadataType="Schema" ID="f9d04c59-f3d8-4380-b457-a349c395ccb9" SourceId="1" SourceUrl="http://192.168.8.93:2222/iemk/EMKService.svc/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

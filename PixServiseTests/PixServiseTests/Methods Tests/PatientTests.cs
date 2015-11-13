@@ -41,8 +41,8 @@ namespace PixServiseTests
             cont2.IdContactType = 1;
             cont2.ContactValue = "89519435455";
             patient.Contacts = new ContactDto[] { cont, cont2 };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto patient2 = new PatientDto();
             PixServise.DocumentDto document2 = new PixServise.DocumentDto();
             document2.IdDocumentType = 14;
@@ -60,7 +60,7 @@ namespace PixServiseTests
             cont3.ContactValue = "89519435456";
             patient2.Contacts = new ContactDto[] { cont3 };
             patient2.IdPatientMIS = patient.IdPatientMIS;
-            client.UpdatePatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient2);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient2);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -71,16 +71,11 @@ namespace PixServiseTests
         {
             //System.Collections.ArrayList exeptions;
             TestPixServiceClient client = new TestPixServiceClient();
-            PatientDto patient = new PatientDto();
-            patient.FamilyName = "Павел";
-            patient.GivenName = "Петров";
-            patient.BirthDate = new DateTime(1983, 01, 07);
-            patient.Sex = 1;
-            patient.IdPatientMIS = "123456789010";
+            PatientDto patient = (new SetData()).PatientSet();
             PatientDto forSearch = new PatientDto();
-            forSearch.FamilyName = "Павел";
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            var patents = client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
+            forSearch.FamilyName = PatientData.Patient.FamilyName;
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            var patents = client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -91,17 +86,12 @@ namespace PixServiseTests
         {
             //System.Collections.ArrayList exeptions;
             TestPixServiceClient client = new TestPixServiceClient();
-            PatientDto patient = new PatientDto();
-            patient.FamilyName = "Павел";
-            patient.GivenName = "Петров";
-            patient.BirthDate = new DateTime(1983, 01, 07);
-            patient.Sex = 1;
-            patient.IdPatientMIS = "123456789010";
+            PatientDto patient = (new SetData()).PatientSet();
             PatientDto forSearch = new PatientDto();
-            forSearch.FamilyName = "Павел";
-            forSearch.GivenName = "Петров";
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
-            var patents = client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
+            forSearch.FamilyName = PatientData.Patient.GivenName;
+            forSearch.GivenName = PatientData.Patient.FamilyName;
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
+            var patents = client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Fed);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -123,7 +113,7 @@ namespace PixServiseTests
             document.DocN = "123456";
             document.ProviderName = "УФМС";
             patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto forSearch = new PatientDto();
             forSearch.FamilyName = "Жукин";
             forSearch.GivenName = "Дмитрий";
@@ -134,7 +124,7 @@ namespace PixServiseTests
             forSearchD.DocS = "1234";
             forSearchD.DocN = "123456";
             forSearch.Documents = new PixServise.DocumentDto[] { document };
-            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Reg);
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", forSearch, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -144,21 +134,11 @@ namespace PixServiseTests
         public void FindPatientByIdMIS()
         {
             TestPixServiceClient client = new TestPixServiceClient();
-            PatientDto patient = new PatientDto();
-            patient.FamilyName = "Легенда";
-            patient.GivenName = "Легенда";
-            patient.BirthDate = new DateTime(1983, 01, 07);
-            patient.Sex = 1;
-            patient.IdPatientMIS = "1123123123";
-            PixServise.DocumentDto document = new PixServise.DocumentDto();
-            document.IdDocumentType = 223;
-            document.DocN = "123-456-789 45";
-            document.ProviderName = "Снилс";
-            patient.Documents = new PixServise.DocumentDto[] { document };
-            client.AddPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", patient);
+            PatientDto patient = (new SetData()).PatientSet();
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", patient);
             PatientDto find = new PatientDto();
-            find.IdPatientMIS = "1123123123";
-            client.GetPatient("5c04e58b-07c0-421c-804a-cd774685aea2", "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
+            find.IdPatientMIS = patient.IdPatientMIS;
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.118", find, SourceType.Reg);
             if (Global.errors == "")
                 Assert.Pass();
             else
@@ -228,8 +208,8 @@ namespace PixServiseTests
             patient.SocialStatus = "2.4";
             patient.IdPatientMIS = "2312312312399";
             patient.Sex = 1;
-            client.AddPatient("5C04E58B-07C0-421C-804A-CD774685AEA2", "1.2.643.5.1.13.3.25.78.230", patient);
-            client.UpdatePatient("5C04E58B-07C0-421C-804A-CD774685AEA2", "1.2.643.5.1.13.3.25.78.230", patient);
+            client.AddPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.230", patient);
+            client.UpdatePatient(Global.GUID, "1.2.643.5.1.13.3.25.78.230", patient);
             PatientDto patient2 = new PatientDto();
             patient2.Documents = new PixServise.DocumentDto[]
              {
@@ -243,7 +223,260 @@ namespace PixServiseTests
             patient2.FamilyName = "Трескунов";
             patient2.GivenName = "Роман";
             patient2.BirthDate = new DateTime(1976, 07, 19);
-            client.GetPatient("5C04E58B-07C0-421C-804A-CD774685AEA2", "1.2.643.5.1.13.3.25.78.230", patient2, SourceType.Reg);
+            client.GetPatient(Global.GUID, "1.2.643.5.1.13.3.25.78.230", patient2, SourceType.Reg);
+        }
+        [Test]
+        public void AddStatMedRecDeathInfo_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                EmkClient.AddCase(Global.GUID, caseStat);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseStat.IdPatientMis, MedRecordData.deathInfo, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddStatMedRecSickList_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                EmkClient.AddCase(Global.GUID, caseStat);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseStat.IdPatientMis, MedRecordData.sickList, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedAppointedMedication_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                EmkClient.AddCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.appointedMedication, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+
+        [Test]
+        public void AddAmbMedRecClinicDiagnosis_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                EmkClient.AddCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.clinicMainDiagnosis, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedRecConsultNote_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.consultNote, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedRecDiagnosis_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.diagnosis, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedRecDishargeSummary_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.dischargeSummary, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedRecLabRep_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.LaboratoryReport, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedRecReferral_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
+                EmkClient.AddCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.referral, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddAmbMedRecTfomfsInfo_OpenCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
+                EmkClient.CreateCase(Global.GUID, caseAmb);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseAmb.IdPatientMis, MedRecordData.tfomsInfo, caseAmb.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddStatMedAppointedMedication_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                EmkClient.AddCase(Global.GUID, caseStat);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseStat.IdPatientMis, MedRecordData.appointedMedication, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddStatMedRecAnatomDiagnosis_CloseCase()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                EmkClient.AddCase(Global.GUID, caseStat);
+                EmkClient.AddMedRecord(Global.GUID, Data.idlpu, caseStat.IdPatientMis, MedRecordData.anatomopathologicalClinicMainDiagnosis, caseStat.IdCaseMis);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
+        }
+        [Test]
+        public void AddDeathInfo()
+        {
+            using (TestPixServiceClient PixClient = new TestPixServiceClient())
+            {
+                PatientDto patient = (new SetData()).PatientSet();
+                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
+            }
+            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
+            {
+                CaseStat caseStat = (new SetData()).MinCaseStatSet();
+                caseStat.IdCaseResult = 6;
+                caseStat.MedRecords = new List<MedRecord>
+                {
+                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
+                    MedRecordData.deathInfo
+                };
+                EmkClient.AddCase(Global.GUID, caseStat);
+            }
+            if (Global.errors == "")
+                Assert.Pass();
+            else
+                Assert.Fail(Global.errors);
         }
     }
 }

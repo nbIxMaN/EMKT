@@ -95,12 +95,13 @@ namespace PixServiseTests
 
     [TestFixture]
     public abstract class Data
-    {   //выбор oid или guid происходит здесь!!
+    {   
+        //выбор oid или guid происходит здесь!!
         private static string oid = "1.2.643.5.1.13.3.25.78.230";
         private static string guid = "df8ccddc-ac72-46c9-be0e-075fb9fac5c2";
         
-        public static string idlpu = oid;
-        public static Type type = Type.oid;
+        public static string idlpu = guid;
+        public static Type type = Type.guid;
 
         static public void SetDocument()
         {
@@ -442,7 +443,8 @@ namespace PixServiseTests
                 {
                     Data = Encoding.UTF8.GetBytes(data),
                     Hash = N3.EMK.Infrastructure.Helpers.Md5Helper.GetGost3411Hash(data),
-                    MimeType = "text/xml"
+                    MimeType = "text/xml",
+                    IsSigned = true
                 },
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
@@ -456,7 +458,8 @@ namespace PixServiseTests
                     Data = Encoding.UTF8.GetBytes(wrongdata),
                     Hash = Md5Helper.GetGost3411Hash(wrongdata),
                     Url = new Uri("https://www.google.ru"),
-                    MimeType = "text/xml"
+                    MimeType = "text/xml",
+                    IsSigned = true
                 },
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
