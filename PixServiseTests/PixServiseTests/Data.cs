@@ -687,7 +687,7 @@ namespace PixServiseTests
                 IdPosition = 74,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "Doctor" + DateTime.Now.ToString(),
+                    IdPersonMis = "Doctor" + DateTime.Now.ToString()+ "."+ "." + DateTime.Now.Millisecond.ToString(),
                     Sex = 1,
                     Birthdate = new DateTime(1974, 01, 07),
                     Documents = new List<IdentityDocument>
@@ -742,7 +742,7 @@ namespace PixServiseTests
                 {
                     Sex = 1,
                     Birthdate = new DateTime(1980, 11, 17),
-                    IdPersonMis = DateTime.Now.ToString(),
+                    IdPersonMis = DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                     Documents = new List<IdentityDocument> 
                     {
                         DocumentData.GuardianPassport,
@@ -840,7 +840,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2012, 10, 10),
                 DateEnd = new DateTime(2012, 10, 14),
-                IdStepMis = "Step " + DateTime.Now.ToString(),
+                IdStepMis = "Step " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 IdVisitPlace = 1,
                 IdVisitPurpose = 1,
@@ -854,7 +854,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2012, 10, 10),
                 DateEnd = new DateTime(2012, 10, 14),
-                IdStepMis = "Step " + DateTime.Now.ToString(),
+                IdStepMis = "Step " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 IdVisitPlace = 1,
                 IdVisitPurpose = 1,
@@ -868,7 +868,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2012, 10, 10),
                 DateEnd = new DateTime(2012, 10, 14),
-                IdStepMis = "Step " + DateTime.Now.ToString(),
+                IdStepMis = "Step " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 IdVisitPlace = 1,
                 IdVisitPurpose = 1,
@@ -883,7 +883,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2012, 09, 07),
                 DateEnd = new DateTime(2013, 10, 14),
-                IdStepMis = "OtherStep " + DateTime.Now.ToString(),
+                IdStepMis = "OtherStep " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 2,
                 IdVisitPlace = 2,
                 IdVisitPurpose = 2,
@@ -899,7 +899,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2012, 10, 10),
                 CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "CaseAmb " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseAmb " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -928,7 +928,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2012, 10, 10),
                 CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseDisp " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -957,7 +957,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2010, 10, 10),
                 CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseDisp " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -986,7 +986,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2010, 10, 10),
                 CloseDate = new DateTime(2010, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "CaseDisp " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseDisp " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -1040,7 +1040,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2012, 10, 10),
                 DateEnd = new DateTime(2012, 10, 14),
-                IdStepMis = "Step " + DateTime.Now.ToString(),
+                IdStepMis = "Step " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 Comment = "Comment",
                 BedNumber = "1A",
@@ -1060,7 +1060,7 @@ namespace PixServiseTests
             {
                 DateStart = new DateTime(2012, 09, 09),
                 DateEnd = new DateTime(2012, 10, 14),
-                IdStepMis = "OtherStep " + DateTime.Now.ToString(),
+                IdStepMis = "OtherStep " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 2,
                 Comment = "OtherComment",
                 BedNumber = "3A",
@@ -1081,7 +1081,7 @@ namespace PixServiseTests
                 OpenDate = new DateTime(2012, 10, 10),
                 CloseDate = new DateTime(2012, 10, 14),
                 HistoryNumber = "1000121",
-                IdCaseMis = "CaseStat " + DateTime.Now.ToString(),
+                IdCaseMis = "CaseStat " + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
                 IdPaymentType = 1,
                 Confidentiality = 1,
                 DoctorConfidentiality = 1,
@@ -1128,7 +1128,7 @@ namespace PixServiseTests
                 GivenName = "Алёша",
                 BirthDate = new DateTime(1983, 01, 07),
                 Sex = 1,
-                IdPatientMIS = "PatientMIS" + DateTime.Now.ToString(),
+                IdPatientMIS = "PatientMIS" + DateTime.Now.ToString()+ "." + DateTime.Now.Millisecond.ToString(),
             };
 
             SetDocument();

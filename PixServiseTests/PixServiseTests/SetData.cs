@@ -230,7 +230,7 @@ namespace PixServiseTests
                 IdLpu = Data.idlpu,
                 Person = new PersonWithIdentity
                 {
-                    IdPersonMis = "Doctor" + DateTime.Now.ToString(),
+                    IdPersonMis = "Doctor" + DateTime.Now.ToString() + "." + DateTime.Now.Millisecond.ToString(),
                     HumanName = new HumanName
                     {
                         FamilyName = "Игрович",
