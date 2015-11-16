@@ -26,6 +26,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase(Global.GUID, caseAmb);
+                
                 CaseAmb CaseAmbClose = (new SetData()).MinCaseAmbSetForClose();
                 EmkClient.CloseCase(Global.GUID, CaseAmbClose);
             }
@@ -47,6 +48,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase(Global.GUID, caseAmb);
+               
                 CaseAmb CaseAmbClose = (new SetData()).FullCaseAmbSetForClose();
                 CaseAmbClose.MedRecords = new List<MedRecord>
                 {
@@ -82,6 +84,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase(Global.GUID, caseStat);
+               
                 CaseStat CaseStatClose = (new SetData()).MinCaseStatSetForClose();
                 EmkClient.CloseCase(Global.GUID, CaseStatClose);
             }
@@ -103,6 +106,7 @@ namespace PixServiseTests.Methods_Tests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
                 EmkClient.CreateCase(Global.GUID, caseStat);
+               
                 CaseStat CaseStatClose = (new SetData()).FullCaseStatSetForClose();
                 //CaseStatClose.Guardian = null;
                 CaseStatClose.MedRecords = new List<MedRecord>
@@ -111,7 +115,6 @@ namespace PixServiseTests.Methods_Tests
                     (new SetData()).MinTfomsInfo(),
                     MedRecordData.deathInfo,
                     (new SetData()).MinDiagnosis(),
-                    MedRecordData.clinicMainDiagnosis,
                     MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.referral,
                     MedRecordData.sickList,

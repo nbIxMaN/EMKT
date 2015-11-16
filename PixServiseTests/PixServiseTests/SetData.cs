@@ -384,11 +384,6 @@ namespace PixServiseTests
                MinStepAmbSet()
             };
 
-            caseDisp.MedRecords = new List<MedRecord>
-            {
-                MinClinicMainDiagnosis()
-            };
-
             return caseDisp;
         }
 
@@ -589,11 +584,6 @@ namespace PixServiseTests
                MinStepStatSet()
             };
 
-            caseStat.MedRecords = new List<MedRecord>
-            {
-                MinClinicMainDiagnosis()
-            };
-
             return caseStat;
         }
 
@@ -622,11 +612,6 @@ namespace PixServiseTests
             caseStat.Authenticator = new Participant
             {
                 Doctor = MinDoctorSet()
-            };
-
-            caseStat.MedRecords = new List<MedRecord>
-            {
-                MinClinicMainDiagnosis()
             };
 
             return caseStat;

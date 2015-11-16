@@ -118,16 +118,6 @@
     <Compile Include="Methods Tests\mqProxyTest.cs" />
     <Compile Include="Methods Tests\PatientTests.cs" />
     <Compile Include="SerializationHelper.cs" />
-    <Compile Include="Service References\EMKServiceDemo\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\PixServiceDemo\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="SignatureHelper.cs" />
     <Compile Include="SignData.cs" />
     <Compile Include="TestMqProxyClient.cs" />
@@ -209,55 +199,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Service References\EMKServiceDemo\EmkService.wsdl" />
-    <None Include="Service References\EMKServiceDemo\EMKService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\EMKService9.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMKServiceDemo\PixServiseTests.EMKServiceDemo.ReferralTupleDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\EMKServiceDemo\PixServiseTests.EMKServiceDemo.VersionInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\EMKServise\Arrays1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -333,31 +274,6 @@
     <None Include="Service References\mqProxy\PixServiseTests.mqProxy.VersionInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PixServiceDemo\PixService.wsdl" />
-    <None Include="Service References\PixServiceDemo\PixService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixServiseTests.PixServiceDemo.PatientDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PixServiceDemo\PixServiseTests.PixServiceDemo.VersionInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\PixServise\PixService.wsdl" />
     <None Include="Service References\PixServise\PixService.xsd">
       <SubType>Designer</SubType>
@@ -388,11 +304,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\EMKServiceDemo\" />
     <WCFMetadataStorage Include="Service References\EMKServise\" />
     <WCFMetadataStorage Include="Service References\MiacStatistics\" />
     <WCFMetadataStorage Include="Service References\mqProxy\" />
-    <WCFMetadataStorage Include="Service References\PixServiceDemo\" />
     <WCFMetadataStorage Include="Service References\PixServise\" />
   </ItemGroup>
   <ItemGroup>
@@ -451,36 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\mqProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PixServiceDemo\PixService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PixServiceDemo\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PixServiceDemo\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PixServiceDemo\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\EMKServiceDemo\EMKService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\EMKServiceDemo\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\EMKServiceDemo\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\EMKServiceDemo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

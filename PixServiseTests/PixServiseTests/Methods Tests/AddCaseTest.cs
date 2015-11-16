@@ -25,10 +25,6 @@ namespace PixServiseTests
             using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                caseAmb.MedRecords = new List<MedRecord>
-                {
-                    MedRecordData.clinicMainDiagnosis,
-                };
                 EmkClient.AddCase(Global.GUID, caseAmb);
             }
             if (Global.errors == "")
@@ -104,6 +100,7 @@ namespace PixServiseTests
             else
                 Assert.Fail(Global.errors);
         }
+
         private LaboratoryReport GetOnkomarkers()
         {
             return new LaboratoryReport()
@@ -114,6 +111,7 @@ namespace PixServiseTests
                 Header = "Лабораторное исследование Онкомаркеры"
             };
         }
+
         private LaboratoryReport GetGemotology()
         {
             return new LaboratoryReport()
@@ -124,6 +122,7 @@ namespace PixServiseTests
                 Header = "Лабораторное исследование Гематология"
             };
         }
+
         private LaboratoryReport GetBlood()
         {
             return new LaboratoryReport()
@@ -134,6 +133,7 @@ namespace PixServiseTests
                 Header = "Лабораторное исследование Общий анализ крови"
             };
         }
+
         private DischargeSummary GetEpic()
         {
             return new DischargeSummary()
@@ -155,6 +155,7 @@ namespace PixServiseTests
                 Header = "Консультация"
             };
         }
+
         [Test]
         public void _HashTest()
         {
@@ -216,6 +217,7 @@ namespace PixServiseTests
             else
                 Assert.Pass();
         }
+
         //[Test]
         //public void _AddCaseForMiac()
         //{

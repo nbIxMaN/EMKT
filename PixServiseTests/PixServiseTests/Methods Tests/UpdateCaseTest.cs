@@ -27,6 +27,7 @@ namespace PixServiseTests
             {
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
                 EmkClient.AddCase(Global.GUID, caseAmb);
+                
                 caseAmb.Comment = "23123123123123123123";
                 EmkClient.UpdateCase(Global.GUID, caseAmb);
             }
@@ -63,15 +64,15 @@ namespace PixServiseTests
                     MedRecordData.consultNote
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
-                //stepAmb.MedRecords = new List<MedRecord>
-                //{
-                //    set.MinService(),
-                //    set.MinAppointedMedication(),
-                //    set.MinDiagnosis(),
-                //    MedRecordData.clinicMainDiagnosis,
-                //    MedRecordData.referral,
-                //    set.MinLaboratoryReport(),
-                //};
+                stepAmb.MedRecords = new List<MedRecord>
+                {
+                    set.MinService(),
+                    set.MinAppointedMedication(),
+                    set.MinDiagnosis(),
+                    MedRecordData.clinicMainDiagnosis,
+                    MedRecordData.referral,
+                    set.MinLaboratoryReport(),
+                };
                 caseAmb.Steps = new List<StepAmb>
                 {
                     stepAmb
@@ -151,7 +152,6 @@ namespace PixServiseTests
                     MedRecordData.deathInfo,
                     set.MinDiagnosis(),
                     MedRecordData.clinicMainDiagnosis,
-                    MedRecordData.anatomopathologicalClinicMainDiagnosis,
                     MedRecordData.referral,   
                     MedRecordData.sickList,
                     set.MinDischargeSummary(),
@@ -275,6 +275,7 @@ namespace PixServiseTests
 
                 caseStat = (new SetData()).MinCaseStatSetForClose();
                 EmkClient.CloseCase(Global.GUID, caseStat);
+               
                 caseStat = (new SetData()).MinCaseStatSet();
                 EmkClient.UpdateCase(Global.GUID, caseStat);
             }
