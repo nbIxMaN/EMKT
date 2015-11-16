@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace PixServiseTests
 {
     [TestFixture]
-    class AddStepToCaseTest: Data
+    class AddStepToCaseTest : Data
     {
         [Test]
         public void AddAmbStep_CloseCase()
@@ -69,7 +69,7 @@ namespace PixServiseTests
                 CaseAmb caseAmb = (new SetData()).MinCaseAmbSetForCreate();
                 EmkClient.CreateCase(Global.GUID, caseAmb);
 
-                StepAmb stepAmb = CaseAmbData.otherStep;            
+                StepAmb stepAmb = CaseAmbData.otherStep;
                 stepAmb.MedRecords = new List<MedRecord>
                 {
                     (new SetData()).MinService(),
@@ -251,14 +251,6 @@ namespace PixServiseTests
                 Assert.Pass();
             else
                 Assert.Fail(Global.errors);
-        }
-
-        [TearDown]
-        public void Clear()
-        {
-            Global.errors3.Clear();
-            Global.errors2.Clear();
-            Global.errors1.Clear();
         }
     }
 }

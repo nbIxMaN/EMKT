@@ -199,7 +199,7 @@ namespace PixServiseTests
                                         if (!Global.IsEqual(ap, null)) statcase.records.AddRange(ap);
 
                                         List<TestForm027U> form = TestForm027U.BuildForm027UFromDataBaseData(statcase.defaultStep.idStep);
-                                        if (Global.IsEqual(form, null)) statcase.records.AddRange(form);
+                                        if (!Global.IsEqual(form, null)) statcase.records.AddRange(form);
 
                                         if (statcase.records.Count == 0)
                                             statcase.records = null;
@@ -351,7 +351,7 @@ namespace PixServiseTests
 
                             TestForm027U form = i as TestForm027U;
                             if (!Global.IsEqual(form, null))
-                                newMedRecords.Add(lr);
+                                newMedRecords.Add(form);
                         }
                     }
                     else
