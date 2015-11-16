@@ -61,7 +61,7 @@ namespace PixServiseTests
                     MedRecordData.sickList,
                     MedRecordData.dischargeSummary,
                     MedRecordData.LaboratoryReport,
-                    MedRecordData.consultNote
+                    MedRecordData.consultNote,
                 };
                 StepAmb stepAmb = (new SetData()).MinStepAmbSet();
                 stepAmb.MedRecords = new List<MedRecord>
@@ -156,7 +156,8 @@ namespace PixServiseTests
                     MedRecordData.sickList,
                     set.MinDischargeSummary(),
                     set.MinLaboratoryReport(),
-                    set.MinConsultNote()
+                    set.MinConsultNote(),
+                    MedRecordData.form027U
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>
@@ -314,7 +315,8 @@ namespace PixServiseTests
                     set.MinSickList(),
                     set.MinDischargeSummary(),
                     set.MinLaboratoryReport(),
-                    set.MinConsultNote()
+                    set.MinConsultNote(),
+                    MedRecordData.form027U
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>

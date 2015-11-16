@@ -120,7 +120,8 @@ namespace PixServiseTests.Methods_Tests
                     MedRecordData.sickList,
                     (new SetData()).MinDischargeSummary(),
                     (new SetData()).MinLaboratoryReport(),
-                    (new SetData()).MinConsultNote()
+                    (new SetData()).MinConsultNote(),
+                    MedRecordData.form027U
                 };
                 EmkClient.CloseCase(Global.GUID, CaseStatClose);
             }

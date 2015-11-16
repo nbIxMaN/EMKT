@@ -116,7 +116,7 @@ namespace PixServiseTests
                     MedRecordData.clinicMainDiagnosis,
                     MedRecordData.referral,   
                     MedRecordData.sickList,
-                    set.MinLaboratoryReport(),
+                    set.MinLaboratoryReport()
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>

@@ -375,7 +375,8 @@ namespace PixServiseTests
                     set.MinSickList(),
                     set.MinDischargeSummary(),
                     set.MinLaboratoryReport(),
-                    set.MinConsultNote()
+                    set.MinConsultNote(),
+                    MedRecordData.form027U
                 };
                 StepStat stepStat = (new SetData()).MinStepStatSet();
                 stepStat.MedRecords = new List<MedRecord>

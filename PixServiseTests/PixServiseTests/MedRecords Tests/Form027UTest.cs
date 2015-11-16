@@ -60,6 +60,7 @@ namespace PixServiseTests.MedRecords_Tests
                 Assert.Fail(Global.errors);
         }
 
+        //этот тест не должен  проходить
         [Test]
         public void CreateCaseForm027U()
         {
@@ -157,6 +158,7 @@ namespace PixServiseTests.MedRecords_Tests
                 Assert.Fail(Global.errors);
         }
 
+        //этот тест не должен  проходить
         [Test]
         public void AddStatStep_OtherIdFull()
         {
@@ -183,31 +185,5 @@ namespace PixServiseTests.MedRecords_Tests
                 Assert.Fail(Global.errors);
         }
 
-        [Test]
-        public void AddStatStepForm027U_SameId()
-        {
-            using (TestPixServiceClient PixClient = new TestPixServiceClient())
-            {
-                PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
-            }
-            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
-            {
-                CaseStat caseStat = (new SetData()).MinCaseStatSetForCreate();
-                EmkClient.CreateCase(Global.GUID, caseStat);
-
-                StepStat stepStat = CaseStatData.otherStep;
-                stepStat.IdStepMis = CaseStatData.step.IdStepMis;
-                stepStat.MedRecords = new List<MedRecord>
-                {
-                   MedRecordData.form027U
-                };
-                EmkClient.AddStepToCase(Global.GUID, Data.idlpu, caseStat.IdPatientMis, caseStat.IdCaseMis, stepStat);
-            }
-            if (Global.errors == "")
-                Assert.Pass();
-            else
-                Assert.Fail(Global.errors);
-        }
     }
 }
