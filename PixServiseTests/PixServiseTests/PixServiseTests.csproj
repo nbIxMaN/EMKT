@@ -115,8 +115,8 @@
     <Compile Include="MedRecords Tests\DispensaryOneTests.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Methods Tests\mqProxyTest.cs" />
-    <Compile Include="Methods Tests\PatientTests.cs" />
+    <Compile Include="Other Tests\mqProxyTest.cs" />
+    <Compile Include="Other Tests\PatientTests.cs" />
     <Compile Include="SerializationHelper.cs" />
     <Compile Include="SignatureHelper.cs" />
     <Compile Include="SignData.cs" />

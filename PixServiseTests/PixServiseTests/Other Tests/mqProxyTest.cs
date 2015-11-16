@@ -7,7 +7,7 @@ using NUnit.Framework;
 using PixServiseTests.EMKServise;
 using PixServiseTests.PixServise;
 
-namespace PixServiseTests.Methods_Tests
+namespace PixServiseTests
 {
     [TestFixture]
     class mqProxyTest : Data
