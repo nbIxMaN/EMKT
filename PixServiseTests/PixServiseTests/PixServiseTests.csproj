@@ -101,6 +101,7 @@
     <Compile Include="ISignatureHelper.cs" />
     <Compile Include="Md5Helper.cs" />
     <Compile Include="MedDocumentData.cs" />
+    <Compile Include="MedRecords Tests\Form027UTest.cs" />
     <Compile Include="MedRecords Tests\ReferralTest.cs" />
     <Compile Include="MedRecords Tests\SickListTest.cs" />
     <Compile Include="Methods Tests\AddMedRecordTest.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="SerializationHelper.cs" />
     <Compile Include="SignatureHelper.cs" />
     <Compile Include="SignData.cs" />
+    <Compile Include="TestForm027U.cs" />
     <Compile Include="TestMqProxyClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

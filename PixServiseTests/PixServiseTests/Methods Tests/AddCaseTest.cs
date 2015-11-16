@@ -92,7 +92,7 @@ namespace PixServiseTests
             {
                 CaseStat caseStat = (new SetData()).MinCaseStatSet();
                 caseStat.PrehospitalDefects = new List<byte>() { 1, 2 };
-               
+
                 EmkClient.AddCase(Global.GUID, caseStat);
             }
             if (Global.errors == "")
@@ -342,10 +342,7 @@ namespace PixServiseTests
                     MedRecordData.referral,
                     set.MinLaboratoryReport(),
                 };
-                caseAmb.Steps = new List<StepAmb>
-                {
-                    stepAmb
-                };
+                caseAmb.Steps = new List<StepAmb> { stepAmb };
                 EmkClient.AddCase(Global.GUID, caseAmb);
             }
 
@@ -390,10 +387,7 @@ namespace PixServiseTests
                     set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
-                caseStat.Steps = new List<StepStat>
-                {
-                    stepStat
-                };
+                caseStat.Steps = new List<StepStat> { stepStat };
                 EmkClient.AddCase(Global.GUID, caseStat);
             }
             if (Global.errors == "")
@@ -433,32 +427,10 @@ namespace PixServiseTests
                     set.MinRefferal(),
                     set.MinLaboratoryReport(),
                 };
-                caseAmb.Steps = new List<StepAmb>
-                {
-                    stepAmb
-                };
+                caseAmb.Steps = new List<StepAmb> { stepAmb };
                 EmkClient.AddCase(Global.GUID, caseAmb);
             }
 
-            if (Global.errors == "")
-                Assert.Pass();
-            else
-                Assert.Fail(Global.errors);
-        }
-
-        [Test]
-        public void Test()
-        {
-            using (TestPixServiceClient PixClient = new TestPixServiceClient())
-            {
-                PatientDto patient = (new SetData()).PatientSet();
-                PixClient.AddPatient(Global.GUID, Data.idlpu, patient);
-            }
-            using (TestEmkServiceClient EmkClient = new TestEmkServiceClient())
-            {
-                CaseAmb caseAmb = (new SetData()).MinCaseAmbSet();
-                EmkClient.AddCase(Global.GUID, caseAmb);
-            }
             if (Global.errors == "")
                 Assert.Pass();
             else

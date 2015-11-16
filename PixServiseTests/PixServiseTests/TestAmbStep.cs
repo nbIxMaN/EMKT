@@ -109,7 +109,7 @@ namespace PixServiseTests
                                 List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(trl, null))
                                     st.records.AddRange(trl);
-                                List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(i.idStep);
+                                List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildLaboratoryReportFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(tlr, null))
                                     st.records.AddRange(tlr);
                                 if (st.records.Count == 0)

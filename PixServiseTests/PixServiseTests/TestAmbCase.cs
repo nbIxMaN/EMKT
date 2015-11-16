@@ -172,7 +172,7 @@ namespace PixServiseTests
                                         TestDischargeSummary tds = TestDischargeSummary.BuildSickListFromDataBaseData(ambcase.defaultStep.idStep);
                                         if (!Global.IsEqual(tds, null))
                                             ambcase.records.Add(tds);
-                                        List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(ambcase.defaultStep.idStep);
+                                        List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildLaboratoryReportFromDataBaseData(ambcase.defaultStep.idStep);
                                         if (!Global.IsEqual(tlr, null))
                                             ambcase.records.AddRange(tlr);
                                         TestConsultNote tcn = TestConsultNote.BuildSickListFromDataBaseData(ambcase.defaultStep.idStep);

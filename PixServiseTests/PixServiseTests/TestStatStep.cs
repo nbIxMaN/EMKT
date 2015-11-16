@@ -37,21 +37,30 @@ namespace PixServiseTests
                         Service s = i as Service;
                         if (s != null)
                             records.Add(new TestService(s, caseLpu));
+                        
                         AppointedMedication am = i as AppointedMedication;
                         if (am != null)
                             records.Add(new TestAppointedMedication(am, caseLpu));
+                       
                         Diagnosis diag = i as Diagnosis;
                         if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestDiagnosis(diag, caseLpu));
+                        
                         ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
                         if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                             records.Add(new TestClinicMainDiagnosis(cmd, caseLpu));
+                       
                         Referral r = i as Referral;
                         if (r != null)
                             records.Add(new TestReferral(r, caseLpu));
+                        
                         LaboratoryReport lr = i as LaboratoryReport;
                         if (lr != null)
                             records.Add(new TestLaboratoryReport(lr, caseLpu));
+
+                        Form027U form = i as Form027U;
+                        if (form != null)
+                            records.Add(new TestForm027U(form, caseLpu));
                     }
                 }
             }
@@ -131,7 +140,7 @@ namespace PixServiseTests
                                 List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(trl, null))
                                     st.records.AddRange(trl);
-                                List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(i.idStep);
+                                List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildLaboratoryReportFromDataBaseData(i.idStep);
                                 if (!Global.IsEqual(tlr, null))
                                     st.records.AddRange(tlr);
                                 if (st.records.Count == 0)

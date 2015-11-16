@@ -22,7 +22,7 @@ namespace PixServiseTests
                 doctor = new TestDoctor(r.Author, idLpu);
             }
         }
-        static public List<TestLaboratoryReport> BuildSickListFromDataBaseData(string idStep)
+        static public List<TestLaboratoryReport> BuildLaboratoryReportFromDataBaseData(string idStep)
         {
             List<TestLaboratoryReport> llr = new List<TestLaboratoryReport>();
             if (idStep != "")
@@ -52,9 +52,9 @@ namespace PixServiseTests
             if (this.laboratoryReport.Header != r.laboratoryReport.Header)
                 Global.errors3.Add("Несовпадение Header TestLaboratoryReport");
             if (Global.GetLength(this.doctor) != Global.GetLength(r.doctor))
-                Global.errors3.Add("Несjвпадение длины doctor TestLaboratoryReport");
+                Global.errors3.Add("Несовпадение длины doctor TestLaboratoryReport");
             if (Global.GetLength(this.attachment) != Global.GetLength(r.attachment))
-                Global.errors3.Add("Несjвпадение длины attachment TestLaboratoryReport");
+                Global.errors3.Add("Несовпадение длины attachment TestLaboratoryReport");
         }
         public override bool Equals(Object obj)
         {

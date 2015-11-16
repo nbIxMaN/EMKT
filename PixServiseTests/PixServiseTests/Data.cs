@@ -79,6 +79,7 @@ namespace PixServiseTests
         public static AnatomopathologicalClinicMainDiagnosis anatomopathologicalClinicMainDiagnosis { get; set; }
         public static LaboratoryReport TrueMedRecordDataWithKey { get; internal set; }
         public static LaboratoryReport WrongMedRecordDataWithKey { get; internal set; }
+        public static Form027U form027U { get; set; }
     }
 
     public static class DocumentData
@@ -463,6 +464,20 @@ namespace PixServiseTests
                 },
                 CreationDate = new DateTime(2012, 02, 02),
                 Header = "Header",
+                Author = SetDoctor(),
+            };
+
+            var dataForm027u = (new N3.EMK.Infrastructure.Helpers.SignatureHelper()).SignN3Gost(Convert.ToBase64String(File.ReadAllBytes("F027.xml")), "application/xml");
+            MedRecordData.form027U = new Form027U
+            {
+                Attachment = new MedDocument.DocumentAttachment
+                {
+                    Data = Encoding.UTF8.GetBytes(dataForm027u),
+                    Hash = N3.EMK.Infrastructure.Helpers.Md5Helper.GetGost3411Hash(dataForm027u),
+                    MimeType = "text/xml"
+                },
+                CreationDate = new DateTime(2013, 02, 02),
+                Header = "Header 027U",
                 Author = SetDoctor(),
             };
 

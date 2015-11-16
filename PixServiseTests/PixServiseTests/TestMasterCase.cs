@@ -27,7 +27,7 @@ namespace PixServiseTests
 
         private TestMasterCase() { }
 
-        public static TestMasterCase BuildTestMasterCase (string guid, string idlpu, string patientIdmis, string mis = "")
+        public static TestMasterCase BuildTestMasterCase(string guid, string idlpu, string patientIdmis, string mis = "")
         {
             if ((guid != string.Empty) && (idlpu != string.Empty) && (patientIdmis != string.Empty))
             {
@@ -51,39 +51,54 @@ namespace PixServiseTests
                             List<TestService> serv = TestService.BuildServiseFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(serv, null))
                                 mcase.records.AddRange(serv);
+
                             TestTfomsInfo forms = TestTfomsInfo.BuildTfomsInfoFromDataBaseDate(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(forms, null))
                                 mcase.records.Add(forms);
+
                             TestDeathInfo tdi = TestDeathInfo.BuildDeathInfoFromDataBaseDate(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(tdi, null))
                                 mcase.records.Add(tdi);
+
                             List<TestDiagnosis> td = TestDiagnosis.BuildDiagnosisFromDataBaseDate(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(td, null))
                                 mcase.records.AddRange(td);
+
                             TestClinicMainDiagnosis acdm = TestClinicMainDiagnosis.BuildTestClinicMainDiagnosisFromDataBaseDate(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(acdm, null))
                                 mcase.records.Add(acdm);
+
                             List<TestReferral> trl = TestReferral.BuildReferralFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(trl, null))
                                 mcase.records.AddRange(trl);
+
                             List<TestSickList> tsl = TestSickList.BuildSickListFromDataBaseData(mcase.defaultStep.idStep, patientId);
                             if (!Global.IsEqual(tsl, null))
                                 mcase.records.AddRange(tsl);
+
                             TestDischargeSummary tds = TestDischargeSummary.BuildSickListFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(tds, null))
                                 mcase.records.Add(tds);
-                            List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildSickListFromDataBaseData(mcase.defaultStep.idStep);
+
+                            List<TestLaboratoryReport> tlr = TestLaboratoryReport.BuildLaboratoryReportFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(tlr, null))
                                 mcase.records.AddRange(tlr);
+
                             TestConsultNote tcn = TestConsultNote.BuildSickListFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(tcn, null))
                                 mcase.records.Add(tcn);
+
                             TestDispensaryOne d1 = TestDispensaryOne.BuildSickListFromDataBaseData(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(d1, null))
                                 mcase.records.Add(d1);
+
                             List<TestAppointedMedication> ap = TestAppointedMedication.BuildAppointedMedicationFromDataBaseDate(mcase.defaultStep.idStep);
                             if (!Global.IsEqual(ap, null))
                                 mcase.records.AddRange(ap);
+
+                            List<TestForm027U> form = TestForm027U.BuildForm027UFromDataBaseData(mcase.defaultStep.idStep);
+                            if (!Global.IsEqual(form, null))
+                                mcase.records.AddRange(form);
                         }
                     }
                     return mcase;
@@ -95,57 +110,62 @@ namespace PixServiseTests
         public bool CheckDocumentInCase(MedRecord i, string idLpu)
         {
             TestMedRecord doc = null;
+
             Service serv = i as Service;
-            if (serv != null)
-                doc = new TestService(serv);
+            if (serv != null) doc = new TestService(serv);
+
             TfomsInfo tfi = i as TfomsInfo;
-            if (tfi != null)
-                doc = new TestTfomsInfo(tfi);
+            if (tfi != null) doc = new TestTfomsInfo(tfi);
+
             DeathInfo di = i as DeathInfo;
-            if (di != null)
-                doc = new TestDeathInfo(di);
+            if (di != null) doc = new TestDeathInfo(di);
+
             Diagnosis diag = i as Diagnosis;
             if ((diag != null) && (diag.DiagnosisInfo.IdDiagnosisType != TestDiagnosis.IdClinicMainDiagnosis))
                 doc = new TestDiagnosis(diag, idLpu);
+
             ClinicMainDiagnosis cmd = i as ClinicMainDiagnosis;
             if ((cmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                 doc = new TestClinicMainDiagnosis(cmd, idLpu);
+
             AnatomopathologicalClinicMainDiagnosis acmd = i as AnatomopathologicalClinicMainDiagnosis;
             if ((acmd != null) && (cmd.DiagnosisInfo.IdDiagnosisType == TestDiagnosis.IdClinicMainDiagnosis))
                 doc = new TestClinicMainDiagnosis(acmd, idLpu);
+
             Referral r = i as Referral;
-            if (r != null)
-                doc = new TestReferral(r, idLpu);
+            if (r != null) doc = new TestReferral(r, idLpu);
+
             SickList sl = i as SickList;
-            if (sl != null)
-                doc = new TestSickList(sl, idLpu);
+            if (sl != null) doc = new TestSickList(sl, idLpu);
+
             DischargeSummary ds = i as DischargeSummary;
-            if (ds != null)
-                doc = new TestDischargeSummary(ds, idLpu);
+            if (ds != null) doc = new TestDischargeSummary(ds, idLpu);
+
             LaboratoryReport lr = i as LaboratoryReport;
-            if (lr != null)
-                doc = new TestLaboratoryReport(lr, idLpu);
+            if (lr != null) doc = new TestLaboratoryReport(lr, idLpu);
+
             ConsultNote cn = i as ConsultNote;
-            if (cn != null)
-                doc = new TestConsultNote(cn, idLpu);
+            if (cn != null) doc = new TestConsultNote(cn, idLpu);
+
             DispensaryOne d1 = i as DispensaryOne;
             if ((d1 != null) && (caseBase.idCaseType == dispensaryId))
                 doc = new TestDispensaryOne(d1, idLpu);
+
             AppointedMedication ap = i as AppointedMedication;
-            if (ap != null)
-                doc = new TestAppointedMedication(ap, idLpu);
+            if (ap != null) doc = new TestAppointedMedication(ap, idLpu);
+
+            Form027U form = i as Form027U;
+            if (form != null) doc = new TestForm027U(form, idLpu);
+
             if (Global.IsEqual(doc, null))
             {
                 Global.errors1.Add("Документ не найден");
                 return true;
             }
+
             foreach (TestMedRecord document in this.medRecords)
-            {
-                if (Global.IsEqual(doc, document))
-                {
-                    return true;
-                }
-            }
+                if (Global.IsEqual(doc, document)) return true;
+
             return false;
         }
     }
